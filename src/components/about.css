@@ -1,0 +1,51 @@
+.grid-box1 {
+	display: grid;
+	width: 80%;
+	padding: 40px;
+	grid-template-columns: repeat(auto-fill, minmax(600px, 1fr));
+	gap:60px;
+	font-family: Avenir;
+	margin: auto;
+	
+}
+
+@font-face {
+  font-family: "Avenir";
+  src: local('CircularStd-Book'), url(../fonts/CircularStd-Book.ttf) format('truetype');
+}
+
+.Avenir {
+	font-family: Avenir;
+}
+
+.header {
+	font-family: Avenir;
+	font-size: 3rem;
+	width: 70%;
+	font-weight: 550;
+	color: rgb(127, 90, 179);
+	line-height: 1.6;
+}
+
+.body {
+	font-size: 1.1rem;
+	width: 85%;
+	line-height: 1.4;
+	padding-bottom: 2rem;
+}
+
+.list-div span {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:25px;
+  height:25px;
+  border-radius:50%;
+  background-color:rgb(127, 90, 179);
+  color:white;
+}
+
+span {
+	font-size: 0.9rem;
+	margin-right:10px;
+}

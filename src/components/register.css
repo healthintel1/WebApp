@@ -1,0 +1,86 @@
+body, html {
+  padding-left: 0.5rem;
+  zoom: 90%;
+  padding-right: 1rem;
+  padding-top: 0.3rem;
+}
+
+@font-face {
+  font-family: "Avenir";
+  src: local('CircularStd-Book'), url(../fonts/CircularStd-Book.ttf) format('truetype');
+}
+
+.input {
+    background-color: rgb(243, 248, 245);
+    color: black;
+    width: 80%;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    border-radius: 20px;
+}
+
+.arrow {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border-top: 2px solid #000;
+  border-right: 2px solid #000;
+}
+
+.arrow-right {
+  transform: rotate(45deg);
+}
+
+.arrow-left {
+  transform: rotate(-135deg);
+}
+
+.gender {
+    font-size: 20px;
+    font-family: Avenir;
+}
+
+.grid-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap:20px;
+    margin-top: 30px;
+
+}
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-family: Avenir;
+}
+
+.calender-grid {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+}
+
+.ph4-l {
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.hover:hover{
+  border-bottom: solid;
+  border-color: rgb(68, 70, 173);
+}
+
+.chosen {
+  border-bottom: solid;
+}
+
+@media only screen and (max-width: 600px) {
+    .mobileOptimize {
+        padding: 2rem 1rem !important;
+        padding-right: 0rem !important;
+    }
+    .mobileFont{
+        font-size: 100%;
+        height: 40px !important;
+    }
+}

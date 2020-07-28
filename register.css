@@ -1,0 +1,31 @@
+.input {
+    background-color: rgb(243, 248, 245);
+    color: black;
+    width: 80%;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    border-radius: 20px;
+}
+
+.arrow {
+    --color: #fff;
+    --duration: .3s;
+    --ripple-duration: .4s;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    margin: 0;
+    display: block;
+    outline: none;
+    position: relative;
+    border: none;
+    background: none;
+    cursor: pointer;
+    -webkit-appearence: none;
+    -webkit-tap-highlight-color: transparent;
+    transform: rotate(var(--rotate));
+    &.right {
+        --rotate: 180deg;
+        --direction: -1;
+    }
+}
