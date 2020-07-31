@@ -1,13 +1,12 @@
 import React from "react"
 import "./register.css"
 import copy from 'copy-to-clipboard';
-import {
-  isBrowser,
-  isMobile
-} from "react-device-detect";
 import {navigate} from "gatsby"
 import { TextField } from '@material-ui/core'
 import FloatingLabelInput from 'react-floating-label-input';
+import {
+	isMobile
+} from "react-device-detect";
 import Amplify, { Auth } from 'aws-amplify';
 import awsconfig from '../aws-exports';
 Amplify.configure(awsconfig);
@@ -89,7 +88,7 @@ class SignInCard extends React.Component {
 			}
 		}
 		return(
-			<div className={!isMobile?"w-100 shadow-3 pa2 pt0 pb4 tc bg-white ba b--light-gray Avenir ml4":""} style={{width: (isMobile) ? "auto" : "650px"}}>
+			<div className={(isMobile)?"":"w-100 shadow-3 pa2 pt0 pb4 tc bg-white ba b--light-gray Avenir ml4"} style={{width: (isMobile) ? "auto" : "650px"}}>
 				<p className={`${(isMobile) ? "f2" : "f1"} mt5`} style={{color: "rgb(127,90,179)"}}>HelpDefeatCOVID</p>
 				<p className={`${(isMobile) ? "f5" : "f4"} w-60 tc gray mt4 mb5`} style={{"margin-left":"auto", "margin-right":"auto", "font-weight":"500"}}>Please Sign In or Create an Account</p>
 				<div className="tl" style={{ fontSize: (isMobile) ? 18 : 24, padding:"20px 20px", "border-radius":"15px", width:"75%", "margin-top":"20px", "margin":"auto"}}>
