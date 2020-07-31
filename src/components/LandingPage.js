@@ -4,14 +4,14 @@ import SignInCard from "./signInCard.js";
 import {
   isMobile
 } from "react-device-detect";
-import "./register.css";
 import Footer from "./footer";
+import "./register.css";
 
 const LandingPage = () => {
 	return(
 		<div>
 			<div className={`flex ${(isMobile)?"mt3":"mt5"}`} style={{"margin-left": (isMobile) ? "0" : "3vw"}}>
-				<div className="fl tc" style={{"padding-left-":"0px","padding-right":"1rem", width: "min(700px, 95vw)", "margin-right":(isMobile) ? "0px" : "20px"}}>
+				<div className="fl tc" style={{"padding-left-":"0px","padding-right":(isMobile) ? "0px" : "1rem", width: "min(700px, 95vw)", "margin-right":(isMobile) ? "0px" : "20px"}}>
 					<SignInCard/>
 				</div>
 				<div className = "tl flex123" style={{"padding-left":(isMobile) ? "20px" : "0","margin-left":"auto", "margin-right":"auto", "padding-top":"4.5rem","padding-bottom":"20px", "max-width":"700px"}}>
