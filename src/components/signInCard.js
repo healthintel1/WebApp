@@ -36,7 +36,7 @@ class SignInCard extends React.Component {
 	}
 
 	onInviteOthers = () => {
-		copy('Predict your risk from COVID19 using HelpDefeatCorona.org. Visit Now @ https://helpdefeatcorona-mutlr2sns.vercel.app')
+		copy('Predict your risk from COVID19 using HelpDefeatCOVID.org. Visit Now @ https://helpdefeatcorona-mutlr2sns.vercel.app')
 		this.setState({invite: "Link Copied"})
 	}
 
@@ -90,7 +90,7 @@ class SignInCard extends React.Component {
 		}
 		return(
 			<div className={!isMobile?"w-100 shadow-3 pa2 pt0 pb4 tc bg-white ba b--light-gray Avenir ml4":""} style={{width: (isMobile) ? "100vw" : "650px"}}>
-				<p className={`${(isMobile) ? "f2" : "f1"} mt5`} style={{color: "rgb(127,90,179)"}}>HelpDefeatCorona</p>
+				<p className={`${(isMobile) ? "f2" : "f1"} mt5`} style={{color: "rgb(127,90,179)"}}>HelpDefeatCOVID</p>
 				<p className={`${(isMobile) ? "f5" : "f4"} w-60 tc gray mt4 mb5`} style={{"margin-left":"auto", "margin-right":"auto", "font-weight":"500"}}>Please Sign In or Create an Account</p>
 				<div className="tl" style={{ fontSize: (isMobile) ? 18 : 24, padding:"20px 20px", "border-radius":"15px", width:"75%", "margin-top":"20px", "margin":"auto"}}>
 		            <FloatingLabelInput

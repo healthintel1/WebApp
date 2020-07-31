@@ -5,6 +5,7 @@ import "../components/about.css"
 import { Link, navigate } from "gatsby"
 import Amplify, { Auth } from 'aws-amplify';
 import awsconfig from '../aws-exports';
+import Footer from "../components/footer";
 Amplify.configure(awsconfig);
 
 
@@ -87,6 +88,7 @@ class About extends React.Component {
 						</article>
 					</div>
 				</MobileView>
+				<Footer />
 			</div>
 		)
 	}

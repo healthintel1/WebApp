@@ -33,7 +33,7 @@ class Register3 extends React.Component {
     console.log(e.target.id)
     console.log(!x)
   }
-  
+
   onClickSmoke = (e) => {
     let x = this.state[e.target.id]
     if (x === 0) this.setState({[e.target.id]: 2});
@@ -87,8 +87,8 @@ class Register3 extends React.Component {
             <p onClick={this.onClick} id="cancer" className="tl f4 pointer ml2 br2 pv3 ph4 mb0 dib" style={{background: this.state.cancer ? this.state.on_color : this.state.off_color, color: this.state.cancer ? "white" : "gray"}}>CANCER</p>
             <p onClick={this.onClickSmoke} id="smoker" className="tl f4 pointer ml2 br2 pv3 ph4 mb0 dib" style={{background: this.state.smoker !== 0 ? this.state.on_color : this.state.off_color, color: this.state.smoker !== 0 ? "white" : "gray"}}>SMOKER</p>
             <div onClick={this.onClick} id="weak_immunity" className="tl f4 pointer ml2 br2 ph4 pv3 mb0 mt0 dib" style={{background: this.state.weak_immunity ? this.state.on_color : this.state.off_color, color: this.state.weak_immunity ? "white" : "gray"}}>
-              <p onClick={this.onClick2} id="w1" className="mv0 f4">WEAKENED IMMUNITY DUE TO DISEASE</p>
-              <p onClick={this.onClick2} id="w2" className="f7 mb0 mt1">(HIV, sickle cell), or medications (steroid pills)</p>
+              <p onClick={this.onClick2} id="w1" className="mv0 f4">AUTOIMMUNE DISORDER</p>
+              <p onClick={this.onClick2} id="w2" className="f7 mb0 mt1">such as rheumatoid athritis or Crohn’s disease</p>
             </div>
             <div>
               <p onClick={this.onClick} id="asthma" className="tl f4 pointer ml2 br2 pv3 ph4 mb0 dib" style={{width: "97%", background: this.state.asthma ? this.state.on_color : this.state.off_color, color: this.state.asthma ? "white" : "gray"}}>ASTHMA</p>
@@ -114,8 +114,8 @@ class Register3 extends React.Component {
             <p onClick={this.onClick} id="cancer" className="tc w-100 mb1 f5 pointer ml1 br2 pv3 ph4 mb0 dib" style={{background: this.state.cancer ? this.state.on_color : this.state.off_color, color: this.state.cancer ? "white" : "gray"}}>CANCER</p>
             <p onClick={this.onClickSmoke} id="smoker" className="tc w-100 mb1 f5 pointer ml1 br2 pv3 ph4 mb0 dib" style={{background: this.state.smoker !== 0 ? this.state.on_color : this.state.off_color, color: this.state.smoker !== 0 ? "white" : "gray"}}>SMOKER</p>
             <div onClick={this.onClick} id="weak_immunity" className="tc w-100 mb1 pointer ml1 br2 ph4 pv3 mb0 mt0 dib" style={{background: this.state.weak_immunity ? this.state.on_color : this.state.off_color, color: this.state.weak_immunity ? "white" : "gray"}}>
-              <p onClick={this.onClick2} id="w1" className="ph3 mt0 mb1 f5">WEAKENED IMMUNITY DUE TO DISEASE</p>
-              <p onClick={this.onClick2} id="w2" className="f7 ph3 mb0 mt1">(HIV, sickle cell), or medications (steroid pills)</p>
+              <p onClick={this.onClick2} id="w1" className="ph3 mt0 mb1 f5">AUTOIMMUNE DISORDER</p>
+              <p onClick={this.onClick2} id="w2" className="f7 ph3 mb0 mt1">such as rheumatoid athritis or Crohn’s disease</p>
             </div>
             <p onClick={this.onClick} id="asthma" className="tc w-100 mb1 f5 pointer ml1 br2 pv3 ph4 mb0 dib" style={{background: this.state.asthma ? this.state.on_color : this.state.off_color, color: this.state.asthma ? "white" : "gray"}}>ASTHMA</p>
             <p onClick={this.onClick} id="obesity" className="tc w-100 mb1 f5 pointer ml1 br2 pv3 ph4 mb0 dib" style={{background: this.state.obesity ? this.state.on_color : this.state.off_color, color: this.state.obesity ? "white" : "gray"}}>OBESITY(XXL+)</p>

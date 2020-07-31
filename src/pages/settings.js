@@ -6,6 +6,8 @@ import "tachyons"
 import { isBrowser, isMobile } from "react-device-detect";
 import Amplify, { Auth } from 'aws-amplify';
 import awsconfig from '../aws-exports';
+import Footer from "../components/footer";
+import {CORSDOMAIN} from '../components/constant'
 Amplify.configure(awsconfig);
 
 
@@ -14,7 +16,7 @@ class Settings extends React.Component {
 		super()
 		this.state = {
 			history:"",
-			clientId:"",
+			clientid:"",
 			path:"",
 		}
 	}
@@ -24,8 +26,8 @@ class Settings extends React.Component {
 		Auth.currentAuthenticatedUser()
 			.then(res => {
 				console.log(res.username)
-				this.setState({clientId: res.username})
-				var url = `https://534q6zi164.execute-api.ap-south-1.amazonaws.com/pluto/gethistory?client_id=${res.username}`
+				this.setState({clientid: res.username})
+				var url = CORSDOMAIN+`/gethistory?client_id=${res.username}`
 				console.log(url)
 				async function GetData() {
 					let response = await fetch(url)
@@ -119,7 +121,7 @@ class Settings extends React.Component {
 			        			<p className={`${(isMobile) ? "f6" : "f5"} gray dib mt3 mb0 pr3`}><b>Age</b>: {this.state.age} years old</p>
 			        			<p className={`${(isMobile) ? "f6" : "f5"} dib mt0 mb0 gray ph3`}><b>Location</b>: {this.state.zipcode}</p>
 			        		</div>
-			        		<p className={`${(isMobile) ? "f6" : "f5"} mt3 mb0 gray`}><b>Gender</b>: <p className="dib ttc">{this.state.gender}</p></p>
+			        		<p className={`${(isMobile) ? "f6" : "f5"} mt3 mb0 gray`}><b>Gender</b>: <p className="dib ttc">{this.state.gender===0?'Female':this.state.gender===1?'Male':'Not Specified'}</p></p>
 			        	</div>
 			        	<div className={`pa4 ${(isMobile) ? "" : "pl5"}`}>
 			        		<p className={`${(isMobile) ? "f4" : "f3"} mb4`} style={{color:"rgb(127,79,180)"}}><b>Allergies</b><span onClick={()=>navigate("/update-account", {state:{route: "allergies", data: this.state}})} className="ml2 f6 gray underline-hover pointer dim">Edit</span></p>
@@ -132,6 +134,7 @@ class Settings extends React.Component {
 		        	</div>
 
 				</div>
+				<Footer/>
 			</div>
 		);
 	}

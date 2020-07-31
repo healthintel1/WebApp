@@ -4,6 +4,7 @@ import {navigate} from "gatsby";
 import ForgotForm1 from "../components/forgot1.js"
 import ForgotForm2 from "../components/forgot2.js"
 import ForgotMessage from "../components/forgot3.js"
+import Footer from "../components/footer";
 
 class Forgot extends React.Component {
 	constructor() {
@@ -36,6 +37,7 @@ class Forgot extends React.Component {
 			<div>
 				<h1 onClick={()=>navigate("/")} class="pointer mt0 mb0 fw1 tc mt3 mb4 f3 w-100 pb3 bb b--light-gray bw1" style={{"font-family":"Avenir", color: "rgb(127,90,179)"}}>HelpDefeatCorona.org</h1>
 				{output}
+				<Footer/>
 			</div>
 		)
 	}

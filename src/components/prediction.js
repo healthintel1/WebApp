@@ -30,7 +30,7 @@ class Prediction extends React.Component {
             arr.push(`${today.getDate()}/${today.getMonth()+1}`)
             today.setDate(today.getDate()-1)
             let a = x[i]
-            if (a !== "" && a!== undefined) {                
+            if (a !== "" && a!== undefined) {
                 console.log(a)
                 a = a.split(",")
                 dates.push(a[0])
@@ -86,7 +86,7 @@ class Prediction extends React.Component {
       "July", "August", "September", "October", "November", "December"
       ];
       return (
-        <div className={`w-100 mb3 ${(this.state.visible) ? "fadeIn" : "fadeOut"}`}>
+        <div style={{display: 'flex', height: 'max-content'}} className={`w-100 mb3 flex ${(this.state.visible) ? "fadeIn" : "fadeOut"}`}>
           	<div className="w-100 ba bw1 tl b--light-gray pb4 bg-white ba Avenir" style={{"font-family":"Avenir"}}>
                 <div className="w-100 bb bw1 b--light-gray">
                     <p className={`f5 w-100 ${(isMobile)?"ml4":"ml5"} mb3 mt3 dark-gray dib`} style={{"margin-right":"10rem"}}>ALGORITHM BASED PREDICTION <p className={`f5 gray mb3 dib ${(isMobile)?"ml4":"ml6"}`}>{monthNames[this.props.Month-1]} {this.props.Dated}</p></p>
@@ -127,12 +127,12 @@ class Prediction extends React.Component {
                 <MobileView>
                     <p className="ml4 tc w-60 mt3 f5 dim pointer ph4 pv3 mb1 b dib white bg-light-red">CALL THE DOCTOR</p>
                     <p className="ml4 tc w-60 mt2 f5 dim pointer ph4 pv3 mb1 b dib white bg-gray">LINK TO CDC</p>
-                    <p className="ml4 tc w-60 mt2 f5 dim pointer ph4 pv3 mb2 b dib white" style={{"background":"rgb(206,211,255)"}}>DIRECTIONS TO ER</p> 
+                    <p className="ml4 tc w-60 mt2 f5 dim pointer ph4 pv3 mb2 b dib white" style={{"background":"rgb(206,211,255)"}}>DIRECTIONS TO ER</p>
                 </MobileView>
             </div>
-            <div className="mt4">
+            <div className="mt4 flex">
                     <Graph Dated={this.props.Dated} Month={this.props.Month} data={this.state.data}/>
-                </div>
+            </div>
         </div>
       )
     }

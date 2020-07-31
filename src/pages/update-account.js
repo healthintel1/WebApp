@@ -7,6 +7,7 @@ import {
 import UpdatePersonal from "../components/updatePersonal.js"
 import UpdateAllergies from "../components/updateAllergies.js"
 import UpdateHistory from "../components/updateHistory.js"
+import Footer from "../components/footer";
 
 class UpdateAccount extends React.Component {
 	constructor(props) {
@@ -37,6 +38,7 @@ class UpdateAccount extends React.Component {
 					<h1 onClick={()=>navigate("/settings")} class="pointer mt0 fw1 tc mb3 f3" style={{"font-family":"Avenir", color: "rgb(127,90,179)"}}>HelpDefeatCorona.org</h1>
 				</div>
 				{output}
+				<Footer/>
 			</div>
 		)
 	}

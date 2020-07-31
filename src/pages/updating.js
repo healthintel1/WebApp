@@ -1,10 +1,12 @@
 import React from "react"
 import {navigate} from "gatsby"
-import {  
+import {
   isBrowser,
   isMobile
 } from "react-device-detect";
 import "../components/register.css"
+import {CORSDOMAIN} from '../components/constant'
+import Footer from "../components/footer";
 
 class UpdatingDetails extends React.Component {
 	constructor(props) {
@@ -23,12 +25,12 @@ class UpdatingDetails extends React.Component {
 				        headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': true },
 				        body: JSON.stringify(this.props.location.state.data)
 				    };
-				fetch('https://cors-anywhere.herokuapp.com/https://534q6zi164.execute-api.ap-south-1.amazonaws.com/pluto/updatehistory?', requestOptions)
+				fetch(CORSDOMAIN+'/updatehistory?', requestOptions)
 			        .then(res=>navigate("/settings"))
 			        .catch(err=>console.log(err))
 				}
-			
-			
+
+
 	}
 
 	render() {
@@ -42,6 +44,7 @@ class UpdatingDetails extends React.Component {
 					<p className="f4 w-70 mt2 gray" style={{"margin":"auto"}}>Please wait while we update your details. You will be redirected shortly.</p>
 					<img src="https://flevix.com/wp-content/uploads/2019/07/Curve-Loading.gif" style={{width:"70%", margin:"auto", "margin-top":"0px", padding:"0px"}}/>
 				</div>
+				<Footer/>
 			</div>
 		);
 	}

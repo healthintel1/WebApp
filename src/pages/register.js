@@ -10,6 +10,7 @@ import {
   isBrowser,
   isMobile
 } from "react-device-detect";
+import Footer from "../components/footer";
 
 class Register extends React.Component {
 	constructor(props) {
@@ -24,7 +25,7 @@ class Register extends React.Component {
 			pass: "",
 			age: "",
 			zipcode: "",
-			gender: "",
+			gender: -1,
 			allergies9:"",
 			heartdisease: false,
       		highbloodpressure: false,
@@ -58,7 +59,7 @@ class Register extends React.Component {
 		this.setState({allergies9: arr})
 		console.log(this.state)
 		this.setState({route:"history"})
-		
+
 	}
 	onRouteChange = (route) => {
 		this.setState({route: route})
@@ -83,7 +84,7 @@ class Register extends React.Component {
 	}
 
 	render() {
-		
+
 		console.log(this.state)
 		let output;
 		if (this.state.route === "account") {
@@ -103,6 +104,7 @@ class Register extends React.Component {
 					<RegNav route={this.state.route}/>
 				</div>
 				{output}
+				<Footer/>
 			</div>
 		)
 	}

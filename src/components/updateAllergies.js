@@ -98,18 +98,7 @@ class UpdateAllergies extends React.Component {
 			<div className={`shadow-3 tl b--light-gray ${(isMobile) ? "ph4" : "ph5"} pb4 bg-white ba Avenir`} style={{margin:"auto", "font-family":"Avenir", width:(isMobile) ? "85vw" : "700px", "margin-top":"50px"}}>
 				<p className={`${(isMobile) ? "f2" : "f1"} ml3 mt4 gray mb3`}>ALLERGIES</p>
         <p className={`f5 ml3 mt2 gray mb4 ${(isMobile) ? "w-80" : "w-50"}`}>You would be surprised how much this information helps</p>
-        <div className="grid-box pa0 w-100 ma0">
-          <p onClick={this.onClick} id="option1" className={`${(isMobile) ? "f5" : "f4"} pointer ml2 br2 ph4 pv3 mb0 mt0 dib`} style={{background: this.state.allergies.indexOf("option1") !== -1 ? this.state.on_color : this.state.off_color, color: this.state.allergies.includes("option1") ? "white" : "gray"}}>Option 1</p>
-          <p onClick={this.onClick} id="option2" className={`${(isMobile) ? "f5" : "f4"} pointer ml2 br2 ph4 pv3 mb0 mt0 dib`} style={{background: this.state.allergies.includes("option2") ? this.state.on_color : this.state.off_color, color: this.state.allergies.includes("option2") ? "white" : "gray"}}>Option 2</p>
-          <p onClick={this.onClick} id="option3" className={`${(isMobile) ? "f5" : "f4"} pointer ml2 br2 ph4 pv3 mb0 mt0 dib`} style={{background: this.state.allergies.indexOf("option3") !== -1 ? this.state.on_color : this.state.off_color, color: this.state.allergies.includes("option3") ? "white" : "gray"}}>Option 3</p>
-          <p onClick={this.onClick} id="option4" className={`${(isMobile) ? "f5" : "f4"} pointer ml2 br2 ph4 pv3 mb0 mt0 dib`} style={{background: this.state.allergies.includes("option4") ? this.state.on_color : this.state.off_color, color: this.state.allergies.includes("option4") ? "white" : "gray"}}>Option 4</p>
-          <p onClick={this.onClick} id="option5" className={`${(isMobile) ? "f5" : "f4"} pointer ml2 br2 ph4 pv3 mb0 mt0 dib`} style={{background: this.state.allergies.indexOf("option5") !== -1 ? this.state.on_color : this.state.off_color, color: this.state.allergies.includes("option5") ? "white" : "gray"}}>Option 5</p>
-          <p onClick={this.onClick} id="option6" className={`${(isMobile) ? "f5" : "f4"} pointer ml2 br2 ph4 pv3 mb0 mt0 dib`} style={{background: this.state.allergies.includes("option6") ? this.state.on_color : this.state.off_color, color: this.state.allergies.includes("option6") ? "white" : "gray"}}>Option 6</p>
-          <p onClick={this.onClick} id="option7" className={`${(isMobile) ? "f5" : "f4"} pointer ml2 br2 ph4 pv3 mb0 mt0 dib`} style={{background: this.state.allergies.indexOf("option7") !== -1 ? this.state.on_color : this.state.off_color, color: this.state.allergies.includes("option7") ? "white" : "gray"}}>Option 7</p>
-          <p onClick={this.onClick} id="option8" className={`${(isMobile) ? "f5" : "f4"} pointer ml2 br2 ph4 pv3 mb0 mt0 dib`} style={{background: this.state.allergies.includes("option8") ? this.state.on_color : this.state.off_color, color: this.state.allergies.includes("option8") ? "white" : "gray"}}>Option 8</p>
-          {output}
-        </div>
-        <p className="mt4 ml2 mb1 gray gender">Add Additional Allergens</p>
+        <p className="mt4 ml2 mb1 gray gender">Add Allergens</p>
         <div className="tl" style={{ fontSize: 20, background:"rgb(243,245,248)", padding:"20px 20px", "border-radius":"15px", width:"95%", "margin-top":"20px"}}>
                 <FloatingLabelInput
                   id="other_text"
@@ -121,6 +110,9 @@ class UpdateAllergies extends React.Component {
                   placeholder="List them here and click enter - they should appear above"
                   style={{background:"rgb(243,245,248)"}}
                 />
+        </div>
+        <div className="grid-box pa0 w-100 ma0 mt4">
+          {output}
         </div>
         <p className="f4 mt4 red tc">{this.state.error}</p>
         <p onClick={this.onSubmit} className={`br-100 purple ph3 pv3 shadow-2 pointer mt2`} style={{"margin":"auto", "margin-top":"20px", width: (isMobile) ? "15%" : "10%"}}>✓</p>

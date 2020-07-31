@@ -2,7 +2,7 @@ import React from "react"
 import FloatingLabelInput from 'react-floating-label-input';
 import "./register.css"
 import {navigate} from "gatsby"
-import {  
+import {
   isBrowser,
   isMobile
 } from "react-device-detect";
@@ -23,7 +23,7 @@ class UpdatePersonal extends React.Component {
 	}
 
 	onOptionClick = (e) => {
-		this.setState({gender: e.target.id})
+		this.setState({gender: e.target.id==='male'?1:e.target.id==='female'?0:2});
 		console.log(e.target.id)
 	}
 
@@ -52,7 +52,7 @@ class UpdatePersonal extends React.Component {
 			            <FloatingLabelInput
 			              id="firstname"
 			              label="First Name"
-			              value={this.state.firstname}		         
+			              value={this.state.firstname}
 			              onChange={this.onTypeEnter}
 			              style={{background:"rgb(243,245,248)"}}
 			            />
@@ -90,9 +90,9 @@ class UpdatePersonal extends React.Component {
 			          </div>
 			          <div>
 			          	<p className="mt3 ml2 mb1 gray gender">Gender</p>
-			          	<p onClick={this.onOptionClick} id="male" className="f5 pointer mt2 ml2 br2 ph4 pv3 mb0 dib" style={{background: this.state.gender === "male" ? this.state.on_color : this.state.off_color, color: this.state.gender === "male" ? "white" : "gray"}}>Male</p>
-			          	<p onClick={this.onOptionClick} id="female" className="f5 pointer mt2 ml2 br2 ph4 pv3 mb0 dib" style={{background: this.state.gender === "female" ? this.state.on_color : this.state.off_color, color: this.state.gender === "female" ? "white" : "gray"}}>Female</p>
-			          	<p onClick={this.onOptionClick} id="other" className="f5 pointer ml2 mt2 br2 ph3 pv3 mb0 dib" style={{background: this.state.gender === "other" ? this.state.on_color : this.state.off_color, color: this.state.gender === "other" ? "white" : "gray"}}>Prefer not to Answer</p>
+			          	<p onClick={this.onOptionClick} id="male" className="f5 pointer mt2 ml2 br2 ph4 pv3 mb0 dib" style={{background: this.state.gender === 1 ? this.state.on_color : this.state.off_color, color: this.state.gender === 1 ? "white" : "gray"}}>Male</p>
+			          	<p onClick={this.onOptionClick} id="female" className="f5 pointer mt2 ml2 br2 ph4 pv3 mb0 dib" style={{background: this.state.gender === 0 ? this.state.on_color : this.state.off_color, color: this.state.gender === 0 ? "white" : "gray"}}>Female</p>
+			          	<p onClick={this.onOptionClick} id="other" className="f5 pointer ml2 mt2 br2 ph3 pv3 mb0 dib" style={{background: this.state.gender === 2 ? this.state.on_color : this.state.off_color, color: this.state.gender === 2 ? "white" : "gray"}}>Prefer not to Answer</p>
 			          </div>
 			          <p className="f5 mt4 b red tc">{this.state.error}</p>
 			          <p className="f5 mt4 dark-blue tc">{this.state.message}</p>

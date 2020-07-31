@@ -13,6 +13,8 @@ import VitalForm from "../components/vitals.js"
 import SymptomsForm from "../components/symptoms.js"
 import Amplify, { Auth } from 'aws-amplify';
 import awsconfig from '../aws-exports';
+import Footer from "../components/footer";
+import {CORSDOMAIN} from '../components/constant'
 Amplify.configure(awsconfig);
 
 var today = new Date()
@@ -34,7 +36,7 @@ class Dashboard extends React.Component {
 			vitals: 0,
 			personal: 0,
 			daily_sym: {
-				fever2:"",
+				fever:"",
 				chillsorsweating: "",
 				coughing: "",
 				difficultybreathing: "",
@@ -53,13 +55,14 @@ class Dashboard extends React.Component {
 				oxygensaturation: "",
 				bodytemperature: "",
 				temptype: true,
-				fever1: "",
+				respiratoryrate: 0,
 			},
 			personal_data: {
 				traveltoday:"",
 				exposed:"",
 				foundanyone:"",
 				feeling:"",
+				pain: 0,
 				// pic:"",
 			},
 			clientid: "",
@@ -92,7 +95,7 @@ class Dashboard extends React.Component {
 
 	onDailyUpdate = (input) => {
 		this.setState({daily_sym: {
-			fever2: input.fever,
+			fever: input.fever,
 			chillsorsweating: input.chills,
 			coughing: input.cough,
 			difficultybreathing: input.breath,
@@ -122,7 +125,7 @@ class Dashboard extends React.Component {
 			heartratefeeling: input.heart,
 			heartrate: input.heart_rate,
 			oxygensaturation: input.oxygen,
-			fever1: input.fever,
+			respiratoryrate: input.respiratoryrate,
 		}})
 		console.log(this.state)
 		this.onRouteChange("wait")
@@ -149,7 +152,7 @@ class Dashboard extends React.Component {
 	getDatabyDate = (date) => {
 		let clientid = this.state.clientid
 		async function GetData() {
-			let response = await fetch(`https://534q6zi164.execute-api.ap-south-1.amazonaws.com/pluto/getvitals?client_id=${clientid}&&date=${date}`)
+			let response = await fetch(CORSDOMAIN+`/getvitals?client_id=${clientid}&&date=${date}`)
 			response = response.json()
 			return response
 		}
@@ -158,7 +161,7 @@ class Dashboard extends React.Component {
 					console.log(`data recieved for date + ${date}`)
 					console.log(res)
 					this.setState({daily_sym: {
-						fever2: res.fever2,
+						fever: res.fever,
 						chillsorsweating: res.chillsorsweating,
 						coughing: res.coughing,
 						difficultybreathing: res.difficultybreathing,
@@ -177,7 +180,7 @@ class Dashboard extends React.Component {
 						heartratefeeling: res.heartratefeeling,
 						heartrate: res.heartrate,
 						oxygensaturation: res.oxygensaturation,
-						fever1: res.fever1,
+						respiratoryrate: res.respiratoryrate,
 					}})
 					this.setState({personal_data: {
 						traveltoday: res.traveltoday,
@@ -209,7 +212,7 @@ class Dashboard extends React.Component {
 				this.setState({clientid: res.username})
 				this.refreshCalendar()
 				async function GetData() {
-					let response = await fetch(`https://534q6zi164.execute-api.ap-south-1.amazonaws.com/pluto/getvitals?client_id=${res.username}&&date=${finaldate}`)
+					let response = await fetch(CORSDOMAIN+`/getvitals?client_id=${res.username}&&date=${finaldate}`)
 					response = response.json()
 					return response
 				}
@@ -217,7 +220,7 @@ class Dashboard extends React.Component {
 					.then(res=> {
 						console.log("data recieved")
 						this.setState({daily_sym: {
-							fever2: res.fever2,
+							fever: res.fever,
 							chillsorsweating: res.chillsorsweating,
 							coughing: res.coughing,
 							difficultybreathing: res.difficultybreathing,
@@ -236,7 +239,7 @@ class Dashboard extends React.Component {
 							heartratefeeling: res.heartratefeeling,
 							heartrate: res.heartrate,
 							oxygensaturation: res.oxygensaturation,
-							fever1: res.fever1,
+							respiratoryrate: res.respiratoryrate,
 						}})
 						this.setState({personal_data: {
 							traveltoday: res.traveltoday,
@@ -244,6 +247,7 @@ class Dashboard extends React.Component {
 							exposed: res.exposed,
 							// pic: res.pic,
 							feeling: res.feeling,
+							pain: res.pain
 						}})
 
 					})
@@ -327,7 +331,7 @@ class Dashboard extends React.Component {
 			<div>
 			    <Navbar path = {this.state.path}/>
 			    <BrowserView>
-				    <div className="ma2 ph6" style={{display: "grid", "grid-template-columns":"1fr 4fr", gap: "20px"}}>
+				    <div className="ma2 ph6 flex" style={{display: "grid", "grid-template-columns":"1fr 4fr", gap: "20px"}}>
 					  <div style={{"min-width":"290px"}}>
 					  	{back}
 					  	<List symptoms = {this.state.symptoms} personal = {this.state.personal} vitals = {this.state.vitals} onRouteChange={this.onRouteChange} route={this.state.route}/>
@@ -343,19 +347,15 @@ class Dashboard extends React.Component {
 						<List symptoms = {this.state.symptoms} personal = {this.state.personal} vitals = {this.state.vitals} onRouteChange={this.onRouteChange} route={this.state.route}/>
 						<Table clientid={this.state.clientid} ref = {this.child} onDateChange={this.onDateChange} daily={this.state.daily} personal = {this.state.personal} vitals = {this.state.vitals} vitalDone={this.vitalDone} personalDone={this.personalDone} symptomsDone={this.symptomsDone}/>
 					</div>
-					{/*<div style={{width:"350px", margin:"auto"}}>*/}
-					{/**/}
-					{/*</div>*/}
 					{back}
 					<div style={{"margin":"10px auto auto auto","padding-bottom":"50px"}}>
 						{output}
 					</div>
 				</MobileView>
+				<Footer />
 			</div>
 		);
 	}
 }
-
-
 
 export default Dashboard

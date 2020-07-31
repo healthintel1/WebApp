@@ -24,8 +24,8 @@
     -webkit-appearence: none;
     -webkit-tap-highlight-color: transparent;
     transform: rotate(var(--rotate));
-    &.right {
-        --rotate: 180deg;
-        --direction: -1;
-    }
+}
+.arrow.right {
+    --rotate: 180deg;
+    --direction: -1;
 }
