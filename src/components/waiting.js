@@ -17,59 +17,59 @@ class Waiting extends React.Component {
         }
     }
 
-    // componentDidMount() {
-    //   this.setState({visible: true})
-    //   let count=0
-    //   Auth.currentAuthenticatedUser()
-    //     .then(res => {
-    //       x = res.username
-    //       let arr2=[]
-    //       let k;
-    //       var today = new Date()
-    //       for (k=0; k<8; k++) {
-    //         arr2.push(`${today.getDate()}/${(today.getMonth())+1}`)
-    //         let putresult = {
-    //           clientid: x,
-    //           date: `${today.getDate()}/${(today.getMonth())+1}`,
-    //           esi:Math.random(),
-    //           psi:Math.random(),
-    //           riskf:Math.random(),
-    //         }
-    //         console.log(arr2)
-    //         console.log(putresult)
-    //         const requestOptions = {
-    //               method: 'POST',
-    //               headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': "*" },
-    //                 body: JSON.stringify(putresult)
-    //             };
-    //         fetch(CORSDOMAIN+'/postresult?', requestOptions)
-    //               .then(res=>{
-    //                 count+=1
-    //                 console.log(res)
-    //                 if (count === 7) {
-    //                   async function GetData() {
-    //                     let response = await fetch(CORSDOMAIN+`/getresult?client_id=${x}&d1=${arr2[0]}&d2=${arr2[1]}&d3=${arr2[2]}&d4=${arr2[3]}&d5=${arr2[4]}&d6=${arr2[5]}&d7=${arr2[6]}`)
-    //                     return response.json()
-    //                   }
-    //                   console.log("in get data")
-    //                   GetData()
-    //                   .then(res => {
-    //                     let finaldata = res.data
-    //                     finaldata = finaldata.split(";")
-    //                     this.props.dataSet(finaldata)
-    //                     this.props.onRouteChange("pred")
-    //                   })
-    //                   .catch(err=>console.log(err))
-    //                 }
-    //               })
-    //               .catch(err=>{
-    //                 console.log(err)
-    //               })
-    //         today.setDate(today.getDate() - 1)
-    //         datestring = arr2
-    //       }
-    //   })
-    // }
+    componentDidMount() {
+      this.setState({visible: true})
+      let count=0
+      Auth.currentAuthenticatedUser()
+        .then(res => {
+          x = res.username
+          let arr2=[]
+          let k;
+          var today = new Date()
+          for (k=0; k<8; k++) {
+            arr2.push(`${today.getDate()}/${(today.getMonth())+1}`)
+            let putresult = {
+              clientid: x,
+              date: `${today.getDate()}/${(today.getMonth())+1}`,
+              esi:Math.random(),
+              psi:Math.random(),
+              riskf:Math.random(),
+            }
+            console.log(arr2)
+            console.log(putresult)
+            const requestOptions = {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': "*" },
+                    body: JSON.stringify(putresult)
+                };
+            fetch(CORSDOMAIN+'/postresult?', requestOptions)
+                  .then(res=>{
+                    count+=1
+                    console.log(res)
+                    if (count === 7) {
+                      async function GetData() {
+                        let response = await fetch(CORSDOMAIN+`/getresult?client_id=${x}&d1=${arr2[0]}&d2=${arr2[1]}&d3=${arr2[2]}&d4=${arr2[3]}&d5=${arr2[4]}&d6=${arr2[5]}&d7=${arr2[6]}`)
+                        return response.json()
+                      }
+                      console.log("in get data")
+                      GetData()
+                      .then(res => {
+                        let finaldata = res.data
+                        finaldata = finaldata.split(";")
+                        this.props.dataSet(finaldata)
+                        this.props.onRouteChange("pred")
+                      })
+                      .catch(err=>console.log(err))
+                    }
+                  })
+                  .catch(err=>{
+                    console.log(err)
+                  })
+            today.setDate(today.getDate() - 1)
+            datestring = arr2
+          }
+      })
+    }
 
     render() {
       const monthNames = ["January", "February", "March", "April", "May", "June",

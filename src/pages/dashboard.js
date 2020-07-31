@@ -341,7 +341,8 @@ class Dashboard extends React.Component {
 					    {output}
 					  </div>
 					</div>
-					</BrowserView>
+					<Footer />
+				</BrowserView>
 				<MobileView>
 					<div style={{"margin":"auto", display: 'flex', flexDirection: 'row', flex: 1}}>
 						<List symptoms = {this.state.symptoms} personal = {this.state.personal} vitals = {this.state.vitals} onRouteChange={this.onRouteChange} route={this.state.route}/>
@@ -350,9 +351,9 @@ class Dashboard extends React.Component {
 					{back}
 					<div style={{"margin":"10px auto auto auto","padding-bottom":"50px"}}>
 						{output}
+						<Footer />
 					</div>
 				</MobileView>
-				<Footer />
 			</div>
 		);
 	}
