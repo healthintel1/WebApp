@@ -25,7 +25,7 @@ const Footer = ({ siteTitle }) => (
             <p style={{ margin: 10, fontSize: '1.2rem' }}>
                powered by
             </p>
-            <img height={80} src={require("../images/HealthIntelLogo.svg")}/>
+            <img height={80} style={{maxWidth: '80%'}} src={require("../images/HealthIntelLogo.svg")}/>
         </div>
     </footer>
 );

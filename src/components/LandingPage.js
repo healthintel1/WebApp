@@ -1,10 +1,10 @@
 import React from 'react';
-// import { BrowserView, MobileView} from "react-device-detect";
 import "./LandingPage.css";
 import SignInCard from "./signInCard.js";
 import {
   isMobile
 } from "react-device-detect";
+import "./register.css";
 import Footer from "./footer";
 
 const LandingPage = () => {
