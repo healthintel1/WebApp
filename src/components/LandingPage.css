@@ -1,0 +1,77 @@
+.purples {
+	color: rgb(127,90,179);
+}
+
+.f4-5 {
+	font-size: 1.1rem;
+}
+
+body {
+	height: 100%;
+	background: white;  /* fallback for old browsers */
+	
+}
+
+.grid {
+	display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap:20px;
+    margin-top: 20px;
+    font-family: Avenir;
+}
+
+.flex {
+	display: flex;
+	flex-wrap: wrap;
+	width:100%;
+	padding-left: 0px;
+}
+
+.flex123 {
+	flex-shrink: 2;
+}
+
+img {
+	margin-top: 40px;
+}
+
+@font-face {
+  font-family: 'TR';
+  src: local('TenaliRamakrishna-Regular'), url(../fonts/TenaliRamakrishna-Regular.ttf) format('truetype');
+}
+
+@font-face {
+	font-family: "Avenir";
+	src: local('CircularStd-Book'), url(../fonts/CircularStd-Book.ttf) format('truetype');
+}
+
+.heading {
+	margin-top: 20px;
+	font-family: TR;
+}
+
+h1 {
+	font-family: Avenir;
+}
+
+footer {
+	position:fixed;
+	left:0;
+	bottom:0;
+	right:0;
+}
+
+.mob-foot {
+	width: 100vw;
+	margin: auto;
+}
+
+.flex-box {
+	display: grid;
+	grid-template-columns: 1.2fr 1.5fr;
+	font-family: Avenir;
+	gap:10px;
+}
+
+
+
