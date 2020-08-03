@@ -130,7 +130,7 @@ class VitalForm extends React.Component {
 		let {onVitalsUpdate, Dated, Month} = this.props
 		const onClick = (e) => {
 			console.log(this.state)
-			if (this.state.temp ==="" || this.state.heart==="" || this.state.heart_rate === "" || this.state.oxygen === "" || this.state.bp === "") {
+			if (this.state.temp ==="" || this.state.heart_rate === "" || this.state.oxygen === "" || this.state.bp === "") {
 				this.setState({error_message: "Please fill all the details correctly."})
 			} else if (!this.state.bp.includes("/")) {
 				this.setState({error_message:"Blood Pressure must be of the form 'xx/xx'."})
@@ -171,10 +171,10 @@ class VitalForm extends React.Component {
 									</select>
 						        </div>
 						    </div>
-						    <div className="mv2">
-						        <p className="mt4 ml5 b pa0 mb0 gray gender">HOW DOES YOUR HEART RATE FEEL?</p>
-						        <input id="heart" onChange={this.onTypeEnter} value={this.state.heart} type="text" placeholder="Give us a short description" className="mt3 ml5 mr2 bg-washed-green ph2" style={{"height":"50px", "width":"40%","border":"none"}}/>
-						    </div>
+// 						    <div className="mv2">
+// 						        <p className="mt4 ml5 b pa0 mb0 gray gender">HOW DOES YOUR HEART RATE FEEL?</p>
+// 						        <input id="heart" onChange={this.onTypeEnter} value={this.state.heart} type="text" placeholder="Give us a short description" className="mt3 ml5 mr2 bg-washed-green ph2" style={{"height":"50px", "width":"40%","border":"none"}}/>
+// 						    </div>
 						    <div style={{"display":"flex"}}>
 							    <div className="mv2">
 							        <p className="mt4 ml5 b pa0 mb0 gray gender">HEART RATE</p>
