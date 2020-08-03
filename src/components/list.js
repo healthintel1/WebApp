@@ -23,6 +23,7 @@ const List = ({vitals, personal, symptoms, onRouteChange, route}) => {
 			<div className="mt2 pb0" style={{display: "flex", flexDirection: 'row'}}>
 				<div style={{flex: 3}}>
 					<p onClick={()=>onRouteChange("symptoms")} className="ml4 mt0 pointer mb1 dark-gray" style={{"font-size":(isMobile)?"18px":"24px", "font-weight": (route === "symptoms") ? "bold" : "normal", color: (route === "symptoms") ? "rgb(255, 127, 129)" : "black"}}>SYMPTOMS</p>
+					<p className="ml4 mb4 gray" style={{"font-size":(isMobile)?"12px":"14px"}}></p>
 				</div>
 				<div style={{flex: 1}}>
 					{symptoms === 1?<Tck />:null}
@@ -30,7 +31,7 @@ const List = ({vitals, personal, symptoms, onRouteChange, route}) => {
 			</div>
 			<div className="mt2 pb0" style={{display: "flex", flexDirection: 'row'}}>
 				<div style={{flex: 3}}>
-					<p onClick={()=>onRouteChange("vitals")} className="ml4 pointer mb1 dark-gray" style={{"font-size":(isMobile)?"18px":"24px", "font-weight": (route === "vitals") ? "bold" : "normal", color: (route==="vitals") ? "rgb(255, 127, 129)" : "black"}}>DAILY VITALS</p>
+					<p onClick={()=>onRouteChange("vitals")} className="ml4 pointer mb1 dark-gray" style={{"font-size":(isMobile)?"18px":"24px", "font-weight": (route === "vitals") ? "bold" : "normal", color: (route==="vitals") ? "rgb(255, 127, 129)" : "black"}}>VITALS SIGNS</p>
 					<p className="ml4 mb4 gray" style={{"font-size":(isMobile)?"12px":"14px"}}>Input daily measurements like
 						temperature and blood oxidation</p>
 				</div>
