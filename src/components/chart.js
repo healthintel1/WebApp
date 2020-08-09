@@ -25,8 +25,7 @@ class Chart extends PureComponent {
         <XAxis dataKey="name"/>
         <YAxis />
         <Bar dataKey="riskfactor" fill="#a897ff" />
-        <ReferenceLine y={0.75} label="High Risk" stroke="red" isFront={true} strokeDasharray="3 3" />
-        <ReferenceLine y={0.25} label="Medium Risk" stroke="yellow" isFront={true} strokeDasharray="3 3" />
+        <ReferenceLine y={7} label="High Risk" stroke="red" isFront={true} strokeDasharray="3 3" />
       </BarChart>
     );
   }

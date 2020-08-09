@@ -178,7 +178,7 @@ class Table extends React.Component {
 		return(
 			<div className="mt3 tl b--light-gray pa4 bg-white Avenir mobileOptimize" style={{"font-family":"Avenir", flex: 1}}>
 				<div>
-					<p className="f4 mt3 mb2 dark-gray">{`${this.state.current} ${monthNames[this.state.current_month + 1]}, 2020`}</p>
+					<p className="f4 mt3 mb2 dark-gray">{`${this.state.current} ${monthNames[this.state.current_month-1]}, 2020`}</p>
 					<p className="mb3 gray">You can update the data by clicking on date below</p>
 				</div>
 			  <div className="calender-grid">

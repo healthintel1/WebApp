@@ -35,7 +35,7 @@ class Forgot extends React.Component {
 
 		return(
 			<div>
-				<h1 onClick={()=>navigate("/")} class="pointer mt0 mb0 fw1 tc mt3 mb4 f3 w-100 pb3 bb b--light-gray bw1" style={{"font-family":"Avenir", color: "rgb(127,90,179)"}}>HelpDefeatCorona.org</h1>
+				<h1 onClick={()=>navigate("/")} class="pointer mt0 mb0 fw1 tc mt3 mb4 f3 w-100 pb3 bb b--light-gray bw1" style={{"font-family":"Avenir", color: "rgb(127,90,179)"}}>HelpDefeatCovid.com</h1>
 				{output}
 				<Footer/>
 			</div>

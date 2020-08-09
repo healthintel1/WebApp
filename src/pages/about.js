@@ -35,9 +35,9 @@ class About extends React.Component {
 						<article class="w-100 Avenir shadow-4 hidden ba b--black-10">
 						  <h1 class="f5 bg-white br3 br--top gray mv0 pv3 ph5">OUR UNIQUE APPROACH</h1>
 						  <div class="pl4 pb2 pt3 bt b--black-10">
-						  	<p className="ml3 header">USING AI TO HELP DEFEAT CORONA</p>
+						  	<p className="ml3 header">USING AI TO HELP DEFEAT COVID19</p>
 						  	<p className="ml3 mt4 dark-gray body tj">With everything that is happening in the world today we needed to figure out a way to not only help solve the uncertainty and anxiety that comes along with the pandemic. Our method uses a proprietary algorithm that is getting better with every day, with every person who helps us by updating their symptoms, and with geographic data provided by outside sources. We take all of those data points and use them to make a prediction that you can trust and help you decide what to do next and how to handle it. We don’t claim to replace an emergency room but we do give you the advice you need to make your next step. </p>
-						  	<p className="ml3 mt4 body tj dark-gray">Use our site, put in your data to the best of your ability, and we will do our best to tell you how at risk you are for Corona and how worried you should be</p>
+						  	<p className="ml3 mt4 body tj dark-gray">Use our site, put in your data to the best of your ability, and we will do our best to tell you how at risk you are for COVID19 and how worried you should be</p>
 						  </div>
 						</article>
 						<article class="w-100 Avenir shadow-4 hidden ba b--black-10">
@@ -64,9 +64,9 @@ class About extends React.Component {
 						<article class="pb4 w-100 Avenir shadow-4 hidden ba b--black-10">
 						  <h1 class="f6 bg-white br3 br--top gray mv0 pv3 ph5">OUR UNIQUE APPROACH</h1>
 						  <div class="pl4 pb2 pt3 bt b--black-10">
-						  	<p className="ml3 pa2 pr3 header f2">USING AI TO HELP DEFEAT CORONA</p>
+						  	<p className="ml3 pa2 pr3 header f2">USING AI TO HELP DEFEAT COVID19</p>
 						  	<p className="ml3 mt3 gray f5 pa2 pr5 tj">With everything that is happening in the world today we needed to figure out a way to not only help solve the uncertainty and anxiety that comes along with the pandemic. Our method uses a proprietary algorithm that is getting better with every day, with every person who helps us by updating their symptoms, and with geographic data provided by outside sources. We take all of those data points and use them to make a prediction that you can trust and help you decide what to do next and how to handle it. We don’t claim to replace an emergency room but we do give you the advice you need to make your next step. </p>
-						  	<p className="ml3 mt2 pa2 pr5 f5 tj gray">Use our site, put in your data to the best of your ability, and we will do our best to tell you how at risk you are for Corona and how worried you should be</p>
+						  	<p className="ml3 mt2 pa2 pr5 f5 tj gray">Use our site, put in your data to the best of your ability, and we will do our best to tell you how at risk you are for COVID19 and how worried you should be</p>
 						  </div>
 						</article>
 						<article class="w-100 Avenir shadow-4 hidden mt4 mb4 pb3 ba b--black-10">

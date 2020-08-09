@@ -186,7 +186,7 @@ class SymptomsForm extends React.Component {
 			<div className={`w-100 mb3 ${(this.state.visible) ? "fadeIn" : "fadeOut"}`}>
 			  <div className="tl ba bw1 w-100 b--light-gray bg-white ba Avenir" style={{"font-family":"Avenir"}}>
 			    <div className="w-100 bb bw1 b--light-gray">
-            	  <p className={`f5 ${(isMobile)?"ml4":"ml5"} mb3 mt3 light-red dib`}>DAILY SYMPTOMS</p>
+            	  <p className={`f5 ${(isMobile)?"ml4":"ml5"} mb3 mt3 light-red dib`}>SYMPTOMS</p>
             	  <p className={`f5 gray mb3 dib ${(isMobile)?"ml6":"ml7"}`}>{monthNames[Month-1]} {Dated}</p>
         	    </div>
 				<p className={`f3 ${(isMobile)?"ml4":"ml5"} mt4 gray mb3 pr2`}>DO YOU HAVE ANY OF THESE SYMPTOMS? (Y/N)</p>

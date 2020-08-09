@@ -67,7 +67,6 @@ class Register2 extends React.Component {
 		return(
 			<div className={`shadow-3 tl b--light-gray ${(isMobile) ? "ph4" : "ph5"} pb4 bg-white ba Avenir`} style={{margin:"auto", "font-family":"Avenir", width:(isMobile) ? "100vw" : "700px"}}>
 				<p className={`${(isMobile) ? "f2" : "f1"} ml3 mt4 gray mb3`}>ALLERGIES</p>
-        <p className={`f5 ml3 mt2 gray mb4 ${(isMobile) ? "w-80" : "w-50"}`}>You would be surprised how much this information helps</p>
         <div className="tl" style={{ fontSize: 20, background:"rgb(243,245,248)", padding:"20px 20px", "border-radius":"15px", width:"95%", "margin-top":"20px"}}>
                 <FloatingLabelInput
                   id="other_text"

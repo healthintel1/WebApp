@@ -7,7 +7,6 @@ import {CORSDOMAIN} from './constant';
 Amplify.configure(awsconfig);
 
 let x
-let datestring
 
 class Waiting extends React.Component {
     constructor(props) {
@@ -17,59 +16,52 @@ class Waiting extends React.Component {
         }
     }
 
-    // componentDidMount() {
-    //   this.setState({visible: true})
-    //   let count=0
-    //   Auth.currentAuthenticatedUser()
-    //     .then(res => {
-    //       x = res.username
-    //       let arr2=[]
-    //       let k;
-    //       var today = new Date()
-    //       for (k=0; k<8; k++) {
-    //         arr2.push(`${today.getDate()}/${(today.getMonth())+1}`)
-    //         let putresult = {
-    //           clientid: x,
-    //           date: `${today.getDate()}/${(today.getMonth())+1}`,
-    //           esi:Math.random(),
-    //           psi:Math.random(),
-    //           riskf:Math.random(),
-    //         }
-    //         console.log(arr2)
-    //         console.log(putresult)
-    //         const requestOptions = {
-    //               method: 'POST',
-    //               headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': "*" },
-    //                 body: JSON.stringify(putresult)
-    //             };
-    //         fetch(CORSDOMAIN+'/postresult?', requestOptions)
-    //               .then(res=>{
-    //                 count+=1
-    //                 console.log(res)
-    //                 if (count === 7) {
-    //                   async function GetData() {
-    //                     let response = await fetch(CORSDOMAIN+`/getresult?client_id=${x}&d1=${arr2[0]}&d2=${arr2[1]}&d3=${arr2[2]}&d4=${arr2[3]}&d5=${arr2[4]}&d6=${arr2[5]}&d7=${arr2[6]}`)
-    //                     return response.json()
-    //                   }
-    //                   console.log("in get data")
-    //                   GetData()
-    //                   .then(res => {
-    //                     let finaldata = res.data
-    //                     finaldata = finaldata.split(";")
-    //                     this.props.dataSet(finaldata)
-    //                     this.props.onRouteChange("pred")
-    //                   })
-    //                   .catch(err=>console.log(err))
-    //                 }
-    //               })
-    //               .catch(err=>{
-    //                 console.log(err)
-    //               })
-    //         today.setDate(today.getDate() - 1)
-    //         datestring = arr2
-    //       }
-    //   })
-    // }
+
+    componentDidMount() {
+      this.setState({visible: true})
+      let count=0
+      Auth.currentAuthenticatedUser()
+        .then(res => {
+          x = res.username
+          var arr2=[]
+          let k;
+          var today = new Date()
+          var y = `${today.getDate()}/${today.getMonth() + 1}`
+          for (k=0; k<8;k++) {
+            var pushed = `${today.getDate()}/${today.getMonth() + 1}`
+            arr2.push(pushed)
+            today.setDate(today.getDate()-1)
+          }
+          console.log(arr2)
+          var url = CORSDOMAIN+`/getresult?client_id=${x}&d1=${arr2[0]}&d2=${arr2[1]}&d3=${arr2[2]}&d4=${arr2[3]}&d5=${arr2[4]}d6=${arr2[5]}&d7=${arr2[6]}`
+          async function GetData() {
+            let response = await fetch(url)
+            response = response.json()
+            return response
+          }
+          const requestOptions = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': "*" },
+                body: JSON.stringify({
+                  clientid: x,
+                  date: y,
+                })
+            };
+          fetch("https://cors-anywhere.herokuapp.com/https://4464pex1yl.execute-api.us-east-2.amazonaws.com/stage1/algorithm?", requestOptions)
+            .then(res=>{
+              GetData()
+                .then(res => {
+                  console.log(res)
+                  let finaldata = res.data
+                  finaldata = finaldata.split(";")
+                  this.props.dataSet(finaldata)
+                  this.props.onRouteChange("pred")
+                })                
+            })
+            .catch(err=>console.log(err))
+          })
+      }
+      
 
     render() {
       const monthNames = ["January", "February", "March", "April", "May", "June",
@@ -84,7 +76,7 @@ class Waiting extends React.Component {
                 </div>
                 <p className="pa4 pb0 tc f4 purple">Please wait while our algorithm calculates the prediction</p>
                 <div className={`mt0 ${(isMobile)?"pl5":"pl6"}`}>
-                    {/*<img src="https://flevix.com/wp-content/uploads/2019/07/Curve-Loading.gif" style={{width:"70%", margin:"auto", "margin-top":"0px", padding:"0px"}}/>*/}
+                    {<img src="https://flevix.com/wp-content/uploads/2019/07/Curve-Loading.gif" style={{width:"70%", margin:"auto", "margin-top":"0px", padding:"0px"}}/>}
                 </div>
             </div>
         </div>

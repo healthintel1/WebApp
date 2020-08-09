@@ -118,7 +118,7 @@ class Settings extends React.Component {
 			        		<p className={`${(isMobile) ? "f6" : "f5"} mt2 b mb0 gray`}>{this.state.firstname} {this.state.lastname}</p>
 			        		<p className={`${(isMobile) ? "f6" : "f5"} mt3 mb0 gray`}><b>Email</b>: {this.state.email}</p>
 			        		<div>
-			        			<p className={`${(isMobile) ? "f6" : "f5"} gray dib mt3 mb0 pr3`}><b>Age</b>: {this.state.age} years old</p>
+			        			<p className={`${(isMobile) ? "f6" : "f5"} gray dib mt3 mb0 pr3`}><b>DOB</b>: {this.state.age}</p>
 			        			<p className={`${(isMobile) ? "f6" : "f5"} dib mt0 mb0 gray ph3`}><b>Location</b>: {this.state.zipcode}</p>
 			        		</div>
 			        		<p className={`${(isMobile) ? "f6" : "f5"} mt3 mb0 gray`}><b>Gender</b>: <p className="dib ttc">{this.state.gender===0?'Female':this.state.gender===1?'Male':'Not Specified'}</p></p>

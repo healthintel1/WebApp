@@ -6,6 +6,10 @@ import {
   isBrowser,
   isMobile
 } from "react-device-detect";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
+var today = new Date()
 
 class UpdatePersonal extends React.Component {
 	constructor(props) {
@@ -14,12 +18,29 @@ class UpdatePersonal extends React.Component {
 			on_color: "rgb(127, 90, 179)",
 			off_color: "rgb(243,245,248)",
 			error: "",
+			date: today,
 		}
 	}
 
 	onTypeEnter = (e) => {
 		this.setState({[e.target.id]: e.target.value})
 		console.log(e.target.value)
+	}
+
+	setStartDate = (date) => {
+		let y = date.getYear() + 1900
+		let m = date.getMonth() + 1
+		let d = date.getDate()
+		if (m < 10) {
+			m = `0${m}`
+		}
+		if (d < 10) {
+			d = `0${d}`
+		}
+		let x = `${y}-${m}-${d}`
+		console.log(x)
+		this.setState({date: date})
+		this.setState({age: x})
 	}
 
 	onOptionClick = (e) => {
@@ -66,18 +87,14 @@ class UpdatePersonal extends React.Component {
 			              style={{background:"rgb(243,245,248)"}}
 			            />
 			          </div>
-			          <div className="tl dib" style={{ fontSize: (isMobile) ? "16" : "20", background:"rgb(243,245,248)", padding:"20px 20px", "border-radius":"15px", width:"35%", "margin-top":"20px"}}>
-			            <FloatingLabelInput
-			              id="age"
-			              label="Age *"
-			              type = "number"
-			              min = "0"
-			              value={this.state.age}
-			              onChange={this.onTypeEnter}
-			              style={{background:"rgb(243,245,248)"}}
-			            />
+			          <div  style={{ fontSize: (isMobile) ? "16" : "20", background:"rgb(243,245,248)", padding:"20px 20px", "border-radius":"15px", width:"50%", "margin-top":"20px"}}>
+			          	<p className="tl gray mb2">Date of Birth<sup className="f6 mt3 pt4">*</sup></p>
+			          	<DatePicker
+					        selected={this.state.date}
+					        onChange={this.setStartDate}
+					    />
 			          </div>
-			          <div className="tl dib mb2" style={{ fontSize: (isMobile) ? "16" : "20", background:"rgb(243,245,248)", padding:"20px 20px", "border-radius":"15px", width:"50%", "margin-top":"20px", "margin-left":"15px"}}>
+			          <div className="tl mb2" style={{ fontSize: (isMobile) ? "16" : "20", background:"rgb(243,245,248)", padding:"20px 20px", "border-radius":"15px", width:"50%", "margin-top":"20px"}}>
 			            <FloatingLabelInput
 			              id="zipcode"
 			              label="ZIP Code *"

@@ -61,11 +61,11 @@ class UpdateHistory extends React.Component {
           <div className="grid-box pa0 w-100">
             <div onClick={this.onClick} id="heartdisease" className="tl f4 pointer ml2 br2 ph4 pv3 mb0 mt0 dib" style={{background: this.state.heartdisease ? this.state.on_color : this.state.off_color, color: this.state.heartdisease ? "white" : "gray"}}>
               <p onClick={this.onClick2} id="h1" className="mv0 f4">HEART DISEASE</p>
-              <p onClick={this.onClick2} id="h2" className="f7 mb0 mt1">(coronary artery disease, previous heart attack, heart failure, angina, valvular disease)</p>
+              <p onClick={this.onClick2} id="h2" className="f7 mb0 mt1">(e.g. coronary artery disease, previous heart attack, heart failure, angina, valvular disease etc.)</p>
             </div>
             <div onClick={this.onClick} id="neurologicaldisease" className="tl f4 pointer ml2 br2 ph4 pv3 mb0 mt0 dib" style={{background: this.state.neurologicaldisease ? this.state.on_color : this.state.off_color, color: this.state.neurologicaldisease ? "white" : "gray"}}>
               <p onClick={this.onClick2} id="n1" className="mv0 f4">NEUROLOGICAL DISEASE</p>
-              <p onClick={this.onClick2} id="n2" className="f7 mb0 mt1">(dementia, a stroke, seizures or a brain injury)</p>
+              <p onClick={this.onClick2} id="n2" className="f7 mb0 mt1">(e.g. dementia, a stroke, seizures or a brain injury etc.)</p>
             </div>
             <p onClick={this.onClick} id="highbloodpressure" className="tl f4 pointer ml2 br2 pv3 ph4 mb0 dib" style={{background: this.state.highbloodpressure ? this.state.on_color : this.state.off_color, color: this.state.highbloodpressure ? "white" : "gray"}}>HIGH BLOOD PRESSURE</p>
             <p onClick={this.onClick} id="kidneyliverfailure" className="tl f4 pointer ml2 br2 pv3 ph4 mb0 dib" style={{background: this.state.kidneyliverfailure ? this.state.on_color : this.state.off_color, color: this.state.kidneyliverfailure ? "white" : "gray"}}>KIDNEY/LIVER FAILURE</p> 

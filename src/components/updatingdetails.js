@@ -12,7 +12,7 @@ class UpdatingDetails extends React.Component {
 	}
 
 	componentDidMount() {
-			console.log("REACHED FETCH WALA PART")
+			console.log(this.props)
 			
 	}
 

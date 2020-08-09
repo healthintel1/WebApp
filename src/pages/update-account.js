@@ -35,7 +35,7 @@ class UpdateAccount extends React.Component {
 		return(
 			<div>
 				<div className="mt0 bb mb3 bw1 b--light-gray tc w-100">
-					<h1 onClick={()=>navigate("/settings")} class="pointer mt0 fw1 tc mb3 f3" style={{"font-family":"Avenir", color: "rgb(127,90,179)"}}>HelpDefeatCorona.org</h1>
+					<h1 onClick={()=>navigate("/settings")} class="pointer mt0 fw1 tc mb3 f3" style={{"font-family":"Avenir", color: "rgb(127,90,179)"}}>HelpDefeatCovid.com</h1>
 				</div>
 				{output}
 				<Footer/>
