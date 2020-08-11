@@ -1,5 +1,6 @@
 import React from "react"
 import Register1 from "../components/register1.js"
+import Register11 from "../components/register-1"
 import Register2 from "../components/register2.js"
 import Register3 from "../components/register3.js"
 import Register4 from "../components/register4.js"
@@ -47,23 +48,24 @@ class Register extends React.Component {
 		this.setState({clientid: data.clientid})
 		this.setState({email: data.email})
 		this.setState({pass: data.pass})
+		this.setState({route: "account11"})
+	};
+	onAccount1Submit = (data) => {
 		this.setState({age: data.age})
 		this.setState({zipcode: data.zipcode})
 		this.setState({gender: data.gender})
-		this.setState({route: "allergies"})
-	}
-
+		this.setState({route:"allergies"})
+	};
 	onAllergiesSubmit = (data1, data2) => {
 		let arr = data1.concat(data2);
 		arr = arr.join(",");
 		this.setState({allergies9: arr})
 		console.log(this.state)
 		this.setState({route:"history"})
-
-	}
+	};
 	onRouteChange = (route) => {
 		this.setState({route: route})
-	}
+	};
 
 	onFinalSubmit = (data) => {
 		if (data !== "nota") {
@@ -89,6 +91,8 @@ class Register extends React.Component {
 		let output;
 		if (this.state.route === "account") {
 			output = <Register1 onAccountSubmit={this.onAccountSubmit}/>
+		} else if (this.state.route === "account11") {
+			output = <Register11 onAccountSubmit={this.onAccount1Submit}/>
 		} else if (this.state.route==="allergies") {
 			output = <Register2 onAllergiesSubmit={this.onAllergiesSubmit} onRouteChange={this.onRouteChange}/>
 		} else if (this.state.route === "history") {
@@ -100,7 +104,7 @@ class Register extends React.Component {
 		return(
 			<div>
 				<div className="mt0 bb mb3 bw1 b--light-gray tc w-100">
-					<h1 onClick={()=>navigate("/")} class="pointer mt0 fw1 tc mb3 f3" style={{"font-family":"Avenir", color: "rgb(127,90,179)"}}>HelpDefeatCovid.com</h1>
+					<h1 onClick={()=>{this.setState({route:"account"}); navigate("/")}} class="pointer mt0 fw1 tc mb3 f3" style={{"font-family":"Avenir", color: "rgb(127,90,179)"}}>HelpDefeatCOVID.com</h1>
 					<RegNav route={this.state.route}/>
 				</div>
 				{output}

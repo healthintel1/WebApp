@@ -171,10 +171,10 @@ class VitalForm extends React.Component {
 									</select>
 						        </div>
 						    </div>
-// 						    <div className="mv2">
-// 						        <p className="mt4 ml5 b pa0 mb0 gray gender">HOW DOES YOUR HEART RATE FEEL?</p>
-// 						        <input id="heart" onChange={this.onTypeEnter} value={this.state.heart} type="text" placeholder="Give us a short description" className="mt3 ml5 mr2 bg-washed-green ph2" style={{"height":"50px", "width":"40%","border":"none"}}/>
-// 						    </div>
+{/*// 						    <div className="mv2">*/}
+{/*// 						        <p className="mt4 ml5 b pa0 mb0 gray gender">HOW DOES YOUR HEART RATE FEEL?</p>*/}
+{/*// 						        <input id="heart" onChange={this.onTypeEnter} value={this.state.heart} type="text" placeholder="Give us a short description" className="mt3 ml5 mr2 bg-washed-green ph2" style={{"height":"50px", "width":"40%","border":"none"}}/>*/}
+{/*// 						    </div>*/}
 						    <div style={{"display":"flex"}}>
 							    <div className="mv2">
 							        <p className="mt4 ml5 b pa0 mb0 gray gender">HEART RATE</p>

@@ -36,9 +36,9 @@ class SignInCard extends React.Component {
 	}
 
 	onInviteOthers = () => {
-		copy('Predict your risk from COVID19 using HelpDefeatCOVID.org. Visit Now @ https://helpdefeatcorona-mutlr2sns.vercel.app')
+		copy('Predict your risk from COVID19 using HelpDefeatCOVID.org. Visit Now @ https://www.helpdefeatcovid.com');
 		this.setState({invite: "Link Copied"})
-	}
+	};
 
 	SignIn = () => {
 		this.setState({message: "Loading..."})

@@ -180,11 +180,16 @@ class PersonalForm extends React.Component {
 	            	  <p className={`f5 gray mb3 dib ${(isMobile)?"ml6":"ml7"}`}>{monthNames[Month-1]} {Dated}</p>
 	        	    </div>
 	        	    <BrowserView>
-		        	    <div className="ma1">
-					        <p className="mt3 ml5 b mb1 gray gender">DID YOU TRAVEL TODAY?</p>
-					      	<a onClick={this.onOptionClick} id="true" name="travel" className="f6 ml5 shadow-2 mb3 mt3 dark-gray pointer ph3 pv2 dib" style={{background: this.state.travel === "true" ? this.state.on_color : "white", color: this.state.travel === "true" ? "white" : "black"}}>YES</a>
-					        <a onClick={this.onOptionClick} id="false" name="travel" className="f6 ml2 shadow-2 mb3 mt3 dark-gray pointer ph3 pv2 dib" style={{background: this.state.travel === "false" ? this.state.on_color : "white", color: this.state.travel === "false" ? "white" : "black"}}>NO</a>
-				    	</div>
+						<div className="ma1">
+							<p className="mt3 ml5 b mb1 gray gender">HOW ARE YOU FEELING TODAY?</p>
+							<a onClick={this.onOptionClick} id="true" name="happy" className="ml5 mb3 mt1 dark-gray pointer ph3 pv2 dib" style={{"font-size": (this.state.happy === "true") ? "44px" : "40px", opacity: (this.state.happy === "true") ? "1" : "0.5"}}>😃</a>
+							<a onClick={this.onOptionClick} id="false" name="happy" className="ml2 mb3 mt1 dark-gray pointer ph3 pv2 dib" style={{"font-size": (this.state.happy === "false") ? "44px" : "40px", opacity: (this.state.happy === "false") ? "1" : "0.5"}}>🙁</a>
+						</div>
+		        	    {/*<div className="ma1">*/}
+					    {/*    <p className="mt3 ml5 b mb1 gray gender">DID YOU TRAVEL TODAY?</p>*/}
+					    {/*  	<a onClick={this.onOptionClick} id="true" name="travel" className="f6 ml5 shadow-2 mb3 mt3 dark-gray pointer ph3 pv2 dib" style={{background: this.state.travel === "true" ? this.state.on_color : "white", color: this.state.travel === "true" ? "white" : "black"}}>YES</a>*/}
+					    {/*    <a onClick={this.onOptionClick} id="false" name="travel" className="f6 ml2 shadow-2 mb3 mt3 dark-gray pointer ph3 pv2 dib" style={{background: this.state.travel === "false" ? this.state.on_color : "white", color: this.state.travel === "false" ? "white" : "black"}}>NO</a>*/}
+				    	{/*</div>*/}
 				    	<div className="ma1">
 					        <p className="mt3 ml5 b mb1 gray gender">WERE YOU EXPOSED TO A HIGH-RISK PERSON TODAY?</p>
 					      	<a onClick={this.onOptionClick} id="true" name="risk_person" className="f6 ml5 shadow-2 mb3 mt3 dark-gray pointer ph3 pv2 dib" style={{background: this.state.risk_person === "true" ? this.state.on_color : "white", color: this.state.risk_person === "true" ? "white" : "black"}}>YES</a>
@@ -194,11 +199,6 @@ class PersonalForm extends React.Component {
 					        <p className="mt3 ml5 b mb1 gray gender">WAS ANYONE YOU KNOW FOUND TO BE COVID POSITIVE?</p>
 					      	<a onClick={this.onOptionClick} id="true" name="known_found" className="f6 ml5 shadow-2 mb3 mt3 dark-gray pointer ph3 pv2 dib" style={{background: this.state.known_found === "true" ? this.state.on_color : "white", color: this.state.known_found === "true" ? "white" : "black"}}>YES</a>
 					        <a onClick={this.onOptionClick} id="false" name="known_found" className="f6 ml2 shadow-2 mb3 mt3 dark-gray pointer ph3 pv2 dib" style={{background: this.state.known_found === "false" ? this.state.on_color : "white", color: this.state.known_found === "false" ? "white" : "black"}}>NO</a>
-				    	</div>
-				    	<div className="ma1">
-					        <p className="mt3 ml5 b mb1 gray gender">HOW ARE FEELING TODAY?</p>
-					      	<a onClick={this.onOptionClick} id="true" name="happy" className="ml5 mb3 mt1 dark-gray pointer ph3 pv2 dib" style={{"font-size": (this.state.happy === "true") ? "44px" : "40px", opacity: (this.state.happy === "true") ? "1" : "0.5"}}>😃</a>
-					        <a onClick={this.onOptionClick} id="false" name="happy" className="ml2 mb3 mt1 dark-gray pointer ph3 pv2 dib" style={{"font-size": (this.state.happy === "false") ? "44px" : "40px", opacity: (this.state.happy === "false") ? "1" : "0.5"}}>🙁</a>
 				    	</div>
 				    	<div className="ma1">
 					        <p className="mt3 ml5 b mb1 gray gender">DO YOU HAVE ANY PAIN? RATE YOUR PAIN ON A SCALE OF 1-10</p>

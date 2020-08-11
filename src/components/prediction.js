@@ -35,13 +35,13 @@ class Prediction extends React.Component {
                 dates.push(a[0])
                 esis.push(parseFloat(a[1]))
                 bools.push(parseFloat(a[2]))
-                
+
                 if (`${this.props.Dated}/${this.props.Month}` === a[0]) {
                     r = parseFloat(a[2])
                     this.setState({today_risk: r})
                 }
             }
-            if (r == 0) {
+            if (r === 0) {
                 this.setState({output: "LOW RISK"})
             } else {
                 this.setState({output: "HIGH RISK"})
@@ -90,7 +90,7 @@ class Prediction extends React.Component {
                 </div>
                 <BrowserView>
                     <div style={{display:"flex", "flex-wrap":"wrap"}}>
-                        <p className={`${(this.state.output === "MEDIUM RISK" ? "w-50 ml4" : "w-40 ml5")} mt4 dib`} style={{"font-size":"72px", "font-weight":"500", color: "rgb(127,90,179)", "line-height":"1.6"}}>{this.state.output}</p>
+                        <p className={`${("w-40 ml5")} mt4 dib`} style={{"font-size":"72px", "font-weight":"500", color: "rgb(127,90,179)", "line-height":"1.6"}}>{this.state.output}</p>
                         <img className="dib pt3 w-40" src="https://i.ibb.co/j45jqDj/Screenshot-2020-06-15-at-10-40-39-PM.png"/>
                     </div>
                 </BrowserView>
@@ -100,7 +100,7 @@ class Prediction extends React.Component {
                 </MobileView>
                 <div>
                     <p className={`f3 dark-gray ml4 mt4 b ${(isMobile)?"w-80":""}`}>Don't Panic. Go to a medical professional.</p>
-                    <p className={`f5 gray ml4 mr6 ${(isMobile)?"w-80":""}`} style={{"line-height":"1.5"}}>This just means that you should go checked out. There is a high enough likelihood that based on your symptoms you have Coronavirus for you to go to a hospital and get tested. Come back and update so we can keep updating our predictions</p>
+                    <p className={`f5 gray ml4 mr6 ${(isMobile)?"w-80":""}`} style={{"line-height":"1.5"}}>This just means that you should get tested. Based on your symptoms, our model predicts that you may have COVID-19. Please contact your doctor to be tested. </p>
                 </div>
                 <div className="w-100 bt bb bw1 b--light-gray mt4">
                     <p className={`f5 ${(isMobile)?"ml4":"ml5"} mt2 mb2 dark-gray dib`}>NEXT STEPS</p>
@@ -111,21 +111,21 @@ class Prediction extends React.Component {
                 <div className={`${(isMobile)?"ml4":"ml5"} list-div mv3`}>
                     <span>2</span>  Visit the nearest hospital to get tested further
                 </div>
-                <div className="w-100 bt bb bw1 b--light-gray mt3">
-                    <p className={`f5 ${(isMobile)?"ml4":"ml5"} mt2 mb2 dark-gray dib`}>LINKS</p>
-                </div>
-                <BrowserView>
-                    <div style={{margin:"auto"}} className="tc">
-                        <p className="mt3 f5 dim pointer ph3 pv3 mb2 b dib white bg-light-red">CALL THE DOCTOR</p>
-                        <p className="ml2 mt3 f5 dim pointer ph4 pv3 mb2 b dib white bg-gray">LINK TO CDC</p>
-                        <p className="ml2 mt3 f5 dim pointer ph3 pv3 mb2 b dib white" style={{"background":"rgb(206,211,255)"}}>DIRECTIONS TO ER</p>
-                    </div>
-                </BrowserView>
-                <MobileView>
-                    <p className="ml4 tc w-60 mt3 f5 dim pointer ph4 pv3 mb1 b dib white bg-light-red">CALL THE DOCTOR</p>
-                    <p className="ml4 tc w-60 mt2 f5 dim pointer ph4 pv3 mb1 b dib white bg-gray">LINK TO CDC</p>
-                    <p className="ml4 tc w-60 mt2 f5 dim pointer ph4 pv3 mb2 b dib white" style={{"background":"rgb(206,211,255)"}}>DIRECTIONS TO ER</p>
-                </MobileView>
+                {/*<div className="w-100 bt bb bw1 b--light-gray mt3">*/}
+                {/*    <p className={`f5 ${(isMobile)?"ml4":"ml5"} mt2 mb2 dark-gray dib`}>LINKS</p>*/}
+                {/*</div>*/}
+                {/*<BrowserView>*/}
+                {/*    <div style={{margin:"auto"}} className="tc">*/}
+                {/*        <p className="mt3 f5 dim pointer ph3 pv3 mb2 b dib white bg-light-red">CALL THE DOCTOR</p>*/}
+                {/*        <p className="ml2 mt3 f5 dim pointer ph4 pv3 mb2 b dib white bg-gray">LINK TO CDC</p>*/}
+                {/*        <p className="ml2 mt3 f5 dim pointer ph3 pv3 mb2 b dib white" style={{"background":"rgb(206,211,255)"}}>DIRECTIONS TO ER</p>*/}
+                {/*    </div>*/}
+                {/*</BrowserView>*/}
+                {/*<MobileView>*/}
+                {/*    <p className="ml4 tc w-60 mt3 f5 dim pointer ph4 pv3 mb1 b dib white bg-light-red">CALL THE DOCTOR</p>*/}
+                {/*    <p className="ml4 tc w-60 mt2 f5 dim pointer ph4 pv3 mb1 b dib white bg-gray">LINK TO CDC</p>*/}
+                {/*    <p className="ml4 tc w-60 mt2 f5 dim pointer ph4 pv3 mb2 b dib white" style={{"background":"rgb(206,211,255)"}}>DIRECTIONS TO ER</p>*/}
+                {/*</MobileView>*/}
             </div>
             <div className="mt4 flex">
                     <Graph Dated={this.props.Dated} Month={this.props.Month} data={this.state.data}/>
