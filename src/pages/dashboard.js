@@ -82,16 +82,22 @@ class Dashboard extends React.Component {
 	}
 
 	vitalDone = () => {
-		this.setState({vitals: 1})
-	}
+		if (this.state.bodytemperature>0){
+			this.setState({vitals: 1})
+		}
+	};
 
 	personalDone = () => {
-		this.setState({personal: 1})
+		if (this.state.pain > 0){
+			this.setState({personal: 1})
+		}
 	}
 
 	symptomsDone = () => {
-		this.setState({symptoms: 1})
-	}
+		if (this.state.fever || this.state.chillsorsweating || this.state.coughing || this.state.difficultybreathing || this.state.sorethroat || this.state.bodyaches || this.state.headache || this.state.vomiting || this.state.diarrhea || this.state.none9 || this.state.fatiguetiredness){
+			this.setState({symptoms: 1})
+		}
+	};
 
 	onDailyUpdate = (input) => {
 		this.setState({daily_sym: {
@@ -185,6 +191,7 @@ class Dashboard extends React.Component {
 						traveltoday: res.traveltoday,
 						foundanyone: res.foundanyone,
 						exposed: res.exposed,
+						pain: res.pain,
 						// pic: res.pic,
 						feeling: res.feeling,
 					}})

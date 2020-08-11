@@ -130,19 +130,19 @@ class Table extends React.Component {
 					console.log(i)
 					console.log(this.state.dates[i])
 					console.log(this.state.status[i])
-					if (this.state.status[i]==="33% COMPLETE") {
-						this.props.vitalDone()
-					} else if (this.state.status[i] === "66% COMPLETE") {
-						this.props.vitalDone()
-						this.props.symptomsDone()
-					} else if (this.state.status[i] === "100% COMPLETE") {
+					// if (this.state.status[i]==="33% COMPLETE") {
+					// 	this.props.vitalDone()
+					// } else if (this.state.status[i] === "66% COMPLETE") {
+					// 	this.props.vitalDone()
+					// 	this.props.symptomsDone()
+					// } else if (this.state.status[i] === "100% COMPLETE") {
 						this.props.vitalDone()
 						this.props.symptomsDone()
 						this.props.personalDone()
-					}
+					// }
 				}
 			}
-	}
+	};
 
 	refreshCal = () => {
 		console.log(this.state)

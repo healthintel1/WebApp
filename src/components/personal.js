@@ -121,29 +121,6 @@ class PersonalForm extends React.Component {
 		  "July", "August", "September", "October", "November", "December"
 		];
 		let {onPersonalUpdate, Dated, Month}=this.props
-		// const onChange = (e) => {
-		//   this.setState({error_message: ""})
-	    //   let file = e.target.files[0];
-	    //   this.setState({picture: "UPLOADING..."})
-	    //   let imagenamed = `${this.props.clientid}/${this.props.Dated}-${this.props.Month}`
-	    //   Storage.put(imagenamed, file, {
-	    //       contentType: 'image/png',
-	    //   })
-	    //   	.then (result => {
-	    //   		this.setState({picture: file.name})
-	    //   		this.setState({imagename: imagenamed})
-	    //   		Storage.get(imagenamed)
-	    //   			.then(result => {
-	    //   				console.log(result)
-	    //   				this.setState({imageurl:result})
-	    //   			})
-	    //   			.catch(err => console.log(err))
-	    //   	})
-	    //   	.catch(err => {
-	    //   		this.setState({picture: "UPLOAD IMAGE"})
-	    //   		this.setState({error_message: "Wrong format. Please try again"})
-	    //   	});
-	    // }
 
 	    const onClick = () => {
 	    	if (this.state.risk_person==="" || this.state.known_found === "" || this.state.happy === "") {
