@@ -1,9 +1,5 @@
 import React from "react"
 import {navigate} from "gatsby";
-import {
-  isBrowser,
-  isMobile
-} from "react-device-detect";
 import UpdatePersonal from "../components/updatePersonal.js"
 import UpdateAllergies from "../components/updateAllergies.js"
 import UpdateHistory from "../components/updateHistory.js"

@@ -131,7 +131,6 @@ class Dashboard extends React.Component {
 		this.onRouteChange("wait")
 	}
 
-
 	onPersonalUpdate = (input) => {
 		this.setState({personal:1})
 		this.setState({personal_data: {
@@ -249,7 +248,6 @@ class Dashboard extends React.Component {
 							feeling: res.feeling,
 							pain: res.pain
 						}})
-
 					})
 					.catch(err => console.log(err))
 			})
@@ -269,44 +267,19 @@ class Dashboard extends React.Component {
 		let output;
 		let back;
 		if (this.state.route === "vitals") {
-			// if (this.state.vitals == 1 && this.state.personal == 1 && this.state.symptoms == 1) {
-			// 	// if (this.state.prevroute=="pred") {
-			// 		back = <BackButton onRouteChange={this.onRouteChange}/>
-			// 		output = <VitalForm refreshCalendar={this.refreshCalendar} vitals={this.state.vitals} symptoms={this.state.symptoms} personal={this.state.personal} clientid={this.state.clientid} onVitalsUpdate={this.onVitalsUpdate} Dated={this.state.day} Month={this.state.month} data = {this.state.vitals_data}/>
-			// 	// } else {
-			// 	// 	this.setState({route:"pred"})
-			// 	// }
-			// } else {
 				back = <BackButton onRouteChange={this.onRouteChange}/>
 				output = <VitalForm refreshCalendar={this.refreshCalendar} vitals={this.state.vitals} symptoms={this.state.symptoms} personal={this.state.personal} clientid={this.state.clientid} onVitalsUpdate={this.onVitalsUpdate} Dated={this.state.day} Month={this.state.month} data = {this.state.vitals_data}/>
-			// }
 		} else if (this.state.route === "symptoms") {
-			// if (this.state.vitals == 1 && this.state.personal == 1 && this.state.symptoms == 1) {
-			// 	// if (this.state.prevroute=="pred") {
-			// 		back = <BackButton onRouteChange={this.onRouteChange}/>
-			// 		output = <SymptomsForm refreshCalendar={this.refreshCalendar} vitals={this.state.vitals} symptoms={this.state.symptoms} personal={this.state.personal} onDailyUpdate={this.onDailyUpdate} Dated={this.state.day} Month={this.state.month} data = {this.state.daily_sym} clientid = {this.state.clientid}/>
-			// 	// } else {
-			// 	// 	this.setState({route:"pred"})
-			// 	// }
-			// } else {
 				back = <BackButton onRouteChange={this.onRouteChange}/>
 				output = <SymptomsForm refreshCalendar={this.refreshCalendar} vitals={this.state.vitals} symptoms={this.state.symptoms} personal={this.state.personal} onDailyUpdate={this.onDailyUpdate} Dated={this.state.day} Month={this.state.month} data = {this.state.daily_sym} clientid = {this.state.clientid}/>
-			// }
 		} else if (this.state.route==="personal") {
-			// if (this.state.vitals == 1 && this.state.personal == 1 && this.state.symptoms == 1) {
-				// if (this.state.prevroute=="pred") {
-				// 	back = <BackButton onRouteChange={this.onRouteChange}/>
-				// 	output = <PersonalForm refreshCalendar={this.refreshCalendar} vitals={this.state.vitals} symptoms={this.state.symptoms} personal={this.state.personal} onPersonalUpdate={this.onPersonalUpdate} Dated={this.state.day} Month={this.state.month} data={this.state.personal_data} clientid = {this.state.clientid}/>
-				// } else {
-				// 	this.setState({route:"pred"})
-				// }
-			// } else {
 				back = <BackButton onRouteChange={this.onRouteChange}/>
 				output = <PersonalForm refreshCalendar={this.refreshCalendar} vitals={this.state.vitals} symptoms={this.state.symptoms} personal={this.state.personal} onPersonalUpdate={this.onPersonalUpdate} Dated={this.state.day} Month={this.state.month} data={this.state.personal_data} clientid = {this.state.clientid}/>
-			// }
 		} else if (this.state.route==="wait") {
 			console.log("in waiting")
-			if (this.state.vitals===0) {
+			if (this.state.personal===0) {
+				this.setState({route: "personal"})
+			} else if (this.state.vitals===0) {
 				this.setState({route: "vitals"})
 			} else if (this.state.symptoms === 0) {
 				this.setState({route: "symptoms"})

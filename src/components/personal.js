@@ -56,16 +56,6 @@ class PersonalForm extends React.Component {
 		this.setState({pain: x.pain})
 		this.setState({known_found: x.foundanyone.toString()})
 		this.setState({happy: x.feeling.toString()})
-		// this.setState({picture: (x.pic === "")?"UPLOAD IMAGE":x.pic})
-		// this.setState({imagename: x.pic})
-		// let imagenamed = `${this.props.clientid}/${this.props.Dated}-${this.props.Month}`
-		// Storage.get(imagenamed)
-	    //   			.then(result => {
-	    //   				console.log(result)
-	    //   				this.setState({imageurl:result})
-	    //   			})
-	    //   			.catch(err => console.log(err))
-
 	}
 
 	updateSentData = () => {
@@ -75,7 +65,7 @@ class PersonalForm extends React.Component {
 			foundanyone: (this.state.known_found==="true"),
 			feeling: (this.state.happy==="true"),
 			pain: this.state.pain,
-			// pic: this.state.imagename,
+			pic: "HH",
 			clientid: this.props.clientid,
 			date: `${this.props.Dated}/${this.props.Month}`
 		}
@@ -104,7 +94,7 @@ class PersonalForm extends React.Component {
 			foundanyone: (this.state.known_found==="true"),
 			feeling: (this.state.happy==="true"),
 			pain: this.state.pain,
-			// pic: this.state.picture,
+			pic: "HH",
 			clientid: this.props.clientid,
 			date: `${this.props.Dated}/${this.props.Month}`
 		}
@@ -156,7 +146,7 @@ class PersonalForm extends React.Component {
 	    // }
 
 	    const onClick = () => {
-	    	if (this.state.travel==="" || this.state.risk_person==="" || this.state.known_found === "" || this.state.happy === "") {
+	    	if (this.state.risk_person==="" || this.state.known_found === "" || this.state.happy === "") {
 	    		this.setState({error_message:"Please enter all details."})
 	    	// } else if (this.state.picture === "UPLOADING...") {
 	    	// 	this.setState({error_message:"Please wait while the image is being uploaded."})
@@ -218,11 +208,16 @@ class PersonalForm extends React.Component {
 				        </div>
 				    </BrowserView>
 				    <MobileView>
-				    	<div className="ma1">
-					        <p className="mt3 ml4 f5 b mb1 gray gender">DID YOU TRAVEL TODAY?</p>
-					      	<a onClick={this.onOptionClick} id="true" name="travel" className="f6 ml4 shadow-2 mb3 mt3 dark-gray pointer ph3 pv2 dib" style={{background: this.state.travel === "true" ? this.state.on_color : "white", color: this.state.travel === "true" ? "white" : "black"}}>YES</a>
-					        <a onClick={this.onOptionClick} id="false" name="travel" className="f6 ml2 shadow-2 mb3 mt3 dark-gray pointer ph3 pv2 dib" style={{background: this.state.travel === "false" ? this.state.on_color : "white", color: this.state.travel === "false" ? "white" : "black"}}>NO</a>
-				    	</div>
+				    	{/*<div className="ma1">*/}
+					    {/*    <p className="mt3 ml4 f5 b mb1 gray gender">DID YOU TRAVEL TODAY?</p>*/}
+					    {/*  	<a onClick={this.onOptionClick} id="true" name="travel" className="f6 ml4 shadow-2 mb3 mt3 dark-gray pointer ph3 pv2 dib" style={{background: this.state.travel === "true" ? this.state.on_color : "white", color: this.state.travel === "true" ? "white" : "black"}}>YES</a>*/}
+					    {/*    <a onClick={this.onOptionClick} id="false" name="travel" className="f6 ml2 shadow-2 mb3 mt3 dark-gray pointer ph3 pv2 dib" style={{background: this.state.travel === "false" ? this.state.on_color : "white", color: this.state.travel === "false" ? "white" : "black"}}>NO</a>*/}
+				    	{/*</div>*/}
+						<div className="ma1 w-70">
+							<p className="mt3 ml4 b f5 mb1 gray gender">HOW ARE YOU FEELING TODAY?</p>
+							<a onClick={this.onOptionClick} id="true" name="happy" className="ml4 mb3 mt1 dark-gray pointer ph3 pv2 dib" style={{"font-size": this.state.happy === "true" ? "44px" : "40px", opacity: (this.state.happy === "true") ? "1" : "0.5"}}>😃</a>
+							<a onClick={this.onOptionClick} id="false" name="happy" className="ml2 mb3 mt1 dark-gray pointer ph3 pv2 dib" style={{"font-size": this.state.happy === "false" ? "44px" : "40px", opacity: (this.state.happy === "false") ? "1" : "0.5"}}>🙁</a>
+						</div>
 				    	<div className="ma1 w-70">
 					        <p className="mt3 ml4 f5 b mb1 gray gender">WERE YOU EXPOSED TO A HIGH-RISK PERSON TODAY?</p>
 					      	<a onClick={this.onOptionClick} id="true" name="risk_person" className="f6 ml4 shadow-2 mb3 mt3 dark-gray pointer ph3 pv2 dib" style={{background: this.state.risk_person === "true" ? this.state.on_color : "white", color: this.state.risk_person === "true" ? "white" : "black"}}>YES</a>
@@ -232,11 +227,6 @@ class PersonalForm extends React.Component {
 					        <p className="mt3 ml4 f5 b mb1 gray gender">WAS ANYONE YOU KNOW FOUND TO BE COVID POSITIVE?</p>
 					      	<a onClick={this.onOptionClick} id="true" name="known_found" className="f6 ml4 shadow-2 mb3 mt3 dark-gray pointer ph3 pv2 dib" style={{background: this.state.known_found === "true" ? this.state.on_color : "white", color: this.state.known_found === "true" ? "white" : "black"}}>YES</a>
 					        <a onClick={this.onOptionClick} id="false" name="known_found" className="f6 ml2 shadow-2 mb3 mt3 dark-gray pointer ph3 pv2 dib" style={{background: this.state.known_found === "false" ? this.state.on_color : "white", color: this.state.known_found === "false" ? "white" : "black"}}>NO</a>
-				    	</div>
-				    	<div className="ma1 w-70">
-					        <p className="mt3 ml4 b f5 mb1 gray gender">HOW ARE FEELING TODAY?</p>
-					      	<a onClick={this.onOptionClick} id="true" name="happy" className="ml4 mb3 mt1 dark-gray pointer ph3 pv2 dib" style={{"font-size": this.state.happy === "true" ? "44px" : "40px", opacity: (this.state.happy === "true") ? "1" : "0.5"}}>😃</a>
-					        <a onClick={this.onOptionClick} id="false" name="happy" className="ml2 mb3 mt1 dark-gray pointer ph3 pv2 dib" style={{"font-size": this.state.happy === "false" ? "44px" : "40px", opacity: (this.state.happy === "false") ? "1" : "0.5"}}>🙁</a>
 				    	</div>
 				    	<div className="ma1 w-70">
 					        <p className="mt3 ml5 b f5 mb1 gray gender">DO YOU HAVE ANY PAIN? RATE YOUR PAIN ON A SCALE OF 1-10</p>

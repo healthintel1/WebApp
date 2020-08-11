@@ -1,24 +1,24 @@
 import React from "react"
 import "./register.css"
 import FloatingLabelInput from 'react-floating-label-input';
-import {  
+import {
   isBrowser,
   isMobile
 } from "react-device-detect";
 import {navigate} from "gatsby";
 
 class UpdateAllergies extends React.Component {
-	constructor(props) {
-		super(props)
-		this.state = {
-			allergies:[],
-      on_color:"rgb(255, 127, 129)",
-      off_color:"rgb(243,245,248)",
-      other: "",
-      error: "",
-      others: [],
-		}
-	}
+  constructor(props) {
+    super(props)
+    this.state = {
+        allergies:[],
+  on_color:"rgb(255, 127, 129)",
+  off_color:"rgb(243,245,248)",
+  other: "",
+  error: "",
+  others: [],
+    }
+  }
 
   onClick = (e) => {
     let arr = this.state.allergies
@@ -34,7 +34,7 @@ class UpdateAllergies extends React.Component {
     let arr = this.state.others
     if (arr.includes(e.target.id)) {
       arr.splice(arr.indexOf(e.target.id), 1)
-    } 
+    }
     this.setState({others: arr})
   }
 
@@ -57,7 +57,7 @@ class UpdateAllergies extends React.Component {
         this.setState({others: arr})
       }
     }
-    
+
   }
 
   onEnter = (e) => {
@@ -101,7 +101,7 @@ class UpdateAllergies extends React.Component {
         <div className="tl" style={{ fontSize: 20, background:"rgb(243,245,248)", padding:"20px 20px", "border-radius":"15px", width:"95%", "margin-top":"20px"}}>
                 <FloatingLabelInput
                   id="other_text"
-                  label="Other Allergens"
+                  label="Allergens"
                   type = "text"
                   value = {this.state.other}
                   onChange = {this.onChange}
