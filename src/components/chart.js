@@ -2,13 +2,14 @@ import React, { PureComponent } from 'react';
 import {
   BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ReferenceLine, ReferenceArea,
 } from 'recharts';
+import {isMobile, BrowserView, MobileView} from "react-device-detect"
 
 class Chart extends PureComponent {
   static jsfiddleUrl = 'https://jsfiddle.net/alidingling/q68cz43w/';
 
   constructor(props) {
     super(props)
-  }  
+  }
 
   render() {
     console.log(this.props.data)
@@ -18,7 +19,7 @@ class Chart extends PureComponent {
         height={300}
         data={this.props.data}
         margin={{
-          top: 5, right: 30, left: 20, bottom: 5,
+          top: 5, right: isMobile?5:30, left: isMobile?5:20, bottom: 5,
         }}
       >
         <CartesianGrid strokeDasharray="3 3" />

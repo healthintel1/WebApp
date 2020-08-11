@@ -82,7 +82,9 @@ class Dashboard extends React.Component {
 	}
 
 	vitalDone = () => {
+		console.log("HIIII")
 		if (this.state.bodytemperature>0){
+			console.log("HIIIIWW")
 			this.setState({vitals: 1})
 		}
 	};
@@ -195,6 +197,11 @@ class Dashboard extends React.Component {
 						// pic: res.pic,
 						feeling: res.feeling,
 					}})
+					this.setState({
+						personal: res.pain>0?1:0,
+						vitals: res.bodytemperature>0?1:0,
+						symptoms: (res.fever || res.chillsorsweating || res.coughing || res.difficultybreathing || res.sorethroat || res.bodyaches || res.headache || res.vomiting || res.diarrhea || res.none9 || res.fatiguetiredness)?1:0
+					})
 				})
 				.catch(err => console.log(err))
 	}
@@ -325,7 +332,7 @@ class Dashboard extends React.Component {
 				<MobileView>
 					<div style={{"margin":"auto", display: 'flex', flexDirection: 'row', flex: 1}}>
 						<List symptoms = {this.state.symptoms} personal = {this.state.personal} vitals = {this.state.vitals} onRouteChange={this.onRouteChange} route={this.state.route}/>
-						<Table clientid={this.state.clientid} ref = {this.child} onDateChange={this.onDateChange} daily={this.state.daily} personal = {this.state.personal} vitals = {this.state.vitals} vitalDone={this.vitalDone} personalDone={this.personalDone} symptomsDone={this.symptomsDone}/>
+						<Table clientid={this.state.clientid} ref = {this.child} onDateChange={this.onDateChange} symptoms={this.state.symptoms} personal = {this.state.personal} vitals = {this.state.vitals} vitalDone={this.vitalDone} personalDone={this.personalDone} symptomsDone={this.symptomsDone}/>
 					</div>
 					{back}
 					<div style={{"margin":"10px auto auto auto","padding-bottom":"50px"}}>

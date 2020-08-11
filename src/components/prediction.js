@@ -128,7 +128,7 @@ class Prediction extends React.Component {
                 {/*</MobileView>*/}
             </div>
             <div className="mt4 flex">
-                    <Graph Dated={this.props.Dated} Month={this.props.Month} data={this.state.data}/>
+                <Graph Dated={this.props.Dated} Month={this.props.Month} data={this.state.data}/>
             </div>
         </div>
       )

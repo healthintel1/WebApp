@@ -83,8 +83,9 @@ input {
 
 @media only screen and (max-width: 600px) {
     .mobileOptimize {
-        padding: 2rem 1rem !important;
+        padding: 0rem 1rem !important;
         padding-right: 0rem !important;
+        margin-top: 0 !important;
     }
     .mobileFont{
         font-size: 100%;
