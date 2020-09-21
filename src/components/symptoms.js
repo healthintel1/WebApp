@@ -170,17 +170,21 @@ class SymptomsForm extends React.Component {
 		const monthNames = ["January", "February", "March", "April", "May", "June",
 		  "July", "August", "September", "October", "November", "December"
 		];
-		let {onDailyUpdate, Dated, Month} = this.props
+		let {onDailyUpdate, Dated, Month} = this.props;
 		const onFinalClick = (e) => {
-			this.setState({error: ""})
-			this.setState({message: "Please wait..."})
-			this.setState({bg: "rgb(136, 242, 216)"})
-			if (this.state.vitals === 0 && this.state.symptoms === 0 && this.state.personal === 0) {
+			if (this.state.loss_taste_smell || 	this.state.nose || this.state.fever || this.state.chills || this.state.cough || this.state.throat || this.state.breath || this.state.bodyache||	this.state.headache || 	this.state.vomit || this.state.diarrhea || this.state.fatigue || this.state.nota){
+				this.setState({error: ""});
+				this.setState({message: "Please wait..."})
+				this.setState({bg: "rgb(136, 242, 216)"})
+				if (this.state.vitals === 0 && this.state.symptoms === 0 && this.state.personal === 0) {
 					this.sendData()
 				} else {
 					this.updateSentData()
 				}
-		}
+			} else {
+				this.setState({error: "Please select atleast one option. If you don't have any symptoms then select None."})
+			}
+		};
 
 		return(
 			<div className={`w-100 mb3 ${(this.state.visible) ? "fadeIn" : "fadeOut"}`}>
@@ -193,19 +197,19 @@ class SymptomsForm extends React.Component {
 		        <p className={`f5 ${(isMobile)?"ml4":"ml5"} mt2 gray w-50 mb3`}>Click the boxes that apply to you</p>
 		        <BrowserView>
 			        <div className="grid-box pa0 w-100">
-			          <p onClick={this.onClick} id="nose" className="tl f5 pointer ml5 mr3 br2 pv3 ph4 mb0 dib" style={{background: this.state.nose ? this.state.on_color : this.state.off_color, color: this.state.nose ? "white" : "gray"}}>CONGESTION OR RUNNY NOSE</p>
-			          <p onClick={this.onClick} id="headache" className="tl f5 pointer ml1 mr5 br2 pv3 ph4 mb0 dib" style={{background: this.state.headache ? this.state.on_color : this.state.off_color, color: this.state.headache ? "white" : "gray"}}>HEADACHE</p>
-			          <p onClick={this.onClick} id="cough" className="tl f5 pointer ml5 mr3 br2 pv3 ph4 mb0 dib" style={{background: this.state.cough ? this.state.on_color : this.state.off_color, color: this.state.cough ? "white" : "gray"}}>COUGHING</p>
-			          <p onClick={this.onClick} id="vomit" className="tl f5 pointer ml1 mr5 br2 pv3 ph4 mb0 dib" style={{background: this.state.vomit ? this.state.on_color : this.state.off_color, color: this.state.vomit ? "white" : "gray"}}>VOMITING</p>
-			          <p onClick={this.onClick} id="chills" className="tl f5 pointer ml5 mr3 br2 pv3 ph4 mb0 dib" style={{background: this.state.chills ? this.state.on_color : this.state.off_color, color: this.state.chills ? "white" : "gray"}}>CHILLS OR SWEATING</p>
-			          <p onClick={this.onClick} id="breath" className="tl f5 pointer ml1 mr5 br2 pv3 ph4 mb0 dib" style={{background: this.state.breath ? this.state.on_color : this.state.off_color, color: this.state.breath ? "white" : "gray"}}>DIFFICULTY IN BREATHING</p>
-			          <p onClick={this.onClick} id="diarrhea" className="tl f5 pointer ml5 mr3 br2 pv3 ph4 mb0 dib" style={{background: this.state.diarrhea ? this.state.on_color : this.state.off_color, color: this.state.diarrhea ? "white" : "gray"}}>DIARRHEA</p>
-			          <p onClick={this.onClick} id="bodyache" className="tl f5 pointer ml1 mr5 br2 pv3 ph4 mb0 dib" style={{background: this.state.bodyache ? this.state.on_color : this.state.off_color, color: this.state.bodyache ? "white" : "gray"}}>BODY ACHE</p>
-			          <p onClick={this.onClick} id="throat" className="tl f5 pointer ml5 mr3 br2 pv3 ph4 mb0 dib" style={{background: this.state.throat ? this.state.on_color : this.state.off_color, color: this.state.throat ? "white" : "gray"}}>SORE THROAT</p>
-			          <p onClick={this.onClick} id="fatigue" className="tl f5 pointer ml1 mr5 br2 pv3 ph4 mb0 dib" style={{background: this.state.fatigue ? this.state.on_color : this.state.off_color, color: this.state.fatigue ? "white" : "gray"}}>FATIGUE/TIREDNESS</p>
-			          <p onClick={this.onClick} id="loss_taste_smell" className="tl f5 pointer ml5 mr1 br2 pv3 ph4 mb0 dib" style={{background: this.state.loss_taste_smell ? this.state.on_color : this.state.off_color, color: this.state.loss_taste_smell ? "white" : "gray"}}>LOSS OF TASTE OR SMELL</p>
-						<p onClick={this.onClick} id="fever" className="tl f5 pointer ml1 mr5 br2 pv3 ph4 mb0 dib" style={{background: this.state.fever ? this.state.on_color : this.state.off_color, color: this.state.fever ? "white" : "gray"}}>FEVER</p>
-						<p onClick={this.onNotaClick} id="nota" className="tc f5 pointer ml5 mr1 mt3 br2 pv3 ph4 mb2 dib" style={{background: this.state.nota ? this.state.on_color : this.state.off_color, color: this.state.nota ? "white" : "gray"}}>NONE OF THE ABOVE</p>
+                        <p onClick={this.onClick} id="fever" className="tl f5 pointer ml5 mr3 br2 pv3 ph4 mb0 dib" style={{background: this.state.fever ? this.state.on_color : this.state.off_color, color: this.state.fever ? "white" : "gray"}}>FEVER</p>
+						<p onClick={this.onClick} id="cough" className="tl f5 pointer ml1 mr5 br2 pv3 ph4 mb0 dib" style={{background: this.state.cough ? this.state.on_color : this.state.off_color, color: this.state.cough ? "white" : "gray"}}>COUGHING</p>
+						<p onClick={this.onClick} id="breath" className="tl f5 pointer ml5 mr3 br2 pv3 ph4 mb0 dib" style={{background: this.state.breath ? this.state.on_color : this.state.off_color, color: this.state.breath ? "white" : "gray"}}>DIFFICULTY IN BREATHING</p>
+                        <p onClick={this.onClick} id="throat" className="tl f5 pointer ml1 mr5 br2 pv3 ph4 mb0 dib" style={{background: this.state.throat ? this.state.on_color : this.state.off_color, color: this.state.throat ? "white" : "gray"}}>SORE THROAT</p>
+                        <p onClick={this.onClick} id="bodyache" className="tl f5 pointer ml5 mr3 br2 pv3 ph4 mb0 dib" style={{background: this.state.bodyache ? this.state.on_color : this.state.off_color, color: this.state.bodyache ? "white" : "gray"}}>BODY ACHE</p>
+                        <p onClick={this.onClick} id="fatigue" className="tl f5 pointer ml1 mr5 br2 pv3 ph4 mb0 dib" style={{background: this.state.fatigue ? this.state.on_color : this.state.off_color, color: this.state.fatigue ? "white" : "gray"}}>FATIGUE/TIREDNESS</p>
+                        <p onClick={this.onClick} id="vomit" className="tl f5 pointer ml5 mr3 br2 pv3 ph4 mb0 dib" style={{background: this.state.vomit ? this.state.on_color : this.state.off_color, color: this.state.vomit ? "white" : "gray"}}>VOMITING</p>
+						<p onClick={this.onClick} id="diarrhea" className="tl f5 pointer ml1 mr5 br2 pv3 ph4 mb0 dib" style={{background: this.state.diarrhea ? this.state.on_color : this.state.off_color, color: this.state.diarrhea ? "white" : "gray"}}>DIARRHEA</p>
+						<p onClick={this.onClick} id="loss_taste_smell" className="tl f5 pointer ml5 mr3 br2 pv3 ph4 mb0 dib" style={{background: this.state.loss_taste_smell ? this.state.on_color : this.state.off_color, color: this.state.loss_taste_smell ? "white" : "gray"}}>LOSS OF TASTE OR SMELL</p>
+						<p onClick={this.onClick} id="chills" className="tl f5 pointer ml1 mr5 br2 pv3 ph4 mb0 dib" style={{background: this.state.chills ? this.state.on_color : this.state.off_color, color: this.state.chills ? "white" : "gray"}}>CHILLS OR SWEATING</p>
+						<p onClick={this.onClick} id="nose" className="tl f5 pointer ml5 mr3 br2 pv3 ph4 mb0 dib" style={{background: this.state.nose ? this.state.on_color : this.state.off_color, color: this.state.nose ? "white" : "gray"}}>CONGESTION OR RUNNY NOSE</p>
+						<p onClick={this.onClick} id="headache" className="tl f5 pointer ml1 mr5 br2 pv3 ph4 mb0 dib" style={{background: this.state.headache ? this.state.on_color : this.state.off_color, color: this.state.headache ? "white" : "gray"}}>HEADACHE</p>
+                        <p onClick={this.onNotaClick} id="nota" className="tc f5 pointer ml5 mr1 mt3 br2 pv3 ph4 mb2 dib" style={{background: this.state.nota ? this.state.on_color : this.state.off_color, color: this.state.nota ? "white" : "gray"}}>NONE OF THE ABOVE</p>
 			        </div>
 			        <p className="f5 mt4 b red tc">{this.state.error}</p>
 			        <p className="f5 mt4 dark-blue tc">{this.state.message}</p>
@@ -214,19 +218,19 @@ class SymptomsForm extends React.Component {
 			        </div>
 		        </BrowserView>
 		        <MobileView>
-		        	<div className="pa2 w-100 tc">
-			          <p onClick={this.onClick} id="nose" className="tc f5 pointer ml3 mr3 br2 pv3 ph4 mb2 w-70" style={{margin:"auto", "margin-bottom":"10px", background: this.state.nose ? this.state.on_color : this.state.off_color, color: this.state.nose ? "white" : "gray"}}>CONGESTION OR RUNNY NOSE</p>
-			          <p onClick={this.onClick} id="headache" className="tc f5 pointer ml3 mr5 br2 pv3 ph4 mb2 w-70" style={{margin:"auto", "margin-bottom":"10px",background: this.state.headache ? this.state.on_color : this.state.off_color, color: this.state.headache ? "white" : "gray"}}>HEADACHE</p>
-			          <p onClick={this.onClick} id="cough" className="tc f5 pointer ml3 mr3 br2 pv3 ph4 mb2 w-70" style={{margin:"auto", "margin-bottom":"10px",background: this.state.cough ? this.state.on_color : this.state.off_color, color: this.state.cough ? "white" : "gray"}}>COUGHING</p>
-			          <p onClick={this.onClick} id="vomit" className="tc f5 pointer ml3 mr5 br2 pv3 ph4 mb2 w-70" style={{margin:"auto", "margin-bottom":"10px",background: this.state.vomit ? this.state.on_color : this.state.off_color, color: this.state.vomit ? "white" : "gray"}}>VOMITING</p>
-			          <p onClick={this.onClick} id="chills" className="tc f5 pointer ml3 mr3 br2 pv3 ph4 mb2 w-70" style={{margin:"auto", "margin-bottom":"10px",background: this.state.chills ? this.state.on_color : this.state.off_color, color: this.state.chills ? "white" : "gray"}}>CHILLS OR SWEATING</p>
-			          <p onClick={this.onClick} id="breath" className="tc f5 pointer ml3 mr5 br2 pv3 ph4 mb2 w-70" style={{margin:"auto", "margin-bottom":"10px",background: this.state.breath ? this.state.on_color : this.state.off_color, color: this.state.breath ? "white" : "gray"}}>DIFFICULTY IN BREATHING</p>
-			          <p onClick={this.onClick} id="diarrhea" className="tc f5 pointer ml3 mr3 br2 pv3 ph4 mb2 w-70" style={{margin:"auto", "margin-bottom":"10px",background: this.state.diarrhea ? this.state.on_color : this.state.off_color, color: this.state.diarrhea ? "white" : "gray"}}>DIARRHEA</p>
-			          <p onClick={this.onClick} id="bodyache" className="tc f5 pointer ml3 mr5 br2 pv3 ph4 mb2 w-70" style={{margin:"auto", "margin-bottom":"10px",background: this.state.bodyache ? this.state.on_color : this.state.off_color, color: this.state.bodyache ? "white" : "gray"}}>BODY ACHE</p>
-			          <p onClick={this.onClick} id="throat" className="tc f5 pointer ml3 mr3 br2 pv3 ph4 mb2 w-70" style={{margin:"auto", "margin-bottom":"10px",background: this.state.throat ? this.state.on_color : this.state.off_color, color: this.state.throat ? "white" : "gray"}}>SORE THROAT</p>
-			          <p onClick={this.onClick} id="fatigue" className="tc f5 pointer ml3 mr5 br2 pv3 ph4 mb2 w-70" style={{margin:"auto", "margin-bottom":"10px",background: this.state.fatigue ? this.state.on_color : this.state.off_color, color: this.state.fatigue ? "white" : "gray"}}>FATIGUE/TIREDNESS</p>
-			          <p onClick={this.onClick} id="loss_taste_smell" className="tc f5 pointer ml3 mr3 br2 pv3 ph4 mb2 w-70" style={{margin:"auto", "margin-bottom":"10px", background: this.state.loss_taste_smell ? this.state.on_color : this.state.off_color, color: this.state.loss_taste_smell ? "white" : "gray"}}>LOSS OF TASTE OR SMELL</p>
-						<p onClick={this.onClick} id="fever" className="tc f5 pointer ml3 mr5 br2 pv3 ph4 mb2 w-70" style={{margin:"auto", "margin-bottom":"10px", background: this.state.fever ? this.state.on_color : this.state.off_color, color: this.state.fever ? "white" : "gray"}}>FEVER</p>
+					<div className="pa2 w-100 tc">
+						<p onClick={this.onClick} id="fever" className="tc f5 pointer ml3 mr3 br2 pv3 ph4 mb2 w-70" style={{margin:"auto", "margin-bottom":"10px", background: this.state.fever ? this.state.on_color : this.state.off_color, color: this.state.fever ? "white" : "gray"}}>FEVER</p>
+						<p onClick={this.onClick} id="cough" className="tc f5 pointer ml3 mr5 br2 pv3 ph4 mb2 w-70" style={{margin:"auto", "margin-bottom":"10px",background: this.state.cough ? this.state.on_color : this.state.off_color, color: this.state.cough ? "white" : "gray"}}>COUGHING</p>
+						<p onClick={this.onClick} id="breath" className="tc f5 pointer ml3 mr3 br2 pv3 ph4 mb2 w-70" style={{margin:"auto", "margin-bottom":"10px",background: this.state.breath ? this.state.on_color : this.state.off_color, color: this.state.breath ? "white" : "gray"}}>DIFFICULTY IN BREATHING</p>
+						<p onClick={this.onClick} id="throat" className="tc f5 pointer ml3 mr5 br2 pv3 ph4 mb2 w-70" style={{margin:"auto", "margin-bottom":"10px",background: this.state.throat ? this.state.on_color : this.state.off_color, color: this.state.throat ? "white" : "gray"}}>SORE THROAT</p>
+						<p onClick={this.onClick} id="fatigue" className="tc f5 pointer ml3 mr3 br2 pv3 ph4 mb2 w-70" style={{margin:"auto", "margin-bottom":"10px",background: this.state.fatigue ? this.state.on_color : this.state.off_color, color: this.state.fatigue ? "white" : "gray"}}>FATIGUE/TIREDNESS</p>
+						<p onClick={this.onClick} id="vomit" className="tc f5 pointer ml3 mr5 br2 pv3 ph4 mb2 w-70" style={{margin:"auto", "margin-bottom":"10px",background: this.state.vomit ? this.state.on_color : this.state.off_color, color: this.state.vomit ? "white" : "gray"}}>VOMITING</p>
+						<p onClick={this.onClick} id="diarrhea" className="tc f5 pointer ml3 mr3 br2 pv3 ph4 mb2 w-70" style={{margin:"auto", "margin-bottom":"10px",background: this.state.diarrhea ? this.state.on_color : this.state.off_color, color: this.state.diarrhea ? "white" : "gray"}}>DIARRHEA</p>
+						<p onClick={this.onClick} id="bodyache" className="tc f5 pointer ml3 mr5 br2 pv3 ph4 mb2 w-70" style={{margin:"auto", "margin-bottom":"10px",background: this.state.bodyache ? this.state.on_color : this.state.off_color, color: this.state.bodyache ? "white" : "gray"}}>BODY ACHE</p>
+						<p onClick={this.onClick} id="loss_taste_smell" className="tc f5 pointer ml3 mr3 br2 pv3 ph4 mb2 w-70" style={{margin:"auto", "margin-bottom":"10px", background: this.state.loss_taste_smell ? this.state.on_color : this.state.off_color, color: this.state.loss_taste_smell ? "white" : "gray"}}>LOSS OF TASTE OR SMELL</p>
+						<p onClick={this.onClick} id="chills" className="tc f5 pointer ml3 mr5 br2 pv3 ph4 mb2 w-70" style={{margin:"auto", "margin-bottom":"10px",background: this.state.chills ? this.state.on_color : this.state.off_color, color: this.state.chills ? "white" : "gray"}}>CHILLS OR SWEATING</p>
+						<p onClick={this.onClick} id="nose" className="tc f5 pointer ml3 mr3 br2 pv3 ph4 mb2 w-70" style={{margin:"auto", "margin-bottom":"10px", background: this.state.nose ? this.state.on_color : this.state.off_color, color: this.state.nose ? "white" : "gray"}}>CONGESTION OR RUNNY NOSE</p>
+						<p onClick={this.onClick} id="headache" className="tc f5 pointer ml3 mr5 br2 pv3 ph4 mb2 w-70" style={{margin:"auto", "margin-bottom":"10px",background: this.state.headache ? this.state.on_color : this.state.off_color, color: this.state.headache ? "white" : "gray"}}>HEADACHE</p>
 						<p onClick={this.onNotaClick} id="nota" className="tc f5 pointer ml3 mr3 br2 pv3 ph4 mb2 w-70" style={{margin:"auto", "margin-bottom":"10px", background: this.state.nota ? this.state.on_color : this.state.off_color, color: this.state.nota ? "white" : "gray"}}>NONE OF THE ABOVE</p>
 			        </div>
 			        <p className="f6 mt4 b red ph4 tc">{this.state.error}</p>

@@ -56,12 +56,12 @@ class Waiting extends React.Component {
                   finaldata = finaldata.split(";")
                   this.props.dataSet(finaldata)
                   this.props.onRouteChange("pred")
-                })                
+                })
             })
             .catch(err=>console.log(err))
           })
       }
-      
+
 
     render() {
       const monthNames = ["January", "February", "March", "April", "May", "June",
@@ -72,9 +72,9 @@ class Waiting extends React.Component {
         <div className={`w-100 mb3 ${(this.state.visible) ? "fadeIn" : "fadeOut"}`}>
           	<div className="w-100 ba bw1 tl b--light-gray pb4 bg-white ba Avenir" style={{"font-family":"Avenir"}}>
                 <div className="w-100 bb bw1 b--light-gray">
-                    <p className={`f5 w-100 ${(isMobile)?"ml4":"ml5"} mb3 mt3 dark-gray dib`}>ALGORITHM BASED PREDICTION <p className={`f5 gray mb3 dib ${(isMobile)?"ml4":"ml5"}`}>{monthNames[Month-1]} {Dated}</p></p>
+                    <p className={`f5 w-100 ${(isMobile)?"ml4":"ml5"} mb3 mt3 dark-gray dib`}><p className={`f5 gray mb3 dib ${(isMobile)?"ml4":""}`}>{monthNames[Month-1]} {Dated}</p></p>
                 </div>
-                <p className="pa4 pb0 tc f4 purple">Please wait while our algorithm calculates the prediction</p>
+                <p className="pa4 pb0 tc f4 purple">Please wait while our algorithm calculates your risk</p>
                 <div className={`mt0 ${(isMobile)?"pl5":"pl6"}`}>
                     {<img src="https://flevix.com/wp-content/uploads/2019/07/Curve-Loading.gif" style={{width:"70%", margin:"auto", "margin-top":"0px", padding:"0px"}}/>}
                 </div>

@@ -13,7 +13,7 @@ const List = ({vitals, personal, symptoms, onRouteChange, route}) => {
 			</div>
 			<div className="mt2 pt3 pb0" style={{display: "flex", flexDirection: 'row'}}>
 				<div style={{flex: 3}}>
-					<p onClick={()=>onRouteChange("personal")} className="ml4 mt0 mb1 pointer dark-gray" style={{"font-size":(isMobile)?"18px":"24px",  "font-weight": (route === "personal") ? "bold" : "normal", color: (route==="personal") ? "rgb(255, 127, 129)" : "black"}}>PERSONAL</p>
+					<p onClick={()=>onRouteChange("personal")} className="ml4 mt0 mb1 pointer dark-gray" style={{"font-size":(isMobile)?"18px":"24px",  "font-weight": (route === "personal") ? "bold" : "normal", color: (route==="personal") ? "rgb(255, 127, 129)" : "black"}}>HOW ARE <br/>YOU FEELING?</p>
 					<p className="f6 ml4 gray" style={{"font-size":(isMobile)?"12px":"14px"}}>Change any personal information</p>
 				</div>
 				<div style={{flex: 1}}>

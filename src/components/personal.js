@@ -12,7 +12,7 @@ class PersonalForm extends React.Component {
 		this.state = {
 			travel: "",
 			risk_person: "",
-			known_found: "",
+			known_found: "false",
 			happy: "",
 			pain: 0,
 			// picture:'UPLOAD IMAGE',
@@ -31,10 +31,9 @@ class PersonalForm extends React.Component {
 	}
 
 	onOptionClick = (e) => {
-		this.setState({[e.target.name]: e.target.id})
+		this.setState({[e.target.name]: e.target.id});
 		console.log(this.state)
-
-	}
+	};
 
 	onTypeEnter = (e) => {
 		let x = e.target.value
@@ -137,7 +136,7 @@ class PersonalForm extends React.Component {
 					this.updateSentData()
 				}
 	    	}
-	    }
+	    };
 
 		return(
 			<div className={`w-100 mb3 ${(this.state.visible) ? "fadeIn" : "fadeOut"}`}>
@@ -158,19 +157,20 @@ class PersonalForm extends React.Component {
 					    {/*    <a onClick={this.onOptionClick} id="false" name="travel" className="f6 ml2 shadow-2 mb3 mt3 dark-gray pointer ph3 pv2 dib" style={{background: this.state.travel === "false" ? this.state.on_color : "white", color: this.state.travel === "false" ? "white" : "black"}}>NO</a>*/}
 				    	{/*</div>*/}
 				    	<div className="ma1">
-					        <p className="mt3 ml5 b mb1 gray gender">WERE YOU EXPOSED TO A HIGH-RISK PERSON TODAY?</p>
+					        <p className="mt3 ml5 b mb1 gray gender">WERE YOU EXPOSED TO ANYONE WHO HAS COVID-19?</p>
+							<p className="mt3 ml5 b mb1 f6 gray gender">(exposure means at least 15 minutes of contact within 6 feet of distance)</p>
 					      	<a onClick={this.onOptionClick} id="true" name="risk_person" className="f6 ml5 shadow-2 mb3 mt3 dark-gray pointer ph3 pv2 dib" style={{background: this.state.risk_person === "true" ? this.state.on_color : "white", color: this.state.risk_person === "true" ? "white" : "black"}}>YES</a>
 					        <a onClick={this.onOptionClick} id="false" name="risk_person" className="f6 ml2 shadow-2 mb3 mt3 dark-gray pointer ph3 pv2 dib" style={{background: this.state.risk_person === "false" ? this.state.on_color : "white", color: this.state.risk_person === "false" ? "white" : "black"}}>NO</a>
 				    	</div>
-				    	<div className="ma1">
-					        <p className="mt3 ml5 b mb1 gray gender">WAS ANYONE YOU KNOW FOUND TO BE COVID POSITIVE?</p>
-					      	<a onClick={this.onOptionClick} id="true" name="known_found" className="f6 ml5 shadow-2 mb3 mt3 dark-gray pointer ph3 pv2 dib" style={{background: this.state.known_found === "true" ? this.state.on_color : "white", color: this.state.known_found === "true" ? "white" : "black"}}>YES</a>
-					        <a onClick={this.onOptionClick} id="false" name="known_found" className="f6 ml2 shadow-2 mb3 mt3 dark-gray pointer ph3 pv2 dib" style={{background: this.state.known_found === "false" ? this.state.on_color : "white", color: this.state.known_found === "false" ? "white" : "black"}}>NO</a>
-				    	</div>
+				    	{/*<div className="ma1">*/}
+					    {/*    <p className="mt3 ml5 b mb1 gray gender">WAS ANYONE YOU KNOW FOUND TO BE COVID POSITIVE?</p>*/}
+					    {/*  	<a onClick={this.onOptionClick} id="true" name="known_found" className="f6 ml5 shadow-2 mb3 mt3 dark-gray pointer ph3 pv2 dib" style={{background: this.state.known_found === "true" ? this.state.on_color : "white", color: this.state.known_found === "true" ? "white" : "black"}}>YES</a>*/}
+					    {/*    <a onClick={this.onOptionClick} id="false" name="known_found" className="f6 ml2 shadow-2 mb3 mt3 dark-gray pointer ph3 pv2 dib" style={{background: this.state.known_found === "false" ? this.state.on_color : "white", color: this.state.known_found === "false" ? "white" : "black"}}>NO</a>*/}
+				    	{/*</div>*/}
 				    	<div className="ma1">
 					        <p className="mt3 ml5 b mb1 gray gender">DO YOU HAVE ANY PAIN? RATE YOUR PAIN ON A SCALE OF 1-10</p>
 					        <p className="mt3 ml5 b mb1 f6 gray gender">1 being no pain and 10 being intolerable pain</p>
-					        <input id="pain" onChange={this.onTypeEnter} value={parseInt(this.state.pain)} type="number" min="1" max="10" className="mt3 ml5 mr2 bg-washed-green tc" style={{"height":"50px", "width":"35%","border":"none"}}/>
+					        <input id="pain" onChange={this.onTypeEnter} value={parseInt(this.state.pain) || ""} type="number" min="1" max="10" className="mt3 ml5 mr2 bg-washed-green tc" style={{"height":"50px", "width":"35%","border":"none"}}/>
 					    </div>
 				    	{/*<div className="ma1">*/}
 					    {/*    <p className="mt3 ml5 b mb1 gray gender">IMPORT PICTURE</p>*/}
@@ -196,19 +196,20 @@ class PersonalForm extends React.Component {
 							<a onClick={this.onOptionClick} id="false" name="happy" className="ml2 mb3 mt1 dark-gray pointer ph3 pv2 dib" style={{"font-size": this.state.happy === "false" ? "44px" : "40px", opacity: (this.state.happy === "false") ? "1" : "0.5"}}>🙁</a>
 						</div>
 				    	<div className="ma1 w-70">
-					        <p className="mt3 ml4 f5 b mb1 gray gender">WERE YOU EXPOSED TO A HIGH-RISK PERSON TODAY?</p>
+					        <p className="mt3 ml4 f5 b mb1 gray gender">WERE YOU EXPOSED TO ANYONE WHO HAS COVID-19?</p>
+							<p className="mt3 ml4 b mb1 f6 gray gender">(exposure means at least 15 minutes of contact within 6 feet of distance)</p>
 					      	<a onClick={this.onOptionClick} id="true" name="risk_person" className="f6 ml4 shadow-2 mb3 mt3 dark-gray pointer ph3 pv2 dib" style={{background: this.state.risk_person === "true" ? this.state.on_color : "white", color: this.state.risk_person === "true" ? "white" : "black"}}>YES</a>
 					        <a onClick={this.onOptionClick} id="false" name="risk_person" className="f6 ml2 shadow-2 mb3 mt3 dark-gray pointer ph3 pv2 dib" style={{background: this.state.risk_person === "false" ? this.state.on_color : "white", color: this.state.risk_person === "false" ? "white" : "black"}}>NO</a>
 				    	</div>
-				    	<div className="ma1 w-70">
-					        <p className="mt3 ml4 f5 b mb1 gray gender">WAS ANYONE YOU KNOW FOUND TO BE COVID POSITIVE?</p>
-					      	<a onClick={this.onOptionClick} id="true" name="known_found" className="f6 ml4 shadow-2 mb3 mt3 dark-gray pointer ph3 pv2 dib" style={{background: this.state.known_found === "true" ? this.state.on_color : "white", color: this.state.known_found === "true" ? "white" : "black"}}>YES</a>
-					        <a onClick={this.onOptionClick} id="false" name="known_found" className="f6 ml2 shadow-2 mb3 mt3 dark-gray pointer ph3 pv2 dib" style={{background: this.state.known_found === "false" ? this.state.on_color : "white", color: this.state.known_found === "false" ? "white" : "black"}}>NO</a>
-				    	</div>
+				    	{/*<div className="ma1 w-70">*/}
+					    {/*    <p className="mt3 ml4 f5 b mb1 gray gender">WAS ANYONE YOU KNOW FOUND TO BE COVID POSITIVE?</p>*/}
+					    {/*  	<a onClick={this.onOptionClick} id="true" name="known_found" className="f6 ml4 shadow-2 mb3 mt3 dark-gray pointer ph3 pv2 dib" style={{background: this.state.known_found === "true" ? this.state.on_color : "white", color: this.state.known_found === "true" ? "white" : "black"}}>YES</a>*/}
+					    {/*    <a onClick={this.onOptionClick} id="false" name="known_found" className="f6 ml2 shadow-2 mb3 mt3 dark-gray pointer ph3 pv2 dib" style={{background: this.state.known_found === "false" ? this.state.on_color : "white", color: this.state.known_found === "false" ? "white" : "black"}}>NO</a>*/}
+				    	{/*</div>*/}
 				    	<div className="ma1 w-70">
 					        <p className="mt3 ml4 b f5 mb1 gray gender">DO YOU HAVE ANY PAIN? RATE YOUR PAIN ON A SCALE OF 1-10</p>
 					        <p className="mt3 ml4 b mb1 f6 gray gender">1 being no pain and 10 being intolerable pain</p>
-					        <input id="pain" onChange={this.onTypeEnter} value={parseInt(this.state.pain)} type="number" min="1" max="10" className="mt3 ml4 mr2 bg-washed-green tc" style={{"height":"50px", "width":"35%","border":"none"}}/>
+					        <input id="pain" onChange={this.onTypeEnter} value={parseInt(this.state.pain) || ""} type="number" min="1" max="10" className="mt3 ml4 mr2 bg-washed-green tc" style={{"height":"50px", "width":"35%","border":"none"}}/>
 					    </div>
 				    	{/*<div className="ma1 w-70">*/}
 					    {/*    <p classNameds="mt3 ml4 f5 b mb1 gray gender">IMPORT PICTURE</p>*/}

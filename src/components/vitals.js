@@ -5,19 +5,19 @@ import { CORSDOMAIN } from './constant'
 
 class VitalForm extends React.Component {
 	constructor(props) {
-		super(props)
+		super(props);
 		this.state = {
 			vitals: "",
 			symptoms:"",
 			personal:"",
 			fever: "",
 			temp: "",
-			temptype: true,
+			temptype: false,
 			heart: "",
 			heart_rate: "",
 			oxygen: "",
-			respiratoryrate: "",
-			bp: "",
+			respiratoryrate: "39",
+			bp: "90/120",
 			error_message:"",
 			bg: "white",
 			visible: "",
@@ -40,7 +40,7 @@ class VitalForm extends React.Component {
 		// x = x.toLowerCase()
 		console.log(x, typeof x, e.target.id);
 		this.setState({[e.target.id]: x})
-	}
+	};
 
 	componentDidMount() {
 		this.setState({message:""})
@@ -127,17 +127,23 @@ class VitalForm extends React.Component {
 		const monthNames = ["January", "February", "March", "April", "May", "June",
 		  "July", "August", "September", "October", "November", "December"
 		];
-		let {onVitalsUpdate, Dated, Month} = this.props
+		let {onVitalsUpdate, Dated, Month} = this.props;
 		const onClick = (e) => {
-			console.log(this.state)
-			if (this.state.temp ==="" || this.state.heart_rate === "" || this.state.oxygen === "" || this.state.bp === "") {
+			console.log(this.state);
+			if (this.state.temp ==="" || this.state.heart_rate === "") {
 				this.setState({error_message: "Please fill all the details correctly."})
-			} else if (!this.state.bp.includes("/")) {
-				this.setState({error_message:"Blood Pressure must be of the form 'xx/xx'."})
+			} else if (this.state.temptype && (this.state.temp < 31 || this.state.temp > 40)) {
+				this.setState({error_message: "Tempratre value is out of range. Please enter sensical value in CELSIUS."})
+			} else if (!this.state.temptype && (this.state.temp < 90 || this.state.temp > 110)) {
+				this.setState({error_message: "Tempratre value is out of range. Please enter sensical value in FAHRENHEIT."})
+			} else if ((this.state.heart_rate < 20 || this.state.heart_rate > 150)) {
+				this.setState({error_message: "Hear rate value is out of range. Please enter sensical value."})
+			} else if (this.state.oxygen !== "" && (this.state.oxygen < 60 || this.state.oxygen > 150)) {
+				this.setState({error_message: "Oxygen saturation value is out of range. Please enter sensical value."})
 			} else {
-				this.setState({error_message: ""})
-				this.setState({message: "Please wait..."})
-				this.setState({bg: "rgb(136, 242, 216)"})
+				this.setState({error_message: ""});
+				this.setState({message: "Please wait..."});
+				this.setState({bg: "rgb(136, 242, 216)"});
 				if (this.state.vitals === 0 && this.state.symptoms === 0 && this.state.personal === 0) {
 					this.sendData()
 				} else {
@@ -165,9 +171,9 @@ class VitalForm extends React.Component {
 										} else {
 											this.setState({temptype: false})
 										}
-									}} id="temptype" name="temptype" className="mt3" style={{borderColor: "#777", color: "#777", borderWidth: 0.5}}>
-										<option style={{color: "#777"}} value="degree">CELSIUS</option>
+									}} id="temptype" defaultValue={this.state.temptype ? "degree" : "ferh"} name="temptype" className="mt3" style={{borderColor: "#777", color: "#777", borderWidth: 0.5}}>
 										<option style={{color: "#777"}} value="ferh">FAHRENHEIT</option>
+										<option style={{color: "#777"}} value="degree">CELSIUS</option>
 									</select>
 						        </div>
 						    </div>
@@ -183,21 +189,21 @@ class VitalForm extends React.Component {
 							            <p className="mt4 f6 b ml2 gray">BPM </p>
 							        </div>
 							    </div>
-							    <div className="mv2">
-							        <p className="mt4 ml5 b pa0 mb0 gray gender">BLOOD PRESSURE</p>
-							        <div style={{display: "flex"}}>
-							        	<input id="bp" onChange={this.onTypeEnter} value={this.state.bp} type="text" className="mt3 ml5 mr2 bg-washed-green tc" style={{"height":"50px", "width":"30%","border":"none"}}/>
-							            <p className="mt4 f6 b ml2 gray">UNITS </p>
-							        </div>
-							    </div>
+							    {/*<div className="mv2">*/}
+							    {/*    <p className="mt4 ml5 b pa0 mb0 gray gender">BLOOD PRESSURE</p>*/}
+							    {/*    <div style={{display: "flex"}}>*/}
+							    {/*    	<input id="bp" onChange={this.onTypeEnter} value={this.state.bp} type="text" className="mt3 ml5 mr2 bg-washed-green tc" style={{"height":"50px", "width":"30%","border":"none"}}/>*/}
+							    {/*        <p className="mt4 f6 b ml2 gray">UNITS </p>*/}
+							    {/*    </div>*/}
+							    {/*</div>*/}
 						    </div>
-						    <div className="mt2 mb2">
-						        <p className="mt3 ml5 b pa0 mb0 gray gender">RESPIRATORY RATE</p>
-						        <div style={{display: "flex"}}>
-						        	<input id="respiratoryrate" onChange={this.onTypeEnter} value={this.state.respiratoryrate||""} type="number" min="0" className="mt3 ml5 mr2 bg-washed-green tc" style={{"height":"50px", "width":"15%","border":"none"}}/>
-						            <p className="mt4 f6 b ml2 gray">UNITS </p>
-						        </div>
-						    </div>
+						    {/*<div className="mt2 mb2">*/}
+						    {/*    <p className="mt3 ml5 b pa0 mb0 gray gender">RESPIRATORY RATE</p>*/}
+						    {/*    <div style={{display: "flex"}}>*/}
+						    {/*    	<input id="respiratoryrate" onChange={this.onTypeEnter} value={this.state.respiratoryrate||""} type="number" min="0" className="mt3 ml5 mr2 bg-washed-green tc" style={{"height":"50px", "width":"15%","border":"none"}}/>*/}
+						    {/*        <p className="mt4 f6 b ml2 gray">UNITS </p>*/}
+						    {/*    </div>*/}
+						    {/*</div>*/}
 						    <div className="mt2 mb2">
 						        <p className="mt3 ml5 b pa0 mb0 gray gender">OXYGEN SATURATION</p>
 						        <div style={{display: "flex"}}>
@@ -247,20 +253,20 @@ class VitalForm extends React.Component {
 						            <p className="mt4 f6 b ml2 gray">BPM </p>
 						        </div>
 						    </div>
-						    <div className="mv2 pa1">
-						        <p className="mt4 f5 ml3 b pa0 mb0 gray gender">BLOOD PRESSURE</p>
-						        <div style={{display: "flex"}}>
-						        	<input id="bp" value={this.state.bp||""} onChange={this.onTypeEnter} type="text" className="mt3 ml3 mr2 bg-washed-green tc" style={{"height":"50px", "width":"30%","border":"none"}}/>
-						            <p className="mt4 f6 b ml2 gray">UNITS </p>
-						        </div>
-							</div>
-							<div className="mv2 pa1">
-						        <p className="mt4 f5 ml3 b pa0 mb0 gray gender">RESPIRATORY RATE</p>
-						        <div style={{display: "flex"}}>
-						        	<input id="respiratoryrate" value={this.state.respiratoryrate||""} onChange={this.onTypeEnter} type="number" min="0" className="mt3 ml3 mr2 bg-washed-green tc" style={{"height":"50px", "width":"30%","border":"none"}}/>
-						            <p className="mt4 f6 b ml2 gray">UNITS </p>
-						        </div>
-							</div>
+						    {/*<div className="mv2 pa1">*/}
+						    {/*    <p className="mt4 f5 ml3 b pa0 mb0 gray gender">BLOOD PRESSURE</p>*/}
+						    {/*    <div style={{display: "flex"}}>*/}
+						    {/*    	<input id="bp" value={this.state.bp||""} onChange={this.onTypeEnter} type="text" className="mt3 ml3 mr2 bg-washed-green tc" style={{"height":"50px", "width":"30%","border":"none"}}/>*/}
+						    {/*        <p className="mt4 f6 b ml2 gray">UNITS </p>*/}
+						    {/*    </div>*/}
+							{/*</div>*/}
+							{/*<div className="mv2 pa1">*/}
+						    {/*    <p className="mt4 f5 ml3 b pa0 mb0 gray gender">RESPIRATORY RATE</p>*/}
+						    {/*    <div style={{display: "flex"}}>*/}
+						    {/*    	<input id="respiratoryrate" value={this.state.respiratoryrate||""} onChange={this.onTypeEnter} type="number" min="0" className="mt3 ml3 mr2 bg-washed-green tc" style={{"height":"50px", "width":"30%","border":"none"}}/>*/}
+						    {/*        <p className="mt4 f6 b ml2 gray">UNITS </p>*/}
+						    {/*    </div>*/}
+							{/*</div>*/}
 						    <div className="mt2 mb2 pa1">
 						        <p className="mt3 f5 ml3 b pa0 mb0 gray gender">OXYGEN SATURATION</p>
 						        <div style={{display: "flex"}}>

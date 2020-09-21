@@ -28,12 +28,12 @@ class GettingStarted extends React.Component {
       "July", "August", "September", "October", "November", "December"
       ];
 
-      let {onRouteChange} = this.props
+      let {onRouteChange} = this.props;
       return (
         <div className={`w-100 mb3 ${(this.state.visible) ? "fadeIn" : "fadeOut"}`}>
           	<div className="w-100 ba bw1 tl b--light-gray pb4 bg-white ba Avenir" style={{"font-family":"Avenir"}}>
                 <div className="w-100 bb bw1 b--light-gray">
-                    <p className={`f5 w-100 ${(isMobile)?"ml4":"ml5"} mb3 mt3 dark-gray dib`} style={{"margin-right":"10rem"}}>ALGORITHM BASED PREDICTION <p className={`f5 gray mb3 dib ${(isMobile)?"ml4":"ml6"}`}>{monthNames[this.props.Month-1]} {this.props.Dated}</p></p>
+                    <p className={`f5 w-100 ${(isMobile)?"ml4":"ml5"} mb3 mt3 dark-gray dib`} style={{"margin-right":"10rem"}}> <p className={`f5 gray mb3 dib ${(isMobile)?"ml4":""}`}>{monthNames[this.props.Month-1]} {this.props.Dated}</p></p>
                 </div>
                 <BrowserView>
                     <div style={{display:"flex", "flex-wrap":"wrap"}}>
