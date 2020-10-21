@@ -11,3 +11,25 @@
      height:0;
      transition: width 0.5s 0.5s, height 0.5s 0.5s, opacity 0.5s;
 }
+
+.react-time-picker__inputGroup__input {
+    width: 30px !important;
+}
+
+.react-time-picker__inputGroup__hour{
+    text-align: right !important;
+}
+.react-time-picker__inputGroup__amPm{
+    width: 60px !important;
+}
+
+.react-time-picker__inputGroup {
+    padding: 5px 10px !important;
+}
+
+.react-time-picker__inputGroup__leadingZero {
+    margin-right: 1px !important;
+}
+.react-time-picker__inputGroup__divider{
+    margin: 0 6px !important;
+}

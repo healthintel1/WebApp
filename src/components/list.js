@@ -3,7 +3,7 @@ import {isMobile} from "react-device-detect"
 import "./register.css"
 import Tck from "./tick";
 
-const List = ({vitals, personal, symptoms, onRouteChange, route}) => {
+const List = ({vitals, personal, symptoms, test, onRouteChange, route}) => {
 	let profile = Math.floor(((vitals + personal + symptoms) * 100)/3)
 	let z = (
 		<div className="tl b--light-gray bg-white ba Avenir pb3" style={{"font-family":"Avenir", flex: 1}}>
@@ -37,6 +37,14 @@ const List = ({vitals, personal, symptoms, onRouteChange, route}) => {
 				</div>
 				<div style={{flex: 1}}>
 					{vitals === 1?<Tck />:null}
+				</div>
+			</div>
+			<div className="mt2 pb0" style={{display: "flex", flexDirection: 'row'}}>
+				<div style={{flex: 3}}>
+					<p onClick={()=>onRouteChange("test")} className="ml4 pointer mb1 dark-gray" style={{"font-size":(isMobile)?"18px":"24px", "font-weight": (route === "test") ? "bold" : "normal", color: (route==="test") ? "rgb(255, 127, 129)" : "black"}}>TEST RESULTS</p>
+				</div>
+				<div style={{flex: 1}}>
+					{test === 1?<Tck />:null}
 				</div>
 			</div>
 		</div>
