@@ -33,6 +33,7 @@
     "react-material-ui-form-validator": "^2.0.10",
     "react-select": "^3.1.0",
     "react-tagsinput": "^3.19.0",
+    "react-time-picker": "^4.0.1",
     "recharts": "^1.8.5",
     "styled-components": "^5.1.1",
     "tachyons": "^4.12.0"
