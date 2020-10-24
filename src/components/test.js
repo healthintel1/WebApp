@@ -21,50 +21,50 @@ class TestResults extends React.Component {
         setTimeout(()=>{this.setState({visible: true})}, 25)
         let x = this.props.data
         console.log("loading data")
-        this.setState({tests: []})
+        this.setState({tests: this.GetTestsFromString(this.props.tests)})
     }
 
-    sendData = () => {
-        let senddata = {
-            clientid: this.props.clientid,
-            date: `${this.props.Dated}/${this.props.Month}`,
+    GetTestsFromString(tests) {
+        if (tests === undefined){
+            return []
         }
-        const requestOptions = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': "*" },
-            body: JSON.stringify(senddata)
-        };
-        fetch(CORSDOMAIN+'/postvitals?', requestOptions)
-            .then(res=>{
-                console.log(res)
-                setTimeout(()=>{this.setState({visible: false})},100)
-                setTimeout(()=>{this.props.onVitalsUpdate(this.state)},500)
-                setTimeout(()=>{this.props.refreshCalendar()},500)
-            })
-            .catch(err=>{
-                this.setState({message:""})
-                this.setState({error_message: "An error occured. Please try again."})
-            })
-    }
+        let finalTest = [];
+        const tesO = tests.split("#$&");
+        for (let i = 0; i < tesO.length; i++){
+            const tesI= tesO[i].split("=*=")
+            finalTest = [...finalTest, {time: tesI[0], result: tesI[1], type: tesI[2]}]
+        }
+        console.log(finalTest);
+        return finalTest
+    };
 
     updateSentData = () => {
+        const GenerateString = (tests) => {
+            let result = "";
+            for (let i = 0; i < tests.length; i++){
+                result+=tests[i].time+"=*=";
+                result+=tests[i].result+"=*=";
+                result+=tests[i].type+"#$&";
+            }
+            return result.slice(0, result.length-3)
+        };
         let senddata = {
             clientid: this.props.clientid,
-            date: `${this.props.Dated}/${this.props.Month}`,
-        }
+            testresults: GenerateString(this.state.tests),
+        };
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': "*" },
             body: JSON.stringify(senddata)
         };
-        fetch(CORSDOMAIN+'/updatevitals1?', requestOptions)
+        fetch(CORSDOMAIN+'/updatetests?', requestOptions)
             .then(res=>{
-                console.log(res)
-                setTimeout(()=>{this.setState({visible: false})},100)
-                setTimeout(()=>{this.props.onVitalsUpdate(this.state)},500)
+                console.log(res);
+                setTimeout(()=>{this.props.onTestUpdate(senddata.test)},500)
                 setTimeout(()=>{this.props.refreshCalendar()},500)
             })
             .catch(err=>{
+                setTimeout(()=>{this.props.onTestUpdate(senddata.test)},500)
                 this.setState({message:""})
                 this.setState({error_message: "An error occured. Please try again."})
             })
@@ -109,12 +109,13 @@ class TestResults extends React.Component {
                                             </div>
                                             <div className="mv2">
                                                 <p className="mt4 ml5 b pa0 mb0 gray gender">TEST TYPE</p>
-                                                <input value={test.type} onChange={(value) => {this.setState({tests: [...this.state.tests.slice(0, i), {...test, type: value}, ...this.state.tests.slice(i+1)]})}} type="text" placeholder="The type of test that you undergo" className="mt3 ml5 mr2 bg-washed-green ph2" style={{"height":"50px", "width":"60%","border":"none"}}/>
+                                                <input value={test.type} onChange={(value) => {this.setState({tests: [...this.state.tests.slice(0, i), {...test, type: value.target.value}, ...this.state.tests.slice(i+1)]})}} type="text" placeholder="The type of test that you undergo" className="mt3 ml5 mr2 bg-washed-green ph2" style={{"height":"50px", "width":"60%","border":"none"}}/>
                                             </div>
                                             <div className="mt2 mb2">
                                                 <p className="mt3 ml5 b pa0 mb0 gray gender">RESULT</p>
                                                 <div className="ml5 mr2" style={{display: "flex","border":"none"}}>
                                                     <select value={test.result} onChange={(event) => {
+                                                        console.log("Results", event);
                                                         this.setState({tests: [...this.state.tests.slice(0, i), {...test, event: event.target.value}, ...this.state.tests.slice(i+1)]})
                                                     }} className="mt3" style={{borderColor: "#777", minWidth: "60%", padding: 10, color: "#777", borderWidth: 0.5}}>
                                                         <option style={{color: "#777"}} value="wait">WAITING FOR RESULT</option>
@@ -177,10 +178,10 @@ class TestResults extends React.Component {
                                             </div>
                                             <div className="mv2 pa1">
                                                 <p className="mt4 ml3 pa1 f5 w-60 b mb0 gray gender">TEST TYPE</p>
-                                                <input value={test.type} onChange={(value) => {this.setState({tests: [...this.state.tests.slice(0, i), {...test, type: value}, ...this.state.tests.slice(i+1)]})}} type="text" placeholder="The type of test that you undergo" className="mt3 ml3 mr2 bg-washed-green ph2" style={{"height":"50px", "width":"80%","border":"none"}}/>
+                                                <input value={test.type} onChange={(value) => {this.setState({tests: [...this.state.tests.slice(0, i), {...test, type: value.target.value}, ...this.state.tests.slice(i+1)]})}} type="text" placeholder="The type of test that you undergo" className="mt3 ml3 mr2 bg-washed-green ph2" style={{"height":"50px", "width":"80%","border":"none"}}/>
                                             </div>
                                             <div className="mt2 mb2 pa1">
-                                                <p className="mt3 ml3 b f5 w-70 pa0 mb0 gray gender">WHAT IS YOUR TEMPERATURE?</p>
+                                                <p className="mt3 ml3 b f5 w-70 pa0 mb0 gray gender">RESULT</p>
                                                 <div className="ml3 mr2" style={{display: "flex", "height":"50px", "width":"80%","border":"none"}}>
                                                     <select onChange={(event) => {
                                                         this.setState({tests: [...this.state.tests.slice(0, i), {...test, event: event.target.value}, ...this.state.tests.slice(i+1)]})
