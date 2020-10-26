@@ -50,6 +50,7 @@ class TestResults extends React.Component {
         };
         let senddata = {
             clientid: this.props.clientid,
+            date: `${this.props.Dated}/${this.props.Month}`,
             testresults: GenerateString(this.state.tests),
         };
         const requestOptions = {

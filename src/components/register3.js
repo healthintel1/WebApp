@@ -64,7 +64,7 @@ class Register3 extends React.Component {
       } else {
         onFinalSubmit(this.state)
       }
-    }
+    };
 
 		return(
 			<div className={`shadow-3 tl b--light-gray ${(isMobile) ? "ph4" : "ph5"} pb4 bg-white ba Avenir`} style={{margin:"auto", "font-family":"Avenir", width:(isMobile) ? "100vw" : "700px"}}>
@@ -83,7 +83,7 @@ class Register3 extends React.Component {
             </div>
             <p onClick={this.onClick} id="blood_pressure" className="tl f4 pointer ml2 br2 pv3 ph4 mb0 dib" style={{background: this.state.blood_pressure ? this.state.on_color : this.state.off_color, color: this.state.blood_pressure ? "white" : "gray"}}>HIGH BLOOD PRESSURE</p>
             <p onClick={this.onClick} id="kidney_liver" className="tl f4 pointer ml2 br2 pv3 ph4 mb0 dib" style={{background: this.state.kidney_liver ? this.state.on_color : this.state.off_color, color: this.state.kidney_liver ? "white" : "gray"}}>KIDNEY/LIVER FAILURE</p>
-            <div onClick={this.onClick} id="lung_disease" className="tl f4 pointer ml2 br2 ph4 pv3 mb0 mt0 dib" style={{background: this.state.heart_disease ? this.state.on_color : this.state.off_color, color: this.state.heart_disease ? "white" : "gray"}}>
+            <div onClick={this.onClick} id="lung_disease" className="tl f4 pointer ml2 br2 ph4 pv3 mb0 mt0 dib" style={{background: this.state.lung_disease ? this.state.on_color : this.state.off_color, color: this.state.lung_disease ? "white" : "gray"}}>
               <p onClick={this.onClick2} id="lung_disease1" className="mv0 f4">LUNG DISEASE</p>
               <p onClick={this.onClick2} id="lung_disease2" className="f7 mb0 mt1">(e.g. COPD, bronchitis, etc.)</p>
             </div>

@@ -7,10 +7,6 @@ import Register4 from "../components/register4.js"
 import RegNav from "../components/reg_nav.js"
 import '../fonts/TenaliRamakrishna-Regular.ttf'
 import {navigate} from "gatsby";
-import {
-  isBrowser,
-  isMobile
-} from "react-device-detect";
 import Footer from "../components/footer";
 
 class Register extends React.Component {
