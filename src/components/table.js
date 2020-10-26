@@ -15,7 +15,7 @@ const monthNames = ["January", "February", "March", "April", "May", "June",
 
 class Table extends React.Component {
 	constructor(props) {
-		super(props)
+		super(props);
 		this.state = {
 			dates: [],
 			status: ["INCOMPLETE","INCOMPLETE","INCOMPLETE","INCOMPLETE","INCOMPLETE"],
@@ -40,7 +40,7 @@ class Table extends React.Component {
 				var today = new Date()
 				for (k=0; k<5; k++) {
 					arr.push(today.getDate())
-					arr2.push(`${today.getDate()}/${(today.getMonth())+1}`)
+					arr2.push(`${today.getDate()}/${(today.getMonth())+1}`);
 					today.setDate(today.getDate() - 1)
 				}
 				console.log(arr2)

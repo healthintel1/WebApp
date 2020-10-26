@@ -15,6 +15,7 @@ import Amplify, { Auth } from 'aws-amplify';
 import awsconfig from '../aws-exports';
 import Footer from "../components/footer";
 import {CORSDOMAIN} from '../components/constant'
+import TestResults from "../components/test";
 Amplify.configure(awsconfig);
 
 var today = new Date()
@@ -35,6 +36,7 @@ class Dashboard extends React.Component {
 			symptoms: 0,
 			vitals: 0,
 			personal: 0,
+			tests: "",
 			daily_sym: {
 				fever:"",
 				chillsorsweating: "",
@@ -136,8 +138,14 @@ class Dashboard extends React.Component {
 			respiratoryrate: input.respiratoryrate,
 		}})
 		console.log(this.state)
+		this.onRouteChange("test")
+	};
+
+	onTestUpdate = (input) => {
+		this.setState({tests: input});
+		console.log(this.state);
 		this.onRouteChange("wait")
-	}
+	};
 
 	onPersonalUpdate = (input) => {
 		this.setState({personal:1})
@@ -202,9 +210,12 @@ class Dashboard extends React.Component {
 						vitals: res.bodytemperature>0?1:0,
 						symptoms: (res.fever || res.chillsorsweating || res.coughing || res.difficultybreathing || res.sorethroat || res.bodyaches || res.headache || res.vomiting || res.diarrhea || res.none9 || res.fatiguetiredness)?1:0
 					})
+					this.setState({
+						tests: res.testresults
+					})
 				})
 				.catch(err => console.log(err))
-	}
+	};
 
 	onDateChange = (newdate, newmonth) => {
 		let changeddate = `${newdate}/${newmonth}`
@@ -231,7 +242,7 @@ class Dashboard extends React.Component {
 				}
 				GetData()
 					.then(res=> {
-						console.log("data recieved")
+						console.log("data recieved");
 						this.setState({daily_sym: {
 							fever: res.fever,
 							chillsorsweating: res.chillsorsweating,
@@ -261,7 +272,10 @@ class Dashboard extends React.Component {
 							// pic: res.pic,
 							feeling: res.feeling,
 							pain: res.pain
-						}})
+						}});
+						this.setState({
+							tests: res.testresults
+						})
 					})
 					.catch(err => console.log(err))
 			})
@@ -289,8 +303,11 @@ class Dashboard extends React.Component {
 		} else if (this.state.route==="personal") {
 				back = <BackButton onRouteChange={this.onRouteChange}/>
 				output = <PersonalForm refreshCalendar={this.refreshCalendar} vitals={this.state.vitals} symptoms={this.state.symptoms} personal={this.state.personal} onPersonalUpdate={this.onPersonalUpdate} Dated={this.state.day} Month={this.state.month} data={this.state.personal_data} clientid = {this.state.clientid}/>
-		} else if (this.state.route==="wait") {
-			console.log("in waiting")
+		} else if (this.state.route==="test") {
+            back = <BackButton onRouteChange={this.onRouteChange}/>
+            output = <TestResults refreshCalendar={this.refreshCalendar} tests={this.state.tests} vitals={this.state.vitals} symptoms={this.state.symptoms} personal={this.state.personal} onTestUpdate={this.onTestUpdate} Dated={this.state.day} Month={this.state.month} data={this.state.personal_data} clientid = {this.state.clientid}/>
+        } else if (this.state.route==="wait") {
+			console.log("in waiting");
 			if (this.state.personal===0) {
 				this.setState({route: "personal"})
 			} else if (this.state.vitals===0) {
@@ -321,7 +338,7 @@ class Dashboard extends React.Component {
 				    <div className="ma2 ph6 flex" style={{display: "grid", "grid-template-columns":"1fr 4fr", gap: "20px"}}>
 					  <div style={{"min-width":"290px"}}>
 					  	{back}
-					  	<List symptoms = {this.state.symptoms} personal = {this.state.personal} vitals = {this.state.vitals} onRouteChange={this.onRouteChange} route={this.state.route}/>
+					  	<List test={this.state.test} symptoms = {this.state.symptoms} personal = {this.state.personal} vitals = {this.state.vitals} onRouteChange={this.onRouteChange} route={this.state.route}/>
 					  	<Table clientid={this.state.clientid} ref = {this.child} onDateChange={this.onDateChange} symptoms={this.state.symptoms} personal = {this.state.personal} vitals = {this.state.vitals} vitalDone={this.vitalDone} personalDone={this.personalDone} symptomsDone={this.symptomsDone}/>
 					  </div>
 					  <div className="ml3" style={{width:"700px"}}>
@@ -331,7 +348,7 @@ class Dashboard extends React.Component {
 				</BrowserView>
 				<MobileView>
 					<div style={{"margin":"auto", display: 'flex', flexDirection: 'row', flex: 1}}>
-						<List symptoms = {this.state.symptoms} personal = {this.state.personal} vitals = {this.state.vitals} onRouteChange={this.onRouteChange} route={this.state.route}/>
+						<List test={this.state.test} symptoms = {this.state.symptoms} personal = {this.state.personal} vitals = {this.state.vitals} onRouteChange={this.onRouteChange} route={this.state.route}/>
 						<Table clientid={this.state.clientid} ref = {this.child} onDateChange={this.onDateChange} symptoms={this.state.symptoms} personal = {this.state.personal} vitals = {this.state.vitals} vitalDone={this.vitalDone} personalDone={this.personalDone} symptomsDone={this.symptomsDone}/>
 					</div>
 					{back}
