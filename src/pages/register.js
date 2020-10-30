@@ -8,6 +8,7 @@ import RegNav from "../components/reg_nav.js"
 import '../fonts/TenaliRamakrishna-Regular.ttf'
 import {navigate} from "gatsby";
 import Footer from "../components/footer";
+import Register5 from "../components/register5";
 
 class Register extends React.Component {
 	constructor(props) {
@@ -77,8 +78,11 @@ class Register extends React.Component {
 			this.setState({neurologicaldisease: data.neuro_disease})
 			this.setState({kidneyliverfailure: data.kidney_liver})
 			console.log(this.state)
-			this.setState({route: "success"})
+			this.setState({route: "tnc"})
 		}
+	}
+	onS = (data) => {
+		this.setState({route: "success"})
 	}
 
 	render() {
@@ -93,6 +97,8 @@ class Register extends React.Component {
 			output = <Register2 onAllergiesSubmit={this.onAllergiesSubmit} onRouteChange={this.onRouteChange}/>
 		} else if (this.state.route === "history") {
 			output = <Register3 onFinalSubmit={this.onFinalSubmit} onRouteChange={this.onRouteChange}/>
+		} else if (this.state.route === "tnc") {
+			output = <Register5 onS={this.onS} onRouteChange={this.onRouteChange}/>
 		} else if (this.state.route === "success") {
 			output = <Register4 data = {this.state}/>
 		}

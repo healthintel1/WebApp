@@ -25,16 +25,6 @@ class VitalForm extends React.Component {
 		}
 	}
 
-	onOptionClick = (e) => {
-		let x = e.target.id
-		if (x==="yes") {
-			this.setState({[e.target.name]: true})
-		} else {
-			this.setState({[e.target.name]: false})
-		}
-
-	}
-
 	onTypeEnter = (e) => {
 		let x = e.target.value;
 		// x = x.toLowerCase()
@@ -55,7 +45,7 @@ class VitalForm extends React.Component {
 		this.setState({temp: x.bodytemperature})
 		this.setState({respiratoryrate: x.respiratoryrate})
 		this.setState({temptype: x.temptype})
-		this.setState({bp: x.bloodpressure1})
+		// this.setState({bp: x.bloodpressure1})
 		this.setState({heart_rate: x.heartrate})
 		this.setState({heart: x.heartratefeeling})
 		this.setState({oxygen: x.oxygensaturation})
@@ -197,13 +187,6 @@ class VitalForm extends React.Component {
 							    {/*    </div>*/}
 							    {/*</div>*/}
 						    </div>
-						    {/*<div className="mt2 mb2">*/}
-						    {/*    <p className="mt3 ml5 b pa0 mb0 gray gender">RESPIRATORY RATE</p>*/}
-						    {/*    <div style={{display: "flex"}}>*/}
-						    {/*    	<input id="respiratoryrate" onChange={this.onTypeEnter} value={this.state.respiratoryrate||""} type="number" min="0" className="mt3 ml5 mr2 bg-washed-green tc" style={{"height":"50px", "width":"15%","border":"none"}}/>*/}
-						    {/*        <p className="mt4 f6 b ml2 gray">UNITS </p>*/}
-						    {/*    </div>*/}
-						    {/*</div>*/}
 						    <div className="mt2 mb2">
 						        <p className="mt3 ml5 b pa0 mb0 gray gender">OXYGEN SATURATION</p>
 						        <div style={{display: "flex"}}>
@@ -211,11 +194,21 @@ class VitalForm extends React.Component {
 						            <p className="mt4 f6 b ml2 gray">%</p>
 						        </div>
 						    </div>
+							<div className="mt2 mb2">
+							    <p className="mt3 ml5 b pa0 mb0 gray gender">DEVICE USED</p>
+							    <div style={{display: "flex"}}>
+							    	<input id="heart" onChange={this.onTypeEnter} value={this.state.heart||""} className="mt3 ml5 mr2 bg-washed-green tc" style={{"height":"50px", "width":"40%","border":"none"}}/>
+							    </div>
+							</div>
 						    <p className="f5 mt4 b red tc">{this.state.error_message}</p>
 						    <p className="f5 mt4 dark-blue tc">{this.state.message}</p>
 						    <div className="mt5 mb3">
 					          <p onClick={onClick} className="pointer tc pv3 f3 shadow-1" style={{"margin": "auto", "border-radius":"50%", width:"10%", background: this.state.bg, color: (this.state.bg === "white") ? "#013220" : "white"}}>✓</p>
 					        </div>
+							<p className="f5 mt4 dark-blue tc" style={{padding: "0 20px"}}>HealthIntel.ai software requires that the vitals data of temperature, heart rate, and oxygen saturation entered by the users for analysis are being read off of medical device(s) that are FDA Registered for their intended use.
+							</p>
+							<p className="f5 mt4 dark-blue tc" style={{padding: "0 20px"}}>If you do not know whether the device you are using is a medical device registered by FDA for use to collect the requested data, or if you do not have access to these devices, please contact HealthIntel.ai for a list of medical devices that you can use.
+							</p>
 						</div>
 					</div>
 				</BrowserView>
@@ -274,11 +267,21 @@ class VitalForm extends React.Component {
 						            <p className="mt4 f6 b ml2 gray">UNITS </p>
 						        </div>
 						    </div>
+							<div className="mv2 pa1">
+							    <p className="mt4 f5 ml3 b pa0 mb0 gray gender">DEVICE USED</p>
+							    <div style={{display: "flex"}}>
+							    	<input id="heart" value={this.state.heart||""} onChange={this.onTypeEnter} className="mt3 ml3 mr2 bg-washed-green tc" style={{"height":"50px", "width":"40%","border":"none"}}/>
+							    </div>
+							</div>
 						    <p className="f5 mt4 b red tc">{this.state.error_message}</p>
 						    <p className="f5 mt1 dark-blue tc">{this.state.message}</p>
 						    <div className="mt5 mb3">
 					          <p onClick={onClick} className="pointer tc pv3 f3 shadow-1" style={{"margin": "auto", "border-radius":"50%", width:"15%", background: this.state.bg, color: (this.state.bg === "white") ? "#013220" : "white"}}>✓</p>
 					        </div>
+							<p className="f5 mt1 dark-blue tc" style={{padding: "0 20px"}}>HealthIntel.ai software requires that the vitals data of temperature, heart rate, and oxygen saturation entered by the users for analysis are being read off of medical device(s) that are FDA Registered for their intended use.
+							</p>
+							<p className="f5 mt1 dark-blue tc" style={{padding: "0 20px"}}>If you do not know whether the device you are using is a medical device registered by FDA for use to collect the requested data, or if you do not have access to these devices, please contact HealthIntel.ai for a list of medical devices that you can use.
+							</p>
 						</div>
 					</div>
 				</MobileView>

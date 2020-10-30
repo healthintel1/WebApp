@@ -93,7 +93,7 @@ class TestResults extends React.Component {
                                     return (
                                         <div>
                                             <div className="mv2" style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
-                                                <p className="mt4 ml5 b pa0 mb0 gray gender">TEST NUMBER #{i+1}</p>
+                                                <p className="mt4 ml5 b pa0 mb0 gray gender">TEST #{i+1}</p>
                                                 <p onClick={() => {this.setState({tests: [...this.state.tests.slice(0, i), ...this.state.tests.slice(i+1)]})}} className="pointer mt4 b pa0 mb0 gray" style={{marginRight: 50, color: 'red', fontWeight: 'bold', padding: '0 10px'}}>x</p>
                                             </div>
                                             <div className="mv2">
@@ -110,7 +110,7 @@ class TestResults extends React.Component {
                                             </div>
                                             <div className="mv2">
                                                 <p className="mt4 ml5 b pa0 mb0 gray gender">TEST TYPE</p>
-                                                <input value={test.type} onChange={(value) => {this.setState({tests: [...this.state.tests.slice(0, i), {...test, type: value.target.value}, ...this.state.tests.slice(i+1)]})}} type="text" placeholder="The type of test that you undergo" className="mt3 ml5 mr2 bg-washed-green ph2" style={{"height":"50px", "width":"60%","border":"none"}}/>
+                                                <input value={test.type} onChange={(value) => {this.setState({tests: [...this.state.tests.slice(0, i), {...test, type: value.target.value}, ...this.state.tests.slice(i+1)]})}} type="text" placeholder="Type of test you underwent" className="mt3 ml5 mr2 bg-washed-green ph2" style={{"height":"50px", "width":"60%","border":"none"}}/>
                                             </div>
                                             <div className="mt2 mb2">
                                                 <p className="mt3 ml5 b pa0 mb0 gray gender">RESULT</p>
