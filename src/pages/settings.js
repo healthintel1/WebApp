@@ -122,6 +122,8 @@ class Settings extends React.Component {
 			        			<p className={`${(isMobile) ? "f6" : "f5"} dib mt0 mb0 gray ph3`}><b>Location</b>: {this.state.zipcode}</p>
 			        		</div>
 			        		<p className={`${(isMobile) ? "f6" : "f5"} mt3 mb0 gray`}><b>Gender</b>: <p className="dib ttc">{this.state.gender===0?'Female':this.state.gender===1?'Male':'Not Specified'}</p></p>
+							<p className={`${(isMobile) ? "f6" : "f5"} mt3 mb0 gray`}><b>Race</b>: <p className="dib ttc">{this.state.race}</p></p>
+							<p className={`${(isMobile) ? "f6" : "f5"} mt3 mb0 gray`}><b>Ethnicity</b>: <p className="dib ttc">{this.state.ethnicity}</p></p>
 			        	</div>
 			        	<div className={`pa4 ${(isMobile) ? "" : "pl5"}`}>
 			        		<p className={`${(isMobile) ? "f4" : "f3"} mb4`} style={{color:"rgb(127,79,180)"}}><b>Allergies</b><span onClick={()=>navigate("/update-account", {state:{route: "allergies", data: this.state}})} className="ml2 f6 gray underline-hover pointer dim">Edit</span></p>

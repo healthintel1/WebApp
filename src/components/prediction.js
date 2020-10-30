@@ -12,7 +12,7 @@ class Prediction extends React.Component {
             esi:"",
             risk:"",
             today_risk:"",
-            output:"",
+            output:{head:"", body:"", sub:""},
             data:"",
         }
     }
@@ -42,9 +42,11 @@ class Prediction extends React.Component {
                 }
             }
             if (r === 0) {
-                this.setState({output: "LOW RISK"})
+                this.setState({output: {head:"Green", sub:"",
+                        body:"You seem to be feeling okay- The analysis of the temperature, heart rate and oxygen saturation data provided are within normal ranges. Continue to monitor your health and contact your health care provider for advice if you get new symptoms or if you have close contact with someone with lab-confirmed COVID-19.\n"}})
             } else {
-                this.setState({output: "HIGH RISK"})
+                this.setState({output: {head: "Red", sub:"Stay home and take care of yourself",
+                        body:"The analysis of your temperature, heart rate and oxygen saturation data provided indicates that a more thorough exam needs to be performed by a healthcare provider to determine further action. Please contact your healthcare provider as soon as possible."}})
             }
 
             this.setState({dates: dates})
@@ -90,27 +92,27 @@ class Prediction extends React.Component {
                 </div>
                 <BrowserView>
                     <div style={{display:"flex", "flex-wrap":"wrap"}}>
-                        <p className={`${("w-40 ml5")} mt4 dib`} style={{"font-size":"72px", "font-weight":"500", color: "rgb(127,90,179)", "line-height":"1.6"}}>{this.state.output}</p>
+                        <p className={`${("w-40 ml5")} mt4 dib`} style={{"font-size":"72px", "font-weight":"500", color: "rgb(127,90,179)", "line-height":"1.6"}}>{this.state.output.head}</p>
                         <img className="dib pt3 w-40" src="https://i.ibb.co/j45jqDj/Screenshot-2020-06-15-at-10-40-39-PM.png"/>
                     </div>
                 </BrowserView>
                 <MobileView>
-                    <p className="ml5 mt4 mb0 w-80 f1" style={{"font-weight":"500", color: "rgb(127,90,179)", "line-height":"1.6"}}>{this.state.output}</p>
+                    <p className="ml5 mt4 mb0 w-80 f1" style={{"font-weight":"500", color: "rgb(127,90,179)", "line-height":"1.6"}}>{this.state.output.head}</p>
                     <img className="ml4 w-80" src="https://i.ibb.co/j45jqDj/Screenshot-2020-06-15-at-10-40-39-PM.png"/>
                 </MobileView>
                 <div>
-                    <p className={`f3 dark-gray ml4 mt4 b ${(isMobile)?"w-80":""}`}>Don't Panic. Go to a medical professional.</p>
-                    <p className={`f5 gray ml4 mr6 ${(isMobile)?"w-80":""}`} style={{"line-height":"1.5"}}>This just means that you should get tested. Based on your symptoms, our model predicts that you may have COVID-19. Please contact your doctor to be tested. </p>
+                    <p className={`f3 dark-gray ml4 mt4 b ${(isMobile)?"w-80":""}`}>{this.state.output.sub}</p>
+                    <p className={`f5 gray ml4 mr6 ${(isMobile)?"w-80":""}`} style={{"line-height":"1.5"}}>{this.state.body}</p>
                 </div>
-                <div className="w-100 bt bb bw1 b--light-gray mt4">
-                    <p className={`f5 ${(isMobile)?"ml4":"ml5"} mt2 mb2 dark-gray dib`}>NEXT STEPS</p>
-                </div>
-                <div className={`${(isMobile)?"ml4":"ml5"} list-div mv3`}>
-                    <span>1</span>  Start to quarantine yourself
-                </div>
-                <div className={`${(isMobile)?"ml4":"ml5"} list-div mv3`}>
-                    <span>2</span>  Visit the nearest hospital to get tested further
-                </div>
+                {/*<div className="w-100 bt bb bw1 b--light-gray mt4">*/}
+                {/*    <p className={`f5 ${(isMobile)?"ml4":"ml5"} mt2 mb2 dark-gray dib`}>NEXT STEPS</p>*/}
+                {/*</div>*/}
+                {/*<div className={`${(isMobile)?"ml4":"ml5"} list-div mv3`}>*/}
+                {/*    <span>1</span>  Start to quarantine yourself*/}
+                {/*</div>*/}
+                {/*<div className={`${(isMobile)?"ml4":"ml5"} list-div mv3`}>*/}
+                {/*    <span>2</span>  Visit the nearest hospital to get tested further*/}
+                {/*</div>*/}
                 {/*<div className="w-100 bt bb bw1 b--light-gray mt3">*/}
                 {/*    <p className={`f5 ${(isMobile)?"ml4":"ml5"} mt2 mb2 dark-gray dib`}>LINKS</p>*/}
                 {/*</div>*/}
