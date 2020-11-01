@@ -24,6 +24,8 @@ class Register extends React.Component {
 			age: "",
 			zipcode: "",
 			gender: -1,
+			city: "",
+			country: "",
 			allergies9:"",
 			heartdisease: false,
       		highbloodpressure: false,
@@ -51,6 +53,8 @@ class Register extends React.Component {
 		this.setState({age: data.age})
 		this.setState({zipcode: data.zipcode})
 		this.setState({gender: data.gender})
+		this.setState({city: data.city})
+		this.setState({country: data.country})
 		this.setState({route:"allergies"})
 	};
 	onAllergiesSubmit = (data1, data2) => {

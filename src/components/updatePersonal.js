@@ -117,15 +117,15 @@ class UpdatePersonal extends React.Component {
 			          </div>
 					  <div>
 						<p className="mt3 ml2 mb1 gray gender">Race</p>
-						<p onClick={(e) => this.onOptionClick2("race", e)} id={"WHITE OR CAUCASIAN"} className="f5 pointer mt2 ml2 br2 ph4 pv3 mb0 dib" style={{background: this.state.race === "WHITE OR CAUCASIAN" ? this.state.on_color : this.state.off_color, color: this.state.race === "WHITE OR CAUCASIAN" ? "white" : "gray"}}>WHITE OR CAUCASIAN</p>
-						<p onClick={(e) => this.onOptionClick2("race", e)} id="BLACK OR AFRICAN AMERICAN" className="f5 pointer mt2 ml2 br2 ph4 pv3 mb0 dib" style={{background: this.state.race === "BLACK OR AFRICAN AMERICAN" ? this.state.on_color : this.state.off_color, color: this.state.race === "BLACK OR AFRICAN AMERICAN" ? "white" : "gray"}}>BLACK OR AFRICAN AMERICAN</p>
-						<p onClick={(e) => this.onOptionClick2("race", e)} id="ASIAN" className="f5 pointer ml2 mt2 br2 ph3 pv3 mb0 dib" style={{background: this.state.race === "ASIAN" ? this.state.on_color : this.state.off_color, color: this.state.race === "ASIAN" ? "white" : "gray"}}>ASIAN</p>
-						  <p onClick={(e) => this.onOptionClick2("race", e)} id="OTHER" className="f5 pointer ml2 mt2 br2 ph3 pv3 mb0 dib" style={{background: this.state.race === "OTHER" ? this.state.on_color : this.state.off_color, color: this.state.race === "OTHER" ? "white" : "gray"}}>OTHER</p>
+						<p onClick={(e) => this.onOptionClick2("city", e)} id={"WHITE OR CAUCASIAN"} className="f5 pointer mt2 ml2 br2 ph4 pv3 mb0 dib" style={{background: this.state.city === "WHITE OR CAUCASIAN" ? this.state.on_color : this.state.off_color, color: this.state.city === "WHITE OR CAUCASIAN" ? "white" : "gray"}}>WHITE OR CAUCASIAN</p>
+						<p onClick={(e) => this.onOptionClick2("city", e)} id="BLACK OR AFRICAN AMERICAN" className="f5 pointer mt2 ml2 br2 ph4 pv3 mb0 dib" style={{background: this.state.city === "BLACK OR AFRICAN AMERICAN" ? this.state.on_color : this.state.off_color, color: this.state.city === "BLACK OR AFRICAN AMERICAN" ? "white" : "gray"}}>BLACK OR AFRICAN AMERICAN</p>
+						<p onClick={(e) => this.onOptionClick2("city", e)} id="ASIAN" className="f5 pointer ml2 mt2 br2 ph3 pv3 mb0 dib" style={{background: this.state.city === "ASIAN" ? this.state.on_color : this.state.off_color, color: this.state.city === "ASIAN" ? "white" : "gray"}}>ASIAN</p>
+						  <p onClick={(e) => this.onOptionClick2("city", e)} id="OTHER" className="f5 pointer ml2 mt2 br2 ph3 pv3 mb0 dib" style={{background: this.state.city === "OTHER" ? this.state.on_color : this.state.off_color, color: this.state.city === "OTHER" ? "white" : "gray"}}>OTHER</p>
 					  </div>
 					  <div>
 						<p className="mt3 ml2 mb1 gray gender">Ethnicity</p>
-						<p onClick={(e) => this.onOptionClick2("ethnicity", e)} id="NON-HISPANIC" className="f5 pointer mt2 ml2 br2 ph4 pv3 mb0 dib" style={{background: this.state.ethnicity === "NON-HISPANIC" ? this.state.on_color : this.state.off_color, color: this.state.ethnicity === "NON-HISPANIC" ? "white" : "gray"}}>NON-HISPANIC</p>
-						<p onClick={(e) => this.onOptionClick2("ethnicity", e)} id="HISPANIC" className="f5 pointer mt2 ml2 br2 ph4 pv3 mb0 dib" style={{background: this.state.ethnicity === "HISPANIC" ? this.state.on_color : this.state.off_color, color: this.state.ethnicity === "HISPANIC" ? "white" : "gray"}}>HISPANIC</p>
+						<p onClick={(e) => this.onOptionClick2("country", e)} id="NON-HISPANIC" className="f5 pointer mt2 ml2 br2 ph4 pv3 mb0 dib" style={{background: this.state.country === "NON-HISPANIC" ? this.state.on_color : this.state.off_color, color: this.state.country === "NON-HISPANIC" ? "white" : "gray"}}>NON-HISPANIC</p>
+						<p onClick={(e) => this.onOptionClick2("country", e)} id="HISPANIC" className="f5 pointer mt2 ml2 br2 ph4 pv3 mb0 dib" style={{background: this.state.country === "HISPANIC" ? this.state.on_color : this.state.off_color, color: this.state.country === "HISPANIC" ? "white" : "gray"}}>HISPANIC</p>
 					  </div>
 			          <p className="f5 mt4 b red tc">{this.state.error}</p>
 			          <p className="f5 mt4 dark-blue tc">{this.state.message}</p>
