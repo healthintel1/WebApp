@@ -16,7 +16,6 @@ class Waiting extends React.Component {
         }
     }
 
-
     componentDidMount() {
       this.setState({visible: true})
       let count=0
@@ -33,7 +32,7 @@ class Waiting extends React.Component {
             today.setDate(today.getDate()-1)
           }
           console.log(arr2)
-          var url = CORSDOMAIN+`/getresult?client_id=${x}&d1=${arr2[0]}&d2=${arr2[1]}&d3=${arr2[2]}&d4=${arr2[3]}&d5=${arr2[4]}d6=${arr2[5]}&d7=${arr2[6]}`
+          var url = CORSDOMAIN+`/getresult?client_id=${x}&d1=${arr2[0]}&d2=${arr2[1]}&d3=${arr2[2]}&d4=${arr2[3]}&d5=${arr2[4]}&d6=${arr2[5]}&d7=${arr2[6]}`
           async function GetData() {
             let response = await fetch(url)
             response = response.json()
@@ -44,7 +43,7 @@ class Waiting extends React.Component {
                 headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': "*" },
                 body: JSON.stringify({
                   clientid: x,
-                  date: y,
+                  date: this.props.Dated+"/"+this.props.Month,
                 })
             };
           fetch("https://cors-anywhere.herokuapp.com/https://4464pex1yl.execute-api.us-east-2.amazonaws.com/stage1/algorithm?", requestOptions)
