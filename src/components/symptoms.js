@@ -351,7 +351,7 @@ class SymptomsForm extends React.Component {
 		let arr = this.state.other;
 		if (arr === ""){
 			arr = x
-		} else arr = arr+","+x;
+		} else arr = arr+";"+x;
 		this.setState({searchI: ""});
         this.setState({other: arr});
         console.log("OTHER ENTER", arr);
@@ -359,7 +359,7 @@ class SymptomsForm extends React.Component {
 	};
 	onEnterRemove = (x) => {
 		let arr = this.state.other;
-		let res = arr.split(","+x);
+		let res = arr.split(";"+x);
 		if (res.length === 2){
 			arr = res[0]+res[1]
 		} else {
@@ -405,7 +405,7 @@ class SymptomsForm extends React.Component {
 				</div>
 			)
 		};
-		let output = this.state.other.split(",").map(x => x !== "" && <p onClick={(e) => this.onEnterRemove(x)} id={x} className={`pointer mr2 br2 ph2 pv2 mb1 mt1 ${(isMobile) ? "" : "dib"}`} style={{background: "rgb(255, 127, 129)", color:"white"}}>{x}</p>);
+		let output = this.state.other.split(";").map(x => x !== "" && <p onClick={(e) => this.onEnterRemove(x)} id={x} className={`pointer mr2 br2 ph2 pv2 mb1 mt1 ${(isMobile) ? "" : "dib"}`} style={{background: "rgb(255, 127, 129)", color:"white"}}>{x}</p>);
 		return(
 			<div className={`w-100 mb3 ${(this.state.visible) ? "fadeIn" : "fadeOut"}`}>
 			  <div className="tl ba bw1 w-100 b--light-gray bg-white ba Avenir" style={{"font-family":"Avenir"}}>
