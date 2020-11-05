@@ -266,7 +266,7 @@ class SymptomsForm extends React.Component {
 		this.setState({diarrhea: x.diarrhea})
 		this.setState({fatigue: x.fatiguetiredness})
 		this.setState({nota: x.none9})
-		this.setState({other: x.heartratefeeling||""})
+		this.setState({other: x.bloodpressure1||""})
 	}
 
 	updateSentData = () => {
@@ -275,7 +275,7 @@ class SymptomsForm extends React.Component {
 			loss_taste_smell: this.state.loss_taste_smell,
 			chillsorsweating: this.state.chills,
 			coughing: this.state.cough,
-			heartratefeeling: this.state.other,
+			bloodpressure1: this.state.other,
 			fever: this.state.fever,
 			sorethroat: this.state.throat,
 			difficultybreathing: this.state.breath,
@@ -304,7 +304,6 @@ class SymptomsForm extends React.Component {
 	        	this.setState({message:""})
 	        	this.setState({error: "An error occured. Please try again."})
 	        })
-
 	}
 
 	sendData = () => {
@@ -314,7 +313,7 @@ class SymptomsForm extends React.Component {
 			fever: this.state.fever,
 			chillsorsweating: this.state.chills,
 			coughing: this.state.cough,
-			heartratefeeling: this.state.other,
+			bloodpressure1: this.state.other,
 			sorethroat: this.state.throat,
 			difficultybreathing: this.state.breath,
 			bodyaches: this.state.bodyache,
@@ -382,7 +381,7 @@ class SymptomsForm extends React.Component {
 		];
 		let {Dated, Month} = this.props;
 		const onFinalClick = (e) => {
-			if (this.state.loss_taste_smell || 	this.state.nose || this.state.fever || this.state.chills || this.state.cough || this.state.throat || this.state.breath || this.state.bodyache||	this.state.headache || 	this.state.vomit || this.state.diarrhea || this.state.fatigue || this.state.nota){
+			if (this.state.loss_taste_smell || 	this.state.nose || this.state.fever || this.state.chills || this.state.cough || this.state.throat || this.state.breath || this.state.bodyache||	this.state.headache || 	this.state.vomit || this.state.diarrhea || this.state.fatigue || this.state.nota || this.state.other !== ""){
 				this.setState({error: ""});
 				this.setState({message: "Please wait..."})
 				this.setState({bg: "rgb(136, 242, 216)"})
@@ -406,7 +405,7 @@ class SymptomsForm extends React.Component {
 				</div>
 			)
 		};
-		let output = this.state.other.split(",").map(x => x !== "" && <p onClick={(e) => this.onEnterRemove(x)} id={x} className={`pointer mr2 br2 ph2 pv2 mb1 mt1 dib`} style={{background: "rgb(255, 127, 129)", color:"white"}}>{x}</p>);
+		let output = this.state.other.split(",").map(x => x !== "" && <p onClick={(e) => this.onEnterRemove(x)} id={x} className={`pointer mr2 br2 ph2 pv2 mb1 mt1 ${(isMobile) ? "" : "dib"}`} style={{background: "rgb(255, 127, 129)", color:"white"}}>{x}</p>);
 		return(
 			<div className={`w-100 mb3 ${(this.state.visible) ? "fadeIn" : "fadeOut"}`}>
 			  <div className="tl ba bw1 w-100 b--light-gray bg-white ba Avenir" style={{"font-family":"Avenir"}}>
@@ -445,7 +444,7 @@ class SymptomsForm extends React.Component {
 						/>
 						{DropDownC()}
 					</div>
-					<div className="pa0 w-100 ml5 mr5" style={{margin: "10px 4rem"}}>
+					<div className="pa0 ml5 mr5" style={{margin: "10px 4rem"}}>
 						{output}
 					</div>
 					<p onClick={this.onNotaClick} id="nota" className="grid-box pa0 tc f5 pointer ml5 mr1 mt5 br2 pv3 ph4 mb2 dib" style={{background: this.state.nota ? this.state.on_color : this.state.off_color, color: this.state.nota ? "white" : "gray", width:"80%"}}>NONE OF THE ABOVE</p>
@@ -473,7 +472,6 @@ class SymptomsForm extends React.Component {
 						<p onClick={this.onClick} id="loss_taste_smell" className="tc f5 pointer ml3 mr3 br2 pv3 ph4 mb2 w-70" style={{margin:"auto", "margin-bottom":"10px", background: this.state.loss_taste_smell ? this.state.on_color : this.state.off_color, color: this.state.loss_taste_smell ? "white" : "gray"}}>NEW LOSS OF TASTE OR SMELL</p>
 						<p onClick={this.onClick} id="throat" className="tc f5 pointer ml3 mr5 br2 pv3 ph4 mb2 w-70" style={{margin:"auto", "margin-bottom":"10px",background: this.state.throat ? this.state.on_color : this.state.off_color, color: this.state.throat ? "white" : "gray"}}>SHORTNESS OF BREATH</p>
 					</div>
-					<p onClick={this.onNotaClick} id="nota" className="tc f5 pointer ml3 mr3 br2 pv3 ph4 mb2 w-70" style={{margin:"20px auto 10px", background: this.state.nota ? this.state.on_color : this.state.off_color, color: this.state.nota ? "white" : "gray"}}>NONE OF THE ABOVE</p>
 					<div className="pa0 ml5 mr5" style={{ background:"rgb(243,245,248)", marginTop: "10px", padding:"10px 10px", "border-radius":"0.25rem"}}>
 						<FloatingLabelInput
 							id="other_symp_txt"
@@ -485,9 +483,10 @@ class SymptomsForm extends React.Component {
 						/>
 						{DropDownC()}
 					</div>
-					<div className="grid-box pa0 w-100 ml5 mr5" style={{marginBottom: 10}}>
+					<div className="pa0 ml5 mr5" style={{marginBottom: 10}}>
 						{output}
 					</div>
+					<p onClick={this.onNotaClick} id="nota" className="tc f5 pointer ml3 mr3 br2 pv3 ph4 mb2 w-70" style={{margin:"20px auto 10px", background: this.state.nota ? this.state.on_color : this.state.off_color, color: this.state.nota ? "white" : "gray"}}>NONE OF THE ABOVE</p>
 					<p className="f6 mt4 b red ph4 tc">{this.state.error}</p>
 			        <p className="f6 mt4 dark-blue ph4 tc">{this.state.message}</p>
 			        <div className="mt5 mb3">
@@ -498,7 +497,6 @@ class SymptomsForm extends React.Component {
 		    </div>
 		)
 	}
-
 }
 
 export default SymptomsForm;
