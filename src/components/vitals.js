@@ -58,7 +58,7 @@ class VitalForm extends React.Component {
 			date: `${this.props.Dated}/${this.props.Month}`,
 			heartratefeeling: this.state.heart,
             heartrate: parseFloat(this.state.heart_rate),
-            bloodpressure1: this.state.bp,
+            // bloodpressure1: this.state.bp,
             oxygensaturation: parseFloat(this.state.oxygen),
             bodytemperature: parseFloat(this.state.temp),
 			temptype: this.state.temptype,
@@ -88,7 +88,7 @@ class VitalForm extends React.Component {
 			respiratoryrate: parseFloat(this.state.respiratoryrate),
 			heartratefeeling: this.state.heart,
             heartrate: parseFloat(this.state.heart_rate),
-            bloodpressure1: this.state.bp,
+            // bloodpressure1: this.state.bp,
             oxygensaturation: parseFloat(this.state.oxygen),
             bodytemperature: parseFloat(this.state.temp),
 			temptype: this.state.temptype,
@@ -128,6 +128,8 @@ class VitalForm extends React.Component {
 				this.setState({error_message: "Tempratre value is out of range. Please enter sensical value in FAHRENHEIT."})
 			} else if ((this.state.heart_rate < 20 || this.state.heart_rate > 150)) {
 				this.setState({error_message: "Hear rate value is out of range. Please enter sensical value."})
+			} else if (this.state.oxygen !== "" && (this.state.oxygen < 60 || this.state.oxygen > 150)) {
+				this.setState({error_message: "Oxygen saturation value is out of range. Please enter sensical value."})
 			} else if (this.state.oxygen !== "" && (this.state.oxygen < 60 || this.state.oxygen > 150)) {
 				this.setState({error_message: "Oxygen saturation value is out of range. Please enter sensical value."})
 			} else {

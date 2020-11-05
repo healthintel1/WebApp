@@ -43,6 +43,7 @@ class Dashboard extends React.Component {
 				coughing: "",
 				difficultybreathing: "",
 				sorethroat: "",
+				bloodpressure1: "",
 				bodyaches: "",
 				headache:"",
 				vomiting: "",
@@ -53,7 +54,7 @@ class Dashboard extends React.Component {
 			vitals_data: {
 				heartratefeeling: "",
 				heartrate: "",
-				bloodpressure1: "",
+				// bloodpressure1: "",
 				oxygensaturation: "",
 				bodytemperature: "",
 				temptype: true,
@@ -98,7 +99,7 @@ class Dashboard extends React.Component {
 	}
 
 	symptomsDone = () => {
-		if (this.state.fever || this.state.chillsorsweating || this.state.coughing || this.state.difficultybreathing || this.state.sorethroat || this.state.bodyaches || this.state.headache || this.state.vomiting || this.state.diarrhea || this.state.none9 || this.state.fatiguetiredness){
+		if (this.state.fever || this.state.bloodpressure1 !== "" || this.state.chillsorsweating || this.state.coughing || this.state.difficultybreathing || this.state.sorethroat || this.state.bodyaches || this.state.headache || this.state.vomiting || this.state.diarrhea || this.state.none9 || this.state.fatiguetiredness){
 			this.setState({symptoms: 1})
 		}
 	};
@@ -112,6 +113,7 @@ class Dashboard extends React.Component {
 			sorethroat: input.throat,
 			bodyaches: input.bodyache,
 			headache: input.headache,
+			bloodpressure1: input.bloodpressure1,
 			vomiting: input.vomit,
 			diarrhea: input.diarrhea,
 			fatiguetiredness: input.fatigue,
@@ -131,7 +133,7 @@ class Dashboard extends React.Component {
 		this.setState({vitals_data: {
 			bodytemperature: input.temp,
 			temptype: input.temptype,
-			bloodpressure1: input.bp,
+			// bloodpressure1: input.bp,
 			heartratefeeling: input.heart,
 			heartrate: input.heart_rate,
 			oxygensaturation: input.oxygen,
@@ -182,6 +184,7 @@ class Dashboard extends React.Component {
 						difficultybreathing: res.difficultybreathing,
 						sorethroat: res.sorethroat,
 						bodyaches: res.bodyaches,
+						bloodpressure1: res.bloodpressure1,
 						headache: res.headache,
 						vomiting: res.vomiting,
 						diarrhea: res.diarrhea,
@@ -191,7 +194,7 @@ class Dashboard extends React.Component {
 					this.setState({vitals_data: {
 						bodytemperature: res.bodytemperature,
 						temptype: res.temptype,
-						bloodpressure1: res.bloodpressure1,
+						// bloodpressure1: res.bloodpressure1,
 						heartratefeeling: res.heartratefeeling,
 						heartrate: res.heartrate,
 						oxygensaturation: res.oxygensaturation,
@@ -253,13 +256,14 @@ class Dashboard extends React.Component {
 							headache: res.headache,
 							vomiting: res.vomiting,
 							diarrhea: res.diarrhea,
+							bloodpressure1: res.bloodpressure1,
 							fatiguetiredness: res.fatiguetiredness,
 							none9: res.none9,
 						}})
 						this.setState({vitals_data: {
 							bodytemperature: res.bodytemperature,
 							temptype: res.temptype,
-							bloodpressure1: res.bloodpressure1,
+							// bloodpressure1: res.bloodpressure1,
 							heartratefeeling: res.heartratefeeling,
 							heartrate: res.heartrate,
 							oxygensaturation: res.oxygensaturation,
