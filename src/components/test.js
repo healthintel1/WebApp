@@ -61,11 +61,11 @@ class TestResults extends React.Component {
         fetch(CORSDOMAIN+'/updatetests?', requestOptions)
             .then(res=>{
                 console.log(res);
-                setTimeout(()=>{this.props.onTestUpdate(senddata.test)},500)
+                setTimeout(()=>{this.props.onTestUpdate(senddata.testresults)},500)
                 setTimeout(()=>{this.props.refreshCalendar()},500)
             })
             .catch(err=>{
-                setTimeout(()=>{this.props.onTestUpdate(senddata.test)},500)
+                setTimeout(()=>{this.props.onTestUpdate(senddata.testresults)},500)
                 this.setState({message:""})
                 this.setState({error_message: "An error occured. Please try again."})
             })
@@ -147,6 +147,18 @@ class TestResults extends React.Component {
                                     }}>✓</p>
                                 </div>
                             }
+                            {
+                                this.state.tests.length === 0 &&
+                                <div className="mt5 mb3">
+                                    <p onClick={() => this.props.onTestUpdate("")} className="pointer tc pv3 shadow-1" style={{
+                                        "margin": "auto",
+                                        "border-radius": "50%",
+                                        width: "8%",
+                                        background: this.state.bg,
+                                        color: (this.state.bg === "white") ? "#013220" : "white"
+                                    }}>Skip</p>
+                                </div>
+                            }
                         </div>
                     </div>
                 </BrowserView>
@@ -207,6 +219,12 @@ class TestResults extends React.Component {
                                 this.state.tests.length > 0 &&
                                 <div className="mt5 mb3">
                                     <p onClick={onClick} className="pointer tc pv3 f3 shadow-1" style={{"margin": "auto", "border-radius":"50%", width:"15%", background: this.state.bg, color: (this.state.bg === "white") ? "#013220" : "white"}}>✓</p>
+                                </div>
+                            }
+                            {
+                                this.state.tests.length === 0 &&
+                                <div className="mt5 mb3">
+                                    <p onClick={() => this.props.onTestUpdate("")} className="pointer tc pv3 f3 shadow-1" style={{"margin": "auto", "border-radius":"50%", width:"15%", background: this.state.bg, color: (this.state.bg === "white") ? "#013220" : "white"}}>Skip</p>
                                 </div>
                             }
                         </div>

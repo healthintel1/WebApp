@@ -2,6 +2,7 @@ import React from "react";
 import "./transition.css"
 import { isMobile, BrowserView, MobileView } from "react-device-detect";
 import { CORSDOMAIN } from "./constant"
+import FloatingLabelInput from "react-floating-label-input";
 
 class SymptomsForm extends React.Component {
 	constructor(props) {
@@ -27,8 +28,181 @@ class SymptomsForm extends React.Component {
 				visible: "",
 				bg: "white",
 				error:"",
+				other: "",
+                searchI: "",
+				viD: false
 		}
 	}
+
+	LISTAll = ["ABDOMINAL PAIN-GENERALIZED",
+	"ABDOMINAL PAIN-LOWER",
+	"ABDOMINAL PAIN-RIGHT LOWER QUADRANT",
+	"ABDOMINAL PAIN-UPPER",
+	"ABNORMAL ECG",
+	"ADDICTION PROBLEM",
+	"ADHD",
+	"AGGRESSIVE BEHAVIOR",
+	"ALCOHOL INTOXICATION",
+	"ALCOHOL PROBLEM",
+	"ALLEGED DOMESTIC VIOLENCE",
+	"ALLEGED SEXUAL ASSAULT",
+	"ALTERED MENTAL STATUS",
+	"ANEMIA",
+	"ANKLE INJURY",
+	"ANKLE PAIN",
+	"ANOREXIA",
+	"ANXIETY",
+	"ARM INJURY",
+	"ARM PAIN",
+	"ARM SWELLING",
+	"ARTHRITIS",
+	"ASTHMA",
+	"BACK INJURY",
+	"BACK PAIN",
+	"BLOOD INFECTION",
+	"BLOOD SUGAR PROBLEM",
+	"BRADYCARDIA",
+	"BREAST CANCER",
+	"BREAST PAIN",
+	"BURN",
+	"CANCER",
+	"CARDIAC ARREST",
+	"CEREBROVASCULAR ACCIDENT",
+	"CHEMOTHERAPY",
+	"CHEST INJURY",
+	"CHEST PAIN",
+	"CIRCULATORY PROBLEM",
+	"CONSTIPATION",
+	"CYSTITIS",
+	"DEHYDRATION",
+	"DENTAL PAIN",
+	"DENTAL PROBLEM",
+	"DEPRESSION",
+	"DIALYSIS",
+	"DIZZINESS",
+	"DOUBLE VISION",
+	"DRUG / ALCOHOL ASSESSMENT",
+	"DRUG OVERDOSE",
+	"DYSARTHRIA",
+	"DYSPHAGIA",
+	"DYSURIA",
+	"EAR PROBLEM",
+	"ECZEMA",
+	"EDEMA",
+	"ELBOW INJURY",
+	"EPISTAXIS",
+	"EXCESSIVE SWEATING",
+	"EXTREMITY LACERATION",
+	"EXTREMITY WEAKNESS",
+	"EYE INJURY",
+	"EYE PAIN",
+	"EYE PROBLEM",
+	"EYE SWELLING",
+	"EYE TRAUMA",
+	"FACIAL LACERATION",
+	"FACIAL PAIN",
+	"FAILURE TO THRIVE",
+	"FLANK PAIN",
+	"FOOT AND/OR ANKLE INJURY",
+	"FOOT SWELLING",
+	"FOREIGN BODY",
+	"FOREIGN BODY IN EYE",
+	"FOREIGN BODY IN SKIN",
+	"FRACTURE",
+	"GI BLEEDING",
+	"GI PROBLEM",
+	"GROIN PAIN",
+	"GUN SHOT WOUND",
+	"HALLUCINATIONS",
+	"HAND AND/OR WRIST INJURY",
+	"HEAD INJURY",
+	"HEARTBURN",
+	"HEMATURIA",
+	"HEMOPTYSIS",
+	"HEMORRHOIDS",
+	"HEPATIC DISEASE",
+	"HERNIA",
+	"HIP INJURY",
+	"HIP PAIN",
+	"HOARSE",
+	"HYPERTENSION",
+	"HYPERVENTILATING",
+	"INFECTION",
+	"INFLUENZA",
+	"INGESTION",
+	"INSOMNIA",
+	"IRREGULAR HEART BEAT",
+	"JAUNDICE",
+	"JAW PAIN",
+	"JOINT PAIN",
+	"JOINT STIFFNESS",
+	"JOINT SWELLING",
+	"KNEE INJURY",
+	"KNEE PAIN",
+	"LEG INJURY",
+	"LEG LACERATION",
+	"LEG PAIN",
+	"LEG SWELLING",
+	"LOSS OF VISION",
+	"LYMPHADENOPATHY",
+	"MALE GU PROBLEM",
+	"MANIC BEHAVIOR",
+	"MASS",
+	"MEDICATION NON-COMPLIANCE",
+	"MELENA",
+	"MEMORY LOSS",
+	"MOTOR VEHICLE CRASH",
+	"MULTIPLE SCLEROSIS",
+	"MUSCLE WEAKNESS",
+	"NECK INJURY",
+	"NECK MASS",
+	"NECK PAIN",
+	"NEUROLOGIC PROBLEM",
+	"ORTHOTICS AND PROSTHETICS DEVICE",
+	"OUTPATIENT PROCEDURE",
+	"PAIN",
+	"PALPITATIONS",
+	"PELVIC PAIN",
+	"PNEUMONIA",
+	"POSTPARTUM COMPLICATIONS",
+	"PREGNANCY - VAGINAL BLEEDING",
+	"PSORIASIS",
+	"PSYCHIATRIC EVALUATION",
+	"PSYCHOSIS",
+	"PUNCTURE WOUND",
+	"RASH",
+	"RECTAL BLEEDING",
+	"RECTAL PAIN",
+	"RESPIRATORY ARREST",
+	"SEIZURES",
+	"SELF-INJURIOUS BEHAVIOR",
+	"SHOULDER INJURY",
+	"SHOULDER PAIN",
+	"SINUSITIS",
+	"SKIN PROBLEM",
+	"SKIN ULCER",
+	"SPASMS",
+	"SPEECH PROBLEM",
+	"SUICIDE ATTEMPT",
+	"SUNBURN",
+	"SWALLOWED FOREIGN BODY",
+	"SYNCOPE",
+	"THROAT PROBLEM",
+	"TOE INJURY",
+	"TOE PAIN",
+	"TRAUMA",
+	"URI",
+	"URINARY CATHETER ISSUE",
+	"URINARY INCONTINENCE",
+	"URINARY RETENTION",
+	"URINARY TRACT INFECTION",
+	"URINE ISSUE",
+	"VAGINAL BLEEDING",
+	"VAGINAL DISCHARGE",
+	"WEAKNESS",
+	"WEIGHT GAIN",
+	"WEIGHT LOSS",
+	"WHEEZING"];
 
 	onClick = (e) => {
 		if (this.state.nota) {
@@ -62,6 +236,7 @@ class SymptomsForm extends React.Component {
 				off_color: "rgb(243,245,248)",
 				visible: true,
 				bg: "white",
+				other: "",
 				error:"",
 				message:"",
 			}
@@ -91,6 +266,7 @@ class SymptomsForm extends React.Component {
 		this.setState({diarrhea: x.diarrhea})
 		this.setState({fatigue: x.fatiguetiredness})
 		this.setState({nota: x.none9})
+		this.setState({other: x.heartratefeeling||""})
 	}
 
 	updateSentData = () => {
@@ -99,6 +275,7 @@ class SymptomsForm extends React.Component {
 			loss_taste_smell: this.state.loss_taste_smell,
 			chillsorsweating: this.state.chills,
 			coughing: this.state.cough,
+			heartratefeeling: this.state.other,
 			fever: this.state.fever,
 			sorethroat: this.state.throat,
 			difficultybreathing: this.state.breath,
@@ -137,6 +314,7 @@ class SymptomsForm extends React.Component {
 			fever: this.state.fever,
 			chillsorsweating: this.state.chills,
 			coughing: this.state.cough,
+			heartratefeeling: this.state.other,
 			sorethroat: this.state.throat,
 			difficultybreathing: this.state.breath,
 			bodyaches: this.state.bodyache,
@@ -165,12 +343,44 @@ class SymptomsForm extends React.Component {
 	        	this.setState({error: "An error occured. Please try again."})
 	        })
 	};
-
+	onChange = (e) => {
+        if (this.state.nota) {
+            this.setState({error: "Cannot choose other when 'None of the Above' is chosen"})
+        } else this.setState({searchI: e.target.value.toUpperCase()})
+	};
+	onEnter = (x) => {
+		let arr = this.state.other;
+		if (arr === ""){
+			arr = x
+		} else arr = arr+","+x;
+		this.setState({searchI: ""});
+        this.setState({other: arr});
+        console.log("OTHER ENTER", arr);
+        this.setState({error: ""})
+	};
+	onEnterRemove = (x) => {
+		let arr = this.state.other;
+		let res = arr.split(","+x);
+		if (res.length === 2){
+			arr = res[0]+res[1]
+		} else {
+			res = arr.split(x);
+			if (res.length === 2 && res[1].length > 0){
+				arr = res[1].slice(1)
+			}
+			else {
+				arr = ""
+			}
+		}
+		this.setState({other: arr});
+		console.log("OTHER REMOVE", arr);
+		this.setState({error: ""})
+	};
 	render() {
 		const monthNames = ["January", "February", "March", "April", "May", "June",
 		  "July", "August", "September", "October", "November", "December"
 		];
-		let {onDailyUpdate, Dated, Month} = this.props;
+		let {Dated, Month} = this.props;
 		const onFinalClick = (e) => {
 			if (this.state.loss_taste_smell || 	this.state.nose || this.state.fever || this.state.chills || this.state.cough || this.state.throat || this.state.breath || this.state.bodyache||	this.state.headache || 	this.state.vomit || this.state.diarrhea || this.state.fatigue || this.state.nota){
 				this.setState({error: ""});
@@ -185,7 +395,18 @@ class SymptomsForm extends React.Component {
 				this.setState({error: "Please select atleast one option. If you don't have any symptoms then select None."})
 			}
 		};
-
+		const DropDownC = () => {
+			return (
+				<div className="dropdown-content" style={{display: this.state.searchI !=="" ? "block":"none"}}>
+					{this.LISTAll.map((v) => {
+						if (!this.state.other.includes(v) && v.includes(this.state.searchI)){
+							return <a onClick={() => this.onEnter(v)}>{v}</a>
+						}
+					})}
+				</div>
+			)
+		};
+		let output = this.state.other.split(",").map(x => x !== "" && <p onClick={(e) => this.onEnterRemove(x)} id={x} className={`pointer mr2 br2 ph2 pv2 mb1 mt1 dib`} style={{background: "rgb(255, 127, 129)", color:"white"}}>{x}</p>);
 		return(
 			<div className={`w-100 mb3 ${(this.state.visible) ? "fadeIn" : "fadeOut"}`}>
 			  <div className="tl ba bw1 w-100 b--light-gray bg-white ba Avenir" style={{"font-family":"Avenir"}}>
@@ -210,9 +431,23 @@ class SymptomsForm extends React.Component {
                         <p onClick={this.onClick} id="cough" className="tl f5 pointer ml1 mr5 br2 pv3 ph4 mb0 dib" style={{background: this.state.cough ? this.state.on_color : this.state.off_color, color: this.state.cough ? "white" : "gray"}}>COUGH</p>
                         <p onClick={this.onClick} id="bodyache" className="tl f5 pointer ml5 mr3 br2 pv3 ph4 mb0 dib" style={{background: this.state.bodyache ? this.state.on_color : this.state.off_color, color: this.state.bodyache ? "white" : "gray"}}>MUSCLE or BODY ACHE</p>
                         <p onClick={this.onClick} id="vomit" className="tl f5 pointer ml1 mr5 br2 pv3 ph4 mb0 dib" style={{background: this.state.vomit ? this.state.on_color : this.state.off_color, color: this.state.vomit ? "white" : "gray"}}>NAUSEA or VOMITING</p>
-                        <p onClick={this.onClick} id="loss_taste_smell" className="tl f5 pointer ml5 mr3 br2 pv3 ph4 mb0 dib" style={{background: this.state.loss_taste_smell ? this.state.on_color : this.state.off_color, color: this.state.loss_taste_smell ? "white" : "gray"}}>LOSS OF TASTE OR SMELL</p>
+                        <p onClick={this.onClick} id="loss_taste_smell" className="tl f5 pointer ml5 mr3 br2 pv3 ph4 mb0 dib" style={{background: this.state.loss_taste_smell ? this.state.on_color : this.state.off_color, color: this.state.loss_taste_smell ? "white" : "gray"}}>NEW LOSS OF TASTE OR SMELL</p>
                         <p onClick={this.onClick} id="throat" className="tl f5 pointer ml1 mr5 br2 pv3 ph4 mb0 dib" style={{background: this.state.throat ? this.state.on_color : this.state.off_color, color: this.state.throat ? "white" : "gray"}}>SHORTNESS OF BREATH</p>
 			        </div>
+					<div className="pa0 ml5 mr5" style={{ background:"rgb(243,245,248)", marginTop: "15px", padding:"10px 10px", "border-radius":"0.25rem"}}>
+						<FloatingLabelInput
+							id="other_symp_txt"
+							label="Search Other Symptoms"
+							type = "text"
+							value = {this.state.searchI}
+							onChange = {this.onChange}
+							style={{background:"rgb(243,245,248)"}}
+						/>
+						{DropDownC()}
+					</div>
+					<div className="pa0 w-100 ml5 mr5" style={{margin: "10px 4rem"}}>
+						{output}
+					</div>
 					<p onClick={this.onNotaClick} id="nota" className="grid-box pa0 tc f5 pointer ml5 mr1 mt5 br2 pv3 ph4 mb2 dib" style={{background: this.state.nota ? this.state.on_color : this.state.off_color, color: this.state.nota ? "white" : "gray", width:"80%"}}>NONE OF THE ABOVE</p>
 					<p className="f5 mt4 b red tc">{this.state.error}</p>
 			        <p className="f5 mt4 dark-blue tc">{this.state.message}</p>
@@ -235,10 +470,24 @@ class SymptomsForm extends React.Component {
 						<p onClick={this.onClick} id="cough" className="tc f5 pointer ml3 mr5 br2 pv3 ph4 mb2 w-70" style={{margin:"auto", "margin-bottom":"10px",background: this.state.cough ? this.state.on_color : this.state.off_color, color: this.state.cough ? "white" : "gray"}}>COUGH</p>
 						<p onClick={this.onClick} id="bodyache" className="tc f5 pointer ml3 mr5 br2 pv3 ph4 mb2 w-70" style={{margin:"auto", "margin-bottom":"10px",background: this.state.bodyache ? this.state.on_color : this.state.off_color, color: this.state.bodyache ? "white" : "gray"}}>MUSCLE or BODY ACHE</p>
 						<p onClick={this.onClick} id="vomit" className="tc f5 pointer ml3 mr5 br2 pv3 ph4 mb2 w-70" style={{margin:"auto", "margin-bottom":"10px",background: this.state.vomit ? this.state.on_color : this.state.off_color, color: this.state.vomit ? "white" : "gray"}}>NAUSEA or VOMITING</p>
-						<p onClick={this.onClick} id="loss_taste_smell" className="tc f5 pointer ml3 mr3 br2 pv3 ph4 mb2 w-70" style={{margin:"auto", "margin-bottom":"10px", background: this.state.loss_taste_smell ? this.state.on_color : this.state.off_color, color: this.state.loss_taste_smell ? "white" : "gray"}}>LOSS OF TASTE OR SMELL</p>
+						<p onClick={this.onClick} id="loss_taste_smell" className="tc f5 pointer ml3 mr3 br2 pv3 ph4 mb2 w-70" style={{margin:"auto", "margin-bottom":"10px", background: this.state.loss_taste_smell ? this.state.on_color : this.state.off_color, color: this.state.loss_taste_smell ? "white" : "gray"}}>NEW LOSS OF TASTE OR SMELL</p>
 						<p onClick={this.onClick} id="throat" className="tc f5 pointer ml3 mr5 br2 pv3 ph4 mb2 w-70" style={{margin:"auto", "margin-bottom":"10px",background: this.state.throat ? this.state.on_color : this.state.off_color, color: this.state.throat ? "white" : "gray"}}>SHORTNESS OF BREATH</p>
 					</div>
 					<p onClick={this.onNotaClick} id="nota" className="tc f5 pointer ml3 mr3 br2 pv3 ph4 mb2 w-70" style={{margin:"20px auto 10px", background: this.state.nota ? this.state.on_color : this.state.off_color, color: this.state.nota ? "white" : "gray"}}>NONE OF THE ABOVE</p>
+					<div className="pa0 ml5 mr5" style={{ background:"rgb(243,245,248)", marginTop: "10px", padding:"10px 10px", "border-radius":"0.25rem"}}>
+						<FloatingLabelInput
+							id="other_symp_txt"
+							label="Search Other Symptoms"
+							type = "text"
+							value = {this.state.searchI}
+							onChange = {this.onChange}
+							style={{background:"rgb(243,245,248)"}}
+						/>
+						{DropDownC()}
+					</div>
+					<div className="grid-box pa0 w-100 ml5 mr5" style={{marginBottom: 10}}>
+						{output}
+					</div>
 					<p className="f6 mt4 b red ph4 tc">{this.state.error}</p>
 			        <p className="f6 mt4 dark-blue ph4 tc">{this.state.message}</p>
 			        <div className="mt5 mb3">

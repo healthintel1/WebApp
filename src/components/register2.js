@@ -51,7 +51,7 @@ class Register2 extends React.Component {
 
   onChangeDrug = (e) => {
     this.setState({otherd: e.target.value.toUpperCase()})
-  }
+  };
 
   onEnter = (e) => {
     let x = this.state.other;
