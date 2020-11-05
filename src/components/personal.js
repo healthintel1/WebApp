@@ -14,7 +14,7 @@ class PersonalForm extends React.Component {
 			risk_person: "",
 			known_found: "false",
 			happy: "",
-			pain: 0,
+			pain: 1,
 			// picture:'UPLOAD IMAGE',
 			video:'',
 			error_message:"",
@@ -52,7 +52,7 @@ class PersonalForm extends React.Component {
 		console.log("loading data")
 		this.setState({travel: x.traveltoday.toString()})
 		this.setState({risk_person: x.exposed.toString()})
-		this.setState({pain: x.pain})
+		this.setState({pain: x.pain > 0 ? x.pain: 1})
 		this.setState({known_found: x.foundanyone.toString()})
 		this.setState({happy: x.feeling.toString()})
 	}
@@ -170,7 +170,7 @@ class PersonalForm extends React.Component {
 				    	<div className="ma1">
 					        <p className="mt3 ml5 b mb1 gray gender">DO YOU HAVE ANY PAIN? RATE YOUR PAIN ON A SCALE OF 1-10</p>
 					        <p className="mt3 ml5 b mb1 f6 gray gender">1 being no pain and 10 being intolerable pain</p>
-					        <input id="pain" onChange={this.onTypeEnter} value={parseInt(this.state.pain) || ""} type="number" min="1" max="10" className="mt3 ml5 mr2 bg-washed-green tc" style={{"height":"50px", "width":"35%","border":"none"}}/>
+					        <input id="pain" onChange={this.onTypeEnter} type="number" min="1" max="10" className="mt3 ml5 mr2 bg-washed-green tc" style={{"height":"50px", "width":"35%","border":"none"}}/>
 					    </div>
 				    	{/*<div className="ma1">*/}
 					    {/*    <p className="mt3 ml5 b mb1 gray gender">IMPORT PICTURE</p>*/}
@@ -209,7 +209,7 @@ class PersonalForm extends React.Component {
 				    	<div className="ma1 w-70">
 					        <p className="mt3 ml4 b f5 mb1 gray gender">DO YOU HAVE ANY PAIN? RATE YOUR PAIN ON A SCALE OF 1-10</p>
 					        <p className="mt3 ml4 b mb1 f6 gray gender">1 being no pain and 10 being intolerable pain</p>
-					        <input id="pain" onChange={this.onTypeEnter} value={parseInt(this.state.pain) || ""} type="number" min="1" max="10" className="mt3 ml4 mr2 bg-washed-green tc" style={{"height":"50px", "width":"35%","border":"none"}}/>
+					        <input id="pain" onChange={this.onTypeEnter} type="number" min="1" max="10" className="mt3 ml4 mr2 bg-washed-green tc" style={{"height":"50px", "width":"35%","border":"none"}}/>
 					    </div>
 				    	{/*<div className="ma1 w-70">*/}
 					    {/*    <p classNameds="mt3 ml4 f5 b mb1 gray gender">IMPORT PICTURE</p>*/}

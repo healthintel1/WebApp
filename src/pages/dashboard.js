@@ -86,20 +86,20 @@ class Dashboard extends React.Component {
 
 	vitalDone = () => {
 		console.log("HIIII")
-		if (this.state.bodytemperature>0){
+		if (this.state.vitals_data.bodytemperature>0){
 			console.log("HIIIIWW")
 			this.setState({vitals: 1})
 		}
 	};
 
 	personalDone = () => {
-		if (this.state.pain > 0){
+		if (this.state.personal_data.pain > 0 || this.state.personal_data.happy || this.state.personal_data.risk_person){
 			this.setState({personal: 1})
 		}
-	}
+	};
 
 	symptomsDone = () => {
-		if (this.state.fever || this.state.bloodpressure1 !== "" || this.state.chillsorsweating || this.state.coughing || this.state.difficultybreathing || this.state.sorethroat || this.state.bodyaches || this.state.headache || this.state.vomiting || this.state.diarrhea || this.state.none9 || this.state.fatiguetiredness){
+		if (this.state.daily_sym.fever || this.state.daily_sym.bloodpressure1 !== "" || this.state.daily_sym.chillsorsweating || this.state.daily_sym.coughing || this.state.daily_sym.difficultybreathing || this.state.daily_sym.sorethroat || this.state.daily_sym.bodyaches || this.state.daily_sym.headache || this.state.daily_sym.vomiting || this.state.daily_sym.diarrhea || this.state.daily_sym.none9 || this.state.daily_sym.fatiguetiredness){
 			this.setState({symptoms: 1})
 		}
 	};
@@ -211,7 +211,7 @@ class Dashboard extends React.Component {
 					this.setState({
 						personal: res.pain>0?1:0,
 						vitals: res.bodytemperature>0?1:0,
-						symptoms: (res.fever || res.chillsorsweating || res.coughing || res.difficultybreathing || res.sorethroat || res.bodyaches || res.headache || res.vomiting || res.diarrhea || res.none9 || res.fatiguetiredness)?1:0
+						symptoms: (res.fever || res.bloodpressure1 !== "" || res.chillsorsweating || res.coughing || res.difficultybreathing || res.sorethroat || res.bodyaches || res.headache || res.vomiting || res.diarrhea || res.none9 || res.fatiguetiredness)?1:0
 					})
 					this.setState({
 						tests: res.testresults
