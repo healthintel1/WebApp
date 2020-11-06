@@ -76,27 +76,31 @@ class Prediction extends React.Component {
         this.setState({dates: dates})
         this.setState({esi: esis})
         this.setState({risk: bools})
+        function spll(str){
+            const aarr = str.split("/")
+            return aarr[1]+"/"+aarr[0]
+        }
         let dataset = [
           {
-            name: arr[0], riskfactor: bools[dates.indexOf(arr[0])]
+            name: spll(arr[0]), riskfactor: bools[dates.indexOf(arr[0])]
           },
           {
-            name: arr[1], riskfactor: bools[dates.indexOf(arr[1])]
+            name: spll(arr[1]), riskfactor: bools[dates.indexOf(arr[1])]
           },
           {
-            name: arr[2], riskfactor: bools[dates.indexOf(arr[2])]
+            name: spll(arr[2]), riskfactor: bools[dates.indexOf(arr[2])]
           },
           {
-            name: arr[3], riskfactor: bools[dates.indexOf(arr[3])]
+            name: spll(arr[3]), riskfactor: bools[dates.indexOf(arr[3])]
           },
           {
-            name: arr[4], riskfactor: bools[dates.indexOf(arr[4])]
+            name: spll(arr[4]), riskfactor: bools[dates.indexOf(arr[4])]
           },
           {
-            name: arr[5], riskfactor: bools[dates.indexOf(arr[5])]
+            name: spll(arr[5]), riskfactor: bools[dates.indexOf(arr[5])]
           },
           {
-            name: arr[6], riskfactor: bools[dates.indexOf(arr[6])]
+            name: spll(arr[6]), riskfactor: bools[dates.indexOf(arr[6])]
           },
         ];
         this.setState({data: dataset})
