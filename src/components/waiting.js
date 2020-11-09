@@ -46,7 +46,7 @@ class Waiting extends React.Component {
                   date: this.props.Dated+"/"+this.props.Month,
                 })
             };
-          fetch("https://18.188.45.196:8080/algo", requestOptions)
+          fetch("https://cors-anywhere.herokuapp.com/http://18.188.45.196:8080/algo", requestOptions)
             .then(res=>{
               GetData()
                 .then(res => {
