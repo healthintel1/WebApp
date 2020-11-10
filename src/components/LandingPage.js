@@ -26,7 +26,7 @@ const LandingPage = () => {
 					<br/>
 					<p className="f3 purples b">Steps</p>
 					<div class="tl flex-box">
-					  <p className="f5 gray mr0 mb1">1. Sign in and create an account</p>
+					  <p className="f5 gray mr0 mb1">1. Get access</p>
 					  <p className="f5 gray ml0 mb1">2. Enter your symptoms & medical details</p>
 					  <p className="f5 gray">3. Let our algorithm calculate and predict how at risk you are</p>
 					  <p className="f5 gray">4. Find out the next steps and continue to monitor your situation</p>
