@@ -1,5 +1,5 @@
 import React from "react"
-import { BrowserView, MobileView } from "react-device-detect";
+import {BrowserView, isTablet, isMobile, isBrowser, MobileView} from "react-device-detect";
 import { navigate } from "gatsby"
 import Navbar from "../components/Navbar.js"
 import List from "../components/list.js"
@@ -233,6 +233,7 @@ class Dashboard extends React.Component {
 	}
 
 	componentDidMount() {
+		console.log("HHAAPP", isTablet, isBrowser);
 		this.setState({path: this.props.location.pathname})
 		Auth.currentAuthenticatedUser()
 			.then(res => {
@@ -338,7 +339,7 @@ class Dashboard extends React.Component {
 		return (
 			<div>
 			    <Navbar path = {this.state.path}/>
-			    <BrowserView>
+				{(isTablet === isBrowser && isBrowser === true) || <BrowserView>
 				    <div className="ma2 ph6 flex" style={{display: "grid", "grid-template-columns":"1fr 4fr", gap: "20px"}}>
 					  <div style={{"min-width":"290px"}}>
 					  	{back}
@@ -349,8 +350,8 @@ class Dashboard extends React.Component {
 					    {output}
 					  </div>
 					</div>
-				</BrowserView>
-				<MobileView>
+				</BrowserView>}
+				{!(isTablet === isBrowser && isBrowser === true) &&<MobileView>
 					<div style={{"margin":"auto", display: 'flex', flexDirection: 'row', flex: 1}}>
 						<List test={this.state.test} symptoms = {this.state.symptoms} personal = {this.state.personal} vitals = {this.state.vitals} onRouteChange={this.onRouteChange} route={this.state.route}/>
 						<Table clientid={this.state.clientid} ref = {this.child} onDateChange={this.onDateChange} symptoms={this.state.symptoms} personal = {this.state.personal} vitals = {this.state.vitals} vitalDone={this.vitalDone} personalDone={this.personalDone} symptomsDone={this.symptomsDone}/>
@@ -359,7 +360,7 @@ class Dashboard extends React.Component {
 					<div style={{"margin":"10px auto auto auto","padding-bottom":"50px"}}>
 						{output}
 					</div>
-				</MobileView>
+				</MobileView>}
 				<Footer />
 			</div>
 		);

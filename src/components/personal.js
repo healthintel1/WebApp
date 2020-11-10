@@ -1,6 +1,6 @@
 import React from "react";
 import "./transition.css"
-import { isMobile, BrowserView, MobileView } from "react-device-detect";
+import { isMobile, isTablet, isBrowser, BrowserView, MobileView } from "react-device-detect";
 import Amplify, { Auth, Storage } from 'aws-amplify';
 import awsconfig from './aws-exports';
 import {CORSDOMAIN} from './constant';
@@ -145,46 +145,73 @@ class PersonalForm extends React.Component {
 	            	  <p className={`f5 ${(isMobile)?"ml4":"ml5"} mb3 mt3 light-red dib`}>PERSONAL</p>
 	            	  <p className={`f5 gray mb3 dib ${(isMobile)?"ml6":"ml7"}`}>{monthNames[Month-1]} {Dated}</p>
 	        	    </div>
-	        	    <BrowserView>
+					{(isTablet === isBrowser && isBrowser === true) || <BrowserView>
 						<div className="ma1">
 							<p className="mt3 ml5 b mb1 gray gender">HOW ARE YOU FEELING TODAY?</p>
-							<a onClick={this.onOptionClick} id="true" name="happy" className="ml5 mb3 mt1 dark-gray pointer ph3 pv2 dib" style={{"font-size": (this.state.happy === "true") ? "44px" : "40px", opacity: (this.state.happy === "true") ? "1" : "0.5"}}>😃</a>
-							<a onClick={this.onOptionClick} id="false" name="happy" className="ml2 mb3 mt1 dark-gray pointer ph3 pv2 dib" style={{"font-size": (this.state.happy === "false") ? "44px" : "40px", opacity: (this.state.happy === "false") ? "1" : "0.5"}}>🙁</a>
+							<a onClick={this.onOptionClick} id="true" name="happy"
+							   className="ml5 mb3 mt1 dark-gray pointer ph3 pv2 dib" style={{
+								"font-size": (this.state.happy === "true") ? "44px" : "40px",
+								opacity: (this.state.happy === "true") ? "1" : "0.5"
+							}}>😃</a>
+							<a onClick={this.onOptionClick} id="false" name="happy"
+							   className="ml2 mb3 mt1 dark-gray pointer ph3 pv2 dib" style={{
+								"font-size": (this.state.happy === "false") ? "44px" : "40px",
+								opacity: (this.state.happy === "false") ? "1" : "0.5"
+							}}>🙁</a>
 						</div>
-		        	    {/*<div className="ma1">*/}
-					    {/*    <p className="mt3 ml5 b mb1 gray gender">DID YOU TRAVEL TODAY?</p>*/}
-					    {/*  	<a onClick={this.onOptionClick} id="true" name="travel" className="f6 ml5 shadow-2 mb3 mt3 dark-gray pointer ph3 pv2 dib" style={{background: this.state.travel === "true" ? this.state.on_color : "white", color: this.state.travel === "true" ? "white" : "black"}}>YES</a>*/}
-					    {/*    <a onClick={this.onOptionClick} id="false" name="travel" className="f6 ml2 shadow-2 mb3 mt3 dark-gray pointer ph3 pv2 dib" style={{background: this.state.travel === "false" ? this.state.on_color : "white", color: this.state.travel === "false" ? "white" : "black"}}>NO</a>*/}
-				    	{/*</div>*/}
-				    	<div className="ma1">
-					        <p className="mt3 ml5 b mb1 gray gender">WERE YOU EXPOSED TO ANYONE WHO HAS COVID-19?</p>
-							<p className="mt3 ml5 b mb1 f6 gray gender">(exposure means at least 15 minutes of contact within 6 feet of distance)</p>
-					      	<a onClick={this.onOptionClick} id="true" name="risk_person" className="f6 ml5 shadow-2 mb3 mt3 dark-gray pointer ph3 pv2 dib" style={{background: this.state.risk_person === "true" ? this.state.on_color : "white", color: this.state.risk_person === "true" ? "white" : "black"}}>YES</a>
-					        <a onClick={this.onOptionClick} id="false" name="risk_person" className="f6 ml2 shadow-2 mb3 mt3 dark-gray pointer ph3 pv2 dib" style={{background: this.state.risk_person === "false" ? this.state.on_color : "white", color: this.state.risk_person === "false" ? "white" : "black"}}>NO</a>
-				    	</div>
-				    	{/*<div className="ma1">*/}
-					    {/*    <p className="mt3 ml5 b mb1 gray gender">WAS ANYONE YOU KNOW FOUND TO BE COVID POSITIVE?</p>*/}
-					    {/*  	<a onClick={this.onOptionClick} id="true" name="known_found" className="f6 ml5 shadow-2 mb3 mt3 dark-gray pointer ph3 pv2 dib" style={{background: this.state.known_found === "true" ? this.state.on_color : "white", color: this.state.known_found === "true" ? "white" : "black"}}>YES</a>*/}
-					    {/*    <a onClick={this.onOptionClick} id="false" name="known_found" className="f6 ml2 shadow-2 mb3 mt3 dark-gray pointer ph3 pv2 dib" style={{background: this.state.known_found === "false" ? this.state.on_color : "white", color: this.state.known_found === "false" ? "white" : "black"}}>NO</a>*/}
-				    	{/*</div>*/}
-				    	<div className="ma1">
-					        <p className="mt3 ml5 b mb1 gray gender">DO YOU HAVE ANY PAIN? RATE YOUR PAIN ON A SCALE OF 1-10</p>
-					        <p className="mt3 ml5 b mb1 f6 gray gender">1 being no pain and 10 being intolerable pain</p>
-					        <input id="pain" onChange={this.onTypeEnter} type="number" min="1" max="10" className="mt3 ml5 mr2 bg-washed-green tc" style={{"height":"50px", "width":"35%","border":"none"}}/>
-					    </div>
-				    	{/*<div className="ma1">*/}
-					    {/*    <p className="mt3 ml5 b mb1 gray gender">IMPORT PICTURE</p>*/}
-					    {/*  	<p onClick={()=>document.getElementById('hiddenInputButton').click()} className="pointer ml5 mt3 pt4 ph3 f6 b gray bg-washed-blue w-30" style={{height:"150px", "padding-top":"60px", "background":"rgb(243,245,248)"}}>{this.state.picture}</p>*/}
-					    {/*  	<input id="hiddenInputButton" onChange={onChange} label="" placeholder="" type="file" style={{display:"none"}}/>*/}
-				    	{/*</div>*/}
-				    	{/*<img className="ml5 mt0 ba bw1 b--light-gray pa2" style={{"maxWidth":"50%"}} src={this.state.imageurl}/>*/}
-				    	<p className="f5 mt4 b red tc">{this.state.error_message}</p>
-				    	<p className="f5 mt4 dark-blue tc">{this.state.message}</p>
-				    	<div className="mt4 mb3">
-				          <p onClick={onClick} className="pointer tc pv3 f3 shadow-1" style={{"margin": "auto", "border-radius":"50%", width:"10%", background: this.state.bg, color: (this.state.bg === "white") ? "#013220" : "white"}}>✓</p>
-				        </div>
-				    </BrowserView>
-				    <MobileView>
+						{/*<div className="ma1">*/}
+						{/*    <p className="mt3 ml5 b mb1 gray gender">DID YOU TRAVEL TODAY?</p>*/}
+						{/*  	<a onClick={this.onOptionClick} id="true" name="travel" className="f6 ml5 shadow-2 mb3 mt3 dark-gray pointer ph3 pv2 dib" style={{background: this.state.travel === "true" ? this.state.on_color : "white", color: this.state.travel === "true" ? "white" : "black"}}>YES</a>*/}
+						{/*    <a onClick={this.onOptionClick} id="false" name="travel" className="f6 ml2 shadow-2 mb3 mt3 dark-gray pointer ph3 pv2 dib" style={{background: this.state.travel === "false" ? this.state.on_color : "white", color: this.state.travel === "false" ? "white" : "black"}}>NO</a>*/}
+						{/*</div>*/}
+						<div className="ma1">
+							<p className="mt3 ml5 b mb1 gray gender">WERE YOU EXPOSED TO ANYONE WHO HAS COVID-19?</p>
+							<p className="mt3 ml5 b mb1 f6 gray gender">(exposure means at least 15 minutes of contact
+								within 6 feet of distance)</p>
+							<a onClick={this.onOptionClick} id="true" name="risk_person"
+							   className="f6 ml5 shadow-2 mb3 mt3 dark-gray pointer ph3 pv2 dib" style={{
+								background: this.state.risk_person === "true" ? this.state.on_color : "white",
+								color: this.state.risk_person === "true" ? "white" : "black"
+							}}>YES</a>
+							<a onClick={this.onOptionClick} id="false" name="risk_person"
+							   className="f6 ml2 shadow-2 mb3 mt3 dark-gray pointer ph3 pv2 dib" style={{
+								background: this.state.risk_person === "false" ? this.state.on_color : "white",
+								color: this.state.risk_person === "false" ? "white" : "black"
+							}}>NO</a>
+						</div>
+						{/*<div className="ma1">*/}
+						{/*    <p className="mt3 ml5 b mb1 gray gender">WAS ANYONE YOU KNOW FOUND TO BE COVID POSITIVE?</p>*/}
+						{/*  	<a onClick={this.onOptionClick} id="true" name="known_found" className="f6 ml5 shadow-2 mb3 mt3 dark-gray pointer ph3 pv2 dib" style={{background: this.state.known_found === "true" ? this.state.on_color : "white", color: this.state.known_found === "true" ? "white" : "black"}}>YES</a>*/}
+						{/*    <a onClick={this.onOptionClick} id="false" name="known_found" className="f6 ml2 shadow-2 mb3 mt3 dark-gray pointer ph3 pv2 dib" style={{background: this.state.known_found === "false" ? this.state.on_color : "white", color: this.state.known_found === "false" ? "white" : "black"}}>NO</a>*/}
+						{/*</div>*/}
+						<div className="ma1">
+							<p className="mt3 ml5 b mb1 gray gender">DO YOU HAVE ANY PAIN? RATE YOUR PAIN ON A SCALE OF
+								1-10</p>
+							<p className="mt3 ml5 b mb1 f6 gray gender">1 being no pain and 10 being intolerable
+								pain</p>
+							<input id="pain" onChange={this.onTypeEnter} type="number" min="1" max="10"
+								   className="mt3 ml5 mr2 bg-washed-green tc"
+								   style={{"height": "50px", "width": "35%", "border": "none"}}/>
+						</div>
+						{/*<div className="ma1">*/}
+						{/*    <p className="mt3 ml5 b mb1 gray gender">IMPORT PICTURE</p>*/}
+						{/*  	<p onClick={()=>document.getElementById('hiddenInputButton').click()} className="pointer ml5 mt3 pt4 ph3 f6 b gray bg-washed-blue w-30" style={{height:"150px", "padding-top":"60px", "background":"rgb(243,245,248)"}}>{this.state.picture}</p>*/}
+						{/*  	<input id="hiddenInputButton" onChange={onChange} label="" placeholder="" type="file" style={{display:"none"}}/>*/}
+						{/*</div>*/}
+						{/*<img className="ml5 mt0 ba bw1 b--light-gray pa2" style={{"maxWidth":"50%"}} src={this.state.imageurl}/>*/}
+						<p className="f5 mt4 b red tc">{this.state.error_message}</p>
+						<p className="f5 mt4 dark-blue tc">{this.state.message}</p>
+						<div className="mt4 mb3">
+							<p onClick={onClick} className="pointer tc pv3 f3 shadow-1" style={{
+								"margin": "auto",
+								"border-radius": "50%",
+								width: "10%",
+								background: this.state.bg,
+								color: (this.state.bg === "white") ? "#013220" : "white"
+							}}>✓</p>
+						</div>
+					</BrowserView>}
+					{!(isTablet === isBrowser && isBrowser === true) && <MobileView>
 				    	{/*<div className="ma1">*/}
 					    {/*    <p className="mt3 ml4 f5 b mb1 gray gender">DID YOU TRAVEL TODAY?</p>*/}
 					    {/*  	<a onClick={this.onOptionClick} id="true" name="travel" className="f6 ml4 shadow-2 mb3 mt3 dark-gray pointer ph3 pv2 dib" style={{background: this.state.travel === "true" ? this.state.on_color : "white", color: this.state.travel === "true" ? "white" : "black"}}>YES</a>*/}
@@ -221,7 +248,7 @@ class PersonalForm extends React.Component {
 				    	<div className="mt4 mb3">
 				          <p onClick={onClick} className="pointer tc pv3 f3 shadow-1" style={{"margin": "auto", "border-radius":"50%", width:"15%", background: this.state.bg, color: (this.state.bg === "white") ? "#013220" : "white"}}>✓</p>
 				        </div>
-				    </MobileView>
+				    </MobileView>}
 			    </div>
 		    </div>
 
