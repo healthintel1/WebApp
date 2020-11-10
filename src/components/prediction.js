@@ -1,7 +1,7 @@
 import React from "react"
 import "./transition.css"
 import Graph from "./graph.js"
-import {isMobile, BrowserView, MobileView} from "react-device-detect"
+import {isMobile, BrowserView, MobileView, isTablet, isBrowser} from "react-device-detect"
 
 class Prediction extends React.Component {
     constructor(props) {
@@ -117,16 +117,16 @@ class Prediction extends React.Component {
                 <div className="w-100 bb bw1 b--light-gray">
                     <p className={`f5 w-100 ${(isMobile)?"ml4":"ml5"} mb3 mt3 dark-gray dib`} style={{"margin-right":"10rem"}}><p className={`f5 gray mb3 dib ${(isMobile)?"ml4":""}`}>{monthNames[this.props.Month-1]} {this.props.Dated}</p></p>
                 </div>
-                <BrowserView>
+                {(isTablet === isBrowser && isBrowser === true) || <BrowserView>
                     <div style={{display:"flex", "flex-wrap":"wrap"}}>
                         <p className={`${("w-40 ml5")} mt4 dib`} style={{"font-size":"72px", "font-weight":"500", color: this.state.output.head, "line-height":"1.6"}}>{this.state.output.head}</p>
                         <img className="dib pt3 w-40" src="https://i.ibb.co/j45jqDj/Screenshot-2020-06-15-at-10-40-39-PM.png"/>
                     </div>
-                </BrowserView>
-                <MobileView>
+                </BrowserView>}
+                {!(isTablet === isBrowser && isBrowser === true) &&<MobileView>
                     <p className="ml5 mt4 mb0 w-80 f1" style={{"font-weight":"500", color: this.state.output.head, "line-height":"1.6"}}>{this.state.output.head}</p>
                     <img className="ml4 w-80" src="https://i.ibb.co/j45jqDj/Screenshot-2020-06-15-at-10-40-39-PM.png"/>
-                </MobileView>
+                </MobileView>}
                 <div>
                     <p className={`f3 dark-gray ml4 mt4 b ${(isMobile)?"w-80":""}`}>{this.state.output.sub}</p>
                     <p className={`f5 gray ml4 mr6 ${(isMobile)?"w-80":""}`} style={{"line-height":"1.5"}}>{this.state.output.body}</p>

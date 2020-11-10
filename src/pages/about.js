@@ -1,6 +1,6 @@
 import React from "react"
 import Navbar from "../components/Navbar.js"
-import {BrowserView, MobileView} from "react-device-detect"
+import {BrowserView, isBrowser, isTablet, MobileView} from "react-device-detect"
 import "../components/about.css"
 import { Link, navigate } from "gatsby"
 import Amplify, { Auth } from 'aws-amplify';
@@ -30,7 +30,7 @@ class About extends React.Component {
 		return(
 			<div>
 				<Navbar path={this.state.path}/>
-				<BrowserView>
+				{(isTablet === isBrowser && isBrowser === true) || <BrowserView>
 					<div className="grid-box1">
 						<article class="w-100 Avenir shadow-4 hidden ba b--black-10">
 						  <h1 class="f5 bg-white br3 br--top gray mv0 pv3 ph5">OUR UNIQUE APPROACH</h1>
@@ -66,8 +66,8 @@ class About extends React.Component {
 						  </div>
 						</article>
 					</div>
-				</BrowserView>
-				<MobileView>
+				</BrowserView>}
+				{!(isTablet === isBrowser && isBrowser === true) && <MobileView>
 					<div style={{margin:"auto", "margin-top":"30px"}}>
 						<article class="pb4 w-100 Avenir shadow-4 hidden ba b--black-10">
 						  <h1 class="f6 bg-white br3 br--top gray mv0 pv3 ph5">OUR UNIQUE APPROACH</h1>
@@ -75,6 +75,11 @@ class About extends React.Component {
 						  	<p className="ml3 pa2 pr3 header f2">USING AI TO HELP DEFEAT COVID-19</p>
 						  	<p className="ml3 mt3 gray f5 pa2 pr5 tj">With everything that is happening in the world today we needed to figure out a way to not only help solve the uncertainty and anxiety that comes along with the pandemic. Our method uses a proprietary algorithm that is getting better with every day, with every person who helps us by updating their symptoms, and with geographic data provided by outside sources. We take all of those data points and use them to make a prediction that you can trust and help you decide what to do next and how to handle it. We don’t claim to replace an emergency room but we do give you the advice you need to make your next step. </p>
 						  	<p className="ml3 mt2 pa2 pr5 f5 tj gray">Use our site, put in your data to the best of your ability, and we will do our best to tell you how at risk you are for COVID-19 and how worried you should be</p>
+							  <p className="ml3 pa2 pr3 header f2">WHAT ARE THE SYMPOMS OF COVID-19?</p>
+							  <p className="ml3 mt2 pa2 pr5 f5 tj gray">
+								  Many patients with confirmed COVID-19 have developed fever and/or symptoms of acute respiratory illness (e.g., cough, difficulty breathing). However, limited information is currently available to characterize the full spectrum of clinical illness associated with COVID-19. Based on what is known about the virus that causes COVID-19, signs and symptoms may appear any time from 2 to 14 days after exposure to the virus. Based on preliminary data, the median incubation period is approximately 5 days, but may range 2-14 days.
+								  Public health officials have identified cases of COVID-19 infection throughout the world, including the United States, which may pose risks for public health. Please check the CDC webpage for the most up to date information.
+							  </p>
 						  </div>
 						</article>
 						<article class="w-100 Avenir shadow-4 hidden mt4 mb4 pb3 ba b--black-10">
@@ -95,7 +100,7 @@ class About extends React.Component {
 						  </div>
 						</article>
 					</div>
-				</MobileView>
+				</MobileView>}
 				<Footer />
 			</div>
 		)
