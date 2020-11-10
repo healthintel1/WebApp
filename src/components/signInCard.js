@@ -91,7 +91,7 @@ class SignInCard extends React.Component {
 		return(
 			<div className={!isMobile?"w-100 shadow-3 pa2 pt0 pb4 tc bg-white ba b--light-gray Avenir ml4":""} style={{width: (isMobile) ? "100vw" : "650px"}}>
 				<p className={`${(isMobile) ? "f2" : "f1"} mt5`} style={{color: "rgb(127,90,179)"}}>HelpDefeatCOVID</p>
-				<p className={`${(isMobile) ? "f5" : "f4"} w-60 tc gray mt4 mb5`} style={{"margin-left":"auto", "margin-right":"auto", "font-weight":"500"}}>Please Sign In or Create an Account</p>
+				<p className={`${(isMobile) ? "f5" : "f4"} w-60 tc gray mt4 mb5`} style={{"margin-left":"auto", "margin-right":"auto", "font-weight":"500"}}>Sign-in if you are an authorized HealthIntel Pilot User</p>
 				<div className="tl" style={{ fontSize: (isMobile) ? 18 : 24, padding:"20px 20px", "border-radius":"15px", width:"75%", "margin-top":"20px", "margin":"auto"}}>
 		            <FloatingLabelInput
 		              id="email"
@@ -120,12 +120,12 @@ class SignInCard extends React.Component {
 					<p onClick={()=> navigate("/forgot-password")} className={`black underline-hover pointer dib ${(isMobile) ? "ml0" : "ml4"} ${(isMobile) ? "f6" : "f5"}`}>Forgot password?</p>
 				</div>
 
-				<p onClick={()=>OnSignInSubmit()} class={`f4 tc no-underline black bg-animate hover-bg-purple hover-white inline-flex pointer mb3 items-center pa3 ba border-box ph4 br3 ${(isMobile) ? "mr3" : "mr5"}`} style={{"margin-left":"auto"}}>
+				<p onClick={()=>OnSignInSubmit()} class={`f4 tc no-underline black bg-animate hover-bg-purple hover-white inline-flex pointer mb3 items-center pa3 ba border-box ph4 br3 ${(isMobile) ? "mr3" : "mr5"}`} style={{"margin":"auto"}}>
 				    <span class="pr1"> Sign In </span>
 				</p>
-				<p onClick={()=> this.onInviteOthers()} class={`f4 tc no-underline bg-animate black bg-purple light-gray inline-flex pointer mb3 items-center pa3 ph4 ba br3 border-box ${(isMobile) ? "ml3" : "ml5"}`}>
-					<span> {this.state.invite} </span>
-				</p>
+				{/*<p onClick={()=> this.onInviteOthers()} class={`f4 tc no-underline bg-animate black bg-purple light-gray inline-flex pointer mb3 items-center pa3 ph4 ba br3 border-box ${(isMobile) ? "ml3" : "ml5"}`}>*/}
+				{/*	<span> {this.state.invite} </span>*/}
+				{/*</p>*/}
 				<br/>
 				{/*<p onClick={()=> this.onInviteOthers()} class="f4 tc no-underline bg-animate bg-purple light-gray inline-flex pointer mb3 items-center mt4 bg-white black pa3 ph4 br3" style={{"margin-left":"auto"}}>*/}
 				{/*    <span> {this.state.invite} </span>*/}
