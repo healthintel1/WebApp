@@ -284,7 +284,7 @@ class Dashboard extends React.Component {
 					})
 					.catch(err => console.log(err))
 			})
-			.catch(err => navigate("/"))
+			.catch(err => {})
 	}
 
 	dataSet = (data) => {
