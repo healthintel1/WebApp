@@ -1,6 +1,8 @@
 import React from "react"
 import "./transition.css"
-import {isMobile, BrowserView, MobileView} from "react-device-detect"
+import {isBrowser, isTablet, isMobile} from "react-device-detect"
+import BrowserView from "../components/BrowserView"
+import MobileView from "../components/MobileView"
 import Amplify, { Auth } from 'aws-amplify';
 import awsconfig from '../aws-exports';
 import {CORSDOMAIN} from './constant';
@@ -40,13 +42,13 @@ class Waiting extends React.Component {
           }
           const requestOptions = {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': "*" },
+                headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': "*", "accept":"*" },
                 body: JSON.stringify({
                   clientid: x,
                   date: this.props.Dated+"/"+this.props.Month,
                 })
             };
-          fetch("https://cors-anywhere.herokuapp.com/http://18.188.45.196:8080/algo", requestOptions)
+          fetch("https://heruko-nocors.herokuapp.com/http://18.188.45.196:8080/algo", requestOptions)
             .then(res=>{
               GetData()
                 .then(res => {

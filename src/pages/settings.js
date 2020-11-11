@@ -111,7 +111,7 @@ class Settings extends React.Component {
 				<div style={{width: (isMobile) ? "100vw" : "700px", margin:"auto"}}>
 					<div className="tl ba bw1 w-100 pb4 b--light-gray bg-white ba Avenir" style={{"font-family":"Avenir"}}>
 						<div className="w-100 mb3 bb bw1 b--light-gray">
-		            	  <p className={`f5 ${(isMobile)?"ml4":"ml5"} mb3 mt3 light-red dib`} style={{"margin-right":"10rem"}}>YOUR PROFILE</p>
+		            	  <p className={`f5 ${(isMobile)?"ml4":"ml5"} mb3 mt3 light-red dib`} style={{marginRight:"10rem"}}>YOUR PROFILE</p>
 		        	    </div>
 		        	    <div className={`pa4 ${(isMobile) ? "" : "pl5"}`}>
 			        		<p className={`${(isMobile) ? "f4" : "f3"} mb4 dib`} style={{color:"rgb(127,79,180)"}}><b>Personal Details</b><span onClick={()=>navigate("/update-account", {state:{route: "personal", data: this.state}})} className="ml2 f6 gray underline-hover pointer dim">Edit</span></p>

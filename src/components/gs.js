@@ -1,6 +1,8 @@
 import React from "react"
 import "./transition.css"
-import {isMobile, BrowserView, MobileView, isTablet, isBrowser} from "react-device-detect"
+import {isBrowser, isTablet, isMobile} from "react-device-detect"
+import BrowserView from "../components/BrowserView"
+import MobileView from "../components/MobileView"
 import CustomSVG from "./customSVG";
 
 class GettingStarted extends React.Component {
@@ -35,14 +37,14 @@ class GettingStarted extends React.Component {
                 <div className="w-100 bb bw1 b--light-gray">
                     <p className={`f5 w-100 ${(isMobile)?"ml4":"ml5"} mb3 mt3 dark-gray dib`} style={{"margin-right":"10rem"}}> <p className={`f5 gray mb3 dib ${(isMobile)?"ml4":""}`}>{monthNames[this.props.Month-1]} {this.props.Dated}</p></p>
                 </div>
-                {(isTablet === isBrowser && isBrowser === true) || <BrowserView>
+                { <BrowserView>
                     <div style={{display:"flex", "flex-wrap":"wrap"}}>
                         <p className="ml5 mt5 pt2 w-40 dib" style={{"font-size":"32px", "font-weight":"500", color: "rgb(127,90,179)", "line-height":"1.6"}}>Please enter your vitals and other details to view the prediction.</p>
                         {/*<img className="dib ml2 pt0 w-40" src="https://i.ibb.co/hFd0T7s/circle-cropped.png"/>*/}
                         <CustomSVG/>
                     </div>
                 </BrowserView>}
-                {!(isTablet === isBrowser && isBrowser === true) &&<MobileView>
+                { <MobileView>
                     <p className="ml4 mt4 mb0 w-80 f2 tc" style={{"font-weight":"500", color: "rgb(127,90,179)", "line-height":"1.6"}}>Please enter your vitals and other details to view the prediction.</p>
                     {/*<img className="ml4 w-80" src="https://i.ibb.co/hFd0T7s/circle-cropped.png"/>*/}
                     <div style={{display: "flex", justifyContent: 'center'}}>
@@ -50,7 +52,7 @@ class GettingStarted extends React.Component {
                     </div>
                 </MobileView>}
                 <div className="tc w-100 mt3 mb0">
-                    <p onClick={this.letsGo} class="f4 tc grow no-underline pointer br-pill ph4 pv3 mb2 dib white bg-light-purple" style={{margin:"auto"}}>Let's Go!</p>
+                    <p onClick={this.letsGo} className="f4 tc grow no-underline pointer br-pill ph4 pv3 mb2 dib white bg-light-purple" style={{margin:"auto"}}>Let's Go!</p>
                 </div>
             </div>
         </div>

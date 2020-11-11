@@ -69,12 +69,12 @@ class UpdatePersonal extends React.Component {
 		}
 
 		return(
-			<div className={`shadow-3 tl b--light-gray pb4 pt3 mb3 bg-white ba Avenir`} style={{margin:"auto", "margin-bottom":"40px","font-family":"Avenir", width: (isMobile) ? "85vw" : "700px", "margin-top":"50px"}}>
+			<div className={`shadow-3 tl b--light-gray pb4 pt3 mb3 bg-white ba Avenir`} style={{margin:"auto", "marginBottom":"40px","fontFamily":"Avenir", width: (isMobile) ? "85vw" : "700px", "marginTop":"50px"}}>
 				<div className={`${(isMobile) ? "ph4" : "ph5"}`}>
 					<p className={`ml3 mt4 gray mb3 ${(isMobile) ? "f2" : "f1"}`}>PERSONAL INFO</p>
 					<p className={`f6 ml3 mt2 gray mb3 ${(isMobile) ? "w-80" : "w-60"}`}>Please enter your details.</p>
 					<div style={{"padding-top": '1.5em'}}>
-			          <div className="tl" style={{ fontSize: (isMobile) ? "16" : "20", background:"rgb(243,245,248)", padding:"20px 20px", "border-radius":"15px", width:"88%"}}>
+			          <div className="tl" style={{ fontSize: (isMobile) ? "16" : "20", background:"rgb(243,245,248)", padding:"20px 20px", "borderRadius":"15px", width:"88%"}}>
 			            <FloatingLabelInput
 			              id="firstname"
 			              label="First Name"
@@ -83,7 +83,7 @@ class UpdatePersonal extends React.Component {
 			              style={{background:"rgb(243,245,248)"}}
 			            />
 			          </div>
-			          <div className="tl" style={{ fontSize: (isMobile) ? "16" : "20", background:"rgb(243,245,248)", padding:"20px 20px", "border-radius":"15px", width:"88%", "margin-top":"20px"}}>
+			          <div className="tl" style={{ fontSize: (isMobile) ? "16" : "20", background:"rgb(243,245,248)", padding:"20px 20px", "borderRadius":"15px", width:"88%", "marginTop":"20px"}}>
 			            <FloatingLabelInput
 			              id="lastname"
 			              label="Last Name"
@@ -92,14 +92,14 @@ class UpdatePersonal extends React.Component {
 			              style={{background:"rgb(243,245,248)"}}
 			            />
 			          </div>
-			          <div  style={{ fontSize: (isMobile) ? "16" : "20", background:"rgb(243,245,248)", padding:"20px 20px", "border-radius":"15px", width:"50%", "margin-top":"20px"}}>
+			          <div  style={{ fontSize: (isMobile) ? "16" : "20", background:"rgb(243,245,248)", padding:"20px 20px", "borderRadius":"15px", width:"50%", "marginTop":"20px"}}>
 			          	<p className="tl gray mb2">Date of Birth<sup className="f6 mt3 pt4">*</sup></p>
 			          	<DatePicker
 					        selected={this.state.date}
 					        onChange={this.setStartDate}
 					    />
 			          </div>
-			          <div className="tl mb2" style={{ fontSize: (isMobile) ? "16" : "20", background:"rgb(243,245,248)", padding:"20px 20px", "border-radius":"15px", width:"50%", "margin-top":"20px"}}>
+			          <div className="tl mb2" style={{ fontSize: (isMobile) ? "16" : "20", background:"rgb(243,245,248)", padding:"20px 20px", "borderRadius":"15px", width:"50%", "marginTop":"20px"}}>
 			            <FloatingLabelInput
 			              id="zipcode"
 			              label="ZIP Code *"
@@ -130,7 +130,7 @@ class UpdatePersonal extends React.Component {
 			          <p className="f5 mt4 b red tc">{this.state.error}</p>
 			          <p className="f5 mt4 dark-blue tc">{this.state.message}</p>
 			      </div>
-		          <p onClick={onSubmit} className={`br-100 purple ph3 pv3 shadow-2 pointer mt2`} style={{"margin":"auto", "margin-top":"20px", width: (isMobile) ? "15%" : "10%"}}>✓</p>
+		          <p onClick={onSubmit} className={`br-100 purple ph3 pv3 shadow-2 pointer mt2`} style={{"margin":"auto", "marginTop":"20px", width: (isMobile) ? "15%" : "10%"}}>✓</p>
 		        </div>
 			</div>
 		)

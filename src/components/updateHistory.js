@@ -1,10 +1,8 @@
 import React from "react"
 import "./register.css"
-import {
-  BrowserView,
-  MobileView,
-  isMobile, isTablet, isBrowser,
-} from "react-device-detect";
+import {isBrowser, isTablet, isMobile} from "react-device-detect"
+import BrowserView from "../components/BrowserView"
+import MobileView from "../components/MobileView"
 import {navigate} from "gatsby";
 
 class UpdateHistory extends React.Component {
@@ -57,7 +55,7 @@ class UpdateHistory extends React.Component {
 			<div className={`shadow-3 tl b--light-gray ${(isMobile) ? "ph4" : "ph5"} pb4 bg-white ba Avenir`} style={{margin:"auto", "font-family":"Avenir", width:(isMobile) ? "85vw" : "700px", "margin-top":"50px"}}>
 			  <p className={`${(isMobile) ? "f2" : "f1"} ml3 mt4 gray mb3`}>MEDICAL HISTORY</p>
         <p className={`f5 ml3 mt2 gray mb4 ${(isMobile) ? "w-90" : "w-50"}`}>Click the boxes that apply to you</p>
-              {(isTablet === isBrowser && isBrowser === true) || <BrowserView>
+              { <BrowserView>
           <div className="grid-box pa0 w-100">
             <div onClick={this.onClick} id="heartdisease" className="tl f4 pointer ml2 br2 ph4 pv3 mb0 mt0 dib" style={{background: this.state.heartdisease ? this.state.on_color : this.state.off_color, color: this.state.heartdisease ? "white" : "gray"}}>
               <p onClick={this.onClick2} id="h1" className="mv0 f4">HEART DISEASE</p>
@@ -84,7 +82,7 @@ class UpdateHistory extends React.Component {
           </div>
           <p onClick={onSubmit} className={`br-100 purple ph3 pv3 shadow-2 pointer mt2`} style={{"margin":"auto", "margin-top":"20px", width: (isMobile) ? "15%" : "10%"}}>✓</p>
         </BrowserView>}
-              {!(isTablet === isBrowser && isBrowser === true) &&<MobileView>
+              { <MobileView>
           <div className="pa0 w-100">
             <div onClick={this.onClick} id="heartdisease" className="tc w-100 mb1 f5 pointer ml2 br2 ph4 pv3 mt0 dib" style={{background: this.state.heart_disease ? this.state.on_color : this.state.off_color, color: this.state.heart_disease ? "white" : "gray"}}>
               <p onClick={this.onClick2} id="h1" className="m50 mb1 f5 ph3">HEART DISEASE</p>

@@ -1,6 +1,6 @@
 import React from "react"
 import {navigate} from "gatsby";
-import {  
+import {
   isBrowser,
   isMobile
 } from "react-device-detect";
@@ -27,7 +27,7 @@ class ForgotForm1 extends React.Component {
 
 	render() {
 		const {onRouteChange, onEmailUpdate} = this.props
-		const onSubmit =() => {			
+		const onSubmit =() => {
 			if (validator.validate(this.state.email) === true) {
 				this.setState({error: ""})
 				this.setState({message:"Loading..."})
@@ -50,8 +50,8 @@ class ForgotForm1 extends React.Component {
 				</div>
 				<p className="f5 b mb4 red">{this.state.error}</p>
 				<p className="f5 mb4 dark-blue tc">{this.state.message}</p>
-				<p onClick={onSubmit} class="f4 tc no-underline black bg-animate hover-bg-purple hover-white inline-flex pointer mb3 items-center pa3 ba border-box" style={{margin:"auto"}}>
-				    <span class="pr1"> Continue </span>
+				<p onClick={onSubmit} className="f4 tc no-underline black bg-animate hover-bg-purple hover-white inline-flex pointer mb3 items-center pa3 ba border-box" style={{margin:"auto"}}>
+				    <span className="pr1"> Continue </span>
 				</p>
 			</div>
 		);

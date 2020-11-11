@@ -1,6 +1,6 @@
 import React from "react"
 import {navigate} from "gatsby";
-import {  
+import {
   isBrowser,
   isMobile
 } from "react-device-detect";
@@ -18,7 +18,7 @@ schema
 .has().uppercase()                              // Must have uppercase letters
 .has().lowercase()                              // Must have lowercase letters
 .has().digits()
-.has().symbols()                                
+.has().symbols()
 .has().not().spaces()
 
 class ForgotForm2 extends React.Component {
@@ -37,7 +37,7 @@ class ForgotForm2 extends React.Component {
 		console.log(e.target.value)
 	}
 
-	
+
 
 	render() {
 		const {email, onRouteChange} = this.props
@@ -67,8 +67,8 @@ class ForgotForm2 extends React.Component {
 				<div className="tl mb5" style={{ fontSize: (isMobile) ? 16 : 18, background:"rgb(243,245,248)", padding:"15px 15px", "border-radius":"15px", width:(isMobile) ? "95%" : "85%"}}>
 					<FloatingLabelInput id="new_pass" type="password" label="Confirm New Password" onChange={this.onTypeEnter} style={{background:"rgb(243,245,248)"}}/>
 				</div>
-				<p onClick={onSubmit} class="f4 tc no-underline black bg-animate hover-bg-purple hover-white inline-flex pointer mb3 items-center pa3 ba border-box" style={{margin:"auto"}}>
-				    <span class="pr1"> Continue </span>
+				<p onClick={onSubmit} className="f4 tc no-underline black bg-animate hover-bg-purple hover-white inline-flex pointer mb3 items-center pa3 ba border-box" style={{margin:"auto"}}>
+				    <span className="pr1"> Continue </span>
 				</p>
 				<p className="f5 b red">{this.state.error}</p>
 				<p className="f5 mb4 dark-blue tc">{this.state.message}</p>

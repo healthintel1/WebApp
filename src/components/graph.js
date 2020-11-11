@@ -1,7 +1,9 @@
 import React from "react"
 import "./transition.css"
 import Chart from "./chart.js"
-import {isMobile, BrowserView, MobileView} from "react-device-detect"
+import {isBrowser, isTablet, isMobile} from "react-device-detect"
+import BrowserView from "../components/BrowserView"
+import MobileView from "../components/MobileView"
 
 class Graph extends React.Component {
     constructor(props) {

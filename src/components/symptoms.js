@@ -1,6 +1,8 @@
 import React from "react";
 import "./transition.css"
-import {isMobile, BrowserView, MobileView, isTablet, isBrowser} from "react-device-detect";
+import {isBrowser, isTablet, isMobile} from "react-device-detect"
+import BrowserView from "../components/BrowserView"
+import MobileView from "../components/MobileView"
 import { CORSDOMAIN } from "./constant"
 import FloatingLabelInput from "react-floating-label-input";
 
@@ -249,7 +251,7 @@ class SymptomsForm extends React.Component {
 		this.setState({message: ""})
 		this.setState({vitals: this.props.vitals})
 		this.setState({symptoms: this.props.symptoms})
-		this.setState({fever: this.props.fever})
+		this.setState({fever: this.props.data.fever})
 		this.setState({personal: this.props.personal})
 		setTimeout(()=>{this.setState({visible: true})}, 25)
 		let x = this.props.data
@@ -272,7 +274,7 @@ class SymptomsForm extends React.Component {
 	updateSentData = () => {
 		let senddata = {
 			nose: this.state.nose,
-			loss_taste_smell: this.state.loss_taste_smell,
+			losstastesmell: this.state.loss_taste_smell,
 			chillsorsweating: this.state.chills,
 			coughing: this.state.cough,
 			bloodpressure1: this.state.other,
@@ -290,10 +292,10 @@ class SymptomsForm extends React.Component {
 		}
 		const requestOptions = {
 			    method: 'POST',
-			    headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': "*" },
+			    headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': "*", "accept":"*" },
 		        body: JSON.stringify(senddata)
 		    };
-		fetch(CORSDOMAIN+'/updatevitals2?', requestOptions)
+		fetch(CORSDOMAIN+'/updatevitals2', requestOptions)
 	        .then(res=>{
 	        	console.log(res)
 	        	setTimeout(()=>{this.setState({visible: false})}, 100)
@@ -308,7 +310,7 @@ class SymptomsForm extends React.Component {
 
 	sendData = () => {
 		let senddata = {
-			loss_taste_smell: this.state.loss_taste_smell,
+			losstastesmell: this.state.loss_taste_smell,
 			nose: this.state.nose,
 			fever: this.state.fever,
 			chillsorsweating: this.state.chills,
@@ -327,10 +329,10 @@ class SymptomsForm extends React.Component {
 		};
 		const requestOptions = {
 			    method: 'POST',
-			    headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': "*" },
+			    headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': "*", "accept":"*" },
 		        body: JSON.stringify(senddata)
 		    };
-		fetch(CORSDOMAIN+'/postvitals?', requestOptions)
+		fetch(CORSDOMAIN+'/postvitals', requestOptions)
 	        .then(res=>{
 	        	console.log(res)
 	        	setTimeout(()=>{this.setState({visible: false})},100)
@@ -415,7 +417,7 @@ class SymptomsForm extends React.Component {
         	    </div>
 				<p className={`f3 ${(isMobile)?"ml4":"ml5"} mt4 gray mb3 pr2`}>DO YOU HAVE ANY OF THESE SYMPTOMS? (Y/N)</p>
 		        <p className={`f5 ${(isMobile)?"ml4":"ml5"} mt2 gray w-50 mb3`}>Click the boxes that apply to you</p>
-				  {(isTablet === isBrowser && isBrowser === true) || <BrowserView>
+				  {<BrowserView>
 					<p className={`f5 ${(isMobile)?"ml4":"ml5"} mt3 light-red dib`} style={{marginBottom: 0}}>Severe symptoms</p>
 					<div className="grid-box pa0 w-100">
                         <p onClick={this.onClick} id="fatigue" className="tl f5 pointer ml5 mr3 br2 pv3 ph4 mb0 dib" style={{background: this.state.fatigue ? this.state.on_color : this.state.off_color, color: this.state.fatigue ? "white" : "gray"}}>PERSISTANT PAIN/PRESSURE IN CHEST</p>
@@ -454,23 +456,23 @@ class SymptomsForm extends React.Component {
 			          <p onClick={onFinalClick} className="pointer tc pv3 f3 shadow-1" style={{"margin": "auto", "border-radius":"50%", width:"10%", background: this.state.bg, color: (this.state.bg === "white") ? "#013220" : "white"}}>✓</p>
 			        </div>
 		        </BrowserView>}
-				  {!(isTablet === isBrowser && isBrowser === true) &&<MobileView>
+				  { <MobileView>
 					<p className={`f5 ${(isMobile)?"ml4":"ml5"} mt3 light-red dib`} style={{marginBottom: 20}}>Severe symptoms</p>
 					<div className="pa2 w-100 tc">
-						<p onClick={this.onClick} id="fatigue" className="tc f5 pointer ml3 mr3 br2 pv3 ph4 mb2 w-70" style={{margin:"auto", "margin-bottom":"10px",background: this.state.fatigue ? this.state.on_color : this.state.off_color, color: this.state.fatigue ? "white" : "gray"}}>PERSISTANT PAIN/PRESSURE IN CHEST</p>
-						<p onClick={this.onClick} id="diarrhea" className="tc f5 pointer ml3 mr3 br2 pv3 ph4 mb2 w-70" style={{margin:"auto", "margin-bottom":"10px",background: this.state.diarrhea ? this.state.on_color : this.state.off_color, color: this.state.diarrhea ? "white" : "gray"}}>NEW CONFUSION</p>
-						<p onClick={this.onClick} id="nose" className="tc f5 pointer ml3 mr3 br2 pv3 ph4 mb2 w-70" style={{margin:"auto", "margin-bottom":"10px", background: this.state.nose ? this.state.on_color : this.state.off_color, color: this.state.nose ? "white" : "gray"}}>BLUISH LIPS/FACE</p>
-						<p onClick={this.onClick} id="chills" className="tc f5 pointer ml3 mr5 br2 pv3 ph4 mb2 w-70" style={{margin:"auto", "margin-bottom":"10px",background: this.state.chills ? this.state.on_color : this.state.off_color, color: this.state.chills ? "white" : "gray"}}>INABILITY TO WAKE/STAY AWAKE</p>
-						<p onClick={this.onClick} id="breath" className="tc f5 pointer ml3 mr3 br2 pv3 ph4 mb2 w-70" style={{margin:"auto", "margin-bottom":"10px",background: this.state.breath ? this.state.on_color : this.state.off_color, color: this.state.breath ? "white" : "gray"}}>DIFFICULTY IN BREATHING</p>
+						<p onClick={this.onClick} id="fatigue" className="tc f5 pointer ml3 mr3 br2 pv3 ph4 mb2 w-70" style={{margin:"auto", "marginBottom":"10px",background: this.state.fatigue ? this.state.on_color : this.state.off_color, color: this.state.fatigue ? "white" : "gray"}}>PERSISTANT PAIN/PRESSURE IN CHEST</p>
+						<p onClick={this.onClick} id="diarrhea" className="tc f5 pointer ml3 mr3 br2 pv3 ph4 mb2 w-70" style={{margin:"auto", "marginBottom":"10px",background: this.state.diarrhea ? this.state.on_color : this.state.off_color, color: this.state.diarrhea ? "white" : "gray"}}>NEW CONFUSION</p>
+						<p onClick={this.onClick} id="nose" className="tc f5 pointer ml3 mr3 br2 pv3 ph4 mb2 w-70" style={{margin:"auto", marginBottom:"10px", background: this.state.nose ? this.state.on_color : this.state.off_color, color: this.state.nose ? "white" : "gray"}}>BLUISH LIPS/FACE</p>
+						<p onClick={this.onClick} id="chills" className="tc f5 pointer ml3 mr5 br2 pv3 ph4 mb2 w-70" style={{margin:"auto", marginBottom:"10px",background: this.state.chills ? this.state.on_color : this.state.off_color, color: this.state.chills ? "white" : "gray"}}>INABILITY TO WAKE/STAY AWAKE</p>
+						<p onClick={this.onClick} id="breath" className="tc f5 pointer ml3 mr3 br2 pv3 ph4 mb2 w-70" style={{margin:"auto", marginBottom:"10px",background: this.state.breath ? this.state.on_color : this.state.off_color, color: this.state.breath ? "white" : "gray"}}>DIFFICULTY IN BREATHING</p>
 					</div>
 					<p className={`f5 ${(isMobile)?"ml4":"ml5"} mt3 light-red dib`} style={{marginBottom: 20}}>Other symptoms</p>
 					<div className="pa2 w-100 tc">
-						<p onClick={this.onClick} id="fever" className="tc f5 pointer ml3 mr3 br2 pv3 ph4 mb2 w-70" style={{margin:"auto", "margin-bottom":"10px", background: this.state.fever ? this.state.on_color : this.state.off_color, color: this.state.fever ? "white" : "gray"}}>FEVER or CHILLS</p>
-						<p onClick={this.onClick} id="cough" className="tc f5 pointer ml3 mr5 br2 pv3 ph4 mb2 w-70" style={{margin:"auto", "margin-bottom":"10px",background: this.state.cough ? this.state.on_color : this.state.off_color, color: this.state.cough ? "white" : "gray"}}>COUGH</p>
-						<p onClick={this.onClick} id="bodyache" className="tc f5 pointer ml3 mr5 br2 pv3 ph4 mb2 w-70" style={{margin:"auto", "margin-bottom":"10px",background: this.state.bodyache ? this.state.on_color : this.state.off_color, color: this.state.bodyache ? "white" : "gray"}}>MUSCLE or BODY ACHE</p>
-						<p onClick={this.onClick} id="vomit" className="tc f5 pointer ml3 mr5 br2 pv3 ph4 mb2 w-70" style={{margin:"auto", "margin-bottom":"10px",background: this.state.vomit ? this.state.on_color : this.state.off_color, color: this.state.vomit ? "white" : "gray"}}>NAUSEA or VOMITING</p>
-						<p onClick={this.onClick} id="loss_taste_smell" className="tc f5 pointer ml3 mr3 br2 pv3 ph4 mb2 w-70" style={{margin:"auto", "margin-bottom":"10px", background: this.state.loss_taste_smell ? this.state.on_color : this.state.off_color, color: this.state.loss_taste_smell ? "white" : "gray"}}>NEW LOSS OF TASTE OR SMELL</p>
-						<p onClick={this.onClick} id="throat" className="tc f5 pointer ml3 mr5 br2 pv3 ph4 mb2 w-70" style={{margin:"auto", "margin-bottom":"10px",background: this.state.throat ? this.state.on_color : this.state.off_color, color: this.state.throat ? "white" : "gray"}}>SHORTNESS OF BREATH</p>
+						<p onClick={this.onClick} id="fever" className="tc f5 pointer ml3 mr3 br2 pv3 ph4 mb2 w-70" style={{margin:"auto", marginBottom:"10px", background: this.state.fever ? this.state.on_color : this.state.off_color, color: this.state.fever ? "white" : "gray"}}>FEVER or CHILLS</p>
+						<p onClick={this.onClick} id="cough" className="tc f5 pointer ml3 mr5 br2 pv3 ph4 mb2 w-70" style={{margin:"auto", marginBottom:"10px",background: this.state.cough ? this.state.on_color : this.state.off_color, color: this.state.cough ? "white" : "gray"}}>COUGH</p>
+						<p onClick={this.onClick} id="bodyache" className="tc f5 pointer ml3 mr5 br2 pv3 ph4 mb2 w-70" style={{margin:"auto", marginBottom:"10px",background: this.state.bodyache ? this.state.on_color : this.state.off_color, color: this.state.bodyache ? "white" : "gray"}}>MUSCLE or BODY ACHE</p>
+						<p onClick={this.onClick} id="vomit" className="tc f5 pointer ml3 mr5 br2 pv3 ph4 mb2 w-70" style={{margin:"auto", marginBottom:"10px",background: this.state.vomit ? this.state.on_color : this.state.off_color, color: this.state.vomit ? "white" : "gray"}}>NAUSEA or VOMITING</p>
+						<p onClick={this.onClick} id="loss_taste_smell" className="tc f5 pointer ml3 mr3 br2 pv3 ph4 mb2 w-70" style={{margin:"auto", marginBottom:"10px", background: this.state.loss_taste_smell ? this.state.on_color : this.state.off_color, color: this.state.loss_taste_smell ? "white" : "gray"}}>NEW LOSS OF TASTE OR SMELL</p>
+						<p onClick={this.onClick} id="throat" className="tc f5 pointer ml3 mr5 br2 pv3 ph4 mb2 w-70" style={{margin:"auto", marginBottom:"10px",background: this.state.throat ? this.state.on_color : this.state.off_color, color: this.state.throat ? "white" : "gray"}}>SHORTNESS OF BREATH</p>
 					</div>
 					<div className="pa0 ml5 mr5" style={{ background:"rgb(243,245,248)", marginTop: "10px", padding:"10px 10px", "border-radius":"0.25rem"}}>
 						<FloatingLabelInput

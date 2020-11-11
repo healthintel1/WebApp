@@ -20,10 +20,10 @@ class Register4 extends React.Component {
 			console.log(this.props.data)
 			const requestOptions = {
 			        method: 'POST',
-			        headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': true },
+			        headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': true, "accept":"*" },
 			        body: JSON.stringify(this.props.data)
 			    };
-			fetch(CORSDOMAIN+'/posthistory?', requestOptions)
+			fetch(CORSDOMAIN+'/posthistory', requestOptions)
 		        .then(res=>{
 		        	this.setState({output: <p onClick={()=>navigate("/")} className={`f5 tc no-underline black bg-animate hover-bg-purple hover-white inline-flex pointer mb3 mt6 items-center pa3 ba border-box ph4 br3`} style={{"margin":"auto", "margin-top":"50px"}}>Continue to Sign In</p>})
 		        })

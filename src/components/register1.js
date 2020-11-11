@@ -86,7 +86,7 @@ class Register1 extends React.Component {
 			onAccountSubmit(this.state)
 		}
 		return(
-			<div className={`shadow-3 tl b--light-gray pb4 pt3 mb3 bg-white ba Avenir`} style={{margin:"auto", "margin-bottom":"40px","font-family":"Avenir", width: (isMobile) ? "100vw" : "700px"}}>
+			<div className={`shadow-3 tl b--light-gray pb4 pt3 mb3 bg-white ba Avenir`} style={{margin:"auto", "marginBottom":"40px","fontFamily":"Avenir", width: (isMobile) ? "100vw" : "700px"}}>
 				<div className={`${(isMobile) ? "ph4" : "ph5"}`}>
 					<p className={`ml3 mt4 gray mb3 ${(isMobile) ? "f2" : "f1"}`}>ACCOUNT</p>
 					{/*<p className={`f6 ml3 mt2 gray mb3 ${(isMobile) ? "w-80" : "w-60"}`}>Please enter your details. Make sure your password is atleast 8 characters long and contains uppercase, lowercase, numeric and special characters.</p>*/}
@@ -100,7 +100,7 @@ class Register1 extends React.Component {
 			              style={{background:"rgb(243,245,248)"}}
 			            />
 			          </div>
-			          <div className="tl" style={{ fontSize: (isMobile) ? "16" : "20", background:"rgb(243,245,248)", padding:"20px 20px", "border-radius":"15px", width:"88%", "margin-top":"20px"}}>
+			          <div className="tl" style={{ fontSize: (isMobile) ? "16" : "20", background:"rgb(243,245,248)", padding:"20px 20px", "borderRadius":"15px", width:"88%", "marginTop":"20px"}}>
 			            <FloatingLabelInput
 			              id="lastname"
 			              label="Last Name"
@@ -109,7 +109,7 @@ class Register1 extends React.Component {
 			              style={{background:"rgb(243,245,248)"}}
 			            />
 			          </div>
-			          <div className="tl" style={{ fontSize: (isMobile) ? "16" : "20", background:"rgb(243,245,248)", padding:"20px 20px", "border-radius":"15px", width:"88%", "margin-top":"20px"}}>
+			          <div className="tl" style={{ fontSize: (isMobile) ? "16" : "20", background:"rgb(243,245,248)", padding:"20px 20px", "borderRadius":"15px", width:"88%", "marginTop":"20px"}}>
 			            <FloatingLabelInput
 			              id="email"
 			              label="Email Address *"
@@ -119,7 +119,7 @@ class Register1 extends React.Component {
 			              style={{background:"rgb(243,245,248)"}}
 			            />
 			          </div>
-			          <div className="tl" style={{ fontSize: (isMobile) ? "16" : "20", background:"rgb(243,245,248)", padding:"20px 20px", "border-radius":"15px", width:"88%", "margin-top":"20px"}}>
+			          <div className="tl" style={{ fontSize: (isMobile) ? "16" : "20", background:"rgb(243,245,248)", padding:"20px 20px", "borderRadius":"15px", width:"88%", "marginTop":"20px"}}>
 			            <FloatingLabelInput
 			              id="pass"
 			              label="Password *"
@@ -130,7 +130,7 @@ class Register1 extends React.Component {
 			            />
 			          </div>
 					  <p className={`f6 ml3 mt2 mb3 ${(isMobile) ? "w-80" : "w-60"}`}>Minimum 8 characters with uppercase, lowercase, numeric, and special characters</p>
-					  <div className="tl" style={{ fontSize: (isMobile) ? "16" : "20", background:"rgb(243,245,248)", padding:"20px 20px", "border-radius":"15px", width:"88%", "margin-top":"20px"}}>
+					  <div className="tl" style={{ fontSize: (isMobile) ? "16" : "20", background:"rgb(243,245,248)", padding:"20px 20px", "borderRadius":"15px", width:"88%", "marginTop":"20px"}}>
 						<FloatingLabelInput
 							id="confpass"
 							label="Confirm Password *"
@@ -143,7 +143,7 @@ class Register1 extends React.Component {
 			          <p className="f5 mt4 b red tc">{this.state.error}</p>
 			          <p className="f5 mt4 dark-blue tc">{this.state.message}</p>
 			      </div>
-		          <p onClick={onSubmit} className={`br-100 purple ph3 pv3 shadow-2 pointer mt2 ${(isMobile) ? "w-20" : "w-10"}`} style={{"margin":"auto", "margin-top":"20px"}}><span class="arrow arrow-right"></span></p>
+		          <p onClick={onSubmit} className={`br-100 purple ph3 pv3 shadow-2 pointer mt2 ${(isMobile) ? "w-20" : "w-10"}`} style={{"margin":"auto", "marginTop":"20px"}}><span className="arrow arrow-right"></span></p>
 		        </div>
 			</div>
 		)
