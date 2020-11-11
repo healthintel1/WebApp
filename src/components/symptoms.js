@@ -415,7 +415,7 @@ class SymptomsForm extends React.Component {
         	    </div>
 				<p className={`f3 ${(isMobile)?"ml4":"ml5"} mt4 gray mb3 pr2`}>DO YOU HAVE ANY OF THESE SYMPTOMS? (Y/N)</p>
 		        <p className={`f5 ${(isMobile)?"ml4":"ml5"} mt2 gray w-50 mb3`}>Click the boxes that apply to you</p>
-				  {(isTablet === isBrowser && isBrowser === true) || <BrowserView>
+				  {(isTablet === isBrowser && isBrowser === true) || isTablet || <BrowserView>
 					<p className={`f5 ${(isMobile)?"ml4":"ml5"} mt3 light-red dib`} style={{marginBottom: 0}}>Severe symptoms</p>
 					<div className="grid-box pa0 w-100">
                         <p onClick={this.onClick} id="fatigue" className="tl f5 pointer ml5 mr3 br2 pv3 ph4 mb0 dib" style={{background: this.state.fatigue ? this.state.on_color : this.state.off_color, color: this.state.fatigue ? "white" : "gray"}}>PERSISTANT PAIN/PRESSURE IN CHEST</p>

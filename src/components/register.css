@@ -5,6 +5,10 @@ body, html {
   padding-top: 0.3rem;
 }
 
+.mobbb{
+    display: none;
+}
+
 @font-face {
   font-family: "Avenir";
   src: local('CircularStd-Book'), url(../fonts/CircularStd-Book.ttf) format('truetype');
@@ -80,7 +84,9 @@ input {
 .chosen {
   border-bottom: solid;
 }
-
+.webb{
+    display: block;
+}
 @media only screen and (max-width: 600px) {
     .mobileOptimize {
         padding: 0rem 1rem !important;
@@ -90,5 +96,11 @@ input {
     .mobileFont{
         font-size: 100%;
         height: 40px !important;
+    }
+    .mobbb{
+        display: block;
+    }
+    .webb{
+        display: none;
     }
 }

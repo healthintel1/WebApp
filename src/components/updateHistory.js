@@ -57,7 +57,7 @@ class UpdateHistory extends React.Component {
 			<div className={`shadow-3 tl b--light-gray ${(isMobile) ? "ph4" : "ph5"} pb4 bg-white ba Avenir`} style={{margin:"auto", "font-family":"Avenir", width:(isMobile) ? "85vw" : "700px", "margin-top":"50px"}}>
 			  <p className={`${(isMobile) ? "f2" : "f1"} ml3 mt4 gray mb3`}>MEDICAL HISTORY</p>
         <p className={`f5 ml3 mt2 gray mb4 ${(isMobile) ? "w-90" : "w-50"}`}>Click the boxes that apply to you</p>
-              {(isTablet === isBrowser && isBrowser === true) || <BrowserView>
+              {(isTablet === isBrowser && isBrowser === true) || isTablet ||  <BrowserView>
           <div className="grid-box pa0 w-100">
             <div onClick={this.onClick} id="heartdisease" className="tl f4 pointer ml2 br2 ph4 pv3 mb0 mt0 dib" style={{background: this.state.heartdisease ? this.state.on_color : this.state.off_color, color: this.state.heartdisease ? "white" : "gray"}}>
               <p onClick={this.onClick2} id="h1" className="mv0 f4">HEART DISEASE</p>

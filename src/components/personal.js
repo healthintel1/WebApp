@@ -145,7 +145,7 @@ class PersonalForm extends React.Component {
 	            	  <p className={`f5 ${(isMobile)?"ml4":"ml5"} mb3 mt3 light-red dib`}>PERSONAL</p>
 	            	  <p className={`f5 gray mb3 dib ${(isMobile)?"ml6":"ml7"}`}>{monthNames[Month-1]} {Dated}</p>
 	        	    </div>
-					{(isTablet === isBrowser && isBrowser === true) || <BrowserView>
+					{(isTablet === isBrowser && isBrowser === true) || isTablet || <BrowserView>
 						<div className="ma1">
 							<p className="mt3 ml5 b mb1 gray gender">HOW ARE YOU FEELING TODAY?</p>
 							<a onClick={this.onOptionClick} id="true" name="happy"
