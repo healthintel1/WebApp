@@ -146,7 +146,7 @@ class VitalForm extends React.Component {
 		};
 		return(
 			<div>
-				{!isMobile && <BrowserView>
+				{isTablet || <BrowserView>
 					<div className={`w-100 ${(this.state.visible) ? "fadeIn" : "fadeOut"}`}>
 						<div className="tl ba bw1 w-100 b--light-gray bg-white ba Avenir" style={{"font-family":"Avenir"}}>
 							<div className="w-100 bb mb4 bw1 b--light-gray">

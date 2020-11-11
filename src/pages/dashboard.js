@@ -340,7 +340,7 @@ class Dashboard extends React.Component {
 		return (
 			<div>
 			    <Navbar path = {this.state.path}/>
-				{!isMobile && <BrowserView>
+				{isTablet || <BrowserView>
 				    <div className="ma2 ph6 flex" style={{display: "grid", "grid-template-columns":"1fr 4fr", gap: "20px"}}>
 					  <div style={{"min-width":"290px"}}>
 					  	{back}
