@@ -10,6 +10,8 @@ const NotFoundPage = () => (
     <h1>NOT FOUND</h1>
     <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
       <h1>HELLO {isMobile&&"A"} {isBrowser&&"B"} {isTablet&&"C"}</h1>
+      <h1>BB {isMobile} {isBrowser} {isTablet}</h1>
+      <h1>CC {isMobile+""} {isBrowser+""} {isTablet+""}</h1>
   </Layout>
 );
 
