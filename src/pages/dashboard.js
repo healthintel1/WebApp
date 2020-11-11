@@ -299,7 +299,6 @@ class Dashboard extends React.Component {
 
 	render() {
 		let output;
-		console.log("ASDDSA", isMobile, isBrowser, isTablet);
 		let back;
 		if (this.state.route === "vitals") {
 				back = <BackButton onRouteChange={this.onRouteChange}/>
@@ -341,7 +340,7 @@ class Dashboard extends React.Component {
 		return (
 			<div>
 			    <Navbar path = {this.state.path}/>
-				{(isTablet === isBrowser && isBrowser === true) || isTablet || <BrowserView>
+				{!isMobile && <BrowserView>
 				    <div className="ma2 ph6 flex" style={{display: "grid", "grid-template-columns":"1fr 4fr", gap: "20px"}}>
 					  <div style={{"min-width":"290px"}}>
 					  	{back}
@@ -353,7 +352,7 @@ class Dashboard extends React.Component {
 					  </div>
 					</div>
 				</BrowserView>}
-				{!(isTablet === isBrowser && isBrowser === true) && <MobileView>
+				{!(isTablet || isBrowser) && <MobileView>
 					<div style={{"margin":"auto", display: 'flex', flexDirection: 'row', flex: 1}}>
 						<List test={this.state.test} symptoms = {this.state.symptoms} personal = {this.state.personal} vitals = {this.state.vitals} onRouteChange={this.onRouteChange} route={this.state.route}/>
 						<Table clientid={this.state.clientid} ref = {this.child} onDateChange={this.onDateChange} symptoms={this.state.symptoms} personal = {this.state.personal} vitals = {this.state.vitals} vitalDone={this.vitalDone} personalDone={this.personalDone} symptomsDone={this.symptomsDone}/>

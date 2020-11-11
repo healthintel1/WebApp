@@ -30,7 +30,7 @@ class About extends React.Component {
 		return(
 			<div>
 				<Navbar path={this.state.path}/>
-				{(isTablet === isBrowser && isBrowser === true) || isTablet || <BrowserView>
+				{isTablet || <BrowserView>
 					<div className="grid-box1">
 						<article class="w-100 Avenir shadow-4 hidden ba b--black-10">
 						  <h1 class="f5 bg-white br3 br--top gray mv0 pv3 ph5">OUR UNIQUE APPROACH</h1>
@@ -67,7 +67,7 @@ class About extends React.Component {
 						</article>
 					</div>
 				</BrowserView>}
-				{!(isTablet === isBrowser && isBrowser === true) && <MobileView>
+				{!(isTablet || isBrowser ) && <MobileView>
 					<div style={{margin:"auto", "margin-top":"30px"}}>
 						<article class="pb4 w-100 Avenir shadow-4 hidden ba b--black-10">
 						  <h1 class="f6 bg-white br3 br--top gray mv0 pv3 ph5">OUR UNIQUE APPROACH</h1>

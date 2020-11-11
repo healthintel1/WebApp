@@ -9,9 +9,9 @@ const NotFoundPage = () => (
     <SEO title="404: Not found" />
     <h1>NOT FOUND</h1>
     <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
-      <h1>HELLO {isMobile&&"A"} {isBrowser&&"B"} {isTablet&&"C"}</h1>
-      <h1>BB {isMobile} {isBrowser} {isTablet}</h1>
-      <h1>CC {isMobile+""} {isBrowser+""} {isTablet+""}</h1>
+      <h1>HELLO {isMobile===true&&"A"} {isBrowser===true&&"B"} {isTablet===true&&"C"}</h1>
+      <h1>BB {isMobile===true} {isBrowser===true} {isTablet===true}</h1>
+      <h1>CC {!isMobile+""} {!isBrowser+""} {!isTablet+""}</h1>
   </Layout>
 );
 

@@ -415,7 +415,7 @@ class SymptomsForm extends React.Component {
         	    </div>
 				<p className={`f3 ${(isMobile)?"ml4":"ml5"} mt4 gray mb3 pr2`}>DO YOU HAVE ANY OF THESE SYMPTOMS? (Y/N)</p>
 		        <p className={`f5 ${(isMobile)?"ml4":"ml5"} mt2 gray w-50 mb3`}>Click the boxes that apply to you</p>
-				  {(isTablet === isBrowser && isBrowser === true) || isTablet || <BrowserView>
+				  {!isMobile && <BrowserView>
 					<p className={`f5 ${(isMobile)?"ml4":"ml5"} mt3 light-red dib`} style={{marginBottom: 0}}>Severe symptoms</p>
 					<div className="grid-box pa0 w-100">
                         <p onClick={this.onClick} id="fatigue" className="tl f5 pointer ml5 mr3 br2 pv3 ph4 mb0 dib" style={{background: this.state.fatigue ? this.state.on_color : this.state.off_color, color: this.state.fatigue ? "white" : "gray"}}>PERSISTANT PAIN/PRESSURE IN CHEST</p>
@@ -454,7 +454,7 @@ class SymptomsForm extends React.Component {
 			          <p onClick={onFinalClick} className="pointer tc pv3 f3 shadow-1" style={{"margin": "auto", "border-radius":"50%", width:"10%", background: this.state.bg, color: (this.state.bg === "white") ? "#013220" : "white"}}>✓</p>
 			        </div>
 		        </BrowserView>}
-				  {!(isTablet === isBrowser && isBrowser === true) &&<MobileView>
+				  {!(isTablet || isBrowser ) && <MobileView>
 					<p className={`f5 ${(isMobile)?"ml4":"ml5"} mt3 light-red dib`} style={{marginBottom: 20}}>Severe symptoms</p>
 					<div className="pa2 w-100 tc">
 						<p onClick={this.onClick} id="fatigue" className="tc f5 pointer ml3 mr3 br2 pv3 ph4 mb2 w-70" style={{margin:"auto", "margin-bottom":"10px",background: this.state.fatigue ? this.state.on_color : this.state.off_color, color: this.state.fatigue ? "white" : "gray"}}>PERSISTANT PAIN/PRESSURE IN CHEST</p>

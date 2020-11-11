@@ -1,6 +1,6 @@
 import React from "react";
 import "./transition.css"
-import {BrowserView, isBrowser, isTablet, MobileView} from "react-device-detect";
+import {BrowserView, isBrowser, isMobile, isTablet, MobileView} from "react-device-detect";
 import { CORSDOMAIN } from './constant'
 
 class VitalForm extends React.Component {
@@ -146,7 +146,7 @@ class VitalForm extends React.Component {
 		};
 		return(
 			<div>
-				{(isTablet === isBrowser && isBrowser === true) || isTablet || <BrowserView>
+				{!isMobile && <BrowserView>
 					<div className={`w-100 ${(this.state.visible) ? "fadeIn" : "fadeOut"}`}>
 						<div className="tl ba bw1 w-100 b--light-gray bg-white ba Avenir" style={{"font-family":"Avenir"}}>
 							<div className="w-100 bb mb4 bw1 b--light-gray">
@@ -214,7 +214,7 @@ class VitalForm extends React.Component {
 						</div>
 					</div>
 				</BrowserView>}
-				{!(isTablet === isBrowser && isBrowser === true) && <MobileView>
+				{!(isTablet || isBrowser ) && <MobileView>
 					<div className={`w-100 mb3 pb2 ${(this.state.visible) ? "fadeIn" : "fadeOut"}`}>
 						<div className="tl ba bw1 w-100 b--light-gray bg-white ba Avenir" style={{"font-family":"Avenir"}}>
 							<div className="w-100 bb mb4 bw1 b--light-gray">
