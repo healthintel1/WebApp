@@ -3,11 +3,9 @@ import React from 'react';
 import "./LandingPage.css";
 import '../fonts/TenaliRamakrishna-Regular.ttf'
 import SignInCard from "./signInCard.js";
-import {
-  BrowserView,
-  MobileView,
-  isMobile
-} from "react-device-detect";
+import {isBrowser, isTablet, isMobile} from "react-device-detect"
+import BrowserView from "../components/BrowserView"
+import MobileView from "../components/MobileView"
 
 const LandingPage1 = () => {
 	return(
@@ -26,7 +24,7 @@ const LandingPage1 = () => {
 					<br/>
 					<p className="f4 purples">We use simple measures that you can provide from your home to provide you comprehensive measures </p>
 					<br/>
-					<br/> 
+					<br/>
 					<p className="f3 purples b">Steps</p>
 					<div class="tl flex-box">
 					  <p className="f5 gray mr0 mb1">1. Sign in and create an account</p>

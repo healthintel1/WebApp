@@ -1,6 +1,8 @@
 import React from "react"
 import "./transition.css"
-import {isMobile, BrowserView, MobileView} from "react-device-detect"
+import {isBrowser, isTablet, isMobile} from "react-device-detect"
+import BrowserView from "../components/BrowserView"
+import MobileView from "../components/MobileView"
 import Amplify, { Auth } from 'aws-amplify';
 import awsconfig from '../aws-exports';
 import {CORSDOMAIN} from './constant';

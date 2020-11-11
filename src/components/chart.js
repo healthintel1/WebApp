@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import {
   BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ReferenceLine, ReferenceArea,
 } from 'recharts';
-import {isMobile, BrowserView, MobileView} from "react-device-detect"
+import {isMobile} from "react-device-detect"
 
 class Chart extends PureComponent {
   static jsfiddleUrl = 'https://jsfiddle.net/alidingling/q68cz43w/';

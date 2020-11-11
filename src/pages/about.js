@@ -1,6 +1,8 @@
 import React from "react"
 import Navbar from "../components/Navbar.js"
-import {BrowserView, isBrowser, isTablet, MobileView} from "react-device-detect"
+import {isBrowser, isTablet, isMobile} from "react-device-detect"
+import BrowserView from "../components/BrowserView"
+import MobileView from "../components/MobileView"
 import "../components/about.css"
 import { Link, navigate } from "gatsby"
 import Amplify, { Auth } from 'aws-amplify';
@@ -30,7 +32,7 @@ class About extends React.Component {
 		return(
 			<div>
 				<Navbar path={this.state.path}/>
-				{isTablet || <BrowserView>
+				{<BrowserView>
 					<div className="grid-box1">
 						<article class="w-100 Avenir shadow-4 hidden ba b--black-10">
 						  <h1 class="f5 bg-white br3 br--top gray mv0 pv3 ph5">OUR UNIQUE APPROACH</h1>
@@ -67,7 +69,7 @@ class About extends React.Component {
 						</article>
 					</div>
 				</BrowserView>}
-				{!(isTablet || isBrowser ) && <MobileView>
+				{<MobileView>
 					<div style={{margin:"auto", "margin-top":"30px"}}>
 						<article class="pb4 w-100 Avenir shadow-4 hidden ba b--black-10">
 						  <h1 class="f6 bg-white br3 br--top gray mv0 pv3 ph5">OUR UNIQUE APPROACH</h1>

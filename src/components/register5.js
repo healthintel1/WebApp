@@ -1,10 +1,8 @@
 import React from "react"
 import "./register.css"
-import {
-	BrowserView,
-	MobileView,
-	isMobile,
-} from "react-device-detect";
+import {isBrowser, isTablet, isMobile} from "react-device-detect"
+import BrowserView from "../components/BrowserView"
+import MobileView from "../components/MobileView"
 
 class Register5 extends React.Component {
 

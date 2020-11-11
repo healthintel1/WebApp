@@ -1,6 +1,8 @@
 import React from "react";
 import "./transition.css"
-import {BrowserView, isBrowser, isMobile, isTablet, MobileView} from "react-device-detect";
+import {isBrowser, isTablet, isMobile} from "react-device-detect"
+import BrowserView from "../components/BrowserView"
+import MobileView from "../components/MobileView"
 import { CORSDOMAIN } from './constant'
 import TimePicker from 'react-time-picker';
 
@@ -81,7 +83,7 @@ class TestResults extends React.Component {
         };
         return(
             <div>
-                {isTablet || <BrowserView>
+                { <BrowserView>
                     <div className={`w-100 ${(this.state.visible) ? "fadeIn" : "fadeOut"}`}>
                         <div className="tl ba bw1 w-100 b--light-gray bg-white ba Avenir" style={{"font-family":"Avenir"}}>
                             <div className="w-100 bb mb4 bw1 b--light-gray">
@@ -166,7 +168,7 @@ class TestResults extends React.Component {
                         </div>
                     </div>
                 </BrowserView>}
-                {!(isTablet || isBrowser ) && <MobileView>
+                { <MobileView>
                     <div className={`w-100 mb3 pb2 ${(this.state.visible) ? "fadeIn" : "fadeOut"}`}>
                         <div className="tl ba bw1 w-100 b--light-gray bg-white ba Avenir" style={{"font-family":"Avenir"}}>
                             <div className="w-100 bb mb4 bw1 b--light-gray">

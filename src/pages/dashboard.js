@@ -1,5 +1,5 @@
 import React from "react"
-import {BrowserView, isTablet, isMobile, isBrowser} from "react-device-detect";
+import {isTablet, isBrowser} from "react-device-detect";
 import { navigate } from "gatsby"
 import Navbar from "../components/Navbar.js"
 import List from "../components/list.js"
@@ -16,6 +16,7 @@ import awsconfig from '../aws-exports';
 import Footer from "../components/footer";
 import {CORSDOMAIN} from '../components/constant'
 import MobileView from '../components/MobileView'
+import BrowserView from '../components/BrowserView'
 import TestResults from "../components/test";
 Amplify.configure(awsconfig);
 
@@ -340,7 +341,7 @@ class Dashboard extends React.Component {
 		return (
 			<div>
 			    <Navbar path = {this.state.path}/>
-				{isTablet || <BrowserView>
+				{<BrowserView>
 				    <div className="ma2 ph6 flex" style={{display: "grid", "grid-template-columns":"1fr 4fr", gap: "20px"}}>
 					  <div style={{"min-width":"290px"}}>
 					  	{back}
@@ -352,7 +353,7 @@ class Dashboard extends React.Component {
 					  </div>
 					</div>
 				</BrowserView>}
-				{!(isTablet || isBrowser) && <MobileView>
+				{ <MobileView>
 					<div style={{"margin":"auto", display: 'flex', flexDirection: 'row', flex: 1}}>
 						<List test={this.state.test} symptoms = {this.state.symptoms} personal = {this.state.personal} vitals = {this.state.vitals} onRouteChange={this.onRouteChange} route={this.state.route}/>
 						<Table clientid={this.state.clientid} ref = {this.child} onDateChange={this.onDateChange} symptoms={this.state.symptoms} personal = {this.state.personal} vitals = {this.state.vitals} vitalDone={this.vitalDone} personalDone={this.personalDone} symptomsDone={this.symptomsDone}/>
