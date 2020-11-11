@@ -22,10 +22,10 @@ class UpdatingDetails extends React.Component {
 				console.log(this.props.location.state.data)
 				const requestOptions = {
 				        method: 'POST',
-				        headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': true },
+				        headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': true, "accept":"*" },
 				        body: JSON.stringify(this.props.location.state.data)
 				    };
-				fetch(CORSDOMAIN+'/updatehistory?', requestOptions)
+				fetch(CORSDOMAIN+'/updatehistory', requestOptions)
 			        .then(res=>navigate("/settings"))
 			        .catch(err=>console.log(err))
 				}

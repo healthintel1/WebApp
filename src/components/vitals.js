@@ -67,10 +67,10 @@ class VitalForm extends React.Component {
 		}
 		const requestOptions = {
 			    method: 'POST',
-			    headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': "*" },
+			    headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': "*", "accept":"*" },
 		        body: JSON.stringify(senddata)
 		    };
-		fetch(CORSDOMAIN+'/postvitals?', requestOptions)
+		fetch(CORSDOMAIN+'/postvitals', requestOptions)
 	        .then(res=>{
 	        	console.log(res)
 	        	setTimeout(()=>{this.setState({visible: false})},100)
@@ -97,10 +97,10 @@ class VitalForm extends React.Component {
 		}
 		const requestOptions = {
 			    method: 'POST',
-			    headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': "*" },
+			    headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': "*", "accept":"*" },
 		        body: JSON.stringify(senddata)
 		    };
-		fetch(CORSDOMAIN+'/updatevitals1?', requestOptions)
+		fetch(CORSDOMAIN+'/updatevitals1', requestOptions)
 	        .then(res=>{
 	        	console.log(res)
 	        	setTimeout(()=>{this.setState({visible: false})},100)
@@ -239,10 +239,6 @@ class VitalForm extends React.Component {
 									</select>
 						        </div>
 						    </div>
-						    {/*<div className="mv2 pa1">*/}
-						    {/*    <p className="mt4 ml3 pa1 f5 w-60 b mb0 gray gender">HOW DOES YOUR HEART RATE FEEL?</p>*/}
-						    {/*    <input id="heart" onChange={this.onTypeEnter} type="text" placeholder="Give us a short description" className="mt3 ml3 mr2 bg-washed-green ph2" style={{"height":"50px", "width":"80%","border":"none"}}/>*/}
-						    {/*</div>*/}
 							<div className="mv2 pa1">
 						        <p className="mt4 ml3 f5 b pa0 mb0 gray gender">HEART RATE</p>
 						        <div style={{display: "flex"}}>
@@ -250,25 +246,11 @@ class VitalForm extends React.Component {
 						            <p className="mt4 f6 b ml2 gray">BPM </p>
 						        </div>
 						    </div>
-						    {/*<div className="mv2 pa1">*/}
-						    {/*    <p className="mt4 f5 ml3 b pa0 mb0 gray gender">BLOOD PRESSURE</p>*/}
-						    {/*    <div style={{display: "flex"}}>*/}
-						    {/*    	<input id="bp" value={this.state.bp||""} onChange={this.onTypeEnter} type="text" className="mt3 ml3 mr2 bg-washed-green tc" style={{"height":"50px", "width":"30%","border":"none"}}/>*/}
-						    {/*        <p className="mt4 f6 b ml2 gray">UNITS </p>*/}
-						    {/*    </div>*/}
-							{/*</div>*/}
-							{/*<div className="mv2 pa1">*/}
-						    {/*    <p className="mt4 f5 ml3 b pa0 mb0 gray gender">RESPIRATORY RATE</p>*/}
-						    {/*    <div style={{display: "flex"}}>*/}
-						    {/*    	<input id="respiratoryrate" value={this.state.respiratoryrate||""} onChange={this.onTypeEnter} type="number" min="0" className="mt3 ml3 mr2 bg-washed-green tc" style={{"height":"50px", "width":"30%","border":"none"}}/>*/}
-						    {/*        <p className="mt4 f6 b ml2 gray">UNITS </p>*/}
-						    {/*    </div>*/}
-							{/*</div>*/}
 						    <div className="mt2 mb2 pa1">
 						        <p className="mt3 f5 ml3 b pa0 mb0 gray gender">OXYGEN SATURATION</p>
 						        <div style={{display: "flex"}}>
-						        	<input id="oxygen" value={this.state.oxygensaturation||""} onChange={this.onTypeEnter} type="number" min="0" className="mt3 ml3 mr2 bg-washed-green tc" style={{"height":"50px", "width":"30%","border":"none"}}/>
-						            <p className="mt4 f6 b ml2 gray">UNITS </p>
+						        	<input id="oxygen" value={this.state.oxygen||""} onChange={this.onTypeEnter} type="number" min="0" className="mt3 ml3 mr2 bg-washed-green tc" style={{"height":"50px", "width":"30%","border":"none"}}/>
+						            <p className="mt4 f6 b ml2 gray">% </p>
 						        </div>
 						    </div>
 							<div className="mv2 pa1">

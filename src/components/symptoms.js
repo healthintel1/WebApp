@@ -251,7 +251,7 @@ class SymptomsForm extends React.Component {
 		this.setState({message: ""})
 		this.setState({vitals: this.props.vitals})
 		this.setState({symptoms: this.props.symptoms})
-		this.setState({fever: this.props.fever})
+		this.setState({fever: this.props.data.fever})
 		this.setState({personal: this.props.personal})
 		setTimeout(()=>{this.setState({visible: true})}, 25)
 		let x = this.props.data
@@ -274,7 +274,7 @@ class SymptomsForm extends React.Component {
 	updateSentData = () => {
 		let senddata = {
 			nose: this.state.nose,
-			loss_taste_smell: this.state.loss_taste_smell,
+			losstastesmell: this.state.loss_taste_smell,
 			chillsorsweating: this.state.chills,
 			coughing: this.state.cough,
 			bloodpressure1: this.state.other,
@@ -292,10 +292,10 @@ class SymptomsForm extends React.Component {
 		}
 		const requestOptions = {
 			    method: 'POST',
-			    headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': "*" },
+			    headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': "*", "accept":"*" },
 		        body: JSON.stringify(senddata)
 		    };
-		fetch(CORSDOMAIN+'/updatevitals2?', requestOptions)
+		fetch(CORSDOMAIN+'/updatevitals2', requestOptions)
 	        .then(res=>{
 	        	console.log(res)
 	        	setTimeout(()=>{this.setState({visible: false})}, 100)
@@ -310,7 +310,7 @@ class SymptomsForm extends React.Component {
 
 	sendData = () => {
 		let senddata = {
-			loss_taste_smell: this.state.loss_taste_smell,
+			losstastesmell: this.state.loss_taste_smell,
 			nose: this.state.nose,
 			fever: this.state.fever,
 			chillsorsweating: this.state.chills,
@@ -329,10 +329,10 @@ class SymptomsForm extends React.Component {
 		};
 		const requestOptions = {
 			    method: 'POST',
-			    headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': "*" },
+			    headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': "*", "accept":"*" },
 		        body: JSON.stringify(senddata)
 		    };
-		fetch(CORSDOMAIN+'/postvitals?', requestOptions)
+		fetch(CORSDOMAIN+'/postvitals', requestOptions)
 	        .then(res=>{
 	        	console.log(res)
 	        	setTimeout(()=>{this.setState({visible: false})},100)

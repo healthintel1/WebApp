@@ -72,10 +72,10 @@ class PersonalForm extends React.Component {
 		}
 		const requestOptions = {
 			    method: 'POST',
-			    headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': "*" },
+			    headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': "*", "accept":"*" },
 		        body: JSON.stringify(senddata)
 		    };
-		fetch(CORSDOMAIN+'/updatevitals3?', requestOptions)
+		fetch(CORSDOMAIN+'/updatevitals3', requestOptions)
 	        .then(res=>{
 	        	console.log(res)
 	        	setTimeout(()=>{this.setState({visible: false})},100)
@@ -101,10 +101,10 @@ class PersonalForm extends React.Component {
 		}
 		const requestOptions = {
 			    method: 'POST',
-			    headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': "*" },
+			    headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': "*", "accept":"*" },
 		        body: JSON.stringify(senddata)
 		    };
-		fetch(CORSDOMAIN+'/postvitals?', requestOptions)
+		fetch(CORSDOMAIN+'/postvitals', requestOptions)
 	        .then(res=>{
 	        	console.log(res)
 	        	setTimeout(()=>{this.setState({visible: false})},100)

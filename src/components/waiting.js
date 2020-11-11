@@ -42,7 +42,7 @@ class Waiting extends React.Component {
           }
           const requestOptions = {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': "*" },
+                headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': "*", "accept":"*" },
                 body: JSON.stringify({
                   clientid: x,
                   date: this.props.Dated+"/"+this.props.Month,

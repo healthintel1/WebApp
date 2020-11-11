@@ -181,6 +181,8 @@ class Dashboard extends React.Component {
 					console.log(res)
 					this.setState({daily_sym: {
 						fever: res.fever,
+							nose: res.nose,
+							loss_taste_smell: res.losstastesmell,
 						chillsorsweating: res.chillsorsweating,
 						coughing: res.coughing,
 						difficultybreathing: res.difficultybreathing,
@@ -251,6 +253,8 @@ class Dashboard extends React.Component {
 						console.log("data recieved");
 						this.setState({daily_sym: {
 							fever: res.fever,
+							nose: res.nose,
+							loss_taste_smell: res.losstastesmell,
 							chillsorsweating: res.chillsorsweating,
 							coughing: res.coughing,
 							difficultybreathing: res.difficultybreathing,

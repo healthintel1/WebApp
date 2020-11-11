@@ -57,10 +57,10 @@ class TestResults extends React.Component {
         };
         const requestOptions = {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': "*" },
+            headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': "*", "accept":"*" },
             body: JSON.stringify(senddata)
         };
-        fetch(CORSDOMAIN+'/updatetests?', requestOptions)
+        fetch(CORSDOMAIN+'/updatetests', requestOptions)
             .then(res=>{
                 console.log(res);
                 setTimeout(()=>{this.props.onTestUpdate(senddata.testresults)},500)
