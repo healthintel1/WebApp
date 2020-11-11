@@ -120,14 +120,14 @@ class SignInCard extends React.Component {
 					<p onClick={()=> navigate("/forgot-password")} className={`black underline-hover pointer dib ${(isMobile) ? "ml0" : "ml4"} ${(isMobile) ? "f6" : "f5"}`}>Forgot password?</p>
 				</div>
 
-				<p onClick={()=>OnSignInSubmit()} class={`f4 tc no-underline black bg-animate hover-bg-purple hover-white inline-flex pointer mb3 items-center pa3 ba border-box ph4 br3 ${(isMobile) ? "mr3" : "mr5"}`} style={{"margin":"auto"}}>
-				    <span class="pr1"> Sign In </span>
+				<p onClick={()=>OnSignInSubmit()} className={`f4 tc no-underline black bg-animate hover-bg-purple hover-white inline-flex pointer mb3 items-center pa3 ba border-box ph4 br3 ${(isMobile) ? "mr3" : "mr5"}`} style={{"margin":"auto"}}>
+				    <span className="pr1"> Sign In </span>
 				</p>
-				{/*<p onClick={()=> this.onInviteOthers()} class={`f4 tc no-underline bg-animate black bg-purple light-gray inline-flex pointer mb3 items-center pa3 ph4 ba br3 border-box ${(isMobile) ? "ml3" : "ml5"}`}>*/}
+				{/*<p onClick={()=> this.onInviteOthers()} className={`f4 tc no-underline bg-animate black bg-purple light-gray inline-flex pointer mb3 items-center pa3 ph4 ba br3 border-box ${(isMobile) ? "ml3" : "ml5"}`}>*/}
 				{/*	<span> {this.state.invite} </span>*/}
 				{/*</p>*/}
 				<br/>
-				{/*<p onClick={()=> this.onInviteOthers()} class="f4 tc no-underline bg-animate bg-purple light-gray inline-flex pointer mb3 items-center mt4 bg-white black pa3 ph4 br3" style={{"margin-left":"auto"}}>*/}
+				{/*<p onClick={()=> this.onInviteOthers()} className="f4 tc no-underline bg-animate bg-purple light-gray inline-flex pointer mb3 items-center mt4 bg-white black pa3 ph4 br3" style={{"margin-left":"auto"}}>*/}
 				{/*    <span> {this.state.invite} </span>*/}
 				{/*</p>*/}
 				<p>
