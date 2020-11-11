@@ -11,7 +11,7 @@ const LandingPage = () => {
 	return(
 		<div>
 			<div className={`flex ${(isMobile)?"mt3":"mt5"}`} style={{"marginLeft": (isMobile) ? "0" : "3vw"}}>
-				<div className="fl tc" style={{"paddingLeft-":"0px","paddingRight":"1rem", width: "min(700px, 95vw)", "margin-right":(isMobile) ? "0px" : "20px"}}>
+				<div className="fl tc" style={{"paddingLeft":"0px","paddingRight":"1rem", width: "min(700px, 95vw)", "marginRight":(isMobile) ? "0px" : "20px"}}>
 					<SignInCard/>
 				</div>
 				<div className = "tl flex123" style={{"paddingLeft":(isMobile) ? "20px" : "0","marginLeft":"auto", "marginRight":"auto", "paddingTop":"4.5rem","paddingBottom":"20px", maxWidth:"700px"}}>
