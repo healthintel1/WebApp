@@ -96,7 +96,7 @@ class Register2 extends React.Component {
 			<div className={`shadow-3 tl b--light-gray ${(isMobile) ? "ph4" : "ph5"} pb4 bg-white ba Avenir`} style={{margin:"auto", "font-family":"Avenir", width:(isMobile) ? "100vw" : "700px"}}>
 				<p className={`${(isMobile) ? "f2" : "f1"} ml3 mt4 gray mb3`}>ALLERGIES</p>
                 <p className={`f6 ml3 mt2 gray mb3 ${(isMobile) ? "w-80" : "w-80"}`} style={{fontSize: '120%'}}>List them and click enter - they should appear below. If you don't have any allergies you can procede to next screen.</p>
-        <p className={`f6 ml3 mt2 ${(isMobile) ? "w-80" : "w-80"}`} style={{fontSize: '120%', "margin-top":"20px", marginBottom: 5}}>Drug Allegries</p>
+        <p className={`f6 ml3 mt2 ${(isMobile) ? "w-80" : "w-80"}`} style={{fontSize: '120%', marginTop:"20px", marginBottom: 5}}>Drug Allegries</p>
         <div className="grid-box pa0 w-100 ma0" style={{marginBottom: 20}}>
             {drugoutput}
         </div>
@@ -112,7 +112,7 @@ class Register2 extends React.Component {
                 style={{background:"rgb(243,245,248)"}}
             />
         </div>
-        <p className={`f6 ml3 mt2 ${(isMobile) ? "w-80" : "w-80"}`} style={{fontSize: '120%', "margin-top":"20px", marginBottom: 5}}>Other Allegries</p>
+        <p className={`f6 ml3 mt2 ${(isMobile) ? "w-80" : "w-80"}`} style={{fontSize: '120%', marginTop:"20px", marginBottom: 5}}>Other Allegries</p>
         <div className="grid-box pa0 w-100 ma0" style={{marginBottom: 20}}>
           {output}
         </div>
@@ -132,8 +132,8 @@ class Register2 extends React.Component {
         <div className={(isMobile)?"w-90":"w-100"} style={{display: 'flex', flexDirection: 'row'}}>
             <p onClick={() => onRouteChange("account11")}
                className={`br-100 purple ph3 pv3 shadow-2 pointer mt2 ${(isMobile) ? "w-20" : "w-10"}`}
-               style={{"margin": "auto", "margin-top": "20px"}}><span className="arrow arrow-left"></span></p>
-            <p onClick={()=>onAllergiesSubmit(this.state.drugallergies, this.state.others)} className={`br-100 purple ph3 pv3 shadow-2 pointer mt2 ${(isMobile) ? "w-20" : "w-10"}`} style={{"margin":"auto", "margin-top":"20px"}}><span class="arrow arrow-right"></span></p>
+               style={{"margin": "auto", marginTop: "20px"}}><span className="arrow arrow-left"></span></p>
+            <p onClick={()=>onAllergiesSubmit(this.state.drugallergies, this.state.others)} className={`br-100 purple ph3 pv3 shadow-2 pointer mt2 ${(isMobile) ? "w-20" : "w-10"}`} style={{"margin":"auto", marginTop:"20px"}}><span className="arrow arrow-right"></span></p>
         </div>
       </div>
 		)

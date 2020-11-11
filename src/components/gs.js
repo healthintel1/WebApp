@@ -52,7 +52,7 @@ class GettingStarted extends React.Component {
                     </div>
                 </MobileView>}
                 <div className="tc w-100 mt3 mb0">
-                    <p onClick={this.letsGo} class="f4 tc grow no-underline pointer br-pill ph4 pv3 mb2 dib white bg-light-purple" style={{margin:"auto"}}>Let's Go!</p>
+                    <p onClick={this.letsGo} className="f4 tc grow no-underline pointer br-pill ph4 pv3 mb2 dib white bg-light-purple" style={{margin:"auto"}}>Let's Go!</p>
                 </div>
             </div>
         </div>

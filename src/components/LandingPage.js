@@ -10,11 +10,11 @@ import Footer from "./footer";
 const LandingPage = () => {
 	return(
 		<div>
-			<div className={`flex ${(isMobile)?"mt3":"mt5"}`} style={{"margin-left": (isMobile) ? "0" : "3vw"}}>
-				<div className="fl tc" style={{"padding-left-":"0px","padding-right":"1rem", width: "min(700px, 95vw)", "margin-right":(isMobile) ? "0px" : "20px"}}>
+			<div className={`flex ${(isMobile)?"mt3":"mt5"}`} style={{"marginLeft": (isMobile) ? "0" : "3vw"}}>
+				<div className="fl tc" style={{"paddingLeft-":"0px","paddingRight":"1rem", width: "min(700px, 95vw)", "margin-right":(isMobile) ? "0px" : "20px"}}>
 					<SignInCard/>
 				</div>
-				<div className = "tl flex123" style={{"padding-left":(isMobile) ? "20px" : "0","margin-left":"auto", "margin-right":"auto", "padding-top":"4.5rem","padding-bottom":"20px", "max-width":"700px"}}>
+				<div className = "tl flex123" style={{"paddingLeft":(isMobile) ? "20px" : "0","marginLeft":"auto", "marginRight":"auto", "paddingTop":"4.5rem","paddingBottom":"20px", maxWidth:"700px"}}>
 					<p className={`${(isMobile)?"f2":"f1"} lh-title purples Avenir w-100`}>You can make a difference and help defeat COVID-19</p>
 					<br/>
 					<br/>
@@ -25,7 +25,7 @@ const LandingPage = () => {
 					<br/>
 					<br/>
 					<p className="f3 purples b">Steps</p>
-					<div class="tl flex-box">
+					<div className="tl flex-box">
 					  <p className="f5 gray mr0 mb1">1. Get access</p>
 					  <p className="f5 gray ml0 mb1">2. Enter your symptoms & medical details</p>
 					  <p className="f5 gray">3. Let our algorithm calculate and predict how at risk you are</p>
