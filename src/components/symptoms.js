@@ -37,6 +37,11 @@ class SymptomsForm extends React.Component {
 	}
 
 	LISTAll = ["ABDOMINAL PAIN-GENERALIZED",
+		"FATIGUE",
+		"HEADACHE",
+		"SORE THROAT",
+		"NASAL CONGESTION",
+		"DIARRHEA",
 	"ABDOMINAL PAIN-LOWER",
 	"ABDOMINAL PAIN-RIGHT LOWER QUADRANT",
 	"ABDOMINAL PAIN-UPPER",
@@ -435,6 +440,7 @@ class SymptomsForm extends React.Component {
                         <p onClick={this.onClick} id="loss_taste_smell" className="tl f5 pointer ml5 mr3 br2 pv3 ph4 mb0 dib" style={{background: this.state.loss_taste_smell ? this.state.on_color : this.state.off_color, color: this.state.loss_taste_smell ? "white" : "gray"}}>NEW LOSS OF TASTE OR SMELL</p>
                         <p onClick={this.onClick} id="throat" className="tl f5 pointer ml1 mr5 br2 pv3 ph4 mb0 dib" style={{background: this.state.throat ? this.state.on_color : this.state.off_color, color: this.state.throat ? "white" : "gray"}}>SHORTNESS OF BREATH</p>
 			        </div>
+                      <p className={`f5 ${(isMobile)?"ml4":"ml5"} mt4 gray`} style={{padding: "0 20px"}}>Please search for your symptoms below if not listed above</p>
 					<div className="pa0 ml5 mr5" style={{ background:"rgb(243,245,248)", marginTop: "15px", padding:"10px 10px", "border-radius":"0.25rem"}}>
 						<FloatingLabelInput
 							id="other_symp_txt"
@@ -474,6 +480,7 @@ class SymptomsForm extends React.Component {
 						<p onClick={this.onClick} id="loss_taste_smell" className="tc f5 pointer ml3 mr3 br2 pv3 ph4 mb2 w-70" style={{margin:"auto", marginBottom:"10px", background: this.state.loss_taste_smell ? this.state.on_color : this.state.off_color, color: this.state.loss_taste_smell ? "white" : "gray"}}>NEW LOSS OF TASTE OR SMELL</p>
 						<p onClick={this.onClick} id="throat" className="tc f5 pointer ml3 mr5 br2 pv3 ph4 mb2 w-70" style={{margin:"auto", marginBottom:"10px",background: this.state.throat ? this.state.on_color : this.state.off_color, color: this.state.throat ? "white" : "gray"}}>SHORTNESS OF BREATH</p>
 					</div>
+                      <p className={`f5 ${(isMobile)?"ml4":"ml5"} mt4 gray`} style={{padding: "0 20px"}}>Please search for your symptoms below if not listed above</p>
 					<div className="pa0 ml5 mr5" style={{ background:"rgb(243,245,248)", marginTop: "10px", padding:"10px 10px", "border-radius":"0.25rem"}}>
 						<FloatingLabelInput
 							id="other_symp_txt"
