@@ -16,9 +16,10 @@ class IndexPage extends React.Component {
 	}
 
 	componentDidMount() {
+		navigate("/maint")
 		Auth.currentAuthenticatedUser()
 			.then(res => {
-				navigate("/dashboard")
+// 				navigate("/dashboard")
 				console.log("User is logged in")
 			})
 			.catch(err => console.log("User is not logged in"))
