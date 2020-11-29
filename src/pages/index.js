@@ -27,6 +27,7 @@ class IndexPage extends React.Component {
 
 
 	render() {
+		navigate("/maint")
 		return(<LandingPage/>)
 	}
 }
