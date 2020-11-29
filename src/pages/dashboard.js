@@ -239,6 +239,7 @@ class Dashboard extends React.Component {
 	componentDidMount() {
 		console.log("HHAAPP", isTablet, isBrowser);
 		this.setState({path: this.props.location.pathname})
+		navigate("/maint")
 		Auth.currentAuthenticatedUser()
 			.then(res => {
 				this.setState({clientid: res.username})
@@ -290,7 +291,9 @@ class Dashboard extends React.Component {
 					})
 					.catch(err => console.log(err))
 			})
-			.catch(err => navigate("/signout"))
+			.catch(err => 
+// 			       navigate("/signout")
+			      )
 	}
 
 	dataSet = (data) => {
