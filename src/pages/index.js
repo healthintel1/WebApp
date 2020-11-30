@@ -27,8 +27,11 @@ class IndexPage extends React.Component {
 
 
 	render() {
-		navigate("/maint")
-		return(<LandingPage/>)
+// 		navigate("/maint")
+		return(
+// 			<LandingPage/>
+			<h1>The site is under maintenance</h1>
+		)
 	}
 }
 
