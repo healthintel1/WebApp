@@ -29,6 +29,7 @@ class Table extends React.Component {
 
 	componentDidMount() {
 		console.log("HJJJ");
+		this.props.ref = React.createRef();
 		this.setState({current: dated})
 		Auth.currentAuthenticatedUser()
 			.then(res => {
