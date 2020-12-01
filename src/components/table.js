@@ -119,7 +119,7 @@ class Table extends React.Component {
 		var thisday = new Date()
 		var thisdate = thisday.getDate()
 		var thismonth = thisday.getMonth()
-		if (e.target.id < thisdate) {
+		if (e.target.id <= thisdate) {
 			onDateChange(e.target.id, thismonth+1)
 			this.setState({current_month: thismonth})
 		} else if (thismonth === 0) {
