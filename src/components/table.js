@@ -120,13 +120,13 @@ class Table extends React.Component {
 		var thisdate = thisday.getDate()
 		var thismonth = thisday.getMonth()
 		if (e.target.id < thisdate) {
-			onDateChange(e.target.id, thismonth)
+			onDateChange(e.target.id, thismonth+1)
 			this.setState({current_month: thismonth})
 		} else if (thismonth === 0) {
-			onDateChange(e.target.id, 11)
+			onDateChange(e.target.id, 12)
 			this.setState({current_month: 11})
 		} else {
-			onDateChange(e.target.id, thismonth-1)
+			onDateChange(e.target.id, thismonth)
 			this.setState({current_month: thismonth-1})
 		}
 		for (let i=0; i < 5; i++) {
