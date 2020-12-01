@@ -141,6 +141,13 @@ class Table extends React.Component {
 			}
 	};
 
+	componentDidUpdate(prevProps) {
+	  // Typical usage (don't forget to compare props):
+	  if (this.props !== prevProps) {
+	    this.refreshCal();
+	  }
+	}
+
 	refreshCal = () => {
 		console.log(this.state)
 		this.setState({done: [0,0,0,0,0]})
@@ -170,8 +177,6 @@ class Table extends React.Component {
 	}
 
 	render() {
-		console.log(this.state)
-		console.log(this.props)
 		return(
 			<div className="mt3 tl b--light-gray pa4 bg-white Avenir mobileOptimize" style={{"font-family":"Avenir", flex: 1}}>
 				<div>
