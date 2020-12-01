@@ -128,6 +128,7 @@ class Dashboard extends React.Component {
 		} else {
 			this.onRouteChange("vitals")
 		}
+		this.refreshCalendar()
 	}
 
 	onVitalsUpdate = (input) => {
@@ -143,12 +144,14 @@ class Dashboard extends React.Component {
 		}})
 		console.log(this.state)
 		this.onRouteChange("test")
+		this.refreshCalendar()
 	};
 
 	onTestUpdate = (input) => {
 		this.setState({tests: input});
 		console.log(this.state);
 		this.onRouteChange("wait")
+		this.refreshCalendar()
 	};
 
 	onPersonalUpdate = (input) => {
@@ -166,6 +169,7 @@ class Dashboard extends React.Component {
 		} else {
 			this.onRouteChange("symptoms")
 		}
+		this.refreshCalendar()
 	}
 
 	getDatabyDate = (date) => {
