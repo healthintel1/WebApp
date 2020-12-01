@@ -49,17 +49,23 @@ class Waiting extends React.Component {
                 })
             };
           fetch("https://heruko-nocors.herokuapp.com/http://18.188.45.196:8080/algo", requestOptions)
-            .then(res=>{
-              GetData()
+            .then(async res=>{
+              res = await res.text()
+              console.log("result", res)
+              if (res === "error"){
+                   setTimeout(() => this.props.onRouteChange("gs"), 500)
+              } else if (res === "red" || res === "yellow" || res=== "green") {
+                  GetData()
                 .then(res => {
-                  console.log(res)
+                  console.log("IDHR", res)
                   let finaldata = res.data
                   finaldata = finaldata.split(";")
                   this.props.dataSet(finaldata)
                   this.props.onRouteChange("pred")
                 })
+              }
             })
-            .catch(err=>console.log(err))
+            .catch(err=>console.log("ERR HAI", err))
           })
       }
 

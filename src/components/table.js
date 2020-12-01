@@ -29,6 +29,7 @@ class Table extends React.Component {
 
 	componentDidMount() {
 		console.log("HJJJ");
+		this.props.ref = React.createRef();
 		this.setState({current: dated})
 		Auth.currentAuthenticatedUser()
 			.then(res => {
@@ -118,12 +119,15 @@ class Table extends React.Component {
 		var thisday = new Date()
 		var thisdate = thisday.getDate()
 		var thismonth = thisday.getMonth()
-		if (e.target.id > thisdate) {
-			onDateChange(e.target.id, thismonth)
-			this.setState({current_month: thismonth})
-		} else {
+		if (e.target.id <= thisdate) {
 			onDateChange(e.target.id, thismonth+1)
-			this.setState({current_month: thismonth + 1})
+			this.setState({current_month: thismonth})
+		} else if (thismonth === 0) {
+			onDateChange(e.target.id, 12)
+			this.setState({current_month: 11})
+		} else {
+			onDateChange(e.target.id, thismonth)
+			this.setState({current_month: thismonth-1})
 		}
 		for (let i=0; i < 5; i++) {
 				if (this.state.dates[i] == e.target.id) {
@@ -136,6 +140,13 @@ class Table extends React.Component {
 				}
 			}
 	};
+
+	componentDidUpdate(prevProps) {
+	  // Typical usage (don't forget to compare props):
+	  if (this.props !== prevProps) {
+	    this.refreshCal();
+	  }
+	}
 
 	refreshCal = () => {
 		console.log(this.state)
@@ -166,8 +177,6 @@ class Table extends React.Component {
 	}
 
 	render() {
-		console.log(this.state)
-		console.log(this.props)
 		return(
 			<div className="mt3 tl b--light-gray pa4 bg-white Avenir mobileOptimize" style={{"font-family":"Avenir", flex: 1}}>
 				<div>
