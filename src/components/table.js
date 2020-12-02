@@ -29,7 +29,6 @@ class Table extends React.Component {
 
 	componentDidMount() {
 		console.log("HJJJ");
-		this.props.ref = React.createRef();
 		this.setState({current: dated})
 		Auth.currentAuthenticatedUser()
 			.then(res => {
@@ -44,7 +43,6 @@ class Table extends React.Component {
 					arr2.push(`${today.getDate()}/${(today.getMonth())+1}`);
 					today.setDate(today.getDate() - 1)
 				}
-				console.log(arr2)
 				datestring = arr2
 				this.setState({dates: arr})
 				async function GetData() {
@@ -56,7 +54,7 @@ class Table extends React.Component {
 				GetData()
 					.then(res => {
 						res = res.data
-						console.log(res)
+						console.log("GETDATA", res)
 						res = res.split(",")
 						fetched = res
 						let i
@@ -76,9 +74,6 @@ class Table extends React.Component {
 						var todays = new Date()
 						for (let i=0; i < 5; i++) {
 							if (this.state.dates[i] == todays.getDate()) {
-								console.log(i)
-								console.log(this.state.dates[i])
-								console.log(this.state.status[i])
 								if (this.state.status[i]==="33% COMPLETE") {
 									this.props.vitalDone()
 								} else if (this.state.status[i] === "66% COMPLETE") {
@@ -113,67 +108,57 @@ class Table extends React.Component {
 	}
 
 	onDateClick = (e) => {
-		this.setState({current: e.target.id})
-		console.log(this.state)
 		let {onDateChange} = this.props
 		var thisday = new Date()
 		var thisdate = thisday.getDate()
 		var thismonth = thisday.getMonth()
 		if (e.target.id <= thisdate) {
 			onDateChange(e.target.id, thismonth+1)
-			this.setState({current_month: thismonth})
+			this.setState({current: e.target.id, current_month: thismonth})
 		} else if (thismonth === 0) {
 			onDateChange(e.target.id, 12)
-			this.setState({current_month: 11})
+			this.setState({current: e.target.id, current_month: 11})
 		} else {
 			onDateChange(e.target.id, thismonth)
-			this.setState({current_month: thismonth-1})
+			this.setState({current: e.target.id, current_month: thismonth-1})
 		}
-		for (let i=0; i < 5; i++) {
-				if (this.state.dates[i] == e.target.id) {
-					console.log(i)
-					console.log(this.state.dates[i])
-					console.log(this.state.status[i])
-					this.props.vitalDone()
-					this.props.symptomsDone()
-					this.props.personalDone()
-				}
-			}
+		// for (let i=0; i < 5; i++) {
+		// 		if (this.state.dates[i] == e.target.id) {
+					// this.props.vitalDone()
+					// this.props.symptomsDone()
+					// this.props.personalDone()
+				// }
+			// }
 	};
 
 	componentDidUpdate(prevProps) {
 	  // Typical usage (don't forget to compare props):
+    console.log("HELLO", this.state, this.props);
 	  if (this.props !== prevProps) {
 	    this.refreshCal();
 	  }
 	}
 
 	refreshCal = () => {
-		console.log(this.state)
 		this.setState({done: [0,0,0,0,0]})
-		console.log("CAL REFRESH")
 		dated = Number(this.state.current)
-		console.log(this.props)
 		let percent = this.props.vitals + this.props.personal + this.props.symptoms
-		console.log(this.state.status[this.state.dates.indexOf(dated)])
-		console.log(percent)
 		if (percent === 1) {
 			let arr = this.state.status
 			arr[this.state.dates.indexOf(dated)] = "33% COMPLETE"
-			console.log(arr)
+			console.log(1, dated, arr)
 			this.setState({status: arr})
 		} else if (percent === 2) {
 			let arr = this.state.status
 			arr[this.state.dates.indexOf(dated)] = "66% COMPLETE"
 			this.setState({status: arr})
-			console.log(arr)
+			console.log(2, dated, arr)
 		} else if (percent === 3) {
 			let arr = this.state.status
 			arr[this.state.dates.indexOf(dated)] = "100% COMPLETE"
 			this.setState({status: arr})
-			console.log(arr)
+			console.log(3, dated, arr)
 		}
-		console.log(this.state)
 	}
 
 	render() {

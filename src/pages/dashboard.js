@@ -230,24 +230,18 @@ class Dashboard extends React.Component {
 
 	onDateChange = (newdate, newmonth) => {
 		let changeddate = `${newdate}/${newmonth}`
-		this.setState({day: newdate})
-		this.setState({month: newmonth})
-		this.setState({date: changeddate})
-		this.setState({route: "gs"})
-		this.setState({vitals: 0})
-		this.setState({symptoms: 0})
-		this.setState({personal: 0})
+		this.setState({day: newdate, month: newmonth, date: changeddate, route: "gs", vitals: 0, symptoms: 0, personal: 0})
 		this.getDatabyDate(changeddate)
 	}
 
 	componentDidMount() {
 		console.log("HHAAPP", isTablet, isBrowser);
 		this.setState({path: this.props.location.pathname})
-		navigate("/maint")
 		Auth.currentAuthenticatedUser()
 			.then(res => {
 				this.setState({clientid: res.username})
-				this.refreshCalendar()
+				// this.refreshCalendar()
+				// this.child.current.refreshCal()
 				async function GetData() {
 					let response = await fetch(CORSDOMAIN+`/getvitals?client_id=${res.username}&&date=${finaldate}`)
 					response = response.json()
@@ -295,10 +289,7 @@ class Dashboard extends React.Component {
 					})
 					.catch(err => console.log(err))
 			})
-			.catch(err => 
-			       console.log(err)
-// 			       navigate("/signout")
-			      )
+			.catch(err => navigate("/signout"))
 	}
 
 	dataSet = (data) => {
@@ -307,7 +298,7 @@ class Dashboard extends React.Component {
 	}
 
 	refreshCalendar = () => {
-		this.child.current.refreshCal()
+		// this.child.current.refreshCal()
 	};
 
 	render() {
@@ -358,7 +349,7 @@ class Dashboard extends React.Component {
 					  <div style={{"min-width":"290px"}}>
 					  	{back}
 					  	<List test={this.state.test} symptoms = {this.state.symptoms} personal = {this.state.personal} vitals = {this.state.vitals} onRouteChange={this.onRouteChange} route={this.state.route}/>
-					  	<Table clientid={this.state.clientid} ref = {this.child} onDateChange={this.onDateChange} symptoms={this.state.symptoms} personal = {this.state.personal} vitals = {this.state.vitals} vitalDone={this.vitalDone} personalDone={this.personalDone} symptomsDone={this.symptomsDone}/>
+					  	<Table clientid={this.state.clientid}  onDateChange={this.onDateChange} symptoms={this.state.symptoms} personal = {this.state.personal} vitals = {this.state.vitals} vitalDone={this.vitalDone} personalDone={this.personalDone} symptomsDone={this.symptomsDone}/>
 					  </div>
 					  <div className="ml3" style={{width:"700px"}}>
 					    {output}
@@ -368,7 +359,7 @@ class Dashboard extends React.Component {
 				{ <MobileView>
 					<div style={{"margin":"auto", display: 'flex', flexDirection: 'row', flex: 1}}>
 						<List test={this.state.test} symptoms = {this.state.symptoms} personal = {this.state.personal} vitals = {this.state.vitals} onRouteChange={this.onRouteChange} route={this.state.route}/>
-						<Table clientid={this.state.clientid} ref = {this.child} onDateChange={this.onDateChange} symptoms={this.state.symptoms} personal = {this.state.personal} vitals = {this.state.vitals} vitalDone={this.vitalDone} personalDone={this.personalDone} symptomsDone={this.symptomsDone}/>
+						<Table clientid={this.state.clientid}  onDateChange={this.onDateChange} symptoms={this.state.symptoms} personal = {this.state.personal} vitals = {this.state.vitals} vitalDone={this.vitalDone} personalDone={this.personalDone} symptomsDone={this.symptomsDone}/>
 					</div>
 					{back}
 					<div style={{"margin":"10px auto auto auto","padding-bottom":"50px"}}>
