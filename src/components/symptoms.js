@@ -1,6 +1,6 @@
 import React from "react";
 import "./transition.css"
-import {isBrowser, isTablet, isMobile} from "react-device-detect"
+import {isMobile} from "react-device-detect"
 import BrowserView from "../components/BrowserView"
 import MobileView from "../components/MobileView"
 import { CORSDOMAIN } from "./constant"
@@ -249,7 +249,6 @@ class SymptomsForm extends React.Component {
 	}
 
 	componentDidMount() {
-		console.log(this.props)
 		this.setState({message: ""})
 		this.setState({vitals: this.props.vitals})
 		this.setState({symptoms: this.props.symptoms})
@@ -257,7 +256,7 @@ class SymptomsForm extends React.Component {
 		this.setState({personal: this.props.personal})
 		setTimeout(()=>{this.setState({visible: true})}, 25)
 		let x = this.props.data
-		console.log("loading data")
+		console.log("loading data", this.props)
 		this.setState({nose: x.nose})
 		this.setState({loss_taste_smell: x.loss_taste_smell})
 		this.setState({chills: x.chillsorsweating})
