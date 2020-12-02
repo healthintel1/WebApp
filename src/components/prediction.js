@@ -66,11 +66,18 @@ class Prediction extends React.Component {
                     body: "The temperature, heart rate and oxygen saturation data were insufficient to complete an analysis. Please provide another set of readings within four hours to repeat the analysis."
                 }
             })
-        } else {
+        } else if (r === "red") {
             this.setState({
                 output: {
                     head: "Red", sub: "Stay home and take care of yourself",
                     body: "The analysis of your temperature, heart rate and oxygen saturation data provided indicates that a more thorough exam needs to be performed by a healthcare provider to determine further action. Please contact your healthcare provider as soon as possible."
+                }
+            })
+        } else {
+            this.setState({
+                output: {
+                    head: "--", sub: "--",
+                    body: "Revisit this date again, we don't have anything to show here."
                 }
             })
         }

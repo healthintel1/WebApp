@@ -47,7 +47,7 @@ class Table extends React.Component {
 				this.setState({dates: arr})
 				async function GetData() {
 					let response = await fetch(CORSDOMAIN+`/getdates?client_id=${x}&d1=${arr2[0]}&d2=${arr2[1]}&d3=${arr2[2]}&d4=${arr2[3]}&d5=${arr2[4]}`)
-					response = response.json()
+					response = response.json();
 					return response
 				}
 				var fetched
@@ -86,8 +86,6 @@ class Table extends React.Component {
 								}
 						}
 			}
-
-
 					})
 					.catch(err=>console.log(err))
 			})
