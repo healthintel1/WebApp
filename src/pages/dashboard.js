@@ -328,12 +328,10 @@ class Dashboard extends React.Component {
 				output = <Waiting Dated={this.state.day} Month={this.state.month} onRouteChange={this.onRouteChange} dataSet={this.dataSet}/>
 			}
 		} else if (this.state.route === "gs") {
-			if (this.state.vitals === 1 && this.state.personal === 1 && this.state.symptoms===1 && this.state.prevroute !== "wait") {
-				this.onRouteChange("wait")
-			} else if (this.state.prevroute !== "wait") {
-				output = <GettingStarted vitals={this.state.vitals} symptoms={this.state.symptoms} personal={this.state.personal} Dated={this.state.day} Month={this.state.month} onRouteChange={this.onRouteChange}/>
+			if (this.state.vitals === 1 && this.state.personal === 1 && this.state.symptoms===1) {
+				this.setState({route: "wait"})
 			} else {
-				this.onRouteChange("vitals")
+				output = <GettingStarted vitals={this.state.vitals} symptoms={this.state.symptoms} personal={this.state.personal} Dated={this.state.day} Month={this.state.month} onRouteChange={this.onRouteChange}/>
 			}
 		} else if (this.state.route === "pred") {
 			output=(
