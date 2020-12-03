@@ -54,7 +54,7 @@ class Waiting extends React.Component {
               console.log("result", res)
               if (res === "error"){
                    setTimeout(() => this.props.onRouteChange("gs"), 500);
-              } else if (res === "red" || res === "yellow" || res=== "green") {
+              } else if (res === "red" || res === "yellow" || res=== "green" || res==="orange") {
                   GetData()
                 .then(res => {
                   console.log("IDHR", res)

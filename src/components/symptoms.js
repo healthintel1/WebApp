@@ -37,11 +37,6 @@ class SymptomsForm extends React.Component {
 	}
 
 	LISTAll = ["ABDOMINAL PAIN-GENERALIZED",
-		"FATIGUE",
-		"HEADACHE",
-		"SORE THROAT",
-		"NASAL CONGESTION",
-		"DIARRHEA",
 	"ABDOMINAL PAIN-LOWER",
 	"ABDOMINAL PAIN-RIGHT LOWER QUADRANT",
 	"ABDOMINAL PAIN-UPPER",
@@ -350,6 +345,13 @@ class SymptomsForm extends React.Component {
             this.setState({error: "Cannot choose other when 'None of the Above' is chosen"})
         } else this.setState({searchI: e.target.value.toUpperCase()})
 	};
+	onEnterHH = (x) => {
+		if (this.state.other.includes(x)){
+			this.onEnterRemove(x)
+		} else {
+			this.onEnter(x)
+		}
+	};
 	onEnter = (x) => {
 		let arr = this.state.other;
 		if (arr === ""){
@@ -378,6 +380,7 @@ class SymptomsForm extends React.Component {
 		console.log("OTHER REMOVE", arr);
 		this.setState({error: ""})
 	};
+
 	render() {
 		const monthNames = ["January", "February", "March", "April", "May", "June",
 		  "July", "August", "September", "October", "November", "December"
@@ -408,7 +411,9 @@ class SymptomsForm extends React.Component {
 				</div>
 			)
 		};
-		let output = this.state.other.split(";").map(x => x !== "" && <p onClick={(e) => this.onEnterRemove(x)} id={x} className={`pointer mr2 br2 ph2 pv2 mb1 mt1 ${(isMobile) ? "" : "dib"}`} style={{background: "rgb(255, 127, 129)", color:"white"}}>{x}</p>);
+		let output = this.state.other.split(";").map(x => (x !== "" &&
+			x !== "slurred" && x !== "dehydration" && x !== "lowblood" && x !== "seizures" &&
+			x !== "NASAL CONGESTION" && x !== "DIARRHEA" && x !== "HEADACHE" && x !== "FATIGUE" && x !== "SORE THROAT") && <p onClick={(e) => this.onEnterRemove(x)} id={x} className={`pointer mr2 br2 ph2 pv2 mb1 mt1 ${(isMobile) ? "" : "dib"}`} style={{background: "rgb(255, 127, 129)", color:"white"}}>{x}</p>);
 		return(
 			<div className={`w-100 mb3 ${(this.state.visible) ? "fadeIn" : "fadeOut"}`}>
 			  <div className="tl ba bw1 w-100 b--light-gray bg-white ba Avenir" style={{"font-family":"Avenir"}}>
@@ -426,6 +431,12 @@ class SymptomsForm extends React.Component {
                         <p onClick={this.onClick} id="nose" className="tl f5 pointer ml5 mr3 br2 pv3 ph4 mb0 dib" style={{background: this.state.nose ? this.state.on_color : this.state.off_color, color: this.state.nose ? "white" : "gray"}}>BLUISH LIPS/FACE</p>
 						<p onClick={this.onClick} id="chills" className="tl f5 pointer ml1 mr5 br2 pv3 ph4 mb0 dib" style={{background: this.state.chills ? this.state.on_color : this.state.off_color, color: this.state.chills ? "white" : "gray"}}>INABILITY TO WAKE/STAY AWAKE</p>
 						<p onClick={this.onClick} id="breath" className="tl f5 pointer ml5 mr3 br2 pv3 ph4 mb0 dib" style={{background: this.state.breath ? this.state.on_color : this.state.off_color, color: this.state.breath ? "white" : "gray"}}>DIFFICULTY IN BREATHING</p>
+
+						<p onClick={() => this.onEnterHH("slurred")} id="slurred" className="tl f5 pointer ml1 mr5 br2 pv3 ph4 mb0 dib" style={{background: this.state.other.includes("slurred") ? this.state.on_color : this.state.off_color, color: this.state.other.includes("slurred") ? "white" : "gray"}}>Slurred speech or difficulty speaking (new or worsening)</p>
+						<p onClick={() => this.onEnterHH("dehydration")} id="dehydration" className="tl f5 pointer ml5 mr3 br2 pv3 ph4 mb0 dib" style={{background: this.state.other.includes("dehydration") ? this.state.on_color : this.state.off_color, color: this.state.other.includes("dehydration") ? "white" : "gray"}}>Dehydration <p style={{fontSize:"14px"}}>(dry lips and mouth, noturinating much, sunken eyes)</p></p>
+						<p onClick={() => this.onEnterHH("lowblood")} id="lowblood" className="tl f5 pointer ml1 mr5 br2 pv3 ph4 mb0 dib" style={{background: this.state.other.includes("lowblood") ? this.state.on_color : this.state.off_color, color: this.state.other.includes("lowblood") ? "white" : "gray"}}>Signs of low blood pressure<p style={{fontSize:"14px"}}>(too weak to stand, dizziness, lightheaded, feeling cold,pale, clammy skin)</p></p>
+						<p onClick={() => this.onEnterHH("seizures")} id="seizures" className="tl f5 pointer ml5 mr3 br2 pv3 ph4 mb0 dib" style={{background: this.state.other.includes("seizures") ? this.state.on_color : this.state.off_color, color: this.state.other.includes("seizures") ? "white" : "gray"}}>New or worsening seizures</p>
+
 					</div>
 					<p className={`f5 ${(isMobile)?"ml4":"ml5"} mt5 light-red dib`} style={{marginBottom: 0}}>Other symptoms</p>
 					<div className="grid-box pa0 w-100">
@@ -435,7 +446,14 @@ class SymptomsForm extends React.Component {
                         <p onClick={this.onClick} id="vomit" className="tl f5 pointer ml1 mr5 br2 pv3 ph4 mb0 dib" style={{background: this.state.vomit ? this.state.on_color : this.state.off_color, color: this.state.vomit ? "white" : "gray"}}>NAUSEA or VOMITING</p>
                         <p onClick={this.onClick} id="loss_taste_smell" className="tl f5 pointer ml5 mr3 br2 pv3 ph4 mb0 dib" style={{background: this.state.loss_taste_smell ? this.state.on_color : this.state.off_color, color: this.state.loss_taste_smell ? "white" : "gray"}}>NEW LOSS OF TASTE OR SMELL</p>
                         <p onClick={this.onClick} id="throat" className="tl f5 pointer ml1 mr5 br2 pv3 ph4 mb0 dib" style={{background: this.state.throat ? this.state.on_color : this.state.off_color, color: this.state.throat ? "white" : "gray"}}>SHORTNESS OF BREATH</p>
-			        </div>
+
+                        <p onClick={() => this.onEnterHH("NASAL CONGESTION")} id="13" className="tl f5 pointer ml5 mr3 br2 pv3 ph4 mb0 dib" style={{background: this.state.other.includes("NASAL CONGESTION") ? this.state.on_color : this.state.off_color, color: this.state.other.includes("NASAL CONGESTION") ? "white" : "gray"}}>NASAL CONGESTION</p>
+                        <p onClick={() => this.onEnterHH("SORE THROAT")} id="12" className="tl f5 pointer ml1 mr5 br2 pv3 ph4 mb0 dib" style={{background: this.state.other.includes("SORE THROAT") ? this.state.on_color : this.state.off_color, color: this.state.other.includes("SORE THROAT") ? "white" : "gray"}}>SORE THROAT</p>
+                        <p onClick={() => this.onEnterHH("DIARRHEA")} id="14" className="tl f5 pointer ml5 mr3 br2 pv3 ph4 mb0 dib" style={{background: this.state.other.includes("DIARRHEA") ? this.state.on_color : this.state.off_color, color: this.state.other.includes("DIARRHEA") ? "white" : "gray"}}>DIARRHEA</p>
+                        <p onClick={() => this.onEnterHH("HEADACHE")} id="12" className="tl f5 pointer ml1 mr5 br2 pv3 ph4 mb0 dib" style={{background: this.state.other.includes("HEADACHE") ? this.state.on_color : this.state.off_color, color: this.state.other.includes("HEADACHE") ? "white" : "gray"}}>HEADACHE</p>
+                        <p onClick={() => this.onEnterHH("FATIGUE")} id="14" className="tl f5 pointer ml5 mr3 br2 pv3 ph4 mb0 dib" style={{background: this.state.other.includes("FATIGUE") ? this.state.on_color : this.state.off_color, color: this.state.other.includes("FATIGUE") ? "white" : "gray"}}>FATIGUE</p>
+
+                    </div>
                       <p className={`f5 ${(isMobile)?"ml4":"ml5"} mt4 gray`} style={{padding: "0 20px"}}>Please search for your symptoms below if not listed above</p>
 					<div className="pa0 ml5 mr5" style={{ background:"rgb(243,245,248)", marginTop: "15px", padding:"10px 10px", "border-radius":"0.25rem"}}>
 						<FloatingLabelInput
@@ -466,6 +484,12 @@ class SymptomsForm extends React.Component {
 						<p onClick={this.onClick} id="nose" className="tc f5 pointer ml3 mr3 br2 pv3 ph4 mb2 w-70" style={{margin:"auto", marginBottom:"10px", background: this.state.nose ? this.state.on_color : this.state.off_color, color: this.state.nose ? "white" : "gray"}}>BLUISH LIPS/FACE</p>
 						<p onClick={this.onClick} id="chills" className="tc f5 pointer ml3 mr5 br2 pv3 ph4 mb2 w-70" style={{margin:"auto", marginBottom:"10px",background: this.state.chills ? this.state.on_color : this.state.off_color, color: this.state.chills ? "white" : "gray"}}>INABILITY TO WAKE/STAY AWAKE</p>
 						<p onClick={this.onClick} id="breath" className="tc f5 pointer ml3 mr3 br2 pv3 ph4 mb2 w-70" style={{margin:"auto", marginBottom:"10px",background: this.state.breath ? this.state.on_color : this.state.off_color, color: this.state.breath ? "white" : "gray"}}>DIFFICULTY IN BREATHING</p>
+
+						<p onClick={() => this.onEnterHH("slurred")} id="slurred" className="tc f5 pointer ml3 mr5 br2 pv3 ph4 mb2 w-70" style={{margin:"auto", marginBottom:"10px",background: this.state.other.includes("slurred") ? this.state.on_color : this.state.off_color, color: this.state.other.includes("slurred") ? "white" : "gray"}}>Slurred speech or difficulty speaking (new or worsening)</p>
+						<p onClick={() => this.onEnterHH("dehydration")} id="dehydration" className="tc f5 pointer ml3 mr3 br2 pv3 ph4 mb2 w-70" style={{margin:"auto", marginBottom:"10px",background: this.state.other.includes("dehydration") ? this.state.on_color : this.state.off_color, color: this.state.other.includes("dehydration") ? "white" : "gray"}}>Dehydration <p style={{fontSize:"14px"}}>(dry lips and mouth, noturinating much, sunken eyes)</p></p>
+						<p onClick={() => this.onEnterHH("lowblood")} id="lowblood" className="tc f5 pointer ml3 mr5 br2 pv3 ph4 mb2 w-70" style={{margin:"auto", marginBottom:"10px",background: this.state.other.includes("lowblood") ? this.state.on_color : this.state.off_color, color: this.state.other.includes("lowblood") ? "white" : "gray"}}>Signs of low blood pressure<p style={{fontSize:"14px"}}>(too weak to stand, dizziness, lightheaded, feeling cold,pale, clammy skin)</p></p>
+						<p onClick={() => this.onEnterHH("seizures")} id="seizures" className="tc f5 pointer ml3 mr3 br2 pv3 ph4 mb2 w-70" style={{margin:"auto", marginBottom:"10px",background: this.state.other.includes("seizures") ? this.state.on_color : this.state.off_color, color: this.state.other.includes("seizures") ? "white" : "gray"}}>New or worsening seizures</p>
+
 					</div>
 					<p className={`f5 ${(isMobile)?"ml4":"ml5"} mt3 light-red dib`} style={{marginBottom: 20}}>Other symptoms</p>
 					<div className="pa2 w-100 tc">
@@ -475,6 +499,13 @@ class SymptomsForm extends React.Component {
 						<p onClick={this.onClick} id="vomit" className="tc f5 pointer ml3 mr5 br2 pv3 ph4 mb2 w-70" style={{margin:"auto", marginBottom:"10px",background: this.state.vomit ? this.state.on_color : this.state.off_color, color: this.state.vomit ? "white" : "gray"}}>NAUSEA or VOMITING</p>
 						<p onClick={this.onClick} id="loss_taste_smell" className="tc f5 pointer ml3 mr3 br2 pv3 ph4 mb2 w-70" style={{margin:"auto", marginBottom:"10px", background: this.state.loss_taste_smell ? this.state.on_color : this.state.off_color, color: this.state.loss_taste_smell ? "white" : "gray"}}>NEW LOSS OF TASTE OR SMELL</p>
 						<p onClick={this.onClick} id="throat" className="tc f5 pointer ml3 mr5 br2 pv3 ph4 mb2 w-70" style={{margin:"auto", marginBottom:"10px",background: this.state.throat ? this.state.on_color : this.state.off_color, color: this.state.throat ? "white" : "gray"}}>SHORTNESS OF BREATH</p>
+
+						<p onClick={() => this.onEnterHH("NASAL CONGESTION")} id="13" className="tc f5 pointer ml3 mr5 br2 pv3 ph4 mb2 w-70" style={{margin:"auto", marginBottom:"10px",background: this.state.other.includes("NASAL CONGESTION") ? this.state.on_color : this.state.off_color, color: this.state.other.includes("NASAL CONGESTION") ? "white" : "gray"}}>NASAL CONGESTION</p>
+						<p onClick={() => this.onEnterHH("SORE THROAT")} id="12" className="tc f5 pointer ml3 mr5 br2 pv3 ph4 mb2 w-70" style={{margin:"auto", marginBottom:"10px",background: this.state.other.includes("SORE THROAT") ? this.state.on_color : this.state.off_color, color: this.state.other.includes("SORE THROAT") ? "white" : "gray"}}>SORE THROAT</p>
+						<p onClick={() => this.onEnterHH("DIARRHEA")} id="14" className="tc f5 pointer ml3 mr5 br2 pv3 ph4 mb2 w-70" style={{margin:"auto", marginBottom:"10px",background: this.state.other.includes("DIARRHEA") ? this.state.on_color : this.state.off_color, color: this.state.other.includes("DIARRHEA") ? "white" : "gray"}}>DIARRHEA</p>
+						<p onClick={() => this.onEnterHH("HEADACHE")} id="12" className="tc f5 pointer ml3 mr5 br2 pv3 ph4 mb2 w-70" style={{margin:"auto", marginBottom:"10px",background: this.state.other.includes("HEADACHE") ? this.state.on_color : this.state.off_color, color: this.state.other.includes("HEADACHE") ? "white" : "gray"}}>HEADACHE</p>
+						<p onClick={() => this.onEnterHH("FATIGUE")} id="14" className="tc f5 pointer ml3 mr5 br2 pv3 ph4 mb2 w-70" style={{margin:"auto", marginBottom:"10px",background: this.state.other.includes("FATIGUE") ? this.state.on_color : this.state.off_color, color: this.state.other.includes("FATIGUE") ? "white" : "gray"}}>FATIGUE</p>
+
 					</div>
                       <p className={`f5 ${(isMobile)?"ml4":"ml5"} mt4 gray`} style={{padding: "0 20px"}}>Please search for your symptoms below if not listed above</p>
 					<div className="pa0 ml5 mr5" style={{ background:"rgb(243,245,248)", marginTop: "10px", padding:"10px 10px", "border-radius":"0.25rem"}}>

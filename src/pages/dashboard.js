@@ -115,7 +115,7 @@ class Dashboard extends React.Component {
 			sorethroat: input.throat,
 			bodyaches: input.bodyache,
 			headache: input.headache,
-			bloodpressure1: input.bloodpressure1,
+			bloodpressure1: input.other,
 			vomiting: input.vomit,
 			diarrhea: input.diarrhea,
 			fatiguetiredness: input.fatigue,
