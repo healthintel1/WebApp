@@ -1,9 +1,9 @@
 import React from "react";
 import "./transition.css"
-import {isBrowser, isTablet, isMobile} from "react-device-detect"
+import {isMobile} from "react-device-detect"
 import BrowserView from "../components/BrowserView"
 import MobileView from "../components/MobileView"
-import Amplify, { Auth, Storage } from 'aws-amplify';
+import Amplify from 'aws-amplify';
 import awsconfig from './aws-exports';
 import {CORSDOMAIN} from './constant';
 Amplify.configure(awsconfig);
@@ -17,7 +17,6 @@ class PersonalForm extends React.Component {
 			known_found: "false",
 			happy: "",
 			pain: 1,
-			// picture:'UPLOAD IMAGE',
 			video:'',
 			error_message:"",
 			on_color: "rgb(127, 90, 179)",
@@ -27,8 +26,6 @@ class PersonalForm extends React.Component {
 			vitals: "",
 			symptoms:"",
 			personal:"",
-			// imagename:"",
-			// imageurl:"",
 		}
 	}
 
