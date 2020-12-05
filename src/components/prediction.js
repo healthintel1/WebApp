@@ -57,29 +57,29 @@ class Prediction extends React.Component {
         if (r === "green") {
             this.setState({
                 output: {
-                    head: "Green", sub: "You seem to be feeling okay",
-                    body: "The analysis of the temperature, heart rate and oxygen saturation data provided are within normal ranges. Continue to monitor your health and contact your health care provider for advice if you get new symptoms or if you have close contact with someone with lab-confirmed COVID-19"
+                    head: "Green", sub: "You seem to be feeling okay.",
+                    body: "The analysis of your data including temperature, heart rate and oxygen saturation you provided are within normal ranges."
                 }
             })
         } else if (r === "yellow") {
             this.setState({
                 output: {
-                    head: "Yellow", sub: "",
-                    body: "Continue to monitor your health and contact your health care provider for advice if you get new symptoms or if you have close contact with someone with lab-confirmed COVID-19."
+                    head: "Yellow", sub: "Stay home and take care of yourself.",
+                    body: "The analysis of your data including temperature, heart rate and oxygen saturation data provided by you indicates that you should continue to monitor your health and contact your health care provider for advice if you get new symptoms or if you have close contact with someone with lab-confirmed COVID-19. Please provide another set of readings within four hours to repeat the analysis. Stay home and take care of yourself."
                 }
             })
         } else if (r === "red") {
             this.setState({
                 output: {
-                    head: "Red", sub: "Stay home and take care of yourself",
+                    head: "Red", sub: "Please contact your healthcare provider as soon as possible.",
                     body: "According to the CDC guidelines, the analysis of the data you entered indicates immediate medical attention may be necessary. Please contact your healthcare provider to discuss next steps. If your healthcare provider is not available, contact 911 or go to the emergency department."
                 }
             })
         } else if (r === "orange") {
             this.setState({
                 output: {
-                    head: "Orange", sub: "Contact your healthcare provider ASAP",
-                    body: "Please contact your healthcare provider as soon as possible. Stay home and take care of yourself- The analysis of your temperature, heart rate and oxygen saturation data provided indicates that a more thorough exam needs to be performed by a healthcare provider to determine further action"
+                    head: "Orange", sub: "Please contact your healthcare provider as soon as possible.",
+                    body: " The analysis of your data including temperature, heart rate and oxygen saturation provided by you indicates that a more thorough exam needs to be performed by a healthcare provider to determine further action. Please contact your healthcare provider as soon as possible."
                 }
             })
         } else {
