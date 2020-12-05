@@ -57,7 +57,7 @@ class Prediction extends React.Component {
         if (r === "green") {
             this.setState({
                 output: {
-                    head: "Green", sub: "You seem to be feeling okay",
+                    head: "Green", sub: "You seem to be feeling okay.",
                     body: "The analysis of your data including temperature, heart rate and oxygen saturation you provided are within normal ranges."
                 }
             })
@@ -71,14 +71,14 @@ class Prediction extends React.Component {
         } else if (r === "red") {
             this.setState({
                 output: {
-                    head: "Red", sub: "Contact your healthcare provider ASAP",
+                    head: "Red", sub: "Please contact your healthcare provider as soon as possible.",
                     body: "According to the CDC guidelines, the analysis of the data you entered indicates immediate medical attention may be necessary. Please contact your healthcare provider to discuss next steps. If your healthcare provider is not available, contact 911 or go to the emergency department."
                 }
             })
         } else if (r === "orange") {
             this.setState({
                 output: {
-                    head: "Orange", sub: "Contact your healthcare provider ASAP",
+                    head: "Orange", sub: "Please contact your healthcare provider as soon as possible.",
                     body: " The analysis of your data including temperature, heart rate and oxygen saturation provided by you indicates that a more thorough exam needs to be performed by a healthcare provider to determine further action. Please contact your healthcare provider as soon as possible."
                 }
             })
