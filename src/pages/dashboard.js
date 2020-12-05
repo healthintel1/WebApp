@@ -121,6 +121,9 @@ class Dashboard extends React.Component {
 			fatiguetiredness: input.fatigue,
 			none9: input.nota,
 		}})
+		this.setState({personal_data: {
+				feeling: this.state.personal_data.feeling && !(input.fever || input.chills || input.cough || input.breath|| input.throat || input.bodyache || input.headache || input.other || input.vomit || input.diarrhea || input.fatigue),
+			}});
 		console.log(this.state)
 		this.setState({symptoms: 1})
 		if (this.state.vitals==1 && this.state.personal==1) {
