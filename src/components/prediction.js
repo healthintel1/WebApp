@@ -37,11 +37,13 @@ class Prediction extends React.Component {
                 dates.push(a[0])
                 esis.push((a[1]))
                 if (a[1] === "red"){
-                    bools.push(3)
+                    bools.push(4)
                 } else if (a[1] === "yellow"){
                     bools.push(2)
                 } else if (a[1] === "green"){
                     bools.push(1)
+                } else if (a[1] === "orange") {
+                    bools.push(3)
                 } else {
                     bools.push(0)
                 }
@@ -55,22 +57,36 @@ class Prediction extends React.Component {
         if (r === "green") {
             this.setState({
                 output: {
-                    head: "Green", sub: "",
-                    body: "You seem to be feeling okay- The analysis of the temperature, heart rate and oxygen saturation data provided are within normal ranges. Continue to monitor your health and contact your health care provider for advice if you get new symptoms or if you have close contact with someone with lab-confirmed COVID-19.\n"
+                    head: "Green", sub: "You seem to be feeling okay.",
+                    body: "The analysis of your data including temperature, heart rate and oxygen saturation you provided are within normal ranges."
                 }
             })
         } else if (r === "yellow") {
             this.setState({
                 output: {
-                    head: "Yellow", sub: "",
-                    body: "The temperature, heart rate and oxygen saturation data were insufficient to complete an analysis. Please provide another set of readings within four hours to repeat the analysis."
+                    head: "Yellow", sub: "Stay home and take care of yourself.",
+                    body: "The analysis of your data including temperature, heart rate and oxygen saturation data provided by you indicates that you should continue to monitor your health and contact your health care provider for advice if you get new symptoms or if you have close contact with someone with lab-confirmed COVID-19. Please provide another set of readings within four hours to repeat the analysis. Stay home and take care of yourself."
+                }
+            })
+        } else if (r === "red") {
+            this.setState({
+                output: {
+                    head: "Red", sub: "Please contact your healthcare provider as soon as possible.",
+                    body: "According to the CDC guidelines, the analysis of the data you entered indicates immediate medical attention may be necessary. Please contact your healthcare provider to discuss next steps. If your healthcare provider is not available, contact 911 or go to the emergency department."
+                }
+            })
+        } else if (r === "orange") {
+            this.setState({
+                output: {
+                    head: "Orange", sub: "Please contact your healthcare provider as soon as possible.",
+                    body: " The analysis of your data including temperature, heart rate and oxygen saturation provided by you indicates that a more thorough exam needs to be performed by a healthcare provider to determine further action. Please contact your healthcare provider as soon as possible."
                 }
             })
         } else {
             this.setState({
                 output: {
-                    head: "Red", sub: "Stay home and take care of yourself",
-                    body: "The analysis of your temperature, heart rate and oxygen saturation data provided indicates that a more thorough exam needs to be performed by a healthcare provider to determine further action. Please contact your healthcare provider as soon as possible."
+                    head: "--", sub: "--",
+                    body: "Revisit this date again, we don't have anything to show here."
                 }
             })
         }
@@ -121,42 +137,16 @@ class Prediction extends React.Component {
                 </div>
                 {<BrowserView>
                     <div style={{display:"flex", "flex-wrap":"wrap"}}>
-                        <p className={`${("w-40 ml5")} mt4 dib`} style={{"font-size":"72px", "font-weight":"500", color: this.state.output.head, "line-height":"1.6"}}>{this.state.output.head}</p>
-                        <img className="dib pt3 w-40" src="https://i.ibb.co/j45jqDj/Screenshot-2020-06-15-at-10-40-39-PM.png"/>
+                        <p className={`${("w-80 ml5")} mt4 dib`} style={{"font-size":"72px", "font-weight":"500", color: this.state.output.head, "line-height":"1.6"}}>{this.state.output.head} Status</p>
                     </div>
                 </BrowserView>}
                 { <MobileView>
-                    <p className="ml5 mt4 mb0 w-80 f1" style={{"font-weight":"500", color: this.state.output.head, "line-height":"1.6"}}>{this.state.output.head}</p>
-                    <img className="ml4 w-80" src="https://i.ibb.co/j45jqDj/Screenshot-2020-06-15-at-10-40-39-PM.png"/>
+                    <p className="ml5 mt4 mb0 w-80 f1" style={{"font-weight":"500", color: this.state.output.head, "line-height":"1.6"}}>{this.state.output.head} Status</p>
                 </MobileView>}
                 <div>
                     <p className={`f3 dark-gray ml4 mt4 b ${(isMobile)?"w-80":""}`}>{this.state.output.sub}</p>
                     <p className={`f5 gray ml4 mr6 ${(isMobile)?"w-80":""}`} style={{"line-height":"1.5"}}>{this.state.output.body}</p>
                 </div>
-                {/*<div className="w-100 bt bb bw1 b--light-gray mt4">*/}
-                {/*    <p className={`f5 ${(isMobile)?"ml4":"ml5"} mt2 mb2 dark-gray dib`}>NEXT STEPS</p>*/}
-                {/*</div>*/}
-                {/*<div className={`${(isMobile)?"ml4":"ml5"} list-div mv3`}>*/}
-                {/*    <span>1</span>  Start to quarantine yourself*/}
-                {/*</div>*/}
-                {/*<div className={`${(isMobile)?"ml4":"ml5"} list-div mv3`}>*/}
-                {/*    <span>2</span>  Visit the nearest hospital to get tested further*/}
-                {/*</div>*/}
-                {/*<div className="w-100 bt bb bw1 b--light-gray mt3">*/}
-                {/*    <p className={`f5 ${(isMobile)?"ml4":"ml5"} mt2 mb2 dark-gray dib`}>LINKS</p>*/}
-                {/*</div>*/}
-                {/*<BrowserView>*/}
-                {/*    <div style={{margin:"auto"}} className="tc">*/}
-                {/*        <p className="mt3 f5 dim pointer ph3 pv3 mb2 b dib white bg-light-red">CALL THE DOCTOR</p>*/}
-                {/*        <p className="ml2 mt3 f5 dim pointer ph4 pv3 mb2 b dib white bg-gray">LINK TO CDC</p>*/}
-                {/*        <p className="ml2 mt3 f5 dim pointer ph3 pv3 mb2 b dib white" style={{"background":"rgb(206,211,255)"}}>DIRECTIONS TO ER</p>*/}
-                {/*    </div>*/}
-                {/*</BrowserView>*/}
-                {/*<MobileView>*/}
-                {/*    <p className="ml4 tc w-60 mt3 f5 dim pointer ph4 pv3 mb1 b dib white bg-light-red">CALL THE DOCTOR</p>*/}
-                {/*    <p className="ml4 tc w-60 mt2 f5 dim pointer ph4 pv3 mb1 b dib white bg-gray">LINK TO CDC</p>*/}
-                {/*    <p className="ml4 tc w-60 mt2 f5 dim pointer ph4 pv3 mb2 b dib white" style={{"background":"rgb(206,211,255)"}}>DIRECTIONS TO ER</p>*/}
-                {/*</MobileView>*/}
             </div>
             <div className="mt4 flex">
                 <Graph Dated={this.props.Dated} Month={this.props.Month} data={this.state.data}/>

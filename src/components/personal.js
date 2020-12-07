@@ -1,9 +1,9 @@
 import React from "react";
 import "./transition.css"
-import {isBrowser, isTablet, isMobile} from "react-device-detect"
+import {isMobile} from "react-device-detect"
 import BrowserView from "../components/BrowserView"
 import MobileView from "../components/MobileView"
-import Amplify, { Auth, Storage } from 'aws-amplify';
+import Amplify from 'aws-amplify';
 import awsconfig from './aws-exports';
 import {CORSDOMAIN} from './constant';
 Amplify.configure(awsconfig);
@@ -17,7 +17,6 @@ class PersonalForm extends React.Component {
 			known_found: "false",
 			happy: "",
 			pain: 1,
-			// picture:'UPLOAD IMAGE',
 			video:'',
 			error_message:"",
 			on_color: "rgb(127, 90, 179)",
@@ -27,8 +26,6 @@ class PersonalForm extends React.Component {
 			vitals: "",
 			symptoms:"",
 			personal:"",
-			// imagename:"",
-			// imageurl:"",
 		}
 	}
 
@@ -186,15 +183,15 @@ class PersonalForm extends React.Component {
 						{/*  	<a onClick={this.onOptionClick} id="true" name="known_found" className="f6 ml5 shadow-2 mb3 mt3 dark-gray pointer ph3 pv2 dib" style={{background: this.state.known_found === "true" ? this.state.on_color : "white", color: this.state.known_found === "true" ? "white" : "black"}}>YES</a>*/}
 						{/*    <a onClick={this.onOptionClick} id="false" name="known_found" className="f6 ml2 shadow-2 mb3 mt3 dark-gray pointer ph3 pv2 dib" style={{background: this.state.known_found === "false" ? this.state.on_color : "white", color: this.state.known_found === "false" ? "white" : "black"}}>NO</a>*/}
 						{/*</div>*/}
-						<div className="ma1">
-							<p className="mt3 ml5 b mb1 gray gender">DO YOU HAVE ANY PAIN? RATE YOUR PAIN ON A SCALE OF
-								1-10</p>
-							<p className="mt3 ml5 b mb1 f6 gray gender">1 being no pain and 10 being intolerable
-								pain</p>
-							<input id="pain" onChange={this.onTypeEnter} type="number" min="1" max="10"
-								   className="mt3 ml5 mr2 bg-washed-green tc"
-								   style={{"height": "50px", "width": "35%", "border": "none"}}/>
-						</div>
+						{/*<div className="ma1">*/}
+						{/*	<p className="mt3 ml5 b mb1 gray gender">DO YOU HAVE ANY PAIN? RATE YOUR PAIN ON A SCALE OF*/}
+						{/*		1-10</p>*/}
+						{/*	<p className="mt3 ml5 b mb1 f6 gray gender">1 being no pain and 10 being intolerable*/}
+						{/*		pain</p>*/}
+						{/*	<input id="pain" onChange={this.onTypeEnter} type="number" min="1" max="10"*/}
+						{/*		   className="mt3 ml5 mr2 bg-washed-green tc"*/}
+						{/*		   style={{"height": "50px", "width": "35%", "border": "none"}}/>*/}
+						{/*</div>*/}
 						{/*<div className="ma1">*/}
 						{/*    <p className="mt3 ml5 b mb1 gray gender">IMPORT PICTURE</p>*/}
 						{/*  	<p onClick={()=>document.getElementById('hiddenInputButton').click()} className="pointer ml5 mt3 pt4 ph3 f6 b gray bg-washed-blue w-30" style={{height:"150px", "padding-top":"60px", "background":"rgb(243,245,248)"}}>{this.state.picture}</p>*/}
@@ -235,11 +232,11 @@ class PersonalForm extends React.Component {
 					    {/*  	<a onClick={this.onOptionClick} id="true" name="known_found" className="f6 ml4 shadow-2 mb3 mt3 dark-gray pointer ph3 pv2 dib" style={{background: this.state.known_found === "true" ? this.state.on_color : "white", color: this.state.known_found === "true" ? "white" : "black"}}>YES</a>*/}
 					    {/*    <a onClick={this.onOptionClick} id="false" name="known_found" className="f6 ml2 shadow-2 mb3 mt3 dark-gray pointer ph3 pv2 dib" style={{background: this.state.known_found === "false" ? this.state.on_color : "white", color: this.state.known_found === "false" ? "white" : "black"}}>NO</a>*/}
 				    	{/*</div>*/}
-				    	<div className="ma1 w-70">
-					        <p className="mt3 ml4 b f5 mb1 gray gender">DO YOU HAVE ANY PAIN? RATE YOUR PAIN ON A SCALE OF 1-10</p>
-					        <p className="mt3 ml4 b mb1 f6 gray gender">1 being no pain and 10 being intolerable pain</p>
-					        <input id="pain" onChange={this.onTypeEnter} type="number" min="1" max="10" className="mt3 ml4 mr2 bg-washed-green tc" style={{"height":"50px", "width":"35%","border":"none"}}/>
-					    </div>
+				    	{/*<div className="ma1 w-70">*/}
+					    {/*    <p className="mt3 ml4 b f5 mb1 gray gender">DO YOU HAVE ANY PAIN? RATE YOUR PAIN ON A SCALE OF 1-10</p>*/}
+					    {/*    <p className="mt3 ml4 b mb1 f6 gray gender">1 being no pain and 10 being intolerable pain</p>*/}
+					    {/*    <input id="pain" onChange={this.onTypeEnter} type="number" min="1" max="10" className="mt3 ml4 mr2 bg-washed-green tc" style={{"height":"50px", "width":"35%","border":"none"}}/>*/}
+					    {/*</div>*/}
 				    	{/*<div className="ma1 w-70">*/}
 					    {/*    <p classNameds="mt3 ml4 f5 b mb1 gray gender">IMPORT PICTURE</p>*/}
 					    {/*  	<p onClick={()=>document.getElementById('hiddenInputButton').click()} className="pointer ml4 mt3 pt4 ph3 f6 b gray bg-washed-blue w-60" style={{height:"150px", "padding-top":"60px", "background":"rgb(243,245,248)"}}>{this.state.picture}</p>*/}

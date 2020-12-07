@@ -16,10 +16,9 @@ class IndexPage extends React.Component {
 	}
 
 	componentDidMount() {
-		navigate("/maint")
 		Auth.currentAuthenticatedUser()
 			.then(res => {
-// 				navigate("/dashboard")
+				navigate("/dashboard")
 				console.log("User is logged in")
 			})
 			.catch(err => console.log("User is not logged in"))
@@ -27,11 +26,7 @@ class IndexPage extends React.Component {
 
 
 	render() {
-// 		navigate("/maint")
-		return(
-// 			<LandingPage/>
-			<h1>The site is under maintenance</h1>
-		)
+		return(<LandingPage/>)
 	}
 }
 
