@@ -122,8 +122,8 @@ class TestResults extends React.Component {
                                                 <p className="mt3 ml5 b pa0 mb0 gray gender">RESULT</p>
                                                 <div className="ml5 mr2" style={{display: "flex","border":"none"}}>
                                                     <select value={test.result} onChange={(event) => {
-                                                        console.log("Results", event);
-                                                        this.setState({tests: [...this.state.tests.slice(0, i), {...test, event: event.target.value}, ...this.state.tests.slice(i+1)]})
+                                                        console.log("Results", event.target.value);
+                                                        this.setState({tests: [...this.state.tests.slice(0, i), {...test, result: event.target.value}, ...this.state.tests.slice(i+1)]})
                                                     }} className="mt3" style={{borderColor: "#777", minWidth: "60%", padding: 10, color: "#777", borderWidth: 0.5}}>
                                                         <option style={{color: "#777"}} value="wait">WAITING FOR RESULT</option>
                                                         <option style={{color: "#777"}} value="pos">COVID-19 POSITIVE</option>
@@ -207,7 +207,7 @@ class TestResults extends React.Component {
                                                 <p className="mt3 ml3 b f5 w-70 pa0 mb0 gray gender">RESULT</p>
                                                 <div className="ml3 mr2" style={{display: "flex", "height":"50px", "width":"80%","border":"none"}}>
                                                     <select onChange={(event) => {
-                                                        this.setState({tests: [...this.state.tests.slice(0, i), {...test, event: event.target.value}, ...this.state.tests.slice(i+1)]})
+                                                        this.setState({tests: [...this.state.tests.slice(0, i), {...test, result: event.target.value}, ...this.state.tests.slice(i+1)]})
                                                     }} value={test.result} className="mt3" style={{borderColor: "#777", color: "#777", minWidth: "80%", borderWidth: 0.5}}>
                                                         <option style={{color: "#777"}} value="wait">WAITING FOR RESULT</option>
                                                         <option style={{color: "#777"}} value="pos">COVID-19 POSITIVE</option>
