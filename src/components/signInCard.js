@@ -87,7 +87,7 @@ class SignInCard extends React.Component {
 			}
 		}
 		return(
-			<div className={!isMobile?"w-100 shadow-3 pa2 pt0 pb4 tc bg-white ba b--light-gray Avenir ml4":""} style={{width: (isMobile) ? "100vw" : "650px"}}>
+			<div className={!isMobile?"w-100 shadow-3 pa2 pt0 pb4 tc bg-white ba b--light-gray Avenir ml4":""} style={{width: (isMobile) ? "100vw" : "650px", marginRight: (isMobile) ? "0":"20px"}}>
 				<p className={`${(isMobile) ? "f2" : "f1"} mt5`} style={{color: "rgb(127,90,179)"}}>HelpDefeatCOVID</p>
 				<p className={`${(isMobile) ? "f5" : "f4"} w-60 tc gray mt4 mb5`} style={{"marginLeft":"auto", "marginRight":"auto", "fontWeight":"500"}}>Sign-in if you are an authorized HealthIntel Pilot User</p>
 				<div className="tl" style={{ fontSize: (isMobile) ? 18 : 24, padding:"20px 20px", "borderRadius":"15px", width:"75%", "marginTop":"20px", "margin":"auto"}}>
@@ -119,11 +119,12 @@ class SignInCard extends React.Component {
 				</div>
 
 				<p onClick={()=>OnSignInSubmit()} className={`f4 tc no-underline black bg-animate hover-bg-purple hover-white inline-flex pointer mb3 items-center pa3 ba border-box ph4 br3 ${(isMobile) ? "mr3" : "mr5"}`} style={{"margin":"auto"}}>
-				    <span className="pr1"> Sign In </span>
+				    <span style={{marginRight: 0}}> Sign In </span>
 				</p>
 				{/*<p onClick={()=> this.onInviteOthers()} className={`f4 tc no-underline bg-animate black bg-purple light-gray inline-flex pointer mb3 items-center pa3 ph4 ba br3 border-box ${(isMobile) ? "ml3" : "ml5"}`}>*/}
 				{/*	<span> {this.state.invite} </span>*/}
 				{/*</p>*/}
+				<br/>
 				<br/>
 				{/*<p onClick={()=> this.onInviteOthers()} className="f4 tc no-underline bg-animate bg-purple light-gray inline-flex pointer mb3 items-center mt4 bg-white black pa3 ph4 br3" style={{"margin-left":"auto"}}>*/}
 				{/*    <span> {this.state.invite} </span>*/}

@@ -29,7 +29,7 @@ class Graph extends React.Component {
         <div className={`w-100 mb3`} ref={el => (this.container = el)}>
           	<div className="w-100 ba bw1 tl b--light-gray pb4 bg-white ba Avenir" style={{"font-family":"Avenir"}}>
                 <div className="w-100 bb bw1 b--light-gray">
-                    <p className={`f5 w-100 ${(isMobile)?"ml4":"ml5"} mb3 mt3 dark-gray dib`} style={{"margin-right":"10rem"}}>TREND ANALYSIS<p className={`f5 gray mb3 dib ${(isMobile)?"ml6":"ml7"}`}>{monthNames[this.props.Month-1]} {this.props.Dated}</p></p>
+                    <p className={`f5 w-100 ${(isMobile)?"ml4":"ml5"} mb3 mt3 dark-gray dib`} style={{"margin-right":"10rem"}}>RISK TREND ANALYSIS<p className={`f5 gray mb3 dib ${(isMobile)?"ml6":"ml7"}`}>{monthNames[this.props.Month-1]} {this.props.Dated}</p></p>
                 </div>
                 <div className="mt4 pl4">
                   <Chart data={this.props.data} width={this.state.width}/>
