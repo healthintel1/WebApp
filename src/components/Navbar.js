@@ -10,6 +10,7 @@ const Navbar = (props) => {
 	let x = (props.path)
 	const [clientId, setClientId] = useState("");
 	const [companyLogo, setCompanyLogo] = useState("");
+
 	async function signOut() {
 	    try {
 	        const response = await Auth.signOut({ global: true });
@@ -37,6 +38,7 @@ const Navbar = (props) => {
 						setCompanyLogo(res)
 					})
 					.catch(err => console.log(err))
+				setCompanyLogo(require("../../../Employer/public/Pluto_TV_2020_logo.png"))
 			})
 			.catch(err => console.error("Error in getting logo"))
 	}, []);
@@ -61,4 +63,3 @@ const Navbar = (props) => {
 }
 
 export default Navbar;
-
