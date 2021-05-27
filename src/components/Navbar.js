@@ -38,7 +38,6 @@ const Navbar = (props) => {
 						setCompanyLogo(res)
 					})
 					.catch(err => console.log(err))
-				setCompanyLogo(require("../../../Employer/public/Pluto_TV_2020_logo.png"))
 			})
 			.catch(err => console.error("Error in getting logo"))
 	}, []);
