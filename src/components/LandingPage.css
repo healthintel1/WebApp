@@ -5,11 +5,13 @@
 .f4-5 {
 	font-size: 1.1rem;
 }
-
+.marLeft{
+	margin-left: 3vw;
+}
 body {
 	height: 100%;
 	background: white;  /* fallback for old browsers */
-	
+
 }
 
 .grid {
@@ -72,6 +74,22 @@ footer {
 	font-family: Avenir;
 	gap:10px;
 }
-
-
-
+.mobSign{
+	width: auto;
+	margin-right: 0;
+	margin-left: 0;
+	padding-left: 0;
+	padding-right: 1rem;
+}
+@media only screen and (max-width: 700px) {
+	.marLeft{
+		margin-left: 0;
+	}
+	.mobSign{
+		width: min(700px, 95vw);
+		margin-right: auto;
+		margin-left: auto;
+		padding-left: 0;
+		padding-right: 0;
+	}
+}

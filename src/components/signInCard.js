@@ -87,7 +87,7 @@ class SignInCard extends React.Component {
 			}
 		}
 		return(
-			<div className={!isMobile?"w-100 shadow-3 pa2 pt0 pb4 tc bg-white ba b--light-gray Avenir ml4":""} style={{width: (isMobile) ? "100vw" : "650px", marginRight: (isMobile) ? "0":"20px"}}>
+			<div className={"tc bg-white Avenir mobV"}>
 				<p className={`${(isMobile) ? "f2" : "f1"} mt5`} style={{color: "rgb(127,90,179)"}}>HelpDefeatCOVID</p>
 				<p className={`${(isMobile) ? "f5" : "f4"} w-60 tc gray mt4 mb5`} style={{"marginLeft":"auto", "marginRight":"auto", "fontWeight":"500"}}>Sign-in if you are an authorized HealthIntel Pilot User</p>
 				<div className="tl" style={{ fontSize: (isMobile) ? 18 : 24, padding:"20px 20px", "borderRadius":"15px", width:"75%", "marginTop":"20px", "margin":"auto"}}>
