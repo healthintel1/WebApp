@@ -9,7 +9,7 @@ import Footer from "./footer";
 const LandingPage = () => {
 	return(
 		<div>
-			<div className={`flex ${(!isMobile)?"mt5":"mt3"} marLeft`}>
+			<div className={`flex marLeft`}>
 				<div className="fl tc mobSign">
 					<SignInCard/>
 				</div>

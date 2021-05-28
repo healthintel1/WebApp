@@ -141,7 +141,7 @@ class Prediction extends React.Component {
                     </div>
                 </BrowserView>}
                 { <MobileView>
-                    <p className="ml5 mt4 mb0 w-80 f1" style={{"font-weight":"500", color: this.state.output.head, "line-height":"1.6"}}>{this.state.output.head} Status</p>
+                    <p className="ml4 mt4 mb0 w-80 f1" style={{"font-weight":"500", color: this.state.output.head, "line-height":"1.6"}}>{this.state.output.head} Status</p>
                 </MobileView>}
                 <div>
                     <p className={`f3 dark-gray ml4 mt4 b ${(isMobile)?"w-80":""}`}>{this.state.output.sub}</p>

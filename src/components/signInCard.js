@@ -89,8 +89,8 @@ class SignInCard extends React.Component {
 		return(
 			<div className={"tc bg-white Avenir mobV"}>
 				<p className={`ff mt5`} style={{color: "rgb(127,90,179)"}}>HelpDefeatCOVID</p>
-				<p className={`${(isMobile) ? "f5" : "f4"} w-80 tc gray mt4 mb5`} style={{"marginLeft":"auto", "marginRight":"auto", "fontWeight":"500"}}>Sign-in if you are an authorized HealthIntel Pilot User</p>
-				<div className="tl ww75" style={{ "borderRadius":"15px", "marginTop":"20px", "margin":"auto"}}>
+				<p className={`f5 w-80 tc gray mt4 mb4`} style={{"marginLeft":"auto", "marginRight":"auto", "fontWeight":"500"}}>Sign-in if you are an authorized HealthIntel Pilot User</p>
+				<div className="tl ww75" style={{ "borderRadius":"15px"}}>
 		            <FloatingLabelInput
 		              id="email"
 		              label="Email ID"
@@ -99,7 +99,7 @@ class SignInCard extends React.Component {
 		              onChange={this.onEmailEnter}
 		            />
 		        </div>
-		        <div className="tl ww75" style={{ "borderRadius":"15px", "marginTop":"20px", "margin":"auto"}}>
+		        <div className="tl ww75" style={{ "borderRadius":"15px"}}>
 		            <FloatingLabelInput
 		              id="pass"
 		              label="Password"
@@ -112,9 +112,11 @@ class SignInCard extends React.Component {
 				<p className="f5 b red">{this.state.error}</p>
 				<p className="f5 dark-blue">{this.state.message}</p>
 				<br/>
-				<div className="w-100 mb5 f5 Avenir">
-					<input type="checkbox" onClick={()=>this.CheckBox()} name="remember" className="pointer dib"/>
-					<p className={`dib ml2 ${(isMobile) ? "mr5" : "mr6"} ${(isMobile) ? "f6" : "f5"}`}>Remember me </p>
+				<div className="mb4 flex f5 Avenir ww75" style={{justifyContent:"space-between", marginTop:0, marginBottom:0}}>
+					<div>
+						<input type="checkbox" onClick={()=>this.CheckBox()} name="remember" className="pointer dib"/>
+						<p className={`dib ml2 ${(isMobile) ? "f6" : "f5"}`}>Remember me </p>
+					</div>
 					<p onClick={()=> navigate("/forgot-password")} className={`black underline-hover pointer dib ${(isMobile) ? "ml0" : "ml4"} ${(isMobile) ? "f6" : "f5"}`}>Forgot password?</p>
 				</div>
 
@@ -129,7 +131,7 @@ class SignInCard extends React.Component {
 				{/*<p onClick={()=> this.onInviteOthers()} className="f4 tc no-underline bg-animate bg-purple light-gray inline-flex pointer mb3 items-center mt4 bg-white black pa3 ph4 br3" style={{"margin-left":"auto"}}>*/}
 				{/*    <span> {this.state.invite} </span>*/}
 				{/*</p>*/}
-				<p>
+				<p style={{marginTop:10}}>
 					<span>For use of authorized HealthIntel Pilot participants only</span>
 				</p>
 			</div>

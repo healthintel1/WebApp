@@ -7,6 +7,7 @@
 }
 .marLeft{
 	margin-left: 3vw;
+	margin-top: 3rem;
 }
 body {
 	height: 100%;
@@ -84,11 +85,12 @@ footer {
 @media only screen and (max-width: 700px) {
 	.marLeft{
 		margin-left: 0;
+		margin-top: 1rem;
 	}
 	.mobSign{
-		width: min(700px, 95vw);
-		margin-right: auto;
-		margin-left: auto;
+		width: 100%;
+		margin-right: 0;
+		margin-left: 0;
 		padding-left: 0;
 		padding-right: 0;
 	}
