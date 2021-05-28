@@ -1,9 +1,6 @@
 import React from "react"
 import "./transition.css"
 import Graph from "./graph.js"
-import {isBrowser, isTablet, isMobile} from "react-device-detect"
-import BrowserView from "../components/BrowserView"
-import MobileView from "../components/MobileView"
 
 class Prediction extends React.Component {
     constructor(props) {
@@ -133,19 +130,14 @@ class Prediction extends React.Component {
         <div style={{display: 'flex', height: 'max-content'}} className={`w-100 mb3 flex ${(this.state.visible) ? "fadeIn" : "fadeOut"}`}>
           	<div className="w-100 ba bw1 tl b--light-gray pb4 bg-white ba Avenir" style={{"font-family":"Avenir"}}>
                 <div className="w-100 bb bw1 b--light-gray">
-                    <p className={`f5 w-100 ${(isMobile)?"ml4":"ml5"} mb3 mt3 dark-gray dib`} style={{"margin-right":"10rem"}}><p className={`f5 gray mb3 dib ${(isMobile)?"ml4":""}`}>{monthNames[this.props.Month-1]} {this.props.Dated}</p></p>
+                    <p className={`f5 ml4 mb3 mt3 dark-gray dib`} style={{"margin-right":"10rem"}}>
+                        <p className={`f5 gray mb3 dib`}>{monthNames[this.props.Month-1]} {this.props.Dated}</p>
+                    </p>
                 </div>
-                {<BrowserView>
-                    <div style={{display:"flex", "flex-wrap":"wrap"}}>
-                        <p className={`${("w-80 ml5")} mt4 dib`} style={{"font-size":"72px", "font-weight":"500", color: this.state.output.head, "line-height":"1.6"}}>{this.state.output.head} Status</p>
-                    </div>
-                </BrowserView>}
-                { <MobileView>
-                    <p className="ml4 mt4 mb0 w-80 f1" style={{"font-weight":"500", color: this.state.output.head, "line-height":"1.6"}}>{this.state.output.head} Status</p>
-                </MobileView>}
+                <p className="ml4 mt4 mb0 f1" style={{"font-weight":"500", color: this.state.output.head, "line-height":"1.6"}}>{this.state.output.head} Status</p>
                 <div>
-                    <p className={`f3 dark-gray ml4 mt4 b ${(isMobile)?"w-80":""}`}>{this.state.output.sub}</p>
-                    <p className={`f5 gray ml4 mr6 ${(isMobile)?"w-80":""}`} style={{"line-height":"1.5"}}>{this.state.output.body}</p>
+                    <p className={`f3 dark-gray ml4 mt4 b`}>{this.state.output.sub}</p>
+                    <p className={`f5 gray ml4 mr6`} style={{"line-height":"1.5"}}>{this.state.output.body}</p>
                 </div>
             </div>
             <div className="mt4 flex">

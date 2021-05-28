@@ -4,7 +4,11 @@
     min-height:100px;
     transition: width 0.5s, height 0.5s, opacity 0.5s 0.5s;
 }
-
+.row_col{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 .fadeOut{
      opacity:0;
      width:0;
@@ -54,3 +58,6 @@
 
 /* Change color of dropdown links on hover */
 .dropdown-content a:hover {background-color: #f1f1f1}
+
+@media only screen and (max-width: 700px) {
+}

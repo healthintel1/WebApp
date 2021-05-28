@@ -108,6 +108,9 @@ input {
 .wwWeX, .eotXUy, .hrOAGy, .gvIXtH{
     padding: 10px !important;
 }
+.mll3{
+    margin-left: 2rem;
+}
 @media only screen and (max-width: 600px) {
     .mobileOptimize {
         padding: 0rem 1rem !important;
@@ -139,5 +142,8 @@ input {
         font-size: 18px;
         padding: 10px 5px;
         margin: 15px auto;
+    }
+    .mll3{
+        margin-left: 1rem;
     }
 }
