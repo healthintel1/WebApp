@@ -1,19 +1,18 @@
 import React from 'react';
 import "./LandingPage.css";
 import SignInCard from "./signInCard.js";
-import {
-  isMobile
-} from "react-device-detect";
 import Footer from "./footer";
+import { Helmet } from "react-helmet"
 
 const LandingPage = () => {
 	return(
 		<div>
+			<Helmet title="HealthIntel.ai" defer={false} />
 			<div className={`flex marLeft`}>
 				<div className="fl tc mobSign">
 					<SignInCard/>
 				</div>
-				<div className = "tl flex123" style={{"paddingLeft":(isMobile) ? "20px" : "0","marginLeft":"auto", "marginRight":"auto", "paddingTop":"4.5rem","paddingBottom":"20px", maxWidth:"800px"}}>
+				<div className = "tl flex123" style={{"marginLeft":"auto", "marginRight":"auto", "paddingTop":"4.5rem","paddingBottom":"20px", maxWidth:"800px"}}>
 					<p className={`f2 lh-title purples Avenir w-100`}>You can make a difference and help defeat COVID-19</p>
 					<br/>
 					<br/>

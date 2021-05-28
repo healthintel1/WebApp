@@ -1,9 +1,6 @@
 import React from "react"
 import "./register.css"
 import copy from 'copy-to-clipboard';
-import {
-  isMobile
-} from "react-device-detect";
 import {navigate} from "gatsby"
 import FloatingLabelInput from 'react-floating-label-input';
 import Amplify, { Auth } from 'aws-amplify';
@@ -115,22 +112,16 @@ class SignInCard extends React.Component {
 				<div className="mb4 flex f5 Avenir ww75" style={{justifyContent:"space-between", marginTop:0, marginBottom:0}}>
 					<div>
 						<input type="checkbox" onClick={()=>this.CheckBox()} name="remember" className="pointer dib"/>
-						<p className={`dib ml2 ${(isMobile) ? "f6" : "f5"}`}>Remember me </p>
+						<p className={`dib ml2 f5}`}>Remember me </p>
 					</div>
-					<p onClick={()=> navigate("/forgot-password")} className={`black underline-hover pointer dib ${(isMobile) ? "ml0" : "ml4"} ${(isMobile) ? "f6" : "f5"}`}>Forgot password?</p>
+					<p onClick={()=> navigate("/forgot-password")} className={`black underline-hover pointer dib f5`}>Forgot password?</p>
 				</div>
 
-				<p onClick={()=>OnSignInSubmit()} className={`f4 tc no-underline black bg-animate hover-bg-purple hover-white inline-flex pointer mb3 items-center pa3 ba border-box ph4 br3 ${(isMobile) ? "mr3" : "mr5"}`} style={{"margin":"auto"}}>
+				<p onClick={()=>OnSignInSubmit()} className={`f4 tc no-underline black bg-animate hover-bg-purple hover-white inline-flex pointer mb3 items-center pa3 ba border-box ph4 br3 mr3`} style={{"margin":"auto"}}>
 				    <span style={{marginRight: 0}}> Sign In </span>
 				</p>
-				{/*<p onClick={()=> this.onInviteOthers()} className={`f4 tc no-underline bg-animate black bg-purple light-gray inline-flex pointer mb3 items-center pa3 ph4 ba br3 border-box ${(isMobile) ? "ml3" : "ml5"}`}>*/}
-				{/*	<span> {this.state.invite} </span>*/}
-				{/*</p>*/}
 				<br/>
 				<br/>
-				{/*<p onClick={()=> this.onInviteOthers()} className="f4 tc no-underline bg-animate bg-purple light-gray inline-flex pointer mb3 items-center mt4 bg-white black pa3 ph4 br3" style={{"margin-left":"auto"}}>*/}
-				{/*    <span> {this.state.invite} </span>*/}
-				{/*</p>*/}
 				<p style={{marginTop:10}}>
 					<span>For use of authorized HealthIntel Pilot participants only</span>
 				</p>

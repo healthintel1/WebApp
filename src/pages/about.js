@@ -1,9 +1,7 @@
 import React from "react"
 import Navbar from "../components/Navbar.js"
-import BrowserView from "../components/BrowserView"
-import MobileView from "../components/MobileView"
 import "../components/about.css"
-import { Link, navigate } from "gatsby"
+import { navigate } from "gatsby"
 import Amplify, { Auth } from 'aws-amplify';
 import awsconfig from '../aws-exports';
 import Footer from "../components/footer";
