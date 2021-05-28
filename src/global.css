@@ -16,7 +16,14 @@ body:after{
     line-height: 27px;
     transform:rotate(-45deg);
 }
-
+.input {
+    background-color: rgb(243, 248, 245);
+    color: black;
+    width: 80%;
+    padding: 10px !important;
+    border-style: none;
+    border-bottom: 1px solid #ddd;
+}
 @media only screen and (max-width: 480px) {
     .ml4 {
         margin-left: 1rem;

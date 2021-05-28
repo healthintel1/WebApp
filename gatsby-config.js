@@ -20,6 +20,7 @@ module.exports = {
       options: {
         name: `HealthIntel.ai`,
         short_name: `HealthIntel`,
+        description: "We help people around the world use their medical history, symptoms and vital signs that include heart rate, temperature and blood oxygen saturation to determine likelihood of COVID-19.",
         start_url: `/`,
         background_color: `#663399`,
         theme_color: `#663399`,
