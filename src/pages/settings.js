@@ -3,7 +3,6 @@ import "../components/register.css"
 import Navbar from "../components/Navbar.js"
 import {navigate} from "gatsby";
 import "tachyons"
-import { isBrowser, isMobile } from "react-device-detect";
 import Amplify, { Auth } from 'aws-amplify';
 import awsconfig from '../aws-exports';
 import Footer from "../components/footer";
@@ -108,30 +107,30 @@ class Settings extends React.Component {
 		return(
 			<div>
 				<Navbar path={this.state.path}/>
-				<div style={{width: (isMobile) ? "100vw" : "700px", margin:"auto"}}>
+				<div className={"minw"} style={{margin:"auto"}}>
 					<div className="tl ba bw1 w-100 pb4 b--light-gray bg-white ba Avenir" style={{"font-family":"Avenir"}}>
 						<div className="w-100 mb3 bb bw1 b--light-gray">
-		            	  <p className={`f5 ${(isMobile)?"ml4":"ml5"} mb3 mt3 light-red dib`} style={{marginRight:"10rem"}}>YOUR PROFILE</p>
+		            	  <p className={`f5 pll4 mb3 mt3 light-red dib`} style={{marginRight:"10rem"}}>YOUR PROFILE</p>
 		        	    </div>
-		        	    <div className={`pa4 ${(isMobile) ? "" : "pl5"}`}>
-			        		<p className={`${(isMobile) ? "f4" : "f3"} mb4 dib`} style={{color:"rgb(127,79,180)"}}><b>Personal Details</b><span onClick={()=>navigate("/update-account", {state:{route: "personal", data: this.state}})} className="ml2 f6 gray underline-hover pointer dim">Edit</span></p>
-			        		<p className={`${(isMobile) ? "f6" : "f5"} mt2 b mb0 gray`}>{this.state.firstname} {this.state.lastname}</p>
-			        		<p className={`${(isMobile) ? "f6" : "f5"} mt3 mb0 gray`}><b>Email</b>: {this.state.email}</p>
+		        	    <div className={`pll4`}>
+			        		<p className={`f4 dib`} style={{color:"rgb(127,79,180)", marginBottom:"1rem"}}><b>Personal Details</b><span onClick={()=>navigate("/update-account", {state:{route: "personal", data: this.state}})} className="ml2 f6 gray underline-hover pointer dim">Edit</span></p>
+			        		<p className={`f5 mt2 b mb0 gray`}>{this.state.firstname} {this.state.lastname}</p>
+			        		<p className={`f5 mt3 mb0 gray`}><b>Email</b>: {this.state.email}</p>
 			        		<div>
-			        			<p className={`${(isMobile) ? "f6" : "f5"} gray dib mt3 mb0 pr3`}><b>DOB</b>: {this.state.age}</p>
-			        			<p className={`${(isMobile) ? "f6" : "f5"} dib mt0 mb0 gray ph3`}><b>Location</b>: {this.state.zipcode}</p>
+			        			<p className={`f5 gray dib mt3 mb0 pr3`}><b>DOB</b>: {this.state.age}</p>
+			        			<p className={`f5 dib mt0 mb0 gray ph3`}><b>Location</b>: {this.state.zipcode}</p>
 			        		</div>
-			        		<p className={`${(isMobile) ? "f6" : "f5"} mt3 mb0 gray`}><b>Gender</b>: <p className="dib ttc">{this.state.gender===0?'Female':this.state.gender===1?'Male':'Not Specified'}</p></p>
-							<p className={`${(isMobile) ? "f6" : "f5"} mt3 mb0 gray`}><b>Race</b>: <p className="dib ttc">{this.state.city}</p></p>
-							<p className={`${(isMobile) ? "f6" : "f5"} mt3 mb0 gray`}><b>Ethnicity</b>: <p className="dib ttc">{this.state.country}</p></p>
+			        		<p className={`f5 mt3 mb0 gray`}><b>Gender</b>: <p className="dib ttc">{this.state.gender===0?'Female':this.state.gender===1?'Male':'Not Specified'}</p></p>
+							<p className={`f5 mt3 mb0 gray`}><b>Race</b>: <p className="dib ttc">{this.state.city}</p></p>
+							<p className={`f5 mt3 mb0 gray`}><b>Ethnicity</b>: <p className="dib ttc">{this.state.country}</p></p>
 			        	</div>
-			        	<div className={`pa4 ${(isMobile) ? "" : "pl5"}`}>
-			        		<p className={`${(isMobile) ? "f4" : "f3"} mb4`} style={{color:"rgb(127,79,180)"}}><b>Allergies</b><span onClick={()=>navigate("/update-account", {state:{route: "allergies", data: this.state}})} className="ml2 f6 gray underline-hover pointer dim">Edit</span></p>
-			        		<p className={`${(isMobile) ? "f6" : "f5"} mt2 mb0 gray`}>{this.state.allergies9}</p>
+			        	<div className={`pll4`}>
+			        		<p className={`f4 dib`} style={{color:"rgb(127,79,180)", marginTop:15, marginBottom:"1rem"}}><b>Allergies</b><span onClick={()=>navigate("/update-account", {state:{route: "allergies", data: this.state}})} className="ml2 f6 gray underline-hover pointer dim">Edit</span></p>
+			        		<p className={`f5 mt2 mb0 gray`}>{this.state.allergies9}</p>
 			        	</div>
-			        	<div className={`pa4 ${(isMobile) ? "" : "pl5"}`}>
-			        		<p className={`${(isMobile) ? "f4" : "f3"} mb4`} style={{color:"rgb(127,79,180)"}}><b>Medical History</b><span onClick={()=>navigate("/update-account", {state:{route: "history", data: this.state}})} className="ml2 f6 gray underline-hover pointer dim">Edit</span></p>
-			        		<p className={`${(isMobile) ? "f6" : "f5"} w-70 mt2 mb0 gray`}>{this.state.history}</p>
+			        	<div className={`pll4`}>
+			        		<p className={`f4 dib`} style={{color:"rgb(127,79,180)", marginTop:15, marginBottom:"1rem"}}><b>Medical History</b><span onClick={()=>navigate("/update-account", {state:{route: "history", data: this.state}})} className="ml2 f6 gray underline-hover pointer dim">Edit</span></p>
+			        		<p className={`f5 w-70 mt2 mb0 gray`}>{this.state.history}</p>
 			        	</div>
 		        	</div>
 
