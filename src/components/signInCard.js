@@ -88,9 +88,9 @@ class SignInCard extends React.Component {
 		}
 		return(
 			<div className={"tc bg-white Avenir mobV"}>
-				<p className={`${(isMobile) ? "f2" : "f1"} mt5`} style={{color: "rgb(127,90,179)"}}>HelpDefeatCOVID</p>
-				<p className={`${(isMobile) ? "f5" : "f4"} w-60 tc gray mt4 mb5`} style={{"marginLeft":"auto", "marginRight":"auto", "fontWeight":"500"}}>Sign-in if you are an authorized HealthIntel Pilot User</p>
-				<div className="tl" style={{ fontSize: (isMobile) ? 18 : 24, padding:"20px 20px", "borderRadius":"15px", width:"75%", "marginTop":"20px", "margin":"auto"}}>
+				<p className={`ff mt5`} style={{color: "rgb(127,90,179)"}}>HelpDefeatCOVID</p>
+				<p className={`${(isMobile) ? "f5" : "f4"} w-80 tc gray mt4 mb5`} style={{"marginLeft":"auto", "marginRight":"auto", "fontWeight":"500"}}>Sign-in if you are an authorized HealthIntel Pilot User</p>
+				<div className="tl ww75" style={{ "borderRadius":"15px", "marginTop":"20px", "margin":"auto"}}>
 		            <FloatingLabelInput
 		              id="email"
 		              label="Email ID"
@@ -99,7 +99,7 @@ class SignInCard extends React.Component {
 		              onChange={this.onEmailEnter}
 		            />
 		        </div>
-		        <div className="tl" style={{ fontSize: (isMobile) ? 18 : 24, padding:"20px 20px", "borderRadius":"15px", width:"75%", "marginTop":"20px", "margin":"auto"}}>
+		        <div className="tl ww75" style={{ "borderRadius":"15px", "marginTop":"20px", "margin":"auto"}}>
 		            <FloatingLabelInput
 		              id="pass"
 		              label="Password"

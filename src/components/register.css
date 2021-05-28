@@ -96,6 +96,14 @@ input {
     border-width: 1px;
     border-color: #eee;
 }
+.ff{
+    font-size: 3rem;
+}
+.ww75{
+    width: 75%;
+    font-size: 24px;
+    padding: 20px 20px;
+}
 @media only screen and (max-width: 600px) {
     .mobileOptimize {
         padding: 0rem 1rem !important;
@@ -118,5 +126,13 @@ input {
         margin-left: 0;
         padding: auto;
         border-style: none;
+    }
+    .ff{
+        font-size: 2rem;
+    }
+    .ww75{
+        width: 85%;
+        font-size: 18px;
+        padding: 10px 10px;
     }
 }

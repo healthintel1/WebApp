@@ -14,7 +14,7 @@ const LandingPage = () => {
 					<SignInCard/>
 				</div>
 				<div className = "tl flex123" style={{"paddingLeft":(isMobile) ? "20px" : "0","marginLeft":"auto", "marginRight":"auto", "paddingTop":"4.5rem","paddingBottom":"20px", maxWidth:"800px"}}>
-					<p className={`${(isMobile)?"f2":"f1"} lh-title purples Avenir w-100`}>You can make a difference and help defeat COVID-19</p>
+					<p className={`f2 lh-title purples Avenir w-100`}>You can make a difference and help defeat COVID-19</p>
 					<br/>
 					<br/>
 					<p className="f3 mb2 purples mb3">What do we do?</p>
