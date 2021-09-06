@@ -165,9 +165,9 @@ class VitalForm extends React.Component {
 										} else {
 											this.setState({temptype: false})
 										}
-									}} id="temptype" defaultValue={this.state.temptype ? "degree" : "ferh"} name="temptype" className="mt3" style={{borderColor: "#777", color: "#777", borderWidth: 0.5}}>
-										<option style={{color: "#777"}} value="ferh">FAHRENHEIT</option>
-										<option style={{color: "#777"}} value="degree">CELSIUS</option>
+									}} id="temptype" defaultValue={this.state.temptype ? "degree" : "ferh"} name="temptype" className="mt3" style={{borderColor: "#eee", color: "#777", borderWidth: 0.5, padding: "0 10px"}}>
+										<option style={{color: "#777"}} value="ferh"> ° F</option>
+										<option style={{color: "#777"}} value="degree"> ° C</option>
 									</select>
 						        </div>
 						    </div>
@@ -234,8 +234,8 @@ class VitalForm extends React.Component {
 											this.setState({temptype: false})
 										}
 									}} id="temptype" name="temptype" className="mt3" style={{borderColor: "#777", color: "#777", borderWidth: 0.5}}>
-										<option style={{color: "#777"}} value="degree">DEGREES</option>
-										<option style={{color: "#777"}} value="ferh">FAHRENHEIT</option>
+										<option style={{color: "#777"}} value="degree"> ° C</option>
+										<option style={{color: "#777"}} value="ferh"> ° F</option>
 									</select>
 						        </div>
 						    </div>

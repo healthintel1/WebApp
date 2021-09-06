@@ -4,6 +4,8 @@ import UpdatePersonal from "../components/updatePersonal.js"
 import UpdateAllergies from "../components/updateAllergies.js"
 import UpdateHistory from "../components/updateHistory.js"
 import Footer from "../components/footer";
+import {BackButtonSetting} from "../components/backbutton";
+import Navbar from "../components/Navbar";
 
 class UpdateAccount extends React.Component {
 	constructor(props) {
@@ -30,9 +32,8 @@ class UpdateAccount extends React.Component {
 		}
 		return(
 			<div>
-				<div className="mt0 bb mb3 bw1 b--light-gray tc w-100">
-					<h1 onClick={()=>navigate("/settings")} className="pointer mt0 fw1 tc mb3 f3" style={{"font-family":"Avenir", color: "rgb(127,90,179)"}}>HelpDefeatCovid.com</h1>
-				</div>
+				<Navbar path={"/settings/"}/>
+				<BackButtonSetting onRouteChange={() => navigate("/settings")}/>
 				{output}
 				<Footer/>
 			</div>

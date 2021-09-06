@@ -1,21 +1,19 @@
 import React from 'react';
-// import { BrowserView, MobileView} from "react-device-detect";
 import "./LandingPage.css";
 import SignInCard from "./signInCard.js";
-import {
-  isMobile
-} from "react-device-detect";
 import Footer from "./footer";
+import { Helmet } from "react-helmet"
 
 const LandingPage = () => {
 	return(
 		<div>
-			<div className={`flex ${(isMobile)?"mt3":"mt5"}`} style={{"marginLeft": (isMobile) ? "0" : "3vw"}}>
-				<div className="fl tc" style={{"paddingLeft":"0px","paddingRight":"1rem", width: "min(700px, 95vw)", "marginRight":(isMobile) ? "0px" : "20px"}}>
+			<Helmet title="HealthIntel.ai" defer={false} />
+			<div className={`flex marLeft`}>
+				<div className="fl tc mobSign">
 					<SignInCard/>
 				</div>
-				<div className = "tl flex123" style={{"paddingLeft":(isMobile) ? "20px" : "0","marginLeft":"auto", "marginRight":"auto", "paddingTop":"4.5rem","paddingBottom":"20px", maxWidth:"700px"}}>
-					<p className={`${(isMobile)?"f2":"f1"} lh-title purples Avenir w-100`}>You can make a difference and help defeat COVID-19</p>
+				<div className = "tl flex123" style={{"marginLeft":"auto", "marginRight":"auto", "paddingTop":"4.5rem","paddingBottom":"20px", maxWidth:"800px"}}>
+					<p className={`f2 lh-title purples Avenir w-100`}>You can make a difference and help defeat COVID-19</p>
 					<br/>
 					<br/>
 					<p className="f3 mb2 purples mb3">What do we do?</p>

@@ -93,30 +93,31 @@ class UpdateAllergies extends React.Component {
     console.log(this.state)
 
     let arr = this.state.others
-    let output = arr.map(x => <p onClick={this.onOtherClick} id={x} className={`${(isMobile) ? "f5" : "f4"} pointer ml2 br2 ph4 pv3 mb0 mt0 dib`} style={{background: this.state.others.indexOf(x) !== -1 ? this.state.on_color : this.state.off_color, color: this.state.others.includes(x) ? "white" : "gray"}}>{x}</p>)
-		return(
-			<div className={`shadow-3 tl b--light-gray ${(isMobile) ? "ph4" : "ph5"} pb4 bg-white ba Avenir`} style={{margin:"auto", "font-family":"Avenir", width:(isMobile) ? "85vw" : "700px", "margin-top":"50px"}}>
-				<p className={`${(isMobile) ? "f2" : "f1"} ml3 mt4 gray mb3`}>ALLERGIES</p>
-        <p className="mt4 ml2 mb1 gray gender">Add Allergens</p>
-        <div className="tl" style={{ fontSize: 20, background:"rgb(243,245,248)", padding:"20px 20px", "border-radius":"15px", width:"95%", "margin-top":"20px"}}>
-                <FloatingLabelInput
-                  id="other_text"
-                  label="Allergens"
-                  type = "text"
-                  value = {this.state.other}
-                  onChange = {this.onChange}
-                  onKeyDown={this.onEnter}
-                  placeholder="List them here and click enter - they should appear above"
-                  style={{background:"rgb(243,245,248)"}}
-                />
-        </div>
-        <div className="grid-box pa0 w-100 ma0 mt4">
-          {output}
-        </div>
-        <p className="f4 mt4 red tc">{this.state.error}</p>
-        <p onClick={this.onSubmit} className={`br-100 purple ph3 pv3 shadow-2 pointer mt2`} style={{"margin":"auto", "margin-top":"20px", width: (isMobile) ? "15%" : "10%"}}>✓</p>
-      </div>
-		)
+    let output = arr.map(x => <p onClick={this.onOtherClick} id={x} className={`f5 pointer mr2 br2 ph3 pv3 mb1 mt1 dib`} style={{background: this.state.others.indexOf(x) !== -1 ? this.state.on_color : this.state.off_color, color: this.state.others.includes(x) ? "white" : "gray"}}>{x}</p>)
+
+
+    return(
+        <div className={`tl b--light-gray ph4 pb4 bg-white ba Avenir minw`} style={{margin:"auto", "font-family":"Avenir"}}>
+            <p className={`f3 mt4 gray mb3`}>ALLERGIES</p>
+            <p className="mt1 mb3 gray gender">Add Allergies</p>
+            <div className="tl" style={{ fontSize: "1.1rem", padding:"20px 0px"}}>
+                    <FloatingLabelInput
+                      id="other_text"
+                      label="Allergies"
+                      type = "text"
+                      value = {this.state.other}
+                      onChange = {this.onChange}
+                      onKeyDown={this.onEnter}
+                      placeholder="List them here and click enter - they should appear above"
+                      style={{background:"rgb(243,245,248)"}}
+                    />
+            </div>
+            <div className="grid-box-flex pa0 ma0 mt2">
+              {output}
+            </div>
+            <p className="f4 mt4 red tc">{this.state.error}</p>
+            <p onClick={this.onSubmit} className={`br-100 purple ph3 pv3 shadow-2 pointer mt2 wtick`} style={{"margin":"auto", "margin-top":"20px"}}>✓</p></div>
+    )
 	}
 }
 

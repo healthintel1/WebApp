@@ -9,6 +9,7 @@ var x
 let datestring
 var dated = new Date()
 var month = dated.getMonth()
+var year = dated.getFullYear()
 dated = dated.getDate()
 const monthNames = ["January", "February", "March", "April", "May", "June",
 		  "July", "August", "September", "October", "November", "December"];
@@ -22,6 +23,7 @@ class Table extends React.Component {
 			fetched: [],
 			current: dated,
 			current_month: month,
+			current_year: year,
 			clientid:"",
 			done: [0,0,0,0,0],
 		}
@@ -94,7 +96,7 @@ class Table extends React.Component {
 	colorChoose = (value) => {
 		let color
 		if (value === "INCOMPLETE") {
-			color = "red"
+			color = "grey"
 		} else if (value === "33% COMPLETE") {
 			color = "#F05E23"
 		} else if (value === "66% COMPLETE") {
@@ -131,7 +133,7 @@ class Table extends React.Component {
 
 	componentDidUpdate(prevProps) {
 	  // Typical usage (don't forget to compare props):
-    console.log("HELLO", this.state, this.props);
+	  console.log("HELLO", this.state, this.props);
 	  if (this.props !== prevProps) {
 	    this.refreshCal();
 	  }
@@ -159,6 +161,85 @@ class Table extends React.Component {
 		}
 	}
 
+	onDateUp = () => {
+		let dateTop = new Date(this.state.current_year, this.state.current_month, this.state.dates[0]+5)
+		this.setState({current_month: dateTop.getMonth()})
+		let arr = []
+		let arr2 = []
+		for (let k=0; k<5; k++) {
+			arr.push(dateTop.getDate())
+			arr2.push(`${dateTop.getDate()}/${(dateTop.getMonth())+1}`);
+			dateTop.setDate(dateTop.getDate() - 1)
+		}
+		this.setState({dates: arr})
+		Auth.currentAuthenticatedUser()
+			.then(res => {
+				this.GetDateResult(arr2, res.username)
+			})
+	}
+
+	onDateDown = () => {
+		let dateTop = new Date(this.state.current_year, this.state.current_month, this.state.dates[4]-1)
+		this.setState({current_month: dateTop.getMonth()})
+		let arr = []
+		let arr2 = []
+		for (let k=0; k<5; k++) {
+			arr.push(dateTop.getDate())
+			arr2.push(`${dateTop.getDate()}/${(dateTop.getMonth())+1}`);
+			dateTop.setDate(dateTop.getDate() - 1)
+		}
+		this.setState({dates: arr})
+		Auth.currentAuthenticatedUser()
+			.then(res => {
+				this.GetDateResult(arr2, res.username)
+			})
+	}
+
+	GetDateResult(arr2, x){
+		async function GetData() {
+			let response = await fetch(CORSDOMAIN+`/getdates?client_id=${x}&d1=${arr2[0]}&d2=${arr2[1]}&d3=${arr2[2]}&d4=${arr2[3]}&d5=${arr2[4]}`)
+			response = response.json();
+			return response
+		}
+
+		GetData()
+			.then(res => {
+				res = res.data
+				console.log("GETDATA", res)
+				res = res.split(",")
+				let x = res
+				this.setState({status: ["INCOMPLETE","INCOMPLETE","INCOMPLETE","INCOMPLETE","INCOMPLETE"]})
+				for (let i=0; i<x.length; i++) {
+					let a = x[i].split(";")
+					let d = a[0].split("/")
+					d = d[0]
+					let s = a[1]
+					if (this.state.dates.includes(Number(d))) {
+						console.log("in loop")
+						let arr = this.state.status
+						arr[this.state.dates.indexOf(Number(d))] = s + "% COMPLETE"
+						this.setState({status: arr})
+					}
+				}
+				var todays = new Date()
+				for (let i=0; i < 5; i++) {
+					if (this.state.dates[i] == todays.getDate()) {
+						if (this.state.status[i] === "33% COMPLETE") {
+							this.props.vitalDone()
+						} else if (this.state.status[i] === "66% COMPLETE") {
+							this.props.vitalDone()
+							this.props.symptomsDone()
+						} else if (this.state.status[i] === "100% COMPLETE") {
+							this.props.vitalDone()
+							this.props.symptomsDone()
+							this.props.personalDone()
+						}
+					}
+				}
+			})
+			.catch(err=>console.log(err))
+	}
+	
 	render() {
 		return(
 			<div className="mt3 tl b--light-gray pa4 bg-white Avenir mobileOptimize" style={{"font-family":"Avenir", flex: 1}}>
@@ -167,19 +248,23 @@ class Table extends React.Component {
 					<p className="mb3 gray">You can update the data by clicking on date below</p>
 				</div>
 			  <div className="calender-grid">
-			  	<div className="gray ph2 tc pv4 mr2 bg-washed-green br-pill" style={{height:"270px"}}>
-			  		<p onClick={this.onDateClick} id={this.state.dates[0]} className={`pa2 mobileFont pointer mt0 ${(this.state.current == this.state.dates[0]) ? "b--light-gray shadow-2 purple ba br-100" : ""} mb1`}>{this.state.dates[0]}</p>
+			  	<div className="gray ph2 tc pv2 mr2 bg-washed-green br-pill" style={{height:"310px"}}>
+					<p onClick={() => (dated == this.state.dates[0]) ? {} : this.onDateUp()} className={`pa2 mobileFont pointer mb1 `} style={{opacity: (dated == this.state.dates[0]) ? "0.6":""}}>▲</p>
+					<p onClick={this.onDateClick} id={this.state.dates[0]} className={`pa2 mobileFont pointer ${(this.state.current == this.state.dates[0]) ? "b--light-gray shadow-2 purple ba br-100" : ""} mb1`}>{this.state.dates[0]}</p>
 			  		<p onClick={this.onDateClick} id={this.state.dates[1]} className={`pa2 mobileFont pointer ${(this.state.current == this.state.dates[1]) ? "b--light-gray shadow-2 purple ba br-100" : ""} mv1`}>{this.state.dates[1]}</p>
 			  		<p onClick={this.onDateClick} id={this.state.dates[2]} className={`pa2 mobileFont pointer ${(this.state.current == this.state.dates[2]) ? "b--light-gray shadow-2 purple ba br-100" : ""} mv1`}>{this.state.dates[2]}</p>
 			  		<p onClick={this.onDateClick} id={this.state.dates[3]} className={`pa2 mobileFont pointer ${(this.state.current == this.state.dates[3]) ? "b--light-gray shadow-2 purple ba br-100" : ""} mv1`}>{this.state.dates[3]}</p>
 			  		<p onClick={this.onDateClick} id={this.state.dates[4]} className={`pa2 mobileFont pointer ${(this.state.current == this.state.dates[4]) ? "b--light-gray shadow-2 purple ba br-100" : ""} mv1`}>{this.state.dates[4]}</p>
+					<p onClick={this.onDateDown} className={`pa2 mobileFont pointer mv1`}>▼</p>
 			  	</div>
-			  	<div className='pl0 pv4 br-pill' style={{height:"270px"}}>
-			  		<p className="pv2 mt0 mb1 purple br-100 mobileFont" style={{color: this.colorChoose(this.state.status[0])}}>{this.state.status[0]}</p>
+			  	<div className='pl0 pv2 br-pill' style={{height:"310px"}}>
+					<p className="pv2 mb1 mobileFont" style={{opacity: 0}}>Top</p>
+					<p className="pv2 mt0 mb1 purple br-100 mobileFont" style={{color: this.colorChoose(this.state.status[0])}}>{this.state.status[0]}</p>
 			  		<p className="pv2 mv1 mobileFont" style={{color: this.colorChoose(this.state.status[1])}}>{this.state.status[1]}</p>
 			  		<p className="pv2 mv1 mobileFont" style={{color: this.colorChoose(this.state.status[2])}}>{this.state.status[2]}</p>
 			  		<p className="pv2 mv1 mobileFont" style={{color: this.colorChoose(this.state.status[3])}}>{this.state.status[3]}</p>
 			  		<p className="pv2 mv1 mobileFont" style={{color: this.colorChoose(this.state.status[4])}}>{this.state.status[4]}</p>
+					<p className="pv2 mv1 mobileFont" style={{opacity: 0}}>Bottom</p>
 			  	</div>
 			  </div>
 			</div>

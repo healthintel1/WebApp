@@ -52,9 +52,9 @@ class UpdateHistory extends React.Component {
     }
 
 		return(
-			<div className={`shadow-3 tl b--light-gray ${(isMobile) ? "ph4" : "ph5"} pb4 bg-white ba Avenir`} style={{margin:"auto", "font-family":"Avenir", width:(isMobile) ? "85vw" : "700px", "margin-top":"50px"}}>
-			  <p className={`${(isMobile) ? "f2" : "f1"} ml3 mt4 gray mb3`}>MEDICAL HISTORY</p>
-        <p className={`f5 ml3 mt2 gray mb4 ${(isMobile) ? "w-90" : "w-50"}`}>Click the boxes that apply to you</p>
+			<div className={`tl b--light-gray ph4 pb4 bg-white ba Avenir minw`} style={{margin:"auto", "font-family":"Avenir"}}>
+			  <p className={`f3 ml3 mt4 gray mb3`}>MEDICAL HISTORY</p>
+        <p className={`f5 ml3 mt2 gray mb4`}>Click the boxes that apply to you</p>
               { <BrowserView>
           <div className="grid-box pa0 w-100">
             <div onClick={this.onClick} id="heartdisease" className="tl f4 pointer ml2 br2 ph4 pv3 mb0 mt0 dib" style={{background: this.state.heartdisease ? this.state.on_color : this.state.off_color, color: this.state.heartdisease ? "white" : "gray"}}>
@@ -83,12 +83,12 @@ class UpdateHistory extends React.Component {
           <p onClick={onSubmit} className={`br-100 purple ph3 pv3 shadow-2 pointer mt2`} style={{"margin":"auto", "margin-top":"20px", width: (isMobile) ? "15%" : "10%"}}>✓</p>
         </BrowserView>}
               { <MobileView>
-          <div className="pa0 w-100">
-            <div onClick={this.onClick} id="heartdisease" className="tc w-100 mb1 f5 pointer ml2 br2 ph4 pv3 mt0 dib" style={{background: this.state.heart_disease ? this.state.on_color : this.state.off_color, color: this.state.heart_disease ? "white" : "gray"}}>
+          <div className="pa0">
+            <div onClick={this.onClick} id="heartdisease" className="tc w-100 mb1 f5 pointer ml1 br2 ph4 pv3 mt0 dib" style={{background: this.state.heart_disease ? this.state.on_color : this.state.off_color, color: this.state.heart_disease ? "white" : "gray"}}>
               <p onClick={this.onClick2} id="h1" className="m50 mb1 f5 ph3">HEART DISEASE</p>
               <p onClick={this.onClick2} id="h2" className="f7 mb0 mt1 ph3">(coronary artery disease, previous heart attack, heart failure, angina, valvular disease)</p>
             </div>
-            <div onClick={this.onClick} id="neurologicaldisease" className="tc w-100 mb1 f5 pointer ml2 br2 ph4 pv3 mt0 dib" style={{background: this.state.neuro_disease ? this.state.on_color : this.state.off_color, color: this.state.neuro_disease ? "white" : "gray"}}>
+            <div onClick={this.onClick} id="neurologicaldisease" className="tc w-100 mb1 f5 pointer ml1 br2 ph4 pv3 mt0 dib" style={{background: this.state.neuro_disease ? this.state.on_color : this.state.off_color, color: this.state.neuro_disease ? "white" : "gray"}}>
               <p onClick={this.onClick2} id="n1" className="mt0 mb1 f5 ph3">NEUROLOGICAL DISEASE</p>
               <p onClick={this.onClick2} id="n2" className="f7 mb0 ph3 mt1">(dementia, a stroke, seizures or a brain injury)</p>
             </div>
@@ -105,7 +105,7 @@ class UpdateHistory extends React.Component {
             <p onClick={this.onClick} id="asthma" className="tc w-100 mb1 f5 pointer ml1 br2 pv3 ph4 mb0 dib" style={{background: this.state.asthma ? this.state.on_color : this.state.off_color, color: this.state.asthma ? "white" : "gray"}}>ASTHMA</p>
             <p onClick={this.onClick} id="severeobesity" className="tc w-100 mb1 f5 pointer ml1 br2 pv3 ph4 mb0 dib" style={{background: this.state.obesity ? this.state.on_color : this.state.off_color, color: this.state.obesity ? "white" : "gray"}}>OBESITY(XXL+)</p>
           </div>
-          <p onClick={onSubmit} className={`br-100 purple ph3 pv3 shadow-2 pointer mt2`} style={{"margin":"auto", "margin-top":"20px", width: (isMobile) ? "15%" : "10%"}}>✓</p>
+          <p onClick={onSubmit} className={`br-100 purple ph3 pv3 shadow-2 pointer mt2 wtick`} style={{"margin":"auto", "margin-top":"20px"}}>✓</p>
         </MobileView>}
       </div>
 		)
