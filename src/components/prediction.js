@@ -139,6 +139,26 @@ class Prediction extends React.Component {
                     <p className={`f3 dark-gray ml4 mt4 b`}>{this.state.output.sub}</p>
                     <p className={`f5 gray ml4 mr6`} style={{"line-height":"1.5"}}>{this.state.output.body}</p>
                 </div>
+                {
+                    this.state.output.head === "Red" &&
+                        <div>
+                            <p className={`f4 dark-gray ml4 mt4 b`}>
+                                Based on your data, here are specific conditions you are at risk for,
+                                associated probability score, and recommended next steps.
+                            </p>
+                            <div className={`f4 dark-gray ml4 mt4`}>
+                                <ol className={`f4 dark-gray ml4`}>
+                                    <li style={{color:"red"}}>
+                                        <p style={{color:"red", display:"flex", fontWeight:"bold", justifyContent:"space-between", width:"90%"}} className={`f4 dark-gray`}>
+                                            <span className={`f4`}>COVID-19:</span>
+                                            <span className={`f4`}>82%</span>
+                                            <span className={`f4`}>Get a COVID test done.</span>
+                                        </p>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                }
             </div>
             <div className="mt4 flex">
                 <Graph Dated={this.props.Dated} Month={this.props.Month} data={this.state.data}/>
