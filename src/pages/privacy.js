@@ -1,4 +1,4 @@
-
+import React from "react"
 export default function Privacy(){
 
     return (
@@ -27,7 +27,7 @@ export default function Privacy(){
             may require you to provide us with certain personally
             identifiable information, including but not limited to Name, Address, Age, Medical info, Phone, Email. The information that
             we request will be retained by us and used as described in this privacy policy.
-        </p> <!----> <p><strong>Log Data</strong></p> <p>
+        </p> <p><strong>Log Data</strong></p> <p>
             We want to inform you that whenever you
             use our Service, in a case of an error in the app
             we collect data and information (through third party
