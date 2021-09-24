@@ -31,7 +31,7 @@ class SignInCard extends React.Component {
 	}
 
 	onInviteOthers = () => {
-		copy('Predict your risk from COVID19 using HelpDefeatCOVID.org. Visit Now @ https://www.helpdefeatcovid.com');
+		copy('Predict your risk from Chronic and Infectious Diseases using Acme Inc. powered by HealthIntel. Visit Now @ https://www.acne.com');
 		this.setState({invite: "Link Copied"})
 	};
 
@@ -85,8 +85,8 @@ class SignInCard extends React.Component {
 		}
 		return(
 			<div className={"tc bg-white Avenir mobV"}>
-				<p className={`ff mt5`} style={{color: "rgb(127,90,179)"}}>HelpDefeatCOVID</p>
-				<p className={`f5 w-80 tc gray mt4 mb4`} style={{"marginLeft":"auto", "marginRight":"auto", "fontWeight":"500"}}>Sign-in if you are an authorized HealthIntel Pilot User</p>
+				<p className={`ff mt5`} style={{color: "rgb(127,90,179)"}}>Acme Inc.</p>
+				<p className={`f5 w-80 tc gray mt4 mb4`} style={{"marginLeft":"auto", "marginRight":"auto", "fontWeight":"500"}}>Sign-in if you are an authorized Acme Inc. powered by HealthIntel Pilot User</p>
 				<div className="tl ww75" style={{ "borderRadius":"15px"}}>
 		            <FloatingLabelInput
 		              id="email"
@@ -123,7 +123,7 @@ class SignInCard extends React.Component {
 				<br/>
 				<br/>
 				<p style={{marginTop:10}}>
-					<span>For use of authorized HealthIntel Pilot participants only</span>
+					<span>For use of authorized Acme Inc. powered by HealthIntel Pilot participants only</span>
 				</p>
 			</div>
 		);

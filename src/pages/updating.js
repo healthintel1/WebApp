@@ -37,7 +37,7 @@ class UpdatingDetails extends React.Component {
 		return(
 			<div>
 				<div className="mt0 bb mb3 bw1 b--light-gray tc w-100">
-					<h1 className="pointer mt0 fw1 tc mb3 f3" style={{"font-family":"Avenir", color: "rgb(127,90,179)"}}>HelpDefeatCorona.org</h1>
+					<h1 className="pointer mt0 fw1 tc mb3 f3" style={{"font-family":"Avenir", color: "rgb(127,90,179)"}}>Acme Inc.</h1>
 				</div>
 				<div className="shadow-3 tc b--light-gray ph5 pb4 bg-white ba Avenir" style={{margin:"auto", "font-family":"Avenir", width: (isMobile) ? "85vw" : "700px"}}>
 					<p className="f2 mt4 dark-green mb3 ">JUST A MOMENT</p>

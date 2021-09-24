@@ -209,9 +209,9 @@ class VitalForm extends React.Component {
 						    <div className="mt5 mb3">
 					          <p onClick={onClick} className="pointer tc pv3 f3 shadow-1" style={{"margin": "auto", "border-radius":"50%", width:"10%", background: this.state.bg, color: (this.state.bg === "white") ? "#013220" : "white"}}>✓</p>
 					        </div>
-							<p className="f5 mt4 gray" style={{padding: "0 20px"}}>HealthIntel.ai software requires that the vitals data of temperature, heart rate, and oxygen saturation entered by the users for analysis are being read off of medical device(s) that are FDA Registered for their intended use.
+							<p className="f5 mt4 gray" style={{padding: "0 20px"}}>Acme Inc. powered by HealthIntel.ai software requires that the vitals data of temperature, heart rate, and oxygen saturation entered by the users for analysis are being read off of medical device(s) that are FDA Registered for their intended use.
 							</p>
-							<p className="f5 mt4 gray" style={{padding: "0 20px"}}>If you do not know whether the device you are using is a medical device registered by FDA for use to collect the requested data, or if you do not have access to these devices, please contact HealthIntel.ai for a list of medical devices that you can use.
+							<p className="f5 mt4 gray" style={{padding: "0 20px"}}>If you do not know whether the device you are using is a medical device registered by FDA for use to collect the requested data, or if you do not have access to these devices, please contact Acme Inc. powered by HealthIntel.ai for a list of medical devices that you can use.
 							</p>
 						</div>
 					</div>

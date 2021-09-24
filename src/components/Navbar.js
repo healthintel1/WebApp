@@ -46,7 +46,7 @@ const Navbar = (props) => {
 		<header className="black-80 tc pv3 avenir w-100">
 			{
 				companyLogo===""?
-					<h1 className="mt0 mb2 fw1" style={{"font-family":"Avenir","font-size":"1.6rem", color: "rgb(127,90,179)"}}>HelpDefeatCOVID.com</h1>
+					<h1 className="mt0 mb2 fw1" style={{"font-family":"Avenir","font-size":"1.6rem", color: "rgb(127,90,179)"}}>HelpIntel.com</h1>
 					:
 					<img className="dib ml2 pt0" style={{height: 50}} src={companyLogo}/>
 			}
