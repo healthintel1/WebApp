@@ -1,10 +1,10 @@
-
+import React from "react"
 export default function Privacy(){
 
     return (
         <div>
             <strong>Privacy Policy</strong> <p>
-            Acme Inc. powered by HealthIntel LLC is a Commercial app. 
+            Acme Inc. powered by HealthIntel LLC is a Commercial app.
             This SERVICE is provided by
             Acme Inc. powered by HealthIntel LLC  and is intended for use as
             is.
@@ -27,7 +27,7 @@ export default function Privacy(){
             may require you to provide us with certain personally
             identifiable information, including but not limited to Name, Address, Age, Medical info, Phone, Email. The information that
             we request will be retained by us and used as described in this privacy policy.
-        </p> <!----> <p><strong>Log Data</strong></p> <p>
+        </p> <p><strong>Log Data</strong></p> <p>
             We want to inform you that whenever you
             use our Service, in a case of an error in the app
             we collect data and information (through third party
