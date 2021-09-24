@@ -62,7 +62,7 @@ class Prediction extends React.Component {
             this.setState({
                 output: {
                     head: "Yellow", sub: "Stay home and take care of yourself.",
-                    body: "The analysis of your data including temperature, heart rate and oxygen saturation data provided by you indicates that you should continue to monitor your health and contact your health care provider for advice if you get new symptoms or if you have close contact with someone with lab-confirmed COVID-19. Please provide another set of readings within four hours to repeat the analysis. Stay home and take care of yourself."
+                    body: "The analysis of your data including temperature, heart rate and oxygen saturation data provided by you indicates that you should continue to monitor your health and contact your health care provider for advice if you get new symptoms or if you have close contact with someone with lab-confirmed some disease. Please provide another set of readings within four hours to repeat the analysis. Stay home and take care of yourself."
                 }
             })
         } else if (r === "red") {
@@ -150,9 +150,9 @@ class Prediction extends React.Component {
                                 <ol className={`f4 dark-gray ml4`}>
                                     <li style={{color:"red"}}>
                                         <p style={{color:"red", display:"flex", fontWeight:"bold", justifyContent:"space-between", width:"90%"}} className={`f4 dark-gray`}>
-                                            <span className={`f4`}>COVID-19:</span>
+                                            <span className={`f4`}>ABCD:</span>
                                             <span className={`f4`}>82%</span>
-                                            <span className={`f4`}>Get a COVID test done.</span>
+                                            <span className={`f4`}>Get a ABCD test done.</span>
                                         </p>
                                     </li>
                                 </ol>
