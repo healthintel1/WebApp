@@ -110,7 +110,7 @@ class Register extends React.Component {
 		return(
 			<div>
 				<div className="mt0 bb mb3 bw1 b--light-gray tc w-100">
-					<h1 onClick={()=>{this.setState({route:"account"}); navigate("/")}} className="pointer mt0 fw1 tc mb3 f3" style={{"font-family":"Avenir", color: "rgb(127,90,179)"}}>HelpIntel.com</h1>
+					<h1 onClick={()=>{this.setState({route:"account"}); navigate("/")}} className="pointer mt0 fw1 tc mb3 f3" style={{"font-family":"Avenir", color: "rgb(127,90,179)"}}>Acme Inc.</h1>
 					<RegNav route={this.state.route}/>
 				</div>
 				{output}
