@@ -90,9 +90,9 @@ class TestResults extends React.Component {
                                 <p className="f5 ml5 mt3 mb3 light-red dib">TEST RESULTS</p>
                                 <p className="f5 gray mb3 dib ml7">{monthNames[Month-1]} {Dated}</p>
                             </div>
-                            <p className="f5 mt4 gray" style={{padding: "0 20px"}}>If you have taken a COVID-19 test on this date, please enter it below. (You can add more than one test in a given day)
+                            <p className="f5 mt4 gray" style={{padding: "0 20px"}}>If you have taken any Infectious Disease test on this date, please enter it below. (You can add more than one test in a given day)
                             </p>
-                            <p className="f5 mt4 gray" style={{padding: "0 20px"}}>If you did not take a COVID-19 test, please click on "Skip" to proceed.
+                            <p className="f5 mt4 gray" style={{padding: "0 20px"}}>If you did not take an Infectious Disease test, please click on "Skip" to proceed.
                             </p>
                             {
                                 this.state.tests.map((test, i) => {
@@ -126,8 +126,8 @@ class TestResults extends React.Component {
                                                         this.setState({tests: [...this.state.tests.slice(0, i), {...test, result: event.target.value}, ...this.state.tests.slice(i+1)]})
                                                     }} className="mt3" style={{borderColor: "#777", minWidth: "60%", padding: 10, color: "#777", borderWidth: 0.5}}>
                                                         <option style={{color: "#777"}} value="wait">WAITING FOR RESULT</option>
-                                                        <option style={{color: "#777"}} value="pos">COVID-19 POSITIVE</option>
-                                                        <option style={{color: "#777"}} value="neg">COVID-19 NEGATIVE</option>
+                                                        <option style={{color: "#777"}} value="pos">Infectious Disease POSITIVE</option>
+                                                        <option style={{color: "#777"}} value="neg">Infectious Disease NEGATIVE</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -175,9 +175,9 @@ class TestResults extends React.Component {
                                 <p className="f5 ml3 mb3 mt3 light-red dib">TEST RESULTS</p>
                                 <p className="f5 gray mb3 dib ml6">{monthNames[Month-1]} {Dated}</p>
                             </div>
-                            <p className="f5 mt1 gray" style={{padding: "0 20px"}}>If you have taken a COVID-19 test on this date, please enter it below. (You can add more than one test in a given day)
+                            <p className="f5 mt1 gray" style={{padding: "0 20px"}}>If you have taken an Infectious Disease test on this date, please enter it below. (You can add more than one test in a given day)
                             </p>
-                            <p className="f5 mt1 gray" style={{padding: "0 20px"}}>If you did not take a COVID-19 test, please click on "Skip" to proceed.
+                            <p className="f5 mt1 gray" style={{padding: "0 20px"}}>If you did not take an Infectious Disease, please click on "Skip" to proceed.
                             </p>
                             {
                                 this.state.tests.map((test, i) => {
@@ -210,8 +210,8 @@ class TestResults extends React.Component {
                                                         this.setState({tests: [...this.state.tests.slice(0, i), {...test, result: event.target.value}, ...this.state.tests.slice(i+1)]})
                                                     }} value={test.result} className="mt3" style={{borderColor: "#777", color: "#777", minWidth: "80%", borderWidth: 0.5}}>
                                                         <option style={{color: "#777"}} value="wait">WAITING FOR RESULT</option>
-                                                        <option style={{color: "#777"}} value="pos">COVID-19 POSITIVE</option>
-                                                        <option style={{color: "#777"}} value="neg">COVID-19 NEGATIVE</option>
+                                                        <option style={{color: "#777"}} value="pos">Infectious Disease POSITIVE</option>
+                                                        <option style={{color: "#777"}} value="neg">Infectious Disease NEGATIVE</option>
                                                     </select>
                                                 </div>
                                             </div>

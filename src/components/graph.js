@@ -17,7 +17,7 @@ class Graph extends React.Component {
 
     componentDidMount() {
         setTimeout(()=>{this.setState({visible: true})}, 25)
-        this.setState({width: this.container.offsetWidth - 100})
+        this.setState({width: this.container.offsetWidth - 80})
     }
 
     render() {
@@ -26,10 +26,11 @@ class Graph extends React.Component {
       "July", "August", "September", "October", "November", "December"
       ];
       return (
-        <div className={`w-100 mb3`} ref={el => (this.container = el)}>
+        <div className={`w-100 pb3`} ref={el => (this.container = el)}>
           	<div className="w-100 ba bw1 tl b--light-gray pb4 bg-white ba Avenir" style={{"font-family":"Avenir"}}>
-                <div className="w-100 bb bw1 b--light-gray">
-                    <p className={`f5 w-100 ${(isMobile)?"ml4":"ml5"} mb3 mt3 dark-gray dib`} style={{"margin-right":"10rem"}}>TREND ANALYSIS<p className={`f5 gray mb3 dib ${(isMobile)?"ml6":"ml7"}`}>{monthNames[this.props.Month-1]} {this.props.Dated}</p></p>
+                <div className="bb bw1 b--light-gray flex pl4 pr4" style={{justifyContent:"space-between"}}>
+                    <p className={`f5 pt3 dark-gray dib`}>RISK TREND ANALYSIS</p>
+                    <p className={`f5 gray pt3 dib`}>{monthNames[this.props.Month-1]} {this.props.Dated}</p>
                 </div>
                 <div className="mt4 pl4">
                   <Chart data={this.props.data} width={this.state.width}/>

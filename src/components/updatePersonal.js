@@ -2,10 +2,6 @@ import React from "react"
 import FloatingLabelInput from 'react-floating-label-input';
 import "./register.css"
 import {navigate} from "gatsby"
-import {
-  isBrowser,
-  isMobile
-} from "react-device-detect";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -69,12 +65,12 @@ class UpdatePersonal extends React.Component {
 		}
 
 		return(
-			<div className={`shadow-3 tl b--light-gray pb4 pt3 mb3 bg-white ba Avenir`} style={{margin:"auto", "marginBottom":"40px","fontFamily":"Avenir", width: (isMobile) ? "85vw" : "700px", "marginTop":"50px"}}>
-				<div className={`${(isMobile) ? "ph4" : "ph5"}`}>
-					<p className={`ml3 mt4 gray mb3 ${(isMobile) ? "f2" : "f1"}`}>PERSONAL INFO</p>
-					<p className={`f6 ml3 mt2 gray mb3 ${(isMobile) ? "w-80" : "w-60"}`}>Please enter your details.</p>
+			<div className={`tl b--light-gray pb4 pt3 mb3 bg-white ba Avenir minw`} style={{margin:"auto", "marginBottom":"40px","fontFamily":"Avenir"}}>
+				<div className={`ph4`}>
+					<p className={`mt4 gray mb3 f3`}>PERSONAL INFO</p>
+					<p className={`f6 gray mb3`}>Please enter your details.</p>
 					<div style={{"padding-top": '1.5em'}}>
-			          <div className="tl" style={{ fontSize: (isMobile) ? "16" : "20", background:"rgb(243,245,248)", padding:"20px 20px", "borderRadius":"15px", width:"88%"}}>
+			          <div className="tl" style={{ fontSize: "1.1rem", padding:"20px 0px"}}>
 			            <FloatingLabelInput
 			              id="firstname"
 			              label="First Name"
@@ -83,7 +79,7 @@ class UpdatePersonal extends React.Component {
 			              style={{background:"rgb(243,245,248)"}}
 			            />
 			          </div>
-			          <div className="tl" style={{ fontSize: (isMobile) ? "16" : "20", background:"rgb(243,245,248)", padding:"20px 20px", "borderRadius":"15px", width:"88%", "marginTop":"20px"}}>
+						<div className="tl" style={{ fontSize: "1.1rem", padding:"20px 0px"}}>
 			            <FloatingLabelInput
 			              id="lastname"
 			              label="Last Name"
@@ -92,14 +88,14 @@ class UpdatePersonal extends React.Component {
 			              style={{background:"rgb(243,245,248)"}}
 			            />
 			          </div>
-			          <div  style={{ fontSize: (isMobile) ? "16" : "20", background:"rgb(243,245,248)", padding:"20px 20px", "borderRadius":"15px", width:"50%", "marginTop":"20px"}}>
+						<div className="tl" style={{ fontSize: "1.1rem", padding:"20px 0px"}}>
 			          	<p className="tl gray mb2">Date of Birth<sup className="f6 mt3 pt4">*</sup></p>
 			          	<DatePicker
 					        selected={this.state.date}
 					        onChange={this.setStartDate}
 					    />
 			          </div>
-			          <div className="tl mb2" style={{ fontSize: (isMobile) ? "16" : "20", background:"rgb(243,245,248)", padding:"20px 20px", "borderRadius":"15px", width:"50%", "marginTop":"20px"}}>
+						<div className="tl mt2" style={{ fontSize: "1.1rem", padding:"20px 0px"}}>
 			            <FloatingLabelInput
 			              id="zipcode"
 			              label="ZIP Code *"
@@ -111,26 +107,26 @@ class UpdatePersonal extends React.Component {
 			            />
 			          </div>
 			          <div>
-			          	<p className="mt3 ml2 mb1 gray gender">Gender</p>
-			          	<p onClick={this.onOptionClick} id="male" className="f5 pointer mt2 ml2 br2 ph4 pv3 mb0 dib" style={{background: this.state.gender === 1 ? this.state.on_color : this.state.off_color, color: this.state.gender === 1 ? "white" : "gray"}}>Male</p>
-			          	<p onClick={this.onOptionClick} id="female" className="f5 pointer mt2 ml2 br2 ph4 pv3 mb0 dib" style={{background: this.state.gender === 0 ? this.state.on_color : this.state.off_color, color: this.state.gender === 0 ? "white" : "gray"}}>Female</p>
+			          	<p className="mt3 mb1 gray gender">Gender</p>
+			          	<p onClick={this.onOptionClick} id="male" className="f5 pointer mt2 mr2 br2 ph4 pv3 mb0 dib" style={{background: this.state.gender === 1 ? this.state.on_color : this.state.off_color, color: this.state.gender === 1 ? "white" : "gray"}}>Male</p>
+			          	<p onClick={this.onOptionClick} id="female" className="f5 pointer mt2 mr2 br2 ph4 pv3 mb0 dib" style={{background: this.state.gender === 0 ? this.state.on_color : this.state.off_color, color: this.state.gender === 0 ? "white" : "gray"}}>Female</p>
 			          </div>
 					  <div>
-						<p className="mt3 ml2 mb1 gray gender">Race</p>
-						<p onClick={(e) => this.onOptionClick2("city", e)} id={"WHITE OR CAUCASIAN"} className="f5 pointer mt2 ml2 br2 ph4 pv3 mb0 dib" style={{background: this.state.city === "WHITE OR CAUCASIAN" ? this.state.on_color : this.state.off_color, color: this.state.city === "WHITE OR CAUCASIAN" ? "white" : "gray"}}>WHITE OR CAUCASIAN</p>
-						<p onClick={(e) => this.onOptionClick2("city", e)} id="BLACK OR AFRICAN AMERICAN" className="f5 pointer mt2 ml2 br2 ph4 pv3 mb0 dib" style={{background: this.state.city === "BLACK OR AFRICAN AMERICAN" ? this.state.on_color : this.state.off_color, color: this.state.city === "BLACK OR AFRICAN AMERICAN" ? "white" : "gray"}}>BLACK OR AFRICAN AMERICAN</p>
-						<p onClick={(e) => this.onOptionClick2("city", e)} id="ASIAN" className="f5 pointer ml2 mt2 br2 ph3 pv3 mb0 dib" style={{background: this.state.city === "ASIAN" ? this.state.on_color : this.state.off_color, color: this.state.city === "ASIAN" ? "white" : "gray"}}>ASIAN</p>
-						  <p onClick={(e) => this.onOptionClick2("city", e)} id="OTHER" className="f5 pointer ml2 mt2 br2 ph3 pv3 mb0 dib" style={{background: this.state.city === "OTHER" ? this.state.on_color : this.state.off_color, color: this.state.city === "OTHER" ? "white" : "gray"}}>OTHER</p>
+						<p className="mt3 mb1 gray gender">Race</p>
+						<p onClick={(e) => this.onOptionClick2("city", e)} id={"WHITE OR CAUCASIAN"} className="f5 pointer mt2 mr2 br2 ph4 pv3 mb0 dib" style={{background: this.state.city === "WHITE OR CAUCASIAN" ? this.state.on_color : this.state.off_color, color: this.state.city === "WHITE OR CAUCASIAN" ? "white" : "gray"}}>WHITE OR CAUCASIAN</p>
+						<p onClick={(e) => this.onOptionClick2("city", e)} id="BLACK OR AFRICAN AMERICAN" className="f5 pointer mt2 mr2 br2 ph4 pv3 mb0 dib" style={{background: this.state.city === "BLACK OR AFRICAN AMERICAN" ? this.state.on_color : this.state.off_color, color: this.state.city === "BLACK OR AFRICAN AMERICAN" ? "white" : "gray"}}>BLACK OR AFRICAN AMERICAN</p>
+						<p onClick={(e) => this.onOptionClick2("city", e)} id="ASIAN" className="f5 pointer mr2 mt2 br2 ph3 pv3 mb0 dib" style={{background: this.state.city === "ASIAN" ? this.state.on_color : this.state.off_color, color: this.state.city === "ASIAN" ? "white" : "gray"}}>ASIAN</p>
+						  <p onClick={(e) => this.onOptionClick2("city", e)} id="OTHER" className="f5 pointer mr2 mt2 br2 ph3 pv3 mb0 dib" style={{background: this.state.city === "OTHER" ? this.state.on_color : this.state.off_color, color: this.state.city === "OTHER" ? "white" : "gray"}}>OTHER</p>
 					  </div>
 					  <div>
-						<p className="mt3 ml2 mb1 gray gender">Ethnicity</p>
-						<p onClick={(e) => this.onOptionClick2("country", e)} id="NON-HISPANIC" className="f5 pointer mt2 ml2 br2 ph4 pv3 mb0 dib" style={{background: this.state.country === "NON-HISPANIC" ? this.state.on_color : this.state.off_color, color: this.state.country === "NON-HISPANIC" ? "white" : "gray"}}>NON-HISPANIC</p>
-						<p onClick={(e) => this.onOptionClick2("country", e)} id="HISPANIC" className="f5 pointer mt2 ml2 br2 ph4 pv3 mb0 dib" style={{background: this.state.country === "HISPANIC" ? this.state.on_color : this.state.off_color, color: this.state.country === "HISPANIC" ? "white" : "gray"}}>HISPANIC</p>
+						<p className="mt3 mb1 gray gender">Ethnicity</p>
+						<p onClick={(e) => this.onOptionClick2("country", e)} id="NON-HISPANIC" className="f5 pointer mt2 mr2 br2 ph4 pv3 mb0 dib" style={{background: this.state.country === "NON-HISPANIC" ? this.state.on_color : this.state.off_color, color: this.state.country === "NON-HISPANIC" ? "white" : "gray"}}>NON-HISPANIC</p>
+						<p onClick={(e) => this.onOptionClick2("country", e)} id="HISPANIC" className="f5 pointer mt2 mr2 br2 ph4 pv3 mb0 dib" style={{background: this.state.country === "HISPANIC" ? this.state.on_color : this.state.off_color, color: this.state.country === "HISPANIC" ? "white" : "gray"}}>HISPANIC</p>
 					  </div>
 			          <p className="f5 mt4 b red tc">{this.state.error}</p>
 			          <p className="f5 mt4 dark-blue tc">{this.state.message}</p>
 			      </div>
-		          <p onClick={onSubmit} className={`br-100 purple ph3 pv3 shadow-2 pointer mt2`} style={{"margin":"auto", "marginTop":"20px", width: (isMobile) ? "15%" : "10%"}}>✓</p>
+		          <p onClick={onSubmit} className={`br-100 purple ph3 pv3 shadow-2 pointer mt2 wtick`} style={{"margin":"auto", "marginTop":"20px"}}>✓</p>
 		        </div>
 			</div>
 		)

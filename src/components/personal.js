@@ -164,7 +164,7 @@ class PersonalForm extends React.Component {
 						{/*    <a onClick={this.onOptionClick} id="false" name="travel" className="f6 ml2 shadow-2 mb3 mt3 dark-gray pointer ph3 pv2 dib" style={{background: this.state.travel === "false" ? this.state.on_color : "white", color: this.state.travel === "false" ? "white" : "black"}}>NO</a>*/}
 						{/*</div>*/}
 						<div className="ma1">
-							<p className="mt3 ml5 b mb1 gray gender">WERE YOU EXPOSED TO ANYONE WHO HAS COVID-19?</p>
+							<p className="mt3 ml5 b mb1 gray gender">WERE YOU EXPOSED TO ANYONE WHO HAS A DISEASE?</p>
 							<p className="mt3 ml5 b mb1 f6 gray gender">(exposure means at least 15 minutes of contact
 								within 6 feet of distance)</p>
 							<a onClick={this.onOptionClick} id="true" name="risk_person"
@@ -179,7 +179,7 @@ class PersonalForm extends React.Component {
 							}}>NO</a>
 						</div>
 						{/*<div className="ma1">*/}
-						{/*    <p className="mt3 ml5 b mb1 gray gender">WAS ANYONE YOU KNOW FOUND TO BE COVID POSITIVE?</p>*/}
+						{/*    <p className="mt3 ml5 b mb1 gray gender">WAS ANYONE YOU KNOW FOUND TO BE Infectious Disease POSITIVE?</p>*/}
 						{/*  	<a onClick={this.onOptionClick} id="true" name="known_found" className="f6 ml5 shadow-2 mb3 mt3 dark-gray pointer ph3 pv2 dib" style={{background: this.state.known_found === "true" ? this.state.on_color : "white", color: this.state.known_found === "true" ? "white" : "black"}}>YES</a>*/}
 						{/*    <a onClick={this.onOptionClick} id="false" name="known_found" className="f6 ml2 shadow-2 mb3 mt3 dark-gray pointer ph3 pv2 dib" style={{background: this.state.known_found === "false" ? this.state.on_color : "white", color: this.state.known_found === "false" ? "white" : "black"}}>NO</a>*/}
 						{/*</div>*/}
@@ -222,13 +222,13 @@ class PersonalForm extends React.Component {
 							<a onClick={this.onOptionClick} id="false" name="happy" className="ml2 mb3 mt1 dark-gray pointer ph3 pv2 dib" style={{"font-size": this.state.happy === "false" ? "44px" : "40px", opacity: (this.state.happy === "false") ? "1" : "0.5"}}>🙁</a>
 						</div>
 				    	<div className="ma1 w-70">
-					        <p className="mt3 ml4 f5 b mb1 gray gender">WERE YOU EXPOSED TO ANYONE WHO HAS COVID-19?</p>
+					        <p className="mt3 ml4 f5 b mb1 gray gender">WERE YOU EXPOSED TO ANYONE WHO HAS DISEASE?</p>
 							<p className="mt3 ml4 b mb1 f6 gray gender">(exposure means at least 15 minutes of contact within 6 feet of distance)</p>
 					      	<a onClick={this.onOptionClick} id="true" name="risk_person" className="f6 ml4 shadow-2 mb3 mt3 dark-gray pointer ph3 pv2 dib" style={{background: this.state.risk_person === "true" ? this.state.on_color : "white", color: this.state.risk_person === "true" ? "white" : "black"}}>YES</a>
 					        <a onClick={this.onOptionClick} id="false" name="risk_person" className="f6 ml2 shadow-2 mb3 mt3 dark-gray pointer ph3 pv2 dib" style={{background: this.state.risk_person === "false" ? this.state.on_color : "white", color: this.state.risk_person === "false" ? "white" : "black"}}>NO</a>
 				    	</div>
 				    	{/*<div className="ma1 w-70">*/}
-					    {/*    <p className="mt3 ml4 f5 b mb1 gray gender">WAS ANYONE YOU KNOW FOUND TO BE COVID POSITIVE?</p>*/}
+					    {/*    <p className="mt3 ml4 f5 b mb1 gray gender">WAS ANYONE YOU KNOW FOUND TO BE Infectious Disease POSITIVE?</p>*/}
 					    {/*  	<a onClick={this.onOptionClick} id="true" name="known_found" className="f6 ml4 shadow-2 mb3 mt3 dark-gray pointer ph3 pv2 dib" style={{background: this.state.known_found === "true" ? this.state.on_color : "white", color: this.state.known_found === "true" ? "white" : "black"}}>YES</a>*/}
 					    {/*    <a onClick={this.onOptionClick} id="false" name="known_found" className="f6 ml2 shadow-2 mb3 mt3 dark-gray pointer ph3 pv2 dib" style={{background: this.state.known_found === "false" ? this.state.on_color : "white", color: this.state.known_found === "false" ? "white" : "black"}}>NO</a>*/}
 				    	{/*</div>*/}

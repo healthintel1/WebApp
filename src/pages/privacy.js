@@ -4,9 +4,9 @@ export default function Privacy(){
     return (
         <div>
             <strong>Privacy Policy</strong> <p>
-            HealthIntel LLC built the HelpDefeatCovid app as
-            a Commercial app. This SERVICE is provided by
-            HealthIntel LLC  and is intended for use as
+            Acme Inc. powered by HealthIntel LLC is a Commercial app. 
+            This SERVICE is provided by
+            Acme Inc. powered by HealthIntel LLC  and is intended for use as
             is.
         </p> <p>
             This page is used to inform visitors regarding our
@@ -21,7 +21,7 @@ export default function Privacy(){
         </p> <p>
             The terms used in this Privacy Policy have the same meanings
             as in our Terms and Conditions, which is accessible at
-            HelpDefeatCovid unless otherwise defined in this Privacy Policy.
+            HelpIntel unless otherwise defined in this Privacy Policy.
         </p> <p><strong>Information Collection and Use</strong></p> <p>
             For a better experience, while using our Service, we
             may require you to provide us with certain personally

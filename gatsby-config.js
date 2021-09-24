@@ -13,17 +13,23 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `HealthIntel.ai`,
+        short_name: `HealthIntel`,
+        description: "We help people around the world use their medical history, symptoms and vital signs that include heart rate, temperature and blood oxygen saturation to determine likelihood of COVID-19.",
         start_url: `/`,
         background_color: `#663399`,
         theme_color: `#663399`,
-        display: `minimal-ui`,
+        display: `fullscreen`,
+        icon: `src/images/HI.png`
+      },
+    },
+    {
+      resolve: `gatsby-plugin-offline`,
+      options: {
+        precachePages: [`/`, `/about`, `/404`],
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
