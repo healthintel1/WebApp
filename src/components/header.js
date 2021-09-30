@@ -24,7 +24,7 @@ const Header = ({ siteTitle }) => (
             textDecoration: `none`,
           }}
         >
-          {siteTitle}
+            <img height={70} src={require("../images/logo.png")}></img>
         </Link>
       </h1>
     </div>

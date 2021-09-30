@@ -83,9 +83,11 @@ class SignInCard extends React.Component {
 				this.SignIn()
 			}
 		}
+
 		return(
 			<div className={"tc bg-white Avenir mobV"}>
-				<p className={`ff mt5`} style={{color: "rgb(127,90,179)"}}>Acme Inc.</p>
+				{/*<p className={`ff mt5`} style={{color: "rgb(127,90,179)"}}>Acme Inc.</p>*/}
+				<img className={`ff mt5`} height={70} src={require("../images/logo.png")}></img>
 				<p className={`f5 w-80 tc gray mt4 mb4`} style={{"marginLeft":"auto", "marginRight":"auto", "fontWeight":"500"}}>Sign-in if you are an authorized Acme Inc. powered by HealthIntel Pilot User</p>
 				<div className="tl ww75" style={{ "borderRadius":"15px"}}>
 		            <FloatingLabelInput
