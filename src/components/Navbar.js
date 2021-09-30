@@ -9,7 +9,7 @@ import {CORSDOMAIN} from "./constant";
 const Navbar = (props) => {
 	let x = (props.path)
 	const [clientId, setClientId] = useState("");
-	const [companyLogo, setCompanyLogo] = useState("");
+	const [companyLogo, setCompanyLogo] = useState("logo.png");
 
 	async function signOut() {
 	    try {
@@ -44,12 +44,7 @@ const Navbar = (props) => {
 
 	return(
 		<header className="black-80 tc pv3 avenir w-100">
-			{
-				companyLogo===""?
-					<h1 className="mt0 mb2 fw1" style={{"font-family":"Avenir","font-size":"1.6rem", color: "rgb(127,90,179)"}}>HelpIntel.com</h1>
-					:
-					<img className="dib ml2 pt0" style={{height: 50}} src={companyLogo}/>
-			}
+		<img className="dib ml2 pt0" style={{height: 50}} src={require("../images/logo.png")}/>
 		  <nav className="bb tc center dib b--light-gray bw2 pb0 w-100 mt2">
 		    <p onClick={()=>navigate("/dashboard")} className={`f6 pointer f5-l link hover b--dark-blue black-80 dib pa2 pb2 ph4-l ${(x === "/dashboard/" || x==="/dashboard")?"chosen":""}`}>Dashboard</p>
 		    <p onClick={()=>navigate("/about")} className={`f6 pointer f5-l link hover b--dark-blue dib pa2 pb2 ph4-l ${(x === "/about/" || x==="/about")?"chosen":""}`}>Our Unique Approach</p>
